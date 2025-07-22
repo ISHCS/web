@@ -1,0 +1,1237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Innovator Amer Abdullah - Raji Technology</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Google Fonts - Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- AOS Animation Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #3b82f6;
+            --primary-dark: #2563eb;
+            --secondary: #10b981;
+            --dark: #1e293b;
+            --light: #f8fafc;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--light);
+            color: #334155;
+            scroll-behavior: smooth;
+        }
+        
+        .gradient-text {
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .section-heading {
+            color: var(--dark);
+            font-weight: 800;
+            position: relative;
+            display: inline-block;
+            padding-bottom: 0.75rem;
+            margin-bottom: 2rem;
+        }
+        
+        .section-heading::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            bottom: 0;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 5px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            border-radius: 2.5px;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(90deg, var(--primary), var(--primary-dark));
+            color: white;
+            padding: 1rem 2.5rem;
+            border-radius: 0.75rem;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 8px 20px rgba(59, 130, 246, 0.4);
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 25px rgba(37, 99, 235, 0.6);
+        }
+        
+        .card {
+            background-color: white;
+            border-radius: 1.25rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            padding: 2.5rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid #e2e8f0;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+        
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+        }
+        
+        .skill-bar-container {
+            background-color: #e2e8f0;
+            border-radius: 0.5rem;
+            height: 12px;
+            overflow: hidden;
+        }
+        
+        .skill-bar {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            border-radius: 0.5rem;
+            transition: width 1.5s ease-in-out;
+        }
+        
+        .testimonial-card {
+            background-color: white;
+            border-radius: 1.25rem;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.05);
+            padding: 2.5rem;
+            text-align: center;
+            border: 1px solid #e2e8f0;
+            position: relative;
+        }
+        
+        .testimonial-card::before {
+            content: '"';
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+            font-size: 5rem;
+            color: rgba(59, 130, 246, 0.1);
+            font-family: serif;
+            line-height: 1;
+        }
+        
+        .testimonial-card p {
+            font-style: italic;
+            color: #475569;
+            margin-bottom: 1.5rem;
+            line-height: 1.75;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .testimonial-card .author {
+            font-weight: 700;
+            color: var(--primary-dark);
+            font-size: 1.125rem;
+        }
+        
+        .testimonial-card .title {
+            font-size: 0.95rem;
+            color: #64748b;
+        }
+        
+        /* Background pattern - more subtle */
+        .pattern-bg {
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%2394a3b8' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zm0 36v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0 36v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zM24 22v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0 36v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zM24 10v-4h-2v4h-4v2h4v4h2V12h4V10h-4zM12 34v-4h-2v4H6v2h4v4h2v-4h4v-2h-4zm0 36v-4h-2v4H6v2h4v4h2v-4h4v-2h-4zM12 10v-4h-2v4H6v2h4v4h2V12h4V10h-4zM0 22v-4H-2v4h-4v2h4v4h2v-4h4v-2h-4zm0 36v-4H-2v4h-4v2h4v4h2v-4h4v-2h-4z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            background-size: 60px 60px;
+        }
+        
+        /* Back to top button */
+        #back-to-top {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            display: none;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.25);
+            transition: all 0.3s ease;
+            z-index: 1000;
+            border: none;
+            cursor: pointer;
+        }
+        
+        #back-to-top:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+        }
+        
+        /* Navigation */
+        nav {
+            transition: all 0.3s ease;
+        }
+        
+        nav.scrolled {
+            background-color: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+        }
+        
+        /* Timeline */
+        .timeline {
+            position: relative;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 6px;
+            background-color: var(--primary);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -3px;
+            border-radius: 3px;
+        }
+        
+        .timeline-container {
+            padding: 10px 40px;
+            position: relative;
+            background-color: inherit;
+            width: 50%;
+        }
+        
+        .timeline-container::after {
+            content: '';
+            position: absolute;
+            width: 25px;
+            height: 25px;
+            right: -17px;
+            background-color: white;
+            border: 4px solid var(--primary);
+            top: 15px;
+            border-radius: 50%;
+            z-index: 1;
+        }
+        
+        .left {
+            left: 0;
+        }
+        
+        .right {
+            left: 50%;
+        }
+        
+        .left::before {
+            content: " ";
+            height: 0;
+            position: absolute;
+            top: 22px;
+            width: 0;
+            z-index: 1;
+            right: 30px;
+            border: medium solid white;
+            border-width: 10px 0 10px 10px;
+            border-color: transparent transparent transparent white;
+        }
+        
+        .right::before {
+            content: " ";
+            height: 0;
+            position: absolute;
+            top: 22px;
+            width: 0;
+            z-index: 1;
+            left: 30px;
+            border: medium solid white;
+            border-width: 10px 10px 10px 0;
+            border-color: transparent white transparent transparent;
+        }
+        
+        .right::after {
+            left: -16px;
+        }
+        
+        .timeline-content {
+            padding: 20px 30px;
+            background-color: white;
+            position: relative;
+            border-radius: 6px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Responsive timeline */
+        @media screen and (max-width: 768px) {
+            .timeline::after {
+                left: 31px;
+            }
+            
+            .timeline-container {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+            }
+            
+            .timeline-container::before {
+                left: 60px;
+                border: medium solid white;
+                border-width: 10px 10px 10px 0;
+                border-color: transparent white transparent transparent;
+            }
+            
+            .left::after, .right::after {
+                left: 15px;
+            }
+            
+            .right {
+                left: 0%;
+            }
+        }
+        
+        /* Stats counter */
+        .stat-item {
+            text-align: center;
+            padding: 1.5rem;
+        }
+        
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 800;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 0.5rem;
+        }
+        
+        /* Project showcase */
+        .project-card {
+            position: relative;
+            overflow: hidden;
+            border-radius: 1rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .project-card img {
+            transition: transform 0.5s ease;
+        }
+        
+        .project-card:hover img {
+            transform: scale(1.05);
+        }
+        
+        .project-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+            padding: 2rem 1.5rem 1.5rem;
+            color: white;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+        }
+        
+        .project-card:hover .project-overlay {
+            transform: translateY(0);
+        }
+        
+        /* Contact form */
+        .form-input {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            border: 1px solid #e2e8f0;
+            border-radius: 0.5rem;
+            transition: all 0.3s ease;
+        }
+        
+        .form-input:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+        }
+        
+        /* Dark mode toggle */
+        .dark-mode-toggle {
+            position: relative;
+            display: inline-block;
+            width: 50px;
+            height: 24px;
+        }
+        
+        .dark-mode-toggle input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+        
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            transition: .4s;
+            border-radius: 24px;
+        }
+        
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 16px;
+            width: 16px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+        
+        input:checked + .slider {
+            background-color: var(--primary);
+        }
+        
+        input:checked + .slider:before {
+            transform: translateX(26px);
+        }
+        
+        /* Dark mode styles */
+        body.dark {
+            background-color: #0f172a;
+            color: #e2e8f0;
+        }
+        
+        body.dark .card,
+        body.dark .testimonial-card {
+            background-color: #1e293b;
+            border-color: #334155;
+            color: #e2e8f0;
+        }
+        
+        body.dark .form-input {
+            background-color: #1e293b;
+            border-color: #334155;
+            color: #e2e8f0;
+        }
+        
+        body.dark .section-heading {
+            color: #f8fafc;
+        }
+        
+        body.dark .timeline-content {
+            background-color: #1e293b;
+            color: #e2e8f0;
+        }
+        
+        body.dark .left::before {
+            border-color: transparent transparent transparent #1e293b;
+        }
+        
+        body.dark .right::before {
+            border-color: transparent #1e293b transparent transparent;
+        }
+        
+        /* Floating animation */
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        .floating {
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        /* Pulse animation */
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+        
+        /* Typewriter effect */
+        .typewriter {
+            overflow: hidden;
+            border-right: .15em solid var(--primary);
+            white-space: nowrap;
+            margin: 0 auto;
+            letter-spacing: .15em;
+            animation: 
+                typing 3.5s steps(40, end),
+                blink-caret .75s step-end infinite;
+        }
+        
+        @keyframes typing {
+            from { width: 0 }
+            to { width: 100% }
+        }
+        
+        @keyframes blink-caret {
+            from, to { border-color: transparent }
+            50% { border-color: var(--primary) }
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Navigation Bar -->
+    <nav id="navbar" class="bg-white shadow-lg fixed w-full z-50 top-0 transition-all duration-300">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <a href="#" class="text-2xl font-bold text-blue-800 hover:text-blue-600 transition-colors flex items-center">
+                <img src="https://placehold.co/40x40/3b82f6/ffffff?text=AA" alt="Logo" class="rounded-full mr-2">
+                <span>Amer Abdullah</span>
+            </a>
+            <div class="hidden md:flex space-x-8 items-center">
+                <a href="#about" class="text-gray-700 hover:text-blue-600 font-medium transition-colors">About</a>
+                <a href="#innovations" class="text-gray-700 hover:text-blue-600 font-medium transition-colors">Innovations</a>
+                <a href="#skills" class="text-gray-700 hover:text-blue-600 font-medium transition-colors">Skills</a>
+                <a href="#achievements" class="text-gray-700 hover:text-blue-600 font-medium transition-colors">Achievements</a>
+                <a href="#documents" class="text-gray-700 hover:text-blue-600 font-medium transition-colors">Documents</a>
+                <a href="#testimonials" class="text-gray-700 hover:text-blue-600 font-medium transition-colors">Testimonials</a>
+                <a href="#contact" class="text-gray-700 hover:text-blue-600 font-medium transition-colors">Contact</a>
+                
+                <!-- Dark mode toggle -->
+                <label class="dark-mode-toggle ml-4">
+                    <input type="checkbox" id="dark-mode-toggle">
+                    <span class="slider"></span>
+                </label>
+            </div>
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-button" class="md:hidden text-gray-700 hover:text-blue-600 focus:outline-none">
+                <i class="fas fa-bars text-xl"></i>
+            </button>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white py-2 shadow-md">
+            <a href="#about" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">About</a>
+            <a href="#innovations" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Innovations</a>
+            <a href="#skills" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Skills</a>
+            <a href="#achievements" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Achievements</a>
+            <a href="#documents" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Documents</a>
+            <a href="#testimonials" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Testimonials</a>
+            <a href="#contact" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Contact</a>
+            <div class="px-4 py-2 flex items-center justify-between">
+                <span>Dark Mode</span>
+                <label class="dark-mode-toggle">
+                    <input type="checkbox" id="mobile-dark-mode-toggle">
+                    <span class="slider"></span>
+                </label>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header/Hero Section -->
+    <header class="relative overflow-hidden bg-gradient-to-r from-blue-600 to-blue-800 text-white pt-32 pb-20 md:pt-40 md:pb-32">
+        <!-- Floating particles background -->
+        <div class="absolute inset-0 overflow-hidden">
+            <div class="absolute top-20 left-1/4 w-4 h-4 bg-white rounded-full opacity-20 floating" style="animation-delay: 0s;"></div>
+            <div class="absolute top-1/3 left-3/4 w-6 h-6 bg-white rounded-full opacity-15 floating" style="animation-delay: 1s;"></div>
+            <div class="absolute top-2/3 left-1/5 w-8 h-8 bg-white rounded-full opacity-10 floating" style="animation-delay: 2s;"></div>
+            <div class="absolute bottom-20 right-1/4 w-5 h-5 bg-white rounded-full opacity-15 floating" style="animation-delay: 3s;"></div>
+        </div>
+        
+        <div class="container mx-auto px-4 text-center relative z-10">
+            <div class="mb-8">
+                <!-- Professional profile image with floating animation -->
+                <img src="https://placehold.co/180x180/ADD8E6/000000?text=Amer+Abdullah" alt="Amer Abdullah Profile" 
+                     class="rounded-full mx-auto border-4 border-white shadow-lg transform hover:scale-105 transition-transform duration-300 floating">
+            </div>
+            <h1 class="text-4xl md:text-6xl font-extrabold leading-tight mb-4" data-aos="fade-up">
+                Innovator <span class="gradient-text">Amer Abdullah</span>
+            </h1>
+            <p class="text-xl md:text-2xl font-light mb-8" data-aos="fade-up" data-aos-delay="100">
+                Founder of <span class="font-semibold text-blue-100">Raji Technology</span> | Revolutionizing Healthcare through Innovation
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4" data-aos="fade-up" data-aos-delay="200">
+                <a href="#contact" class="btn-primary inline-block text-lg md:text-xl font-medium">
+                    Get in Touch <i class="fas fa-arrow-right ml-2"></i>
+                </a>
+                <a href="#innovations" class="inline-block text-lg md:text-xl font-medium bg-white text-blue-600 hover:bg-gray-100 hover:text-blue-700 px-8 py-4 rounded-xl transition-all">
+                    View Innovations <i class="fas fa-lightbulb ml-2"></i>
+                </a>
+            </div>
+            
+            <!-- Stats counter -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-16 max-w-4xl mx-auto" data-aos="fade-up" data-aos-delay="300">
+                <div class="stat-item">
+                    <div class="stat-number" data-count="10">0</div>
+                    <div class="text-sm uppercase tracking-wider">Innovations</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" data-count="5">0</div>
+                    <div class="text-sm uppercase tracking-wider">Awards</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" data-count="15">0</div>
+                    <div class="text-sm uppercase tracking-wider">Projects</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" data-count="3">0</div>
+                    <div class="text-sm uppercase tracking-wider">Patents</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Scroll down indicator -->
+        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce" data-aos="fade-up" data-aos-delay="400">
+            <a href="#about" class="text-white text-2xl">
+                <i class="fas fa-chevron-down"></i>
+            </a>
+        </div>
+    </header>
+
+    <!-- About Me Section -->
+    <section id="about" class="py-16 md:py-24 bg-gray-50 pattern-bg dark:bg-dark">
+        <div class="container mx-auto px-4 max-w-4xl">
+            <h2 class="text-3xl md:text-4xl section-heading text-center mb-12" data-aos="fade-up">About Me</h2>
+            <div class="bg-white dark:bg-slate-800 p-8 rounded-xl shadow-lg flex flex-col md:flex-row items-center" data-aos="fade-up" data-aos-delay="100">
+                <div class="md:w-1/3 mb-6 md:mb-0 md:mr-8 flex-shrink-0">
+                    <img src="https://placehold.co/300x400/ADD8E6/000000?text=Innovation" alt="Innovation" class="rounded-lg shadow-md w-full h-auto object-cover">
+                </div>
+                <div class="md:w-2/3">
+                    <p class="text-lg leading-relaxed mb-6 dark:text-gray-300">
+                        As the founder of <strong class="text-blue-600 dark:text-blue-400">Raji Technology</strong>, I am dedicated to pioneering innovative solutions that address critical challenges in healthcare and beyond. My journey is driven by a passion for leveraging technology to create tangible, positive impacts on society.
+                    </p>
+                    <p class="text-lg leading-relaxed mb-6 dark:text-gray-300">
+                        My work primarily focuses on integrating advanced systems and AI-powered solutions to enhance patient care, safety, and operational efficiency within health facilities. I believe in a future where technology makes healthcare more accessible, efficient, and patient-centric for everyone.
+                    </p>
+                    <p class="text-lg leading-relaxed dark:text-gray-300">
+                        I have had the distinct honor of presenting my innovations to esteemed government figures, including <strong class="text-blue-600 dark:text-blue-400">His Excellency Prime Minister Dr. Abiy Ahmed Ali</strong>, and key ministers, underscoring the national importance and recognition of my contributions.
+                    </p>
+                    
+                    <!-- Experience timeline -->
+                    <div class="mt-8">
+                        <h3 class="text-xl font-semibold mb-4 dark:text-white">My Journey</h3>
+                        <div class="timeline">
+                            <div class="timeline-container left" data-aos="fade-right">
+                                <div class="timeline-content">
+                                    <h4 class="font-bold dark:text-white">Founded Raji Technology</h4>
+                                    <small class="text-blue-600 dark:text-blue-400">2023 - Present</small>
+                                    <p class="mt-2 dark:text-gray-300">Established my own technology company focused on healthcare innovations.</p>
+                                </div>
+                            </div>
+                            <div class="timeline-container right" data-aos="fade-left" data-aos-delay="100">
+                                <div class="timeline-content">
+                                    <h4 class="font-bold dark:text-white">Presented to Prime Minister</h4>
+                                    <small class="text-blue-600 dark:text-blue-400">2025</small>
+                                    <p class="mt-2 dark:text-gray-300">Honored to present at Sensa Museum inaugural exhibition.</p>
+                                </div>
+                            </div>
+                            <div class="timeline-container left" data-aos="fade-right" data-aos-delay="200">
+                                <div class="timeline-content">
+                                    <h4 class="font-bold dark:text-white">First Patent Registered</h4>
+                                    <small class="text-blue-600 dark:text-blue-400">2023</small>
+                                    <p class="mt-2 dark:text-gray-300">Nurse Calling System copyright registered with Ethiopian IP Office.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Innovations Section -->
+    <section id="innovations" class="py-16 md:py-24 bg-white dark:bg-slate-900">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl section-heading text-center mb-12" data-aos="fade-up">My Innovations</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+                <!-- Integrated Smart Healthcare Solutions (ISHCS) Card -->
+                <div class="card dark:bg-slate-800" data-aos="fade-up" data-aos-delay="100">
+                    <div class="flex items-center mb-4">
+                        <div class="bg-blue-100 dark:bg-blue-900 rounded-full p-3 mr-4">
+                            <i class="fas fa-hospital text-blue-600 dark:text-blue-400 text-2xl"></i>
+                        </div>
+                        <h3 class="text-2xl font-semibold text-blue-700 dark:text-blue-400">Integrated Smart Healthcare Solutions (ISHCS)</h3>
+                    </div>
+                    <p class="text-gray-700 dark:text-gray-300 mb-4">
+                        The ISHCS project is a comprehensive system designed to revolutionize healthcare delivery. It integrates multiple advanced technologies to improve patient outcomes and operational efficiency.
+                    </p>
+                    <ul class="space-y-2 mb-6">
+                        <li class="flex items-start">
+                            <i class="fas fa-hospital-user text-blue-500 dark:text-blue-400 mt-1 mr-2"></i>
+                            <span class="text-gray-700 dark:text-gray-300">Enhanced Patient-Provider Communication</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-file-medical text-blue-500 dark:text-blue-400 mt-1 mr-2"></i>
+                            <span class="text-gray-700 dark:text-gray-300">Electronic Health Records (EHR)</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-map-marker-alt text-blue-500 dark:text-blue-400 mt-1 mr-2"></i>
+                            <span class="text-gray-700 dark:text-gray-300">Real-Time Location Systems (RTLS)</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-robot text-blue-500 dark:text-blue-400 mt-1 mr-2"></i>
+                            <span class="text-gray-700 dark:text-gray-300">AI-Powered Solutions for data-driven decision-making</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-pills text-blue-500 dark:text-blue-400 mt-1 mr-2"></i>
+                            <span class="text-gray-700 dark:text-gray-300">Reduced Medication Errors through CPOE</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-chart-line text-blue-500 dark:text-blue-400 mt-1 mr-2"></i>
+                            <span class="text-gray-700 dark:text-gray-300">Potential Reduction in Hospital Mortality Rates</span>
+                        </li>
+                    </ul>
+                    <p class="text-sm text-gray-500 dark:text-gray-400">
+                        Endorsed by the Ministry of Innovation and Technology, aligning with national priorities.
+                    </p>
+                    
+                    <!-- Project gallery -->
+                    <div class="mt-6 grid grid-cols-3 gap-2">
+                        <div class="project-card rounded-lg overflow-hidden">
+                            <img src="https://placehold.co/200x150/ADD8E6/000000?text=ISHCS+1" alt="ISHCS Project" class="w-full h-full object-cover">
+                            <div class="project-overlay">
+                                <h4 class="font-bold">ISHCS Interface</h4>
+                            </div>
+                        </div>
+                        <div class="project-card rounded-lg overflow-hidden">
+                            <img src="https://placehold.co/200x150/ADD8E6/000000?text=ISHCS+2" alt="ISHCS Project" class="w-full h-full object-cover">
+                            <div class="project-overlay">
+                                <h4 class="font-bold">System Architecture</h4>
+                            </div>
+                        </div>
+                        <div class="project-card rounded-lg overflow-hidden">
+                            <img src="https://placehold.co/200x150/ADD8E6/000000?text=ISHCS+3" alt="ISHCS Project" class="w-full h-full object-cover">
+                            <div class="project-overlay">
+                                <h4 class="font-bold">Deployment</h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Nurse Calling System Card -->
+                <div class="card dark:bg-slate-800" data-aos="fade-up" data-aos-delay="200">
+                    <div class="flex items-center mb-4">
+                        <div class="bg-blue-100 dark:bg-blue-900 rounded-full p-3 mr-4">
+                            <i class="fas fa-bell text-blue-600 dark:text-blue-400 text-2xl"></i>
+                        </div>
+                        <h3 class="text-2xl font-semibold text-blue-700 dark:text-blue-400">Nurse Calling System</h3>
+                    </div>
+                    <p class="text-gray-700 dark:text-gray-300 mb-4">
+                        A core component of ISHCS, this innovative Nurse Calling System improves patient safety and staff responsiveness. It's designed to streamline communication between patients and healthcare providers.
+                    </p>
+                    <ul class="space-y-2 mb-6">
+                        <li class="flex items-start">
+                            <i class="fas fa-bell text-blue-500 dark:text-blue-400 mt-1 mr-2"></i>
+                            <span class="text-gray-700 dark:text-gray-300">Instant Patient-to-Nurse Communication</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-clock text-blue-500 dark:text-blue-400 mt-1 mr-2"></i>
+                            <span class="text-gray-700 dark:text-gray-300">Improved Response Times</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-hand-holding-medical text-blue-500 dark:text-blue-400 mt-1 mr-2"></i>
+                            <span class="text-gray-700 dark:text-gray-300">Enhanced Patient Care and Comfort</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-clipboard-list text-blue-500 dark:text-blue-400 mt-1 mr-2"></i>
+                            <span class="text-gray-700 dark:text-gray-300">Streamlined Workflow for Nurses</span>
+                        </li>
+                    </ul>
+                    <p class="text-sm text-gray-500 dark:text-gray-400">
+                        Acknowledged and supported by the Ministry of Health. Copyright registered with the Ethiopian Intellectual Property Authority.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-16 md:py-24 bg-gray-50 pattern-bg dark:bg-dark">
+        <div class="container mx-auto px-4 max-w-4xl">
+            <h2 class="text-3xl md:text-4xl section-heading text-center mb-12" data-aos="fade-up">My Skills</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="card dark:bg-slate-800" data-aos="fade-up" data-aos-delay="100">
+                    <h3 class="text-xl font-semibold text-gray-800 dark:text-white mb-3">Innovation & Product Development</h3>
+                    <div class="skill-bar-container">
+                        <div class="skill-bar" style="width: 95%;"></div>
+                    </div>
+                    <p class="text-sm text-gray-600 dark:text-gray-300 mt-2">Expert in conceptualizing and bringing new technologies to life.</p>
+                </div>
+                <div class="card dark:bg-slate-800" data-aos="fade-up" data-aos-delay="200">
+                    <h3 class="text-xl font-semibold text-gray-800 dark:text-white mb-3">Healthcare Technology Integration</h3>
+                    <div class="skill-bar-container">
+                        <div class="skill-bar" style="width: 90%;"></div>
+                    </div>
+                    <p class="text-sm text-gray-600 dark:text-gray-300 mt-2">Proficient in integrating complex systems for optimal healthcare delivery.</p>
+                </div>
+                <div class="card dark:bg-slate-800" data-aos="fade-up" data-aos-delay="300">
+                    <h3 class="text-xl font-semibold text-gray-800 dark:text-white mb-3">AI & Data-Driven Solutions</h3>
+                    <div class="skill-bar-container">
+                        <div class="skill-bar" style="width: 85%;"></div>
+                    </div>
+                    <p class="text-sm text-gray-600 dark:text-gray-300 mt-2">Leveraging artificial intelligence for intelligent decision-making.</p>
+                </div>
+                <div class="card dark:bg-slate-800" data-aos="fade-up" data-aos-delay="400">
+                    <h3 class="text-xl font-semibold text-gray-800 dark:text-white mb-3">Project Management & Leadership</h3>
+                    <div class="skill-bar-container">
+                        <div class="skill-bar" style="width: 92%;"></div>
+                    </div>
+                    <p class="text-sm text-gray-600 dark:text-gray-300 mt-2">Leading teams and projects from ideation to successful deployment.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Achievements & Recognition Section -->
+    <section id="achievements" class="py-16 md:py-24 bg-white dark:bg-slate-900">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl section-heading text-center mb-12" data-aos="fade-up">Achievements & Recognition</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+
+                <!-- Achievement Card 1: Prime Minister Presentation -->
+                <div class="card dark:bg-slate-800" data-aos="fade-up" data-aos-delay="100">
+                    <div class="text-center mb-4">
+                        <img src="https://placehold.co/80x80/ADD8E6/000000?text=PM" alt="Prime Minister Icon" class="rounded-full mx-auto mb-2 shadow-sm">
+                        <h3 class="text-xl font-semibold text-gray-800 dark:text-white mb-2">Presented to Prime Minister Dr. Abiy Ahmed Ali</h3>
+                    </div>
+                    <p class="text-gray-600 dark:text-gray-300 text-sm">
+                        Honored to present inaugural exhibition at Sensa Museum, a significant national event.
+                    </p>
+                </div>
+
+                <!-- Achievement Card 2: Ministers Presentation -->
+                <div class="card dark:bg-slate-800" data-aos="fade-up" data-aos-delay="200">
+                    <div class="text-center mb-4">
+                        <img src="https://placehold.co/80x80/ADD8E6/000000?text=Ministers" alt="Ministers Icon" class="rounded-full mx-auto mb-2 shadow-sm">
+                        <h3 class="text-xl font-semibold text-gray-800 dark:text-white mb-2">Presented to Ministers of Innovation & Health</h3>
+                    </div>
+                    <p class="text-gray-600 dark:text-gray-300 text-sm">
+                        Showcased innovations to Dr. Belete Molla (Min. Innovation) and Dr. Mekdes Daba (Min. Health).
+                    </p>
+                </div>
+
+                <!-- Achievement Card 3: Ministry of Innovation Endorsement -->
+                <div class="card dark:bg-slate-800" data-aos="fade-up" data-aos-delay="300">
+                    <div class="text-center mb-4">
+                        <img src="https://placehold.co/80x80/ADD8E6/000000?text=Endorsement" alt="Endorsement Icon" class="rounded-full mx-auto mb-2 shadow-sm">
+                        <h3 class="text-xl font-semibold text-gray-800 dark:text-white mb-2">Ministry of Innovation & Technology Endorsement</h3>
+                    </div>
+                    <p class="text-gray-600 dark:text-gray-300 text-sm">
+                        ISHCS project officially endorsed, aligning with national priorities for healthcare tech.
+                    </p>
+                </div>
+
+                <!-- Achievement Card 4: Global Health Innovation Summit -->
+                <div class="card dark:bg-slate-800" data-aos="fade-up" data-aos-delay="400">
+                    <div class="text-center mb-4">
+                        <img src="https://placehold.co/80x80/ADD8E6/000000?text=Summit" alt="Summit Icon" class="rounded-full mx-auto mb-2 shadow-sm">
+                        <h3 class="text-xl font-semibold text-gray-800 dark:text-white mb-2">Global Health Innovation & Quality Summit Presenter</h3>
+                    </div>
+                    <p class="text-gray-600 dark:text-gray-300 text-sm">
+                        Recognized for participation as a presenter at the summit, June 25-27.
+                    </p>
+                </div>
+
+                <!-- Achievement Card 5: AI and Career Empowerment Certificate -->
+                <div class="card dark:bg-slate-800" data-aos="fade-up" data-aos-delay="500">
+                    <div class="text-center mb-4">
+                        <img src="https://placehold.co/80x80/ADD8E6/000000?text=AI+Cert" alt="AI Certificate Icon" class="rounded-full mx-auto mb-2 shadow-sm">
+                        <h3 class="text-xl font-semibold text-gray-800 dark:text-white mb-2">AI and Career Empowerment Certificate</h3>
+                    </div>
+                    <p class="text-gray-600 dark:text-gray-300 text-sm">
+                        Successfully completed a non-credit course from University of Maryland, July 15, 2025.
+                    </p>
+                </div>
+
+                <!-- Achievement Card 6: Nurse Calling System Copyright -->
+                <div class="card dark:bg-slate-800" data-aos="fade-up" data-aos-delay="600">
+                    <div class="text-center mb-4">
+                        <img src="https://placehold.co/80x80/ADD8E6/000000?text=Copyright" alt="Copyright Icon" class="rounded-full mx-auto mb-2 shadow-sm">
+                        <h3 class="text-xl font-semibold text-gray-800 dark:text-white mb-2">Nurse Calling System Copyright Registered</h3>
+                    </div>
+                    <p class="text-gray-600 dark:text-gray-300 text-sm">
+                        Copyright & Neighboring Rights Registration Certificate from Ethiopian Intellectual Property Authority.
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Official Endorsements & Certifications Section -->
+    <section id="documents" class="py-16 md:py-24 bg-gray-50 pattern-bg dark:bg-dark">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl section-heading text-center mb-12" data-aos="fade-up">Official Endorsements & Certifications</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+
+                <!-- Document Card 1: Ministry of Innovation and Technology Endorsement -->
+                <div class="card dark:bg-slate-800" data-aos="fade-up" data-aos-delay="100">
+                    <div class="text-center mb-4">
+                        <img src="https://placehold.co/80x80/ADD8E6/000000?text=MoIT" alt="MoIT Logo" class="rounded-full mx-auto mb-2 shadow-sm">
+                        <h3 class="text-xl font-semibold text-blue-700 dark:text-blue-400 mb-2">Ministry of Innovation and Technology Endorsement</h3>
+                    </div>
+                    <p class="text-gray-700 dark:text-gray-300 text-sm mb-2">
+                        Official endorsement for the Integrated Smart Healthcare Solutions (ISHCS) Project. Confirms alignment with national priorities and potential to enhance healthcare delivery.
+                    </p>
+                    <ul class="list-disc list-inside text-gray-600 dark:text-gray-300 text-xs space-y-1 mb-4">
+                        <li>Evaluated and aligns with national priorities.</li>
+                        <li>Focuses on nurse calling, EHR, RTLS, AI.</li>
+                        <li>Supports implementation in selected health facilities.</li>
+                    </ul>
+                    <p class="text-xs text-gray-500 dark:text-gray-400">Date: April 24, 2025</p>
+                    <div class="mt-4 text-center">
+                        <a href="https://example.com/moit-endorsement.pdf" target="_blank" class="text-blue-600 hover:underline text-sm font-medium dark:text-blue-400">View Document <i class="fas fa-external-link-alt ml-1"></i></a>
+                    </div>
+                </div>
+
+                <!-- Document Card 2: Ministry of Health Support Letter (Pilot Testing) -->
+                <div class="card dark:bg-slate-800" data-aos="fade-up" data-aos-delay="200">
+                    <div class="text-center mb-4">
+                        <img src="https://placehold.co/80x80/ADD8E6/000000?text=MoH" alt="MoH Logo" class="rounded-full mx-auto mb-2 shadow-sm">
+                        <h3 class="text-xl font-semibold text-blue-700 dark:text-blue-400 mb-2">Ministry of Health Support Letter (Pilot Testing)</h3>
+                    </div>
+                    <p class="text-gray-700 dark:text-gray-300 text-sm mb-2">
+                        Support for pilot testing of the Innovative Integrated Smart Nurse Calling System in Ethiopia. Highlights key benefits and seeks collaboration.
+                    </p>
+                    <ul class="list-disc list-inside text-gray-600 dark:text-gray-300 text-xs space-y-1 mb-4">
+                        <li>Supports ISHCS pilot testing.</li>
+                        <li>Aims to revolutionize healthcare delivery.</li>
+                        <li>Aligns with MoH national priority areas.</li>
+                    </ul>
+                    <p class="text-xs text-gray-500 dark:text-gray-400">Date: May 09, 2025</p>
+                    <div class="mt-4 text-center">
+                        <a href="https://example.com/moh-pilot-support.pdf" target="_blank" class="text-blue-600 hover:underline text-sm font-medium dark:text-blue-400">View Document <i class="fas fa-external-link-alt ml-1"></i></a>
+                    </div>
+                </div>
+
+                <!-- Document Card 3: Addis Ababa City Administration Health Bureau Letter -->
+                <div class="card dark:bg-slate-800" data-aos="fade-up" data-aos-delay="300">
+                    <div class="text-center mb-4">
+                        <img src="https://placehold.co/80x80/ADD8E6/000000?text=AAHB" alt="AAHB Logo" class="rounded-full mx-auto mb-2 shadow-sm">
+                        <h3 class="text-xl font-semibold text-blue-700 dark:text-blue-400 mb-2">Addis Ababa Health Bureau Support</h3>
+                    </div>
+                    <p class="text-gray-700 dark:text-gray-300 text-sm mb-2">
+                        Letter requesting assistance and support for the implementation of the Nurse Call System in health institutions.
+                    </p>
+                    <ul class="list-disc list-inside text-gray-600 dark:text-gray-300 text-xs space-y-1 mb-4">
+                        <li>Requests support for Nurse Call System implementation.</li>
+                        <li>Recognized by Ethiopian Intellectual Property Office.</li>
+                    </ul>
+                    <p class="text-xs text-gray-500 dark:text-gray-400">Date: April 04, 2023</p>
+                    <div class="mt-4 text-center">
+                        <a href="https://example.com/aahb-support-letter.pdf" target="_blank" class="text-blue-600 hover:underline text-sm font-medium dark:text-blue-400">View Document <i class="fas fa-external-link-alt ml-1"></i></a>
+                    </div>
+                </div>
+
+                <!-- Document Card 4: Ministry of Health Evaluation Support (NEWLY ADDED) -->
+                <div class="card dark:bg-slate-800" data-aos="fade-up" data-aos-delay="400">
+                    <div class="text-center mb-4">
+                        <img src="https://placehold.co/80x80/ADD8E6/000000?text=MoH+Eval" alt="MoH Evaluation Logo" class="rounded-full mx-auto mb-2 shadow-sm">
+                        <h3 class="text-xl font-semibold text-blue-700 dark:text-blue-400 mb-2">Ministry of Health Evaluation Support</h3>
+                    </div>
+                    <p class="text-gray-700 dark:text-gray-300 text-sm mb-2">
+                        Letter confirming evaluation and support for the Nurse Call System developed by Amer Abdulla Mohammed, recognizing its service to the health sector.
+                    </p>
+                    <ul class="list-disc list-inside text-gray-600 dark:text-gray-300 text-xs space-y-1 mb-4">
+                        <li>System evaluated by MoH experts.</li>
+                        <li>Issued in recognition of service to health sector.</li>
+                    </ul>
+                    <p class="text-xs text-gray-500 dark:text-gray-400">Date: October 20, 2022</p>
+                    <div class="mt-4 text-center">
+                        <a href="https://example.com/moh-evaluation-letter.pdf" target="_blank" class="text-blue-600 hover:underline text-sm font-medium dark:text-blue-400">View Document <i class="fas fa-external-link-alt ml-1"></i></a>
+                    </div>
+                </div>
+
+                <!-- Document Card 5: Copyright & Neighboring Rights Registration Certificate -->
+                <div class="card dark:bg-slate-800" data-aos="fade-up" data-aos-delay="500">
+                    <div class="text-center mb-4">
+                        <img src="https://placehold.co/80x80/ADD8E6/000000?text=Copyright" alt="Copyright Logo" class="rounded-full mx-auto mb-2 shadow-sm">
+                        <h3 class="text-xl font-semibold text-blue-700 dark:text-blue-400 mb-2">Nurse Calling System Copyright Certificate</h3>
+                    </h3>
+                    <p class="text-gray-700 dark:text-gray-300 text-sm mb-2">
+                        Official registration certificate for the "Nurse Calling System" as a computer program.
+                    </p>
+                    <ul class="list-disc list-inside text-gray-600 dark:text-gray-300 text-xs space-y-1 mb-4">
+                        <li>Owner: Amer Abdulla Mohammed.</li>
+                        <li>Type: Computer Program (Windows OS).</li>
+                        <li>Registration No: 5/0277.</li>
+                        <li>Expiry Date: July 18, 2028.</li>
+                    </ul>
+                    <p class="text-xs text-gray-500 dark:text-gray-400">Registration Date: July 19, 2023</p>
+                    <div class="mt-4 text-center">
+                        <a href="https://example.com/copyright-certificate.pdf" target="_blank" class="text-blue-600 hover:underline text-sm font-medium dark:text-blue-400">View Document <i class="fas fa-external-link-alt ml-1"></i></a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="py-16 md:py-24 bg-white dark:bg-slate-900">
+        <div class="container mx-auto px-4 max-w-5xl">
+            <h2 class="text-3xl md:text-4xl section-heading text-center mb-12" data-aos="fade-up">What Others Say</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="testimonial-card dark:bg-slate-800" data-aos="fade-up" data-aos-delay="100">
+                    <img src="https://placehold.co/80x80/ADD8E6/000000?text=Org+1" alt="Organization 1 Logo" class="rounded-full mx-auto mb-4 shadow-sm">
+                    <p class="dark:text-gray-300">"Amer Abdullah's Integrated Smart Healthcare Solutions project aligns perfectly with our national priorities to enhance healthcare delivery through technology. His work is truly impactful."</p>
+                    <div class="author">- Ministry of Innovation and Technology</div>
+                    <div class="title">Endorsement Letter, April 24, 2025</div>
+                </div>
+                <div class="testimonial-card dark:bg-slate-800" data-aos="fade-up" data-aos-delay="200">
+                    <img src="https://placehold.co/80x80/ADD8E6/000000?text=Org+2" alt="Organization 2 Logo" class="rounded-full mx-auto mb-4 shadow-sm">
+                    <p class="dark:text-gray-300">"We express our keen support for the implementation of this innovative solution. Collaborating with Amer will leverage invaluable expertise and technical resources."</p>
+                    <div class="author">- Ministry of Health - Ethiopia</div>
+                    <div class="title">Support Letter, May 09, 2025</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action Section -->
+    <section class="py-16 md:py-24 gradient-bg text-white text-center">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-extrabold mb-6" data-aos="fade-up">Ready to Innovate Together?</h2>
+            <p class="text-xl md:text-2xl font-light mb-10" data-aos="fade-up" data-aos-delay="100">
+                Let's connect and explore how Raji Technology can bring your vision to life.
+            </p>
+            <a href="#contact" class="btn-primary inline-block text-lg md:text-xl font-medium bg-white text-blue-600 hover:bg-gray-100 hover:text-blue-700" data-aos="fade-up" data-aos-delay="200">
+                Start a Conversation <i class="fas fa-comments ml-2"></i>
+            </a>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-16 md:py-24 bg-white dark:bg-slate-900">
+        <div class="container mx-auto px-4 max-w-3xl">
+            <h2 class="text-3xl md:text-4xl section-heading text-center mb-12" data-aos="fade-up">Get in Touch</h2>
+            <div class="bg-gray-100 dark:bg-slate-800 p-8 rounded-xl shadow-lg" data-aos="fade-up" data-aos-delay="100">
+                <p class="text-lg text-center text-gray-700 dark:text-gray-300 mb-8">
+                    Interested in collaborating or learning more about my work? Feel free to reach out!
+                </p>
+                <div class="flex flex-col items-center space-y-6">
+                    <div class="flex items-center text-lg text-gray-800 dark:text-gray-300">
+                        <i class="fas fa-envelope text-blue-600 dark:text-blue-400 mr-3 text-2xl"></i>
+                        <a href="mailto:amerabdulah634@gmail.com" class="text-blue-600 hover:underline dark:text-blue-400">amerabdulah634@gmail.com</a>
+                    </div>
+                    <div class="flex items-center text-lg text-gray-800 dark:text-gray-300">
+                        <i class="fas fa-phone-alt text-blue-600 dark:text-blue-400 mr-3 text-2xl"></i>
+                        <a href="tel:+251913395143" class="text-blue-600 hover:underline dark:text-blue-400">+251913395143</a>
+                    </div>
+                    <!-- Simple contact form placeholder -->
+                    <form class="w-full max-w-md mt-8">
+                        <div class="mb-4">
+                            <input type="text" id="name" name="name" placeholder="Your Name" class="form-input dark:bg-slate-700 dark:text-white dark:border-slate-600">
+                        </div>
+                        <div class="mb-4">
+                            <input type="email" id="email" name="email" placeholder="Your Email" class="form-input dark:bg-slate-700 dark:text-white dark:border-slate-600">
+                        </div>
+                        <div class="mb-6">
+                            <textarea id="message" name="message" rows="5" placeholder="Your Message" class="form-input dark:bg-slate-700 dark:text-white dark:border-slate-600"></textarea>
+                        </div>
+                        <button type="submit" class="btn-primary w-full text-lg font-medium">
+                            Send Message <i class="fas fa-paper-plane ml-2"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="gradient-bg text-white py-8">
+        <div class="container mx-auto px-4 text-center">
+            <p class="mb-4">&copy; <span id="current-year"></span> Amer Abdullah. All rights reserved.</p>
+            <div class="flex justify-center space-x-6">
+                <a href="#" class="text-white hover:text-blue-200 text-2xl"><i class="fab fa-linkedin"></i></a>
+                <a href="#" class="text-white hover:text-blue-200 text-2xl"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="text-white hover:text-blue-200 text-2xl"><i class="fab fa-github"></i></a>
+            </div>
+            <p class="text-sm mt-4">Built with passion and innovation.</p>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button id="back-to-top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- AOS Initialization -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 800,
+            once: true, // Animations will only run once
+            offset: 50, // Offset (in px) from the original trigger point
+        });
+
+        // Set current year in footer
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+
+        // Mobile menu toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Hide mobile menu when a link is clicked
+        mobileMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        // Back to top button functionality
+        const backToTopButton = document.getElementById('back-to-top');
+
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) { // Show button after scrolling 300px
+                backToTopButton.style.display = 'flex'; // Use flex to center icon
+            } else {
+                backToTopButton.style.display = 'none';
+            }
+        });
+
+        backToTopButton.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const href = this.getAttribute('href');
+
+                if (href === '#') {
+                    // Handle scrolling to the very top of the page
+                    window.scrollTo({
+                        top: 0,
+                        behavior: 'smooth'
+                    });
+                } else if (href.startsWith('#')) { // Ensure it's an ID selector
+                    const targetId = href.substring(1); // Remove the '#'
+                    const targetElement = document.getElementById(targetId); // Use getElementById for efficiency
+
+                    if (targetElement) {
+                        targetElement.scrollIntoView({
+                            behavior: 'smooth'
+                        });
+                    } else {
+                        console.error('Target element not found for ID:', targetId, 'from href:', href);
+                    }
+                }
+                // If href is not '#' and doesn't start with '#', do nothing (or add other handling if needed)
+            });
+        });
+
+        // Dark mode toggle functionality
+        const darkModeToggle = document.getElementById('dark-mode-toggle');
+        const mobileDarkModeToggle = document.getElementById('mobile-dark-mode-toggle');
+        const body = document.body;
+
+        function setDarkMode(isDark) {
+            if (isDark) {
+                body.classList.add('dark');
+                localStorage.setItem('theme', 'dark');
+            } else {
+                body.classList.remove('dark');
+                localStorage.setItem('theme', 'light');
+            }
+            // Sync toggles
+            darkModeToggle.checked = isDark;
+            mobileDarkModeToggle.checked = isDark;
+        }
+
+        // Check for saved theme preference
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme === 'dark') {
+            setDarkMode(true);
+        } else {
+            setDarkMode(false); // Default to light if no preference or 'light'
+        }
+
+        darkModeToggle.addEventListener('change', (event) => {
+            setDarkMode(event.target.checked);
+        });
+
+        mobileDarkModeToggle.addEventListener('change', (event) => {
+            setDarkMode(event.target.checked);
+        });
+
+        // Navbar scroll effect
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Stats counter animation
+        const animateNumbers = (entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const stats = entry.target.querySelectorAll('.stat-number');
+                    stats.forEach(stat => {
+                        const target = parseInt(stat.dataset.count);
+                        let current = 0;
+                        const increment = target / 100; // Adjust for smoother animation
+
+                        const updateCounter = () => {
+                            if (current < target) {
+                                current += increment;
+                                stat.textContent = Math.ceil(current);
+                                requestAnimationFrame(updateCounter);
+                            } else {
+                                stat.textContent = target;
+                            }
+                        };
+                        updateCounter();
+                    });
+                    observer.unobserve(entry.target); // Stop observing once animated
+                }
+            });
+        };
+
+        const statsSection = document.querySelector('.grid.mt-16'); // Corrected selector for the stats grid
+        if (statsSection) {
+            const observer = new IntersectionObserver(animateNumbers, {
+                threshold: 0.5 // Trigger when 50% of the element is visible
+            });
+            observer.observe(statsSection);
+        }
+
+    </script>
+</body>
+</html>
