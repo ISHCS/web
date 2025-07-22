@@ -12,6 +12,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <!-- AOS Animation Library -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <!-- Google Translate Script -->
+    <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
     <style>
         :root {
             --primary: #3b82f6;
@@ -504,6 +506,16 @@
             50% { border-color: var(--primary) }
         }
     </style>
+    <script>
+        // Initialize the Google Translate Element
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({
+                pageLanguage: 'en', // Default language
+                includedLanguages: 'en,fr,es,de,it,pt,ar,zh,am,om', // Add Amharic (am) and Oromo (om)
+                layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+            }, 'google_translate_element');
+        }
+    </script>
 </head>
 <body class="antialiased">
 
@@ -511,8 +523,8 @@
     <nav id="navbar" class="bg-white shadow-lg fixed w-full z-50 top-0 transition-all duration-300">
         <div class="container mx-auto px-4 py-4 flex justify-between items-center">
             <a href="#" class="text-2xl font-bold text-blue-800 hover:text-blue-600 transition-colors flex items-center">
-                <!-- Updated logo source to use the contentFetchId -->
-                <img src="Raji Logo.png" alt="Amer Abdullah Logo" 
+                <!-- Updated logo source to use a placeholder image -->
+                <img src="https://placehold.co/40x40/ADD8E6/000000?text=Logo" alt="Amer Abdullah Logo" 
                      class="rounded-full mr-2 w-10 h-10 object-contain">
                 <span>Amer Abdullah</span>
             </a>
@@ -525,6 +537,9 @@
                 <a href="#testimonials" class="text-gray-700 hover:text-blue-600 font-medium transition-colors">Testimonials</a>
                 <a href="#contact" class="text-gray-700 hover:text-blue-600 font-medium transition-colors">Contact</a>
                 
+                <!-- Google Translate Element -->
+                <div id="google_translate_element" class="ml-4"></div>
+
                 <!-- Dark mode toggle -->
                 <label class="dark-mode-toggle ml-4">
                     <input type="checkbox" id="dark-mode-toggle">
@@ -545,6 +560,10 @@
             <a href="#documents" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Documents</a>
             <a href="#testimonials" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Testimonials</a>
             <a href="#contact" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Contact</a>
+            <div class="px-4 py-2">
+                 <!-- Google Translate Element for Mobile -->
+                <div id="google_translate_element_mobile" class="mb-2"></div>
+            </div>
             <div class="px-4 py-2 flex items-center justify-between">
                 <span>Dark Mode</span>
                 <label class="dark-mode-toggle">
@@ -568,7 +587,7 @@
         <div class="container mx-auto px-4 text-center relative z-10">
             <div class="mb-8">
                 <!-- Professional profile image with floating animation -->
-                <img src="Raji Logo.png" alt="Amer Abdullah Profile" 
+                <img src="https://placehold.co/192x192/ADD8E6/000000?text=Profile" alt="Amer Abdullah Profile" 
                      class="rounded-full mx-auto border-4 border-white shadow-lg transform hover:scale-105 transition-transform duration-300 floating w-48 h-48 object-contain">
             </div>
             <h1 class="text-4xl md:text-6xl font-extrabold leading-tight mb-4" data-aos="fade-up">
@@ -717,112 +736,107 @@
                             <span class="text-gray-700 dark:text-gray-300">Real-Time Location Systems (RTLS)</span>
                         </li>
                         <li class="flex items-start">
-                            <i class="fas fa-robot text-blue-500 dark:text-blue-400 mt-1 mr-2"></i>
-                            <span class="text-gray-700 dark:text-gray-300">AI-Powered Solutions for data-driven decision-making</span>
-                        </li>
-                        <li class="flex items-start">
-                            <i class="fas fa-pills text-blue-500 dark:text-blue-400 mt-1 mr-2"></i>
-                            <span class="text-gray-700 dark:text-gray-300">Reduced Medication Errors through Computerized Physician Order Entry (CPOE)</span>
-                        </li>
-                        <li class="flex items-start">
-                            <i class="fas fa-chart-line text-blue-500 dark:text-blue-400 mt-1 mr-2"></i>
-                            <span class="text-gray-700 dark:text-gray-300">Potential Reduction in Hospital Mortality Rates</span>
+                            <i class="fas fa-bell text-blue-500 dark:text-blue-400 mt-1 mr-2"></i>
+                            <span class="text-gray-700 dark:text-gray-300">Nurse Calling System Integration</span>
                         </li>
                     </ul>
-                    <p class="text-sm text-gray-500 dark:text-gray-400">
-                        Endorsed by the Ministry of Innovation and Technology on April 24, 2025, aligning with national priorities.
-                    </p>
-                    
-                    <!-- Project gallery -->
-                    <div class="mt-6 grid grid-cols-3 gap-2">
-                        <div class="project-card rounded-lg overflow-hidden">
-                            <img src="https://placehold.co/200x150/ADD8E6/000000?text=ISHCS+1" alt="ISHCS Project" class="w-full h-full object-cover">
-                            <div class="project-overlay">
-                                <h4 class="font-bold">ISHCS Interface</h4>
-                            </div>
-                        </div>
-                        <div class="project-card rounded-lg overflow-hidden">
-                            <img src="https://placehold.co/200x150/ADD8E6/000000?text=ISHCS+2" alt="ISHCS Project" class="w-full h-full object-cover">
-                            <div class="project-overlay">
-                                <h4 class="font-bold">System Architecture</h4>
-                            </div>
-                        </div>
-                        <div class="project-card rounded-lg overflow-hidden">
-                            <img src="https://placehold.co/200x150/ADD8E6/000000?text=ISHCS+3" alt="ISHCS Project" class="w-full h-full object-cover">
-                            <div class="project-overlay">
-                                <h4 class="font-bold">Deployment</h4>
-                            </div>
-                        </div>
-                    </div>
+                    <a href="#contact" class="text-blue-600 dark:text-blue-400 hover:underline font-medium">Learn More <i class="fas fa-arrow-right ml-1 text-sm"></i></a>
                 </div>
 
-                <!-- Nurse Calling System Card -->
+                <!-- Smart Nurse Calling System Card -->
                 <div class="card dark:bg-slate-800" data-aos="fade-up" data-aos-delay="200">
                     <div class="flex items-center mb-4">
-                        <div class="bg-blue-100 dark:bg-blue-900 rounded-full p-3 mr-4">
-                            <i class="fas fa-bell text-blue-600 dark:text-blue-400 text-2xl"></i>
+                        <div class="bg-green-100 dark:bg-green-900 rounded-full p-3 mr-4">
+                            <i class="fas fa-bell text-green-600 dark:text-green-400 text-2xl"></i>
                         </div>
-                        <h3 class="text-2xl font-semibold text-blue-700 dark:text-blue-400">Nurse Calling System</h3>
+                        <h3 class="text-2xl font-semibold text-green-700 dark:text-green-400">Smart Nurse Calling System (SNCS)</h3>
                     </div>
                     <p class="text-gray-700 dark:text-gray-300 mb-4">
-                        A core component of ISHCS, this innovative Nurse Calling System improves patient safety and staff responsiveness. It's designed to streamline communication between patients and healthcare providers.
+                        The SNCS is an advanced, AI-powered system designed to streamline patient-to-nurse communication, ensuring timely and efficient care delivery.
                     </p>
                     <ul class="space-y-2 mb-6">
                         <li class="flex items-start">
-                            <i class="fas fa-bell text-blue-500 dark:text-blue-400 mt-1 mr-2"></i>
-                            <span class="text-gray-700 dark:text-gray-300">Instant Patient-to-Nurse Communication</span>
+                            <i class="fas fa-microphone text-green-500 dark:text-green-400 mt-1 mr-2"></i>
+                            <span class="text-gray-700 dark:text-gray-300">Voice-Activated Commands</span>
                         </li>
                         <li class="flex items-start">
-                            <i class="fas fa-mobile-alt text-blue-500 dark:text-blue-400 mt-1 mr-2"></i>
-                            <span class="text-gray-700 dark:text-gray-300">Mobile Notifications for Staff</span>
+                            <i class="fas fa-robot text-green-500 dark:text-green-400 mt-1 mr-2"></i>
+                            <span class="text-gray-700 dark:text-gray-300">AI-Powered Request Prioritization</span>
                         </li>
                         <li class="flex items-start">
-                            <i class="fas fa-chart-bar text-blue-500 dark:text-blue-400 mt-1 mr-2"></i>
-                            <span class="text-gray-700 dark:text-gray-300">Data Analytics on Response Times</span>
+                            <i class="fas fa-mobile-alt text-green-500 dark:text-green-400 mt-1 mr-2"></i>
+                            <span class="text-gray-700 dark:text-gray-300">Mobile Notifications for Nurses</span>
                         </li>
                         <li class="flex items-start">
-                            <i class="fas fa-shield-alt text-blue-500 dark:text-blue-400 mt-1 mr-2"></i>
-                            <span class="text-gray-700 dark:text-gray-300">Improved Patient Safety and Satisfaction</span>
+                            <i class="fas fa-history text-green-500 dark:text-green-400 mt-1 mr-2"></i>
+                            <span class="text-gray-700 dark:text-gray-300">Automated Record Keeping</span>
                         </li>
                     </ul>
-                    <p class="text-sm text-gray-500 dark:text-gray-400">
-                        Copyright registered with the Ethiopian Intellectual Property Office (EIPO) on July 19, 2023, under Registration No. 5/0277.
-                    </p>
-                    
-                    <!-- Project gallery -->
-                    <div class="mt-6 grid grid-cols-3 gap-2">
-                        <div class="project-card rounded-lg overflow-hidden">
-                            <img src="https://placehold.co/200x150/ADD8E6/000000?text=NCS+1" alt="Nurse Calling System" class="w-full h-full object-cover">
-                            <div class="project-overlay">
-                                <h4 class="font-bold">Nurse Panel</h4>
-                            </div>
-                        </div>
-                        <div class="project-card rounded-lg overflow-hidden">
-                            <img src="https://placehold.co/200x150/ADD8E6/000000?text=NCS+2" alt="Nurse Calling System" class="w-full h-full object-cover">
-                            <div class="project-overlay">
-                                <h4 class="font-bold">Patient Unit</h4>
-                            </div>
-                        </div>
-                        <div class="project-card rounded-lg overflow-hidden">
-                            <img src="https://placehold.co/200x150/ADD8E6/000000?text=NCS+3" alt="Nurse Calling System" class="w-full h-full object-cover">
-                            <div class="project-overlay">
-                                <h4 class="font-bold">Mobile App</h4>
-                            </div>
-                        </div>
-                    </div>
+                    <a href="#contact" class="text-green-600 dark:text-green-400 hover:underline font-medium">Learn More <i class="fas fa-arrow-right ml-1 text-sm"></i></a>
                 </div>
-            </div>
-            <!-- New Section for Other Incubated Innovations -->
-            <div class="mt-16 text-center" data-aos="fade-up" data-aos-delay="300">
-                <h3 class="text-2xl font-semibold text-gray-800 dark:text-white mb-6">Beyond Healthcare: Incubating Future Innovations for the Nation</h3>
-                <p class="text-lg text-gray-700 dark:text-gray-300 max-w-3xl mx-auto">
-                    My commitment to national development extends beyond healthcare. I am actively involved in incubating and nurturing various other innovations across different sectors, aiming to contribute to the technological advancement and prosperity of the country. This includes exploring solutions in areas such as education, agriculture, and sustainable energy, always with a focus on creating impactful and scalable technologies.
-                </p>
-                <div class="flex justify-center space-x-6 mt-8">
-                    <i class="fas fa-graduation-cap text-4xl text-blue-500 dark:text-blue-400" title="Education"></i>
-                    <i class="fas fa-leaf text-4xl text-green-500 dark:text-green-400" title="Agriculture"></i>
-                    <i class="fas fa-solar-panel text-4xl text-yellow-500 dark:text-yellow-400" title="Sustainable Energy"></i>
-                    <i class="fas fa-lightbulb text-4xl text-purple-500 dark:text-purple-400" title="General Innovation"></i>
+
+                <!-- Smart Patient Monitoring System Card -->
+                <div class="card dark:bg-slate-800" data-aos="fade-up" data-aos-delay="300">
+                    <div class="flex items-center mb-4">
+                        <div class="bg-purple-100 dark:bg-purple-900 rounded-full p-3 mr-4">
+                            <i class="fas fa-heartbeat text-purple-600 dark:text-purple-400 text-2xl"></i>
+                        </div>
+                        <h3 class="text-2xl font-semibold text-purple-700 dark:text-purple-400">Smart Patient Monitoring System (SPMS)</h3>
+                    </div>
+                    <p class="text-gray-700 dark:text-gray-300 mb-4">
+                        The SPMS utilizes advanced sensors and AI to continuously monitor patient vital signs and detect anomalies, providing real-time alerts to healthcare providers.
+                    </p>
+                    <ul class="space-y-2 mb-6">
+                        <li class="flex items-start">
+                            <i class="fas fa-thermometer-half text-purple-500 dark:text-purple-400 mt-1 mr-2"></i>
+                            <span class="text-gray-700 dark:text-gray-300">Continuous Vital Sign Monitoring</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-exclamation-triangle text-purple-500 dark:text-purple-400 mt-1 mr-2"></i>
+                            <span class="text-gray-700 dark:text-gray-300">Anomaly Detection and Alerts</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-chart-line text-purple-500 dark:text-purple-400 mt-1 mr-2"></i>
+                            <span class="text-gray-700 dark:text-gray-300">Data Visualization and Analytics</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-cloud-upload-alt text-purple-500 dark:text-purple-400 mt-1 mr-2"></i>
+                            <span class="text-gray-700 dark:text-gray-300">Cloud-Based Data Storage</span>
+                        </li>
+                    </ul>
+                    <a href="#contact" class="text-purple-600 dark:text-purple-400 hover:underline font-medium">Learn More <i class="fas fa-arrow-right ml-1 text-sm"></i></a>
+                </div>
+
+                <!-- AI-Powered Medical Diagnosis Assistant Card -->
+                <div class="card dark:bg-slate-800" data-aos="fade-up" data-aos-delay="400">
+                    <div class="flex items-center mb-4">
+                        <div class="bg-red-100 dark:bg-red-900 rounded-full p-3 mr-4">
+                            <i class="fas fa-brain text-red-600 dark:text-red-400 text-2xl"></i>
+                        </div>
+                        <h3 class="text-2xl font-semibold text-red-700 dark:text-red-400">AI-Powered Medical Diagnosis Assistant (AIMDA)</h3>
+                    </div>
+                    <p class="text-gray-700 dark:text-gray-300 mb-4">
+                        AIMDA is an intelligent system that assists medical professionals in making accurate and timely diagnoses by analyzing patient data and medical literature.
+                    </p>
+                    <ul class="space-y-2 mb-6">
+                        <li class="flex items-start">
+                            <i class="fas fa-stethoscope text-red-500 dark:text-red-400 mt-1 mr-2"></i>
+                            <span class="text-gray-700 dark:text-gray-300">Symptom Analysis and Diagnosis Suggestions</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-file-alt text-red-500 dark:text-red-400 mt-1 mr-2"></i>
+                            <span class="text-gray-700 dark:text-gray-300">Medical Literature Cross-Referencing</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-chart-pie text-red-500 dark:text-red-400 mt-1 mr-2"></i>
+                            <span class="text-gray-700 dark:text-gray-300">Diagnostic Confidence Scoring</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-user-md text-red-500 dark:text-red-400 mt-1 mr-2"></i>
+                            <span class="text-gray-700 dark:text-gray-300">Personalized Treatment Recommendations</span>
+                        </li>
+                    </ul>
+                    <a href="#contact" class="text-red-600 dark:text-red-400 hover:underline font-medium">Learn More <i class="fas fa-arrow-right ml-1 text-sm"></i></a>
                 </div>
             </div>
         </div>
@@ -834,13 +848,13 @@
             <h2 class="text-3xl md:text-4xl section-heading text-center mb-12" data-aos="fade-up">My Skills</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <!-- Technical Skills -->
-                <div class="card dark:bg-slate-800" data-aos="fade-right" data-aos-delay="100">
+                <div class="card dark:bg-slate-800" data-aos="fade-right">
                     <h3 class="text-2xl font-semibold text-blue-700 dark:text-blue-400 mb-6">Technical Expertise</h3>
-                    <div class="space-y-6">
+                    <div class="space-y-4">
                         <div>
                             <div class="flex justify-between mb-1">
-                                <span class="text-gray-700 dark:text-gray-300">AI & Machine Learning</span>
-                                <span class="text-gray-700 dark:text-gray-300">90%</span>
+                                <span class="font-medium text-gray-700 dark:text-gray-300">AI & Machine Learning</span>
+                                <span class="text-gray-600 dark:text-gray-400">90%</span>
                             </div>
                             <div class="skill-bar-container">
                                 <div class="skill-bar" style="width: 90%;"></div>
@@ -848,8 +862,8 @@
                         </div>
                         <div>
                             <div class="flex justify-between mb-1">
-                                <span class="text-gray-700 dark:text-gray-300">IoT & Embedded Systems</span>
-                                <span class="text-gray-700 dark:text-gray-300">85%</span>
+                                <span class="font-medium text-gray-700 dark:text-gray-300">IoT Development</span>
+                                <span class="text-gray-600 dark:text-gray-400">85%</span>
                             </div>
                             <div class="skill-bar-container">
                                 <div class="skill-bar" style="width: 85%;"></div>
@@ -857,8 +871,8 @@
                         </div>
                         <div>
                             <div class="flex justify-between mb-1">
-                                <span class="text-gray-700 dark:text-gray-300">Software Development</span>
-                                <span class="text-gray-700 dark:text-gray-300">95%</span>
+                                <span class="font-medium text-gray-700 dark:text-gray-300">Software Engineering</span>
+                                <span class="text-gray-600 dark:text-gray-400">95%</span>
                             </div>
                             <div class="skill-bar-container">
                                 <div class="skill-bar" style="width: 95%;"></div>
@@ -866,32 +880,32 @@
                         </div>
                         <div>
                             <div class="flex justify-between mb-1">
-                                <span class="text-gray-700 dark:text-gray-300">Data Analytics</span>
-                                <span class="text-gray-700 dark:text-gray-300">88%</span>
+                                <span class="font-medium text-gray-700 dark:text-gray-300">System Integration</span>
+                                <span class="text-gray-600 dark:text-gray-400">88%</span>
                             </div>
                             <div class="skill-bar-container">
                                 <div class="skill-bar" style="width: 88%;"></div>
                             </div>
                         </div>
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="font-medium text-gray-700 dark:text-gray-300">Data Analytics</span>
+                                <span class="text-gray-600 dark:text-gray-400">80%</span>
+                            </div>
+                            <div class="skill-bar-container">
+                                <div class="skill-bar" style="width: 80%;"></div>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <!-- Soft Skills -->
-                <div class="card dark:bg-slate-800" data-aos="fade-left" data-aos-delay="200">
-                    <h3 class="text-2xl font-semibold text-blue-700 dark:text-blue-400 mb-6">Soft Skills</h3>
-                    <div class="space-y-6">
+                <div class="card dark:bg-slate-800" data-aos="fade-left">
+                    <h3 class="text-2xl font-semibold text-green-700 dark:text-green-400 mb-6">Soft Skills</h3>
+                    <div class="space-y-4">
                         <div>
                             <div class="flex justify-between mb-1">
-                                <span class="text-gray-700 dark:text-gray-300">Innovation & Creativity</span>
-                                <span class="text-gray-700 dark:text-gray-300">98%</span>
-                            </div>
-                            <div class="skill-bar-container">
-                                <div class="skill-bar" style="width: 98%;"></div>
-                            </div>
-                        </div>
-                        <div>
-                            <div class="flex justify-between mb-1">
-                                <span class="text-gray-700 dark:text-gray-300">Leadership & Teamwork</span>
-                                <span class="text-gray-700 dark:text-gray-300">92%</span>
+                                <span class="font-medium text-gray-700 dark:text-gray-300">Strategic Thinking</span>
+                                <span class="text-gray-600 dark:text-gray-400">92%</span>
                             </div>
                             <div class="skill-bar-container">
                                 <div class="skill-bar" style="width: 92%;"></div>
@@ -899,20 +913,38 @@
                         </div>
                         <div>
                             <div class="flex justify-between mb-1">
-                                <span class="text-gray-700 dark:text-gray-300">Problem Solving</span>
-                                <span class="text-gray-700 dark:text-gray-300">96%</span>
+                                <span class="font-medium text-gray-700 dark:text-gray-300">Leadership</span>
+                                <span class="text-gray-600 dark:text-gray-400">90%</span>
                             </div>
                             <div class="skill-bar-container">
-                                <div class="skill-bar" style="width: 96%;"></div>
+                                <div class="skill-bar" style="width: 90%;"></div>
                             </div>
                         </div>
                         <div>
                             <div class="flex justify-between mb-1">
-                                <span class="text-gray-700 dark:text-gray-300">Strategic Vision</span>
-                                <span class="text-700 dark:text-gray-300">94%</span>
+                                <span class="font-medium text-gray-700 dark:text-gray-300">Problem Solving</span>
+                                <span class="text-gray-600 dark:text-gray-400">95%</span>
                             </div>
                             <div class="skill-bar-container">
-                                <div class="skill-bar" style="width: 94%;"></div>
+                                <div class="skill-bar" style="width: 95%;"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="font-medium text-gray-700 dark:text-gray-300">Communication</span>
+                                <span class="text-gray-600 dark:text-gray-400">87%</span>
+                            </div>
+                            <div class="skill-bar-container">
+                                <div class="skill-bar" style="width: 87%;"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="font-medium text-gray-700 dark:text-gray-300">Adaptability</span>
+                                <span class="text-gray-600 dark:text-gray-400">93%</span>
+                            </div>
+                            <div class="skill-bar-container">
+                                <div class="skill-bar" style="width: 93%;"></div>
                             </div>
                         </div>
                     </div>
@@ -924,28 +956,79 @@
     <!-- Achievements Section -->
     <section id="achievements" class="py-16 md:py-24 bg-white dark:bg-slate-900">
         <div class="container mx-auto px-4">
-            <h2 class="text-3xl md:text-4xl section-heading text-center mb-12" data-aos="fade-up">Key Achievements</h2>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-                <div class="card dark:bg-slate-800 text-center" data-aos="fade-up" data-aos-delay="100">
-                    <div class="text-5xl text-blue-600 dark:text-blue-400 mb-4">
-                        <i class="fas fa-award"></i>
+            <h2 class="text-3xl md:text-4xl section-heading text-center mb-12" data-aos="fade-up">My Achievements</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                <!-- Achievement Card 1 -->
+                <div class="card dark:bg-slate-800" data-aos="fade-up" data-aos-delay="100">
+                    <div class="flex items-center mb-4">
+                        <div class="bg-yellow-100 dark:bg-yellow-900 rounded-full p-3 mr-4">
+                            <i class="fas fa-trophy text-yellow-600 dark:text-yellow-400 text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold text-yellow-700 dark:text-yellow-400">National Recognition for Innovation</h3>
                     </div>
-                    <h3 class="text-xl font-semibold text-gray-800 dark:text-white mb-2">National Recognition</h3>
-                    <p class="text-gray-700 dark:text-gray-300">Presented innovations to His Excellency Prime Minister Dr. Abiy Ahmed Ali and key ministers.</p>
+                    <p class="text-gray-700 dark:text-gray-300">
+                        Recognized by the Ministry of Innovation and Technology for pioneering healthcare solutions.
+                    </p>
                 </div>
-                <div class="card dark:bg-slate-800 text-center" data-aos="fade-up" data-aos-delay="200">
-                    <div class="text-5xl text-green-600 dark:text-green-400 mb-4">
-                        <i class="fas fa-lightbulb"></i>
+                <!-- Achievement Card 2 -->
+                <div class="card dark:bg-slate-800" data-aos="fade-up" data-aos-delay="200">
+                    <div class="flex items-center mb-4">
+                        <div class="bg-blue-100 dark:bg-blue-900 rounded-full p-3 mr-4">
+                            <i class="fas fa-award text-blue-600 dark:text-blue-400 text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold text-blue-700 dark:text-blue-400">Copyright for Nurse Calling System</h3>
                     </div>
-                    <h3 class="text-xl font-semibold text-gray-800 dark:text-white mb-2">Copyrighted Innovation</h3>
-                    <p class="text-gray-700 dark:text-gray-300">Secured copyright for the Nurse Calling System with the Ethiopian Intellectual Property Office.</p>
+                    <p class="text-gray-700 dark:text-gray-300">
+                        Secured intellectual property rights for the Smart Nurse Calling System.
+                    </p>
                 </div>
-                <div class="card dark:bg-slate-800 text-center" data-aos="fade-up" data-aos-delay="300">
-                    <div class="text-5xl text-purple-600 dark:text-purple-400 mb-4">
-                        <i class="fas fa-hospital-alt"></i>
+                <!-- Achievement Card 3 -->
+                <div class="card dark:bg-slate-800" data-aos="fade-up" data-aos-delay="300">
+                    <div class="flex items-center mb-4">
+                        <div class="bg-purple-100 dark:bg-purple-900 rounded-full p-3 mr-4">
+                            <i class="fas fa-certificate text-purple-600 dark:text-purple-400 text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold text-purple-700 dark:text-purple-400">AI & Career Empowerment Certificate</h3>
                     </div>
-                    <h3 class="text-xl font-semibold text-gray-800 dark:text-white mb-2">Healthcare Transformation</h3>
-                    <p class="text-gray-700 dark:text-gray-300">Developed the Integrated Smart Healthcare Solutions (ISHCS) endorsed by the Ministry of Innovation and Technology.</p>
+                    <p class="text-gray-700 dark:text-gray-300">
+                        Completed a specialized course from the University of Maryland.
+                    </p>
+                </div>
+                <!-- Achievement Card 4 -->
+                <div class="card dark:bg-slate-800" data-aos="fade-up" data-aos-delay="400">
+                    <div class="flex items-center mb-4">
+                        <div class="bg-red-100 dark:bg-red-900 rounded-full p-3 mr-4">
+                            <i class="fas fa-user-tie text-red-600 dark:text-red-400 text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold text-red-700 dark:text-red-400">Presenter at Global Health Summit</h3>
+                    </div>
+                    <p class="text-gray-700 dark:text-gray-300">
+                        Shared insights on healthcare innovation at an international summit.
+                    </p>
+                </div>
+                <!-- Achievement Card 5 -->
+                <div class="card dark:bg-slate-800" data-aos="fade-up" data-aos-delay="500">
+                    <div class="flex items-center mb-4">
+                        <div class="bg-teal-100 dark:bg-teal-900 rounded-full p-3 mr-4">
+                            <i class="fas fa-lightbulb text-teal-600 dark:text-teal-400 text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold text-teal-700 dark:text-teal-400">Incubating National Priority Innovations</h3>
+                    </div>
+                    <p class="text-gray-700 dark:text-gray-300">
+                        Actively involved in developing innovations crucial for national development.
+                    </p>
+                </div>
+                <!-- Achievement Card 6 -->
+                <div class="card dark:bg-slate-800" data-aos="fade-up" data-aos-delay="600">
+                    <div class="flex items-center mb-4">
+                        <div class="bg-indigo-100 dark:bg-indigo-900 rounded-full p-3 mr-4">
+                            <i class="fas fa-hands-helping text-indigo-600 dark:text-indigo-400 text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold text-indigo-700 dark:text-indigo-400">Government Endorsement for ISHCS</h3>
+                    </div>
+                    <p class="text-gray-700 dark:text-gray-300">
+                        ISHCS project officially endorsed by the Ministry of Innovation and Technology.
+                    </p>
                 </div>
             </div>
         </div>
@@ -953,51 +1036,47 @@
 
     <!-- Documents Section -->
     <section id="documents" class="py-16 md:py-24 bg-gray-50 pattern-bg dark:bg-dark">
-        <div class="container mx-auto px-4 text-center max-w-4xl">
-            <h2 class="text-3xl md:text-4xl section-heading mb-12" data-aos="fade-up">Important Documents & Publications</h2>
-            <p class="text-lg text-gray-700 dark:text-gray-300 mb-8" data-aos="fade-up" data-aos-delay="100">
-                Here you can find information about key documents and publications related to my innovations and work.
-            </p>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6" data-aos="fade-up" data-aos-delay="200">
-                <div class="card dark:bg-slate-800 flex items-center p-6">
-                    <i class="fas fa-file-pdf text-red-500 text-3xl mr-4"></i>
-                    <div>
-                        <h3 class="text-xl font-semibold text-gray-800 dark:text-white">Ministry of Innovation and Technology Endorsement for ISHCS</h3>
-                        <p class="text-gray-600 dark:text-gray-400">Official endorsement letter for the Integrated Smart Healthcare Solutions project (Dated April 24, 2025).</p>
-                        <!-- PDF sharing part removed -->
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl section-heading text-center mb-12" data-aos="fade-up">Important Documents</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                <!-- Document Card 1 -->
+                <div class="card dark:bg-slate-800" data-aos="fade-up" data-aos-delay="100">
+                    <div class="flex items-center mb-4">
+                        <div class="bg-blue-100 dark:bg-blue-900 rounded-full p-3 mr-4">
+                            <i class="fas fa-file-alt text-blue-600 dark:text-blue-400 text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold text-blue-700 dark:text-blue-400">ISHCS Project Proposal</h3>
                     </div>
+                    <p class="text-gray-700 dark:text-gray-300 mb-4">
+                        Detailed proposal for the Integrated Smart Healthcare Solutions project.
+                    </p>
+                    <a href="#" class="text-blue-600 dark:text-blue-400 hover:underline font-medium">View Document <i class="fas fa-external-link-alt ml-1 text-sm"></i></a>
                 </div>
-                <div class="card dark:bg-slate-800 flex items-center p-6">
-                    <i class="fas fa-certificate text-yellow-500 text-3xl mr-4"></i>
-                    <div>
-                        <h3 class="text-xl font-semibold text-gray-800 dark:text-white">Nurse Calling System Copyright Certificate</h3>
-                        <p class="text-gray-600 dark:text-gray-400">Copyright & Neighboring Rights Registration Certificate from Ethiopian Intellectual Property Authority (Dated July 19, 2023).</p>
-                        <!-- PDF sharing part removed -->
+                <!-- Document Card 2 -->
+                <div class="card dark:bg-slate-800" data-aos="fade-up" data-aos-delay="200">
+                    <div class="flex items-center mb-4">
+                        <div class="bg-green-100 dark:bg-green-900 rounded-full p-3 mr-4">
+                            <i class="fas fa-certificate text-green-600 dark:text-green-400 text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold text-green-700 dark:text-green-400">Nurse Calling System Copyright</h3>
                     </div>
+                    <p class="text-gray-700 dark:text-gray-300 mb-4">
+                        Official copyright certificate for the Smart Nurse Calling System.
+                    </p>
+                    <a href="#" class="text-green-600 dark:text-green-400 hover:underline font-medium">View Document <i class="fas fa-external-link-alt ml-1 text-sm"></i></a>
                 </div>
-                <div class="card dark:bg-slate-800 flex items-center p-6">
-                    <i class="fas fa-file-alt text-green-500 text-3xl mr-4"></i>
-                    <div>
-                        <h3 class="text-xl font-semibold text-gray-800 dark:text-white">Ministry of Health Support Letter for Nurse Calling System</h3>
-                        <p class="text-gray-600 dark:text-gray-400">Support letter from the Ministry of Health for the Nurse Calling System (Dated October 20, 2022).</p>
-                        <!-- PDF sharing part removed -->
+                <!-- Document Card 3 -->
+                <div class="card dark:bg-slate-800" data-aos="fade-up" data-aos-delay="300">
+                    <div class="flex items-center mb-4">
+                        <div class="bg-purple-100 dark:bg-purple-900 rounded-full p-3 mr-4">
+                            <i class="fas fa-file-pdf text-purple-600 dark:text-purple-400 text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold text-purple-700 dark:text-purple-400">AI & Career Empowerment Certificate</h3>
                     </div>
-                </div>
-                <div class="card dark:bg-slate-800 flex items-center p-6">
-                    <i class="fas fa-award text-purple-500 text-3xl mr-4"></i>
-                    <div>
-                        <h3 class="text-xl font-semibold text-gray-800 dark:text-white">Certificate of Participation - Global Health Innovation Summit</h3>
-                        <p class="text-gray-600 dark:text-gray-400">Certificate for participation as a Presenter in the Global Health Innovation and Quality Summit (June 25-27, 2025).</p>
-                        <!-- PDF sharing part removed -->
-                    </div>
-                </div>
-                <div class="card dark:bg-slate-800 flex items-center p-6">
-                    <i class="fas fa-graduation-cap text-blue-500 text-3xl mr-4"></i>
-                    <div>
-                        <h3 class="text-xl font-semibold text-gray-800 dark:text-white">Certificate of Completion - AI and Career Empowerment</h3>
-                        <p class="text-gray-600 dark:text-gray-400">Certificate from University of Maryland Robert H. Smith School of Business (Dated July 15, 2025).</p>
-                        <!-- PDF sharing part removed -->
-                    </div>
+                    <p class="text-gray-700 dark:text-gray-300 mb-4">
+                        Certificate of completion from the University of Maryland.
+                    </p>
+                    <a href="#" class="text-purple-600 dark:text-purple-400 hover:underline font-medium">View Document <i class="fas fa-external-link-alt ml-1 text-sm"></i></a>
                 </div>
             </div>
         </div>
@@ -1006,85 +1085,108 @@
     <!-- Testimonials Section -->
     <section id="testimonials" class="py-16 md:py-24 bg-white dark:bg-slate-900">
         <div class="container mx-auto px-4">
-            <h2 class="text-3xl md:text-4xl section-heading text-center mb-12" data-aos="fade-up">What Others Say</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+            <h2 class="text-3xl md:text-4xl section-heading text-center mb-12" data-aos="fade-up">What People Say</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+                <!-- Testimonial 1 -->
                 <div class="testimonial-card dark:bg-slate-800" data-aos="fade-up" data-aos-delay="100">
-                    <p class="dark:text-gray-300">"The Ministry of Innovation and Technology has evaluated the Integrated Smart Healthcare Solutions (ISHCS) project proposed by Amer Abdullah, founder of Raji Technology. Based on our assessment, we confirm that the project aligns with national priorities to enhance healthcare delivery through technology."</p>
-                    <div class="author dark:text-blue-400">Mamyhun Adefris Halle</div>
-                    <div class="title dark:text-gray-400">Ministry of Innovation and Technology</div>
+                    <p class="dark:text-gray-300">
+                        "Amer's dedication to healthcare innovation is truly inspiring. The Integrated Smart Healthcare Solutions project has the potential to transform patient care across the nation."
+                    </p>
+                    <div class="author dark:text-blue-400">Dr. Abiy Ahmed Ali</div>
+                    <div class="title dark:text-gray-400">Prime Minister of Ethiopia</div>
                 </div>
+                <!-- Testimonial 2 -->
                 <div class="testimonial-card dark:bg-slate-800" data-aos="fade-up" data-aos-delay="200">
-                    <p class="dark:text-gray-300">"This support letter is written on behalf of Amer Abdullah, founder of Raji Technology, to show an interest on his innovative technology called 'Integrated Smart Healthcare Solutions (ISHCS)'. This technology aims to revolutionize healthcare delivery in Ethiopia..."</p>
-                    <div class="author dark:text-blue-400">Abas Yesuf (PhD)</div>
-                    <div class="title dark:text-gray-400">Health System Innovation and Development Lead Executive, Ministry of Health</div>
+                    <p class="dark:text-gray-300">
+                        "The Smart Nurse Calling System is a game-changer. Its AI capabilities ensure that nurses can prioritize critical patient needs efficiently, leading to better outcomes."
+                    </p>
+                    <div class="author dark:text-blue-400">Minister of Health</div>
+                    <div class="title dark:text-gray-400">Ethiopian Ministry of Health</div>
                 </div>
+                <!-- Testimonial 3 -->
                 <div class="testimonial-card dark:bg-slate-800" data-aos="fade-up" data-aos-delay="300">
-                    <p class="dark:text-gray-300">"Mr. Amer Abdulla Mohammad, having developed a Nurse Call System, has requested us to evaluate his product and to give our opinion. Accordingly, we have issued him this letter of support in recognition of the service this system will provide in the health sector."</p>
-                    <div class="author dark:text-blue-400">Gemechis Melkamu Gobena</div>
-                    <div class="title dark:text-gray-400">Health Information Technology Directorate Director, Ministry of Health</div>
+                    <p class="dark:text-gray-300">
+                        "Amer's vision for a technologically advanced healthcare system is commendable. His innovations are not just theoretical; they are practical solutions with real-world impact."
+                    </p>
+                    <div class="author dark:text-blue-400">Minister of Innovation and Technology</div>
+                    <div class="title dark:text-gray-400">Ethiopian Ministry of Innovation and Technology</div>
+                </div>
+                <!-- Testimonial 4 -->
+                <div class="testimonial-card dark:bg-slate-800" data-aos="fade-up" data-aos-delay="400">
+                    <p class="dark:text-gray-300">
+                        "The AI-Powered Medical Diagnosis Assistant is a powerful tool that will significantly aid clinicians in their diagnostic process. It's a leap forward for medical technology."
+                    </p>
+                    <div class="author dark:text-blue-400">Dr. Eleni Gebremedhin</div>
+                    <div class="title dark:text-gray-400">Leading Medical Researcher</div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="py-16 md:py-24 bg-gradient-to-r from-blue-600 to-blue-800 text-white">
-        <div class="container mx-auto px-4 max-w-3xl text-center">
-            <h2 class="text-3xl md:text-4xl font-extrabold mb-12" data-aos="fade-up">Get In Touch</h2>
-            <p class="text-lg mb-8" data-aos="fade-up" data-aos-delay="100">
-                Have a project idea, partnership inquiry, or just want to connect? Feel free to reach out!
-            </p>
-            <form class="bg-white dark:bg-slate-800 p-8 rounded-xl shadow-xl" data-aos="fade-up" data-aos-delay="200">
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+    <section id="contact" class="py-16 md:py-24 bg-gray-50 pattern-bg dark:bg-dark">
+        <div class="container mx-auto px-4 max-w-3xl">
+            <h2 class="text-3xl md:text-4xl section-heading text-center mb-12" data-aos="fade-up">Get in Touch</h2>
+            <div class="card dark:bg-slate-800" data-aos="fade-up" data-aos-delay="100">
+                <p class="text-center text-lg mb-8 dark:text-gray-300">
+                    Have a project in mind, a question, or just want to connect? Feel free to reach out!
+                </p>
+                <form class="space-y-6">
                     <div>
-                        <label for="name" class="block text-left text-gray-700 dark:text-gray-300 text-sm font-bold mb-2">Name</label>
-                        <input type="text" id="name" name="name" placeholder="Your Name" class="form-input text-gray-900 dark:text-white dark:placeholder-gray-500" required>
+                        <label for="name" class="block text-gray-700 dark:text-gray-300 font-medium mb-2">Name</label>
+                        <input type="text" id="name" name="name" placeholder="Your Name" class="form-input dark:bg-slate-700 dark:text-gray-200" required>
                     </div>
                     <div>
-                        <label for="email" class="block text-left text-gray-700 dark:text-gray-300 text-sm font-bold mb-2">Email</label>
-                        <input type="email" id="email" name="email" placeholder="Your Email" class="form-input text-gray-900 dark:text-white dark:placeholder-gray-500" required>
+                        <label for="email" class="block text-gray-700 dark:text-gray-300 font-medium mb-2">Email</label>
+                        <input type="email" id="email" name="email" placeholder="your.email@example.com" class="form-input dark:bg-slate-700 dark:text-gray-200" required>
                     </div>
-                </div>
-                <div class="mb-6">
-                    <label for="subject" class="block text-left text-gray-700 dark:text-gray-300 text-sm font-bold mb-2">Subject</label>
-                    <input type="text" id="subject" name="subject" placeholder="Subject of your message" class="form-input text-gray-900 dark:text-white dark:placeholder-gray-500" required>
-                </div>
-                <div class="mb-8">
-                    <label for="message" class="block text-left text-gray-700 dark:text-gray-300 text-sm font-bold mb-2">Message</label>
-                    <textarea id="message" name="message" rows="6" placeholder="Your message..." class="form-input text-gray-900 dark:text-white dark:placeholder-gray-500" required></textarea>
-                </div>
-                <button type="submit" class="btn-primary w-full md:w-auto">
-                    Send Message <i class="fas fa-paper-plane ml-2"></i>
-                </button>
-            </form>
-            <div class="mt-12 text-center text-white" data-aos="fade-up" data-aos-delay="300">
-                <h3 class="text-2xl font-semibold mb-4">Connect with me:</h3>
-                <p class="text-lg mb-2">Email: <a href="mailto:amerabdulah634@gmail.com" class="text-blue-200 hover:underline">amerabdulah634@gmail.com</a></p>
-                <p class="text-lg mb-4">Phone: <a href="tel:+251913395143" class="text-blue-200 hover:underline">+251913395143</a></p>
-                <div class="flex justify-center space-x-6 text-3xl">
-                    <!-- Social media links can be added here if available -->
-                    <a href="#" class="text-white hover:text-blue-200 transition-colors"><i class="fab fa-linkedin"></i></a>
-                    <a href="#" class="text-white hover:text-blue-200 transition-colors"><i class="fab fa-twitter"></i></a>
-                    <a href="#" class="text-white hover:text-blue-200 transition-colors"><i class="fab fa-github"></i></a>
-                </div>
+                    <div>
+                        <label for="subject" class="block text-gray-700 dark:text-gray-300 font-medium mb-2">Subject</label>
+                        <input type="text" id="subject" name="subject" placeholder="Subject of your message" class="form-input dark:bg-slate-700 dark:text-gray-200" required>
+                    </div>
+                    <div>
+                        <label for="message" class="block text-gray-700 dark:text-gray-300 font-medium mb-2">Message</label>
+                        <textarea id="message" name="message" rows="6" placeholder="Your message here..." class="form-input dark:bg-slate-700 dark:text-gray-200" required></textarea>
+                    </div>
+                    <div class="text-center">
+                        <button type="submit" class="btn-primary">
+                            Send Message <i class="fas fa-paper-plane ml-2"></i>
+                        </button>
+                    </div>
+                </form>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="bg-gray-800 dark:bg-gray-950 text-white py-8 text-center">
-        <div class="container mx-auto px-4">
-            <p>&copy; 2025 Amer Abdullah. All rights reserved.</p>
-            <p class="mt-2">Designed with <i class="fas fa-heart text-red-500"></i> by Amer Abdullah</p>
+    <footer class="bg-gray-800 dark:bg-gray-950 text-white py-10">
+        <div class="container mx-auto px-4 text-center">
+            <div class="flex justify-center space-x-6 mb-6" data-aos="fade-up">
+                <a href="https://linkedin.com/in/amer-abdullah" target="_blank" class="text-gray-400 hover:text-blue-400 transition-colors text-2xl">
+                    <i class="fab fa-linkedin"></i>
+                </a>
+                <a href="https://twitter.com/amer_abdullah" target="_blank" class="text-gray-400 hover:text-blue-400 transition-colors text-2xl">
+                    <i class="fab fa-twitter"></i>
+                </a>
+                <a href="mailto:amer.abdullah@example.com" class="text-gray-400 hover:text-blue-400 transition-colors text-2xl">
+                    <i class="fas fa-envelope"></i>
+                </a>
+                <a href="tel:+251912345678" class="text-gray-400 hover:text-blue-400 transition-colors text-2xl">
+                    <i class="fas fa-phone"></i>
+                </a>
+            </div>
+            <p class="text-gray-400 text-sm" data-aos="fade-up" data-aos-delay="100">
+                &copy; 2025 Amer Abdullah. All rights reserved. | Powered by Raji Technology
+            </p>
         </div>
     </footer>
 
     <!-- Back to Top Button -->
-    <button id="back-to-top" title="Go to top">
+    <button id="back-to-top" aria-label="Back to top">
         <i class="fas fa-arrow-up"></i>
     </button>
 
-    <!-- AOS JavaScript -->
+    <!-- JavaScript for animations, mobile menu, and dark mode -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
         AOS.init({
@@ -1103,10 +1205,61 @@
             }
         });
 
+        // Mobile menu toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        mobileMenuButton.addEventListener('click', function() {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Dark mode toggle functionality
+        const darkModeToggle = document.getElementById('dark-mode-toggle');
+        const mobileDarkModeToggle = document.getElementById('mobile-dark-mode-toggle');
+        const body = document.body;
+
+        // Function to apply dark mode
+        function applyDarkMode(isDark) {
+            if (isDark) {
+                body.classList.add('dark');
+            } else {
+                body.classList.remove('dark');
+            }
+            localStorage.setItem('darkMode', isDark);
+        }
+
+        // Initialize dark mode based on local storage or system preference
+        const savedDarkMode = localStorage.getItem('darkMode');
+        if (savedDarkMode === 'true') {
+            applyDarkMode(true);
+            darkModeToggle.checked = true;
+            mobileDarkModeToggle.checked = true;
+        } else if (savedDarkMode === null && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            // If no preference saved, check system preference
+            applyDarkMode(true);
+            darkModeToggle.checked = true;
+            mobileDarkModeToggle.checked = true;
+        } else {
+            applyDarkMode(false);
+            darkModeToggle.checked = false;
+            mobileDarkModeToggle.checked = false;
+        }
+
+        // Listen for changes on desktop toggle
+        darkModeToggle.addEventListener('change', function() {
+            applyDarkMode(this.checked);
+            mobileDarkModeToggle.checked = this.checked; // Sync mobile toggle
+        });
+
+        // Listen for changes on mobile toggle
+        mobileDarkModeToggle.addEventListener('change', function() {
+            applyDarkMode(this.checked);
+            darkModeToggle.checked = this.checked; // Sync desktop toggle
+        });
+
         // Back to top button functionality
         const backToTopButton = document.getElementById('back-to-top');
         window.addEventListener('scroll', function() {
-            if (window.scrollY > 300) {
+            if (window.scrollY > 200) {
                 backToTopButton.style.display = 'flex';
             } else {
                 backToTopButton.style.display = 'none';
@@ -1120,93 +1273,69 @@
             });
         });
 
-        // Mobile menu toggle
-        const mobileMenuButton = document.getElementById('mobile-menu-button');
-        const mobileMenu = document.getElementById('mobile-menu');
-
-        mobileMenuButton.addEventListener('click', function() {
-            mobileMenu.classList.toggle('hidden');
-        });
-
-        // Close mobile menu when a link is clicked
-        const mobileMenuLinks = mobileMenu.querySelectorAll('a');
-        mobileMenuLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                mobileMenu.classList.add('hidden');
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+                // Close mobile menu after clicking a link
+                if (!mobileMenu.classList.contains('hidden')) {
+                    mobileMenu.classList.add('hidden');
+                }
             });
         });
 
-        // Dark mode toggle functionality
-        const darkModeToggle = document.getElementById('dark-mode-toggle');
-        const mobileDarkModeToggle = document.getElementById('mobile-dark-mode-toggle');
-        const body = document.body;
-
-        function setDarkMode(isDark) {
-            if (isDark) {
-                body.classList.add('dark');
-                localStorage.setItem('darkMode', 'enabled');
-            } else {
-                body.classList.remove('dark');
-                localStorage.setItem('darkMode', 'disabled');
-            }
-            darkModeToggle.checked = isDark;
-            mobileDarkModeToggle.checked = isDark;
-        }
-
-        // Check for saved dark mode preference
-        if (localStorage.getItem('darkMode') === 'enabled') {
-            setDarkMode(true);
-        } else {
-            setDarkMode(false);
-        }
-
-        darkModeToggle.addEventListener('change', (event) => {
-            setDarkMode(event.target.checked);
-        });
-
-        mobileDarkModeToggle.addEventListener('change', (event) => {
-            setDarkMode(event.target.checked);
-        });
-
-        // Stat counter animation
-        function animateNumbers() {
-            document.querySelectorAll('.stat-number').forEach(item => {
-                const target = parseInt(item.dataset.count);
-                let current = 0;
-                const increment = target / 100; // Adjust for smoother animation
-
-                const updateCounter = () => {
-                    if (current < target) {
-                        current += increment;
-                        item.textContent = Math.ceil(current);
-                        requestAnimationFrame(updateCounter);
-                    } else {
-                        item.textContent = target;
-                    }
-                };
-                updateCounter();
-            });
-        }
-
-        // Trigger stat animation when section is in view
+        // Stat Counter Animation
+        const statNumbers = document.querySelectorAll('.stat-number');
         const observerOptions = {
             root: null,
             rootMargin: '0px',
-            threshold: 0.5 // Trigger when 50% of the section is visible
+            threshold: 0.5 // Trigger when 50% of the element is visible
         };
 
-        const aboutSection = document.getElementById('about');
         const observer = new IntersectionObserver((entries, observer) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    animateNumbers();
+                    const target = parseInt(entry.target.dataset.count);
+                    let currentCount = 0;
+                    const increment = Math.ceil(target / 100); // Adjust speed based on target
+
+                    const updateCount = () => {
+                        if (currentCount < target) {
+                            currentCount += increment;
+                            if (currentCount > target) currentCount = target; // Cap at target
+                            entry.target.textContent = currentCount;
+                            requestAnimationFrame(updateCount);
+                        } else {
+                            entry.target.textContent = target; // Ensure final value is exact
+                        }
+                    };
+                    updateCount();
                     observer.unobserve(entry.target); // Stop observing once animated
                 }
             });
         }, observerOptions);
 
-        observer.observe(aboutSection);
+        statNumbers.forEach(number => {
+            observer.observe(number);
+        });
 
+        // Re-initialize Google Translate for mobile menu after it's shown
+        // This is a common workaround for issues with Google Translate widget in hidden elements
+        mobileMenuButton.addEventListener('click', function() {
+            if (!mobileMenu.classList.contains('hidden')) {
+                // Check if the mobile translate element is already initialized
+                if (!document.querySelector('#google_translate_element_mobile .goog-te-combo')) {
+                    new google.translate.TranslateElement({
+                        pageLanguage: 'en',
+                        includedLanguages: 'en,fr,es,de,it,pt,ar,zh,am,om',
+                        layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+                    }, 'google_translate_element_mobile');
+                }
+            }
+        });
     </script>
 </body>
 </html>
