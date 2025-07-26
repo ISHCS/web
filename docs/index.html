@@ -31,6 +31,34 @@
     [
       {
         "@context": "https://schema.org",
+        "@type": "WebSite",
+        "url": "https://yourwebsite.com/amer-abdullah-raji-tech",
+        "name": "Innovator Amer Abdullah - Raji Technology",
+        "description": "Official portfolio of Innovator Amer Abdullah, founder of Raji Technology, dedicated to revolutionizing healthcare through AI-powered solutions and innovative systems.",
+        "potentialAction": {
+          "@type": "SearchAction",
+          "target": "https://yourwebsite.com/search?q={search_term_string}",
+          "query-input": "required name=search_term_string"
+        }
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        "url": "https://yourwebsite.com/amer-abdullah-raji-tech",
+        "name": "Innovator Amer Abdullah - Raji Technology",
+        "description": "Explore the innovations and achievements of Amer Abdullah, founder of Raji Technology, focusing on AI-powered healthcare solutions and national development projects.",
+        "isPartOf": {
+          "@type": "WebSite",
+          "url": "https://yourwebsite.com/amer-abdullah-raji-tech"
+        },
+        "about": {
+          "@type": "Person",
+          "name": "Amer Abdullah",
+          "@id": "https://yourwebsite.com/amer-abdullah-raji-tech#person"
+        }
+      },
+      {
+        "@context": "https://schema.org",
         "@type": "Person",
         "@id": "https://yourwebsite.com/amer-abdullah-raji-tech#person",
         "name": "Amer Abdullah",
@@ -50,12 +78,15 @@
           "@type": "EducationalOrganization",
           "name": "University of Maryland Robert H. Smith School of Business"
         },
+        "nationality": "Ethiopian",
+        "birthPlace": "Ethiopia",
         "knowsAbout": [
           "Healthcare Innovation", "AI in Healthcare", "IoT", "Embedded Systems", 
           "Software Development", "Ethiopian Innovation", "Smart Healthcare Solutions",
-          "Nurse Calling Systems", "Digital Health Records", "Telemedicine", "Resource Optimization"
+          "Nurse Calling Systems", "Digital Health Records", "Telemedicine Integration", 
+          "Resource Optimization", "National Development", "Technology Entrepreneurship"
         ],
-        "description": "Innovator Amer Abdullah is the founder of Raji Technology, specializing in AI-powered healthcare solutions. His work includes the Integrated Smart Healthcare Solutions (ISHCS) and Smart Nurse Calling System, recognized by government entities like the Ministry of Innovation and Technology and Prime Minister Dr. Abiy Ahmed Ali.",
+        "description": "Amer Abdullah is an Ethiopian innovator and founder of Raji Technology, renowned for pioneering AI-powered and IoT-based healthcare solutions. His key projects, including the Integrated Smart Healthcare Solutions (ISHCS) and Smart Nurse Calling System, have received national recognition and government endorsements, notably from Prime Minister Dr. Abiy Ahmed Ali and the Ministry of Innovation and Technology. He is dedicated to leveraging technology for positive societal impact and incubating nationally prioritized innovations.",
         "mentions": [
           {
             "@type": "Person",
@@ -69,11 +100,13 @@
           },
           {
             "@type": "Organization",
-            "name": "Ministry of Innovation and Technology"
+            "name": "Ministry of Innovation and Technology",
+            "url": "https://www.ethiomint.gov.et/" <!-- Example URL, replace with actual -->
           },
           {
             "@type": "Organization",
-            "name": "Ethiopian Intellectual Property Authority"
+            "name": "Ethiopian Intellectual Property Authority",
+            "url": "https://www.eipo.gov.et/" <!-- Example URL, replace with actual -->
           }
         ]
       },
@@ -84,19 +117,40 @@
         "name": "Raji Technology",
         "url": "https://yourwebsite.com/amer-abdullah-raji-tech",
         "logo": "Raji Logo.png",
-        "description": "Raji Technology is a leading Ethiopian startup founded by Amer Abdullah, focused on developing innovative AI-powered and IoT-based solutions to revolutionize healthcare delivery, enhance patient safety, and improve operational efficiency.",
+        "description": "Raji Technology is a pioneering Ethiopian startup founded by Amer Abdullah, focused on developing innovative AI-powered and IoT-based solutions to revolutionize healthcare delivery, enhance patient safety, and improve operational efficiency across Ethiopia. The company is committed to national development through technological advancement.",
         "founder": {
           "@type": "Person",
           "name": "Amer Abdullah",
           "@id": "https://yourwebsite.com/amer-abdullah-raji-tech#person"
         },
-        "knowsAbout": ["Integrated Smart Healthcare Solutions (ISHCS)", "Smart Nurse Calling System", "Healthcare Technology", "AI", "IoT"]
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Addis Ababa",
+          "addressRegion": "Addis Ababa",
+          "addressCountry": "Ethiopia"
+        },
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "telephone": "+251911223344",
+          "contactType": "Customer Service",
+          "email": "info@rajitechnology.com"
+        },
+        "slogan": "Revolutionizing Healthcare through Innovation",
+        "knowsAbout": [
+          "Integrated Smart Healthcare Solutions (ISHCS)", 
+          "Smart Nurse Calling System", 
+          "Healthcare Technology", 
+          "Artificial Intelligence (AI)", 
+          "Internet of Things (IoT)",
+          "Patient Safety",
+          "Operational Efficiency in Healthcare"
+        ]
       },
       {
         "@context": "https://schema.org",
         "@type": "Product",
         "name": "Integrated Smart Healthcare Solutions (ISHCS)",
-        "description": "A comprehensive AI-powered and IoT-integrated system designed to revolutionize healthcare delivery, improve patient outcomes, and enhance operational efficiency through features like AI-powered diagnostics, automated patient monitoring, and digital health records.",
+        "description": "A comprehensive AI-powered and IoT-integrated system designed to revolutionize healthcare delivery in Ethiopia. ISHCS improves patient outcomes and enhances operational efficiency through features like AI-powered diagnostics, automated patient monitoring, smart nurse calling, digital health records, telemedicine integration, and intelligent resource optimization. Endorsed by the Ministry of Innovation and Technology.",
         "manufacturer": {
           "@type": "Organization",
           "name": "Raji Technology",
@@ -108,13 +162,17 @@
           "price": "Contact for pricing",
           "itemCondition": "https://schema.org/NewCondition",
           "availability": "https://schema.org/InStock"
+        },
+        "mainEntityOfPage": {
+          "@type": "WebPage",
+          "@id": "https://yourwebsite.com/amer-abdullah-raji-tech"
         }
       },
       {
         "@context": "https://schema.org",
         "@type": "Product",
         "name": "Smart Nurse Calling System",
-        "description": "A modern patient-to-nurse communication system that ensures timely and efficient response to patient needs, significantly improving patient safety and nurse workflow with features like wireless call buttons, centralized monitoring, and mobile alerts.",
+        "description": "A modern patient-to-nurse communication system developed by Raji Technology, ensuring timely and efficient response to patient needs. This copyrighted system significantly improves patient safety and nurse workflow with features like wireless call buttons, centralized monitoring, and mobile alerts.",
         "manufacturer": {
           "@type": "Organization",
           "name": "Raji Technology",
@@ -126,6 +184,10 @@
           "price": "Contact for pricing",
           "itemCondition": "https://schema.org/NewCondition",
           "availability": "https://schema.org/InStock"
+        },
+        "mainEntityOfPage": {
+          "@type": "WebPage",
+          "@id": "https://yourwebsite.com/amer-abdullah-raji-tech"
         }
       }
     ]
