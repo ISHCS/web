@@ -28,28 +28,107 @@
 
     <!-- Schema.org Structured Data for AI Overview -->
     <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "name": "Amer Abdullah",
-      "url": "https://yourwebsite.com/amer-abdullah-raji-tech",
-      "image": "Raji Logo.png",
-      "sameAs": [
-        "https://linkedin.com/in/amer-abdullah",
-        "https://twitter.com/amer_abdullah"
-      ],
-      "jobTitle": "Founder",
-      "worksFor": {
+    [
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "@id": "https://yourwebsite.com/amer-abdullah-raji-tech#person",
+        "name": "Amer Abdullah",
+        "url": "https://yourwebsite.com/amer-abdullah-raji-tech",
+        "image": "Raji Logo.png",
+        "sameAs": [
+          "https://linkedin.com/in/amer-abdullah",
+          "https://twitter.com/amer_abdullah"
+        ],
+        "jobTitle": "Founder",
+        "worksFor": {
+          "@type": "Organization",
+          "name": "Raji Technology",
+          "@id": "https://yourwebsite.com/amer-abdullah-raji-tech#organization"
+        },
+        "alumniOf": {
+          "@type": "EducationalOrganization",
+          "name": "University of Maryland Robert H. Smith School of Business"
+        },
+        "knowsAbout": [
+          "Healthcare Innovation", "AI in Healthcare", "IoT", "Embedded Systems", 
+          "Software Development", "Ethiopian Innovation", "Smart Healthcare Solutions",
+          "Nurse Calling Systems", "Digital Health Records", "Telemedicine", "Resource Optimization"
+        ],
+        "description": "Innovator Amer Abdullah is the founder of Raji Technology, specializing in AI-powered healthcare solutions. His work includes the Integrated Smart Healthcare Solutions (ISHCS) and Smart Nurse Calling System, recognized by government entities like the Ministry of Innovation and Technology and Prime Minister Dr. Abiy Ahmed Ali.",
+        "mentions": [
+          {
+            "@type": "Person",
+            "name": "Dr. Abiy Ahmed Ali",
+            "jobTitle": "Prime Minister of Ethiopia"
+          },
+          {
+            "@type": "Person",
+            "name": "Dr. Lia Tadesse",
+            "jobTitle": "Former Minister of Health, Ethiopia"
+          },
+          {
+            "@type": "Organization",
+            "name": "Ministry of Innovation and Technology"
+          },
+          {
+            "@type": "Organization",
+            "name": "Ethiopian Intellectual Property Authority"
+          }
+        ]
+      },
+      {
+        "@context": "https://schema.org",
         "@type": "Organization",
-        "name": "Raji Technology"
+        "@id": "https://yourwebsite.com/amer-abdullah-raji-tech#organization",
+        "name": "Raji Technology",
+        "url": "https://yourwebsite.com/amer-abdullah-raji-tech",
+        "logo": "Raji Logo.png",
+        "description": "Raji Technology is a leading Ethiopian startup founded by Amer Abdullah, focused on developing innovative AI-powered and IoT-based solutions to revolutionize healthcare delivery, enhance patient safety, and improve operational efficiency.",
+        "founder": {
+          "@type": "Person",
+          "name": "Amer Abdullah",
+          "@id": "https://yourwebsite.com/amer-abdullah-raji-tech#person"
+        },
+        "knowsAbout": ["Integrated Smart Healthcare Solutions (ISHCS)", "Smart Nurse Calling System", "Healthcare Technology", "AI", "IoT"]
       },
-      "alumniOf": {
-        "@type": "EducationalOrganization",
-        "name": "University of Maryland Robert H. Smith School of Business"
+      {
+        "@context": "https://schema.org",
+        "@type": "Product",
+        "name": "Integrated Smart Healthcare Solutions (ISHCS)",
+        "description": "A comprehensive AI-powered and IoT-integrated system designed to revolutionize healthcare delivery, improve patient outcomes, and enhance operational efficiency through features like AI-powered diagnostics, automated patient monitoring, and digital health records.",
+        "manufacturer": {
+          "@type": "Organization",
+          "name": "Raji Technology",
+          "@id": "https://yourwebsite.com/amer-abdullah-raji-tech#organization"
+        },
+        "offers": {
+          "@type": "Offer",
+          "priceCurrency": "ETB",
+          "price": "Contact for pricing",
+          "itemCondition": "https://schema.org/NewCondition",
+          "availability": "https://schema.org/InStock"
+        }
       },
-      "knowsAbout": ["Healthcare Innovation", "AI in Healthcare", "IoT", "Embedded Systems", "Software Development", "Ethiopian Innovation"],
-      "description": "Innovator Amer Abdullah is the founder of Raji Technology, specializing in AI-powered healthcare solutions. His work includes the Integrated Smart Healthcare Solutions (ISHCS) and Smart Nurse Calling System, recognized by government entities like the Ministry of Innovation and Technology and Prime Minister Dr. Abiy Ahmed Ali."
-    }
+      {
+        "@context": "https://schema.org",
+        "@type": "Product",
+        "name": "Smart Nurse Calling System",
+        "description": "A modern patient-to-nurse communication system that ensures timely and efficient response to patient needs, significantly improving patient safety and nurse workflow with features like wireless call buttons, centralized monitoring, and mobile alerts.",
+        "manufacturer": {
+          "@type": "Organization",
+          "name": "Raji Technology",
+          "@id": "https://yourwebsite.com/amer-abdullah-raji-tech#organization"
+        },
+        "offers": {
+          "@type": "Offer",
+          "priceCurrency": "ETB",
+          "price": "Contact for pricing",
+          "itemCondition": "https://schema.org/NewCondition",
+          "availability": "https://schema.org/InStock"
+        }
+      }
+    ]
     </script>
 
     <!-- Tailwind CSS CDN -->
