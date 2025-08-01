@@ -3,78 +3,80 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ISHCS | AI-Powered Nurse Assistance System</title>
-    
-    <!-- Google Translate Script -->
+    <title>ISHCS</title>
     <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
     <script>
-        let googleTranslateLoaded = false;
-        
+        // Initialize the Google Translate Element
         function googleTranslateElementInit() {
             new google.translate.TranslateElement({
-                pageLanguage: 'en',
-                includedLanguages: 'en,fr,es,de,it,pt,ar,zh,am,om',
+                pageLanguage: 'en', // Default language
+                includedLanguages: 'en,fr,es,de,it,pt,ar,zh,am,om', // Add Amharic (am) and Oromo (om)
                 layout: google.translate.TranslateElement.InlineLayout.SIMPLE
             }, 'google_translate_element');
             
-            googleTranslateLoaded = true;
-            setupLanguageSelection();
+            // Set default language to English on load
+            setTimeout(function() {
+                var select = document.querySelector(".goog-te-combo");
+                if (select) {
+                    select.value = 'en';
+                }
+            }, 500);
         }
 
-        function setupLanguageSelection() {
-            const googleSelect = document.querySelector('.goog-te-combo');
-            const customSelect = document.getElementById('language-select');
-            
-            if (googleSelect && customSelect) {
-                customSelect.addEventListener('change', function() {
-                    googleSelect.value = this.value;
-                    triggerGoogleTranslateChange(googleSelect);
-                });
-                
-                googleSelect.addEventListener('change', function() {
-                    customSelect.value = this.value;
-                });
-            }
-        }
-
-        function triggerGoogleTranslateChange(element) {
-            // Modern browsers
-            if (typeof Event === 'function') {
-                const event = new Event('change', {
-                    bubbles: true,
-                    cancelable: true
-                });
-                element.dispatchEvent(event);
-            } 
-            // Older browsers
-            else if (document.createEvent) {
-                const event = document.createEvent('HTMLEvents');
-                event.initEvent('change', true, true);
-                element.dispatchEvent(event);
-            }
-            
-            // Direct API call
-            if (typeof google !== 'undefined' && google.translate.TranslateElement) {
-                google.translate.TranslateElement.getInstance().translatePage(
-                    document.getElementById('language-select').value, 
-                    'en'
-                );
-            }
-        }
-
+        // Function to change the language when selected from combo box
         function changeLanguage() {
-            const lang = document.getElementById("language-select").value;
-            const googleSelect = document.querySelector('.goog-te-combo');
-            
-            if (googleSelect) {
-                googleSelect.value = lang;
-                triggerGoogleTranslateChange(googleSelect);
-            } else if (!googleTranslateLoaded) {
-                setTimeout(changeLanguage, 200);
+            var lang = document.getElementById("language-select").value;
+            var select = document.querySelector(".goog-te-combo");
+            if (select) {
+                select.value = lang;
+                select.dispatchEvent(new Event('change'));
+            } else {
+                // Fallback in case Google Translate element isn't loaded yet
+                setTimeout(function() {
+                    select = document.querySelector(".goog-te-combo");
+                    if (select) {
+                        select.value = lang;
+                        select.dispatchEvent(new Event('change'));
+                    }
+                }, 500);
             }
         }
+        
+        // Function to handle Google Translate events
+        function googleTranslateElementLoad() {
+            var select = document.querySelector(".goog-te-combo");
+            if (select) {
+                // Sync our custom select with Google's
+                select.addEventListener('change', function() {
+                    document.getElementById("language-select").value = this.value;
+                });
+            }
+        }
+        
+        // Add event listener for when the Google Translate element loads
+        document.addEventListener('DOMContentLoaded', function() {
+            // Check every 100ms if Google Translate has loaded
+            var checkInterval = setInterval(function() {
+                if (document.querySelector(".goog-te-combo")) {
+                    clearInterval(checkInterval);
+                    googleTranslateElementLoad();
+                }
+            }, 100);
+        });
     </script>
-
+</head>
+<body>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Integrated Smart Healthcare Solutions (ISHCS) - AI-powered nurse assistance system proven to reduce mortality by 22% and transform patient care in Ethiopian hospitals">
+    <title>ISHCS | AI-Powered Nurse Assistance System | Ethiopia Healthcare Innovation</title>
+    
+    <!-- Preload critical resources -->
+    <link rel="preload" href="https://cdn.tailwindcss.com" as="script">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -153,7 +155,14 @@
         
         /* Google Translate customization */
         .goog-te-gadget {
-            display: none !important;
+            font-family: 'Inter', sans-serif !important;
+        }
+        .goog-te-combo {
+            padding: 0.5rem !important;
+            border-radius: 0.375rem !important;
+            border: 1px solid #cbd5e1 !important;
+            background-color: white !important;
+            color: #1e293b !important;
         }
         .goog-te-banner-frame {
             display: none !important;
@@ -161,11 +170,12 @@
         body {
             top: 0 !important;
         }
+        #google_translate_element {
+            display: inline-block;
+            margin-left: 1rem;
+        }
         .skiptranslate iframe {
             display: none !important;
-        }
-        #google_translate_element {
-            display: none;
         }
     </style>
 </head>
