@@ -3,6 +3,72 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Real-Time Google Translate</title>
+    <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+    <script>
+        // Initialize the Google Translate Element
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({
+                pageLanguage: 'en', // Default language
+                includedLanguages: 'en,fr,es,de,it,pt,ar,zh,am,om', // Add Amharic (am) and Oromo (om)
+                layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+            }, 'google_translate_element');
+            
+            // Set default language to English on load
+            setTimeout(function() {
+                var select = document.querySelector(".goog-te-combo");
+                if (select) {
+                    select.value = 'en';
+                }
+            }, 500);
+        }
+
+        // Function to change the language when selected from combo box
+        function changeLanguage() {
+            var lang = document.getElementById("language-select").value;
+            var select = document.querySelector(".goog-te-combo");
+            if (select) {
+                select.value = lang;
+                select.dispatchEvent(new Event('change'));
+            } else {
+                // Fallback in case Google Translate element isn't loaded yet
+                setTimeout(function() {
+                    select = document.querySelector(".goog-te-combo");
+                    if (select) {
+                        select.value = lang;
+                        select.dispatchEvent(new Event('change'));
+                    }
+                }, 500);
+            }
+        }
+        
+        // Function to handle Google Translate events
+        function googleTranslateElementLoad() {
+            var select = document.querySelector(".goog-te-combo");
+            if (select) {
+                // Sync our custom select with Google's
+                select.addEventListener('change', function() {
+                    document.getElementById("language-select").value = this.value;
+                });
+            }
+        }
+        
+        // Add event listener for when the Google Translate element loads
+        document.addEventListener('DOMContentLoaded', function() {
+            // Check every 100ms if Google Translate has loaded
+            var checkInterval = setInterval(function() {
+                if (document.querySelector(".goog-te-combo")) {
+                    clearInterval(checkInterval);
+                    googleTranslateElementLoad();
+                }
+            }, 100);
+        });
+    </script>
+</head>
+<body>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Integrated Smart Healthcare Solutions (ISHCS) - AI-powered nurse assistance system proven to reduce mortality by 22% and transform patient care in Ethiopian hospitals">
     <title>ISHCS | AI-Powered Nurse Assistance System | Ethiopia Healthcare Innovation</title>
     
@@ -86,6 +152,31 @@
             background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%230284c7'%3E%3Cpath d='M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z' /%3E%3C/svg%3E");
             background-repeat: no-repeat;
         }
+        
+        /* Google Translate customization */
+        .goog-te-gadget {
+            font-family: 'Inter', sans-serif !important;
+        }
+        .goog-te-combo {
+            padding: 0.5rem !important;
+            border-radius: 0.375rem !important;
+            border: 1px solid #cbd5e1 !important;
+            background-color: white !important;
+            color: #1e293b !important;
+        }
+        .goog-te-banner-frame {
+            display: none !important;
+        }
+        body {
+            top: 0 !important;
+        }
+        #google_translate_element {
+            display: inline-block;
+            margin-left: 1rem;
+        }
+        .skiptranslate iframe {
+            display: none !important;
+        }
     </style>
 </head>
 <body class="bg-slate-50 text-slate-800 font-sans antialiased">
@@ -104,12 +195,27 @@
                 ISHCS
             </a>
             
-            <nav class="hidden md:flex space-x-6" aria-label="Main navigation">
-                <a href="#impact" class="text-slate-600 hover:text-primary-600 transition-colors font-medium py-2">Impact</a>
-                <a href="#clinical" class="text-slate-600 hover:text-primary-600 transition-colors font-medium py-2">Clinical Benefits</a>
-                <a href="#operational" class="text-slate-600 hover:text-primary-600 transition-colors font-medium py-2">Operational Benefits</a>
-                <a href="#contact" class="text-slate-600 hover:text-primary-600 transition-colors font-medium py-2">Contact</a>
-            </nav>
+            <div class="flex items-center">
+                <nav class="hidden md:flex space-x-6" aria-label="Main navigation">
+                    <a href="#impact" class="text-slate-600 hover:text-primary-600 transition-colors font-medium py-2">Impact</a>
+                    <a href="#clinical" class="text-slate-600 hover:text-primary-600 transition-colors font-medium py-2">Clinical Benefits</a>
+                    <a href="#operational" class="text-slate-600 hover:text-primary-600 transition-colors font-medium py-2">Operational Benefits</a>
+                    <a href="#contact" class="text-slate-600 hover:text-primary-600 transition-colors font-medium py-2">Contact</a>
+                </nav>
+                
+                <!-- Language Selector -->
+                <div class="ml-4 flex items-center">
+                    <select id="language-select" onchange="changeLanguage()" class="px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary-500 focus:border-primary-500">
+                        <option value="en">English</option>
+                        <option value="am">አማርኛ</option>
+                        <option value="om">Afaan Oromoo</option>
+                        <option value="fr">Français</option>
+                        <option value="es">Español</option>
+                        <option value="ar">العربية</option>
+                    </select>
+                    <div id="google_translate_element"></div>
+                </div>
+            </div>
             
             <button id="mobile-menu-btn" class="md:hidden text-slate-600 focus:outline-none" aria-label="Toggle menu" aria-expanded="false" aria-controls="mobile-menu">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
