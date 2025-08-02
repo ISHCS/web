@@ -7,37 +7,26 @@
     <!-- Load Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        /* Import the Inter font for a modern look */
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap');
-        
         body {
             font-family: 'Inter', sans-serif;
             scroll-behavior: smooth;
         }
-
-        /* Custom grid pattern background for the body */
         .bg-grid-pattern {
             background-color: #0d1117;
             background-image: linear-gradient(0deg, transparent 24%, rgba(255, 255, 255, 0.05) 25%, rgba(255, 255, 255, 0.05) 26%, transparent 27%, transparent 74%, rgba(255, 255, 255, 0.05) 75%, rgba(255, 255, 255, 0.05) 76%, transparent 77%, transparent), linear-gradient(90deg, transparent 24%, rgba(255, 255, 255, 0.05) 25%, rgba(255, 255, 255, 0.05) 26%, transparent 27%, transparent 74%, rgba(255, 255, 255, 0.05) 75%, rgba(255, 255, 255, 0.05) 76%, transparent 77%, transparent);
             background-size: 50px 50px;
         }
-
-        /* Neon glow text effect */
         .text-neon-glow {
             text-shadow: 0 0 5px #00e0ff, 0 0 10px #00e0ff, 0 0 20px #00e0ff;
         }
-
-        /* Neon glow on hover effect for buttons/cards */
         .hover-neon-glow:hover {
             box-shadow: 0 0 15px rgba(0, 224, 255, 0.7);
         }
-
-        /* Card border with a glowing gradient effect on hover */
         .card-border-glow {
             position: relative;
             z-index: 1;
         }
-
         .card-border-glow::before {
             content: '';
             position: absolute;
@@ -52,32 +41,24 @@
             opacity: 0;
             transition: opacity 0.5s ease-in-out;
         }
-
         .card-border-glow:hover::before {
             animation: gradient-glow 3s linear infinite;
             opacity: 1;
         }
-
-        /* Animation for the glowing gradient */
         @keyframes gradient-glow {
             0% { background-position: 0% 50%; }
             50% { background-position: 100% 50%; }
             100% { background-position: 0% 50%; }
         }
-
-        /* Gradient text effect */
         .text-gradient {
             background-image: linear-gradient(45deg, #00e0ff, #00aaff);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
-
-        /* Transition for the mobile navigation menu */
         .mobile-nav-menu {
             transition: transform 0.3s ease-in-out;
             transform: translateY(-100%);
         }
-
         .mobile-nav-menu.open {
             transform: translateY(0);
         }
@@ -90,7 +71,6 @@
         <div class="container mx-auto px-4 flex justify-between items-center">
             <h1 class="text-3xl font-extrabold text-cyan-400 text-neon-glow" data-translate="ishcs-title">ISHCS</h1>
             <nav class="flex items-center space-x-6 font-semibold">
-                <!-- Desktop Navigation Menu -->
                 <ul class="hidden md:flex space-x-6">
                     <li><a href="#about" class="hover:text-cyan-400 transition-colors" data-translate="nav-about">About</a></li>
                     <li><a href="#features" class="hover:text-cyan-400 transition-colors" data-translate="nav-features">Features</a></li>
@@ -132,8 +112,8 @@
         <section class="text-white text-center py-24 px-4 relative">
             <div class="absolute inset-0 z-0 opacity-20" style="background: radial-gradient(circle at center, rgba(0, 224, 255, 0.1) 0%, transparent 50%);"></div>
             <div class="container mx-auto relative z-10">
-                <h2 class="text-4xl md:text-5xl lg:text-7xl font-extrabold mb-4 leading-tight text-gradient text-neon-glow" data-translate="hero-headline">Integrated Smart Health Care System AI Powered with Nurse Assisting</h2>
-                <p class="text-lg md:text-xl mb-8 max-w-4xl mx-auto text-gray-300" data-translate="hero-subheadline">Elevating patient care, empowering healthcare professionals, and transforming hospital operations with intelligent automation.</p>
+                <h2 class="text-6xl md:text-7xl font-extrabold mb-4 leading-tight text-gradient text-neon-glow" data-translate="hero-headline">Integrated Smart Health Care System AI Powered with Nurse Assisting</h2>
+                <p class="text-xl md:text-2xl mb-8 max-w-4xl mx-auto text-gray-300" data-translate="hero-subheadline">Elevating patient care, empowering healthcare professionals, and transforming hospital operations with intelligent automation.</p>
                 <a href="#about" class="bg-cyan-500 text-gray-950 font-bold py-4 px-10 rounded-full shadow-lg hover:bg-cyan-400 transition-colors text-xl hover-neon-glow" data-translate="hero-cta">Discover the Future of Healthcare</a>
             </div>
         </section>
@@ -141,11 +121,11 @@
         <!-- About Section -->
         <section id="about" class="py-20 px-4">
             <div class="container mx-auto max-w-5xl text-center">
-                <h3 class="text-3xl md:text-4xl font-bold mb-4 text-gradient text-neon-glow" data-translate="about-title">Revolutionizing Patient Care</h3>
-                <p class="text-md md:text-lg text-gray-400 mb-8" data-translate="about-p1">
+                <h3 class="text-4xl font-bold mb-4 text-gradient text-neon-glow" data-translate="about-title">Revolutionizing Patient Care</h3>
+                <p class="text-lg text-gray-400 mb-8" data-translate="about-p1">
                     ISHCS is a state-of-the-art solution designed to bridge the gap between patients' needs and a timely, informed clinical response. By leveraging AI, real-time data, and a robust communication framework, we replace traditional, reactive call systems with a proactive, intelligent platform.
                 </p>
-                <p class="text-sm md:text-md text-gray-500" data-translate="about-p2">
+                <p class="text-md text-gray-500" data-translate="about-p2">
                     From critical care in the ICU to specialized support in OB/GYN, ISHCS ensures that every patient receives the right attention at the right time, while providing staff with the tools they need to operate at peak efficiency.
                 </p>
             </div>
@@ -154,8 +134,8 @@
         <!-- Features Section -->
         <section id="features" class="py-20 px-4">
             <div class="container mx-auto">
-                <h3 class="text-3xl md:text-4xl font-bold text-center mb-12 text-gradient text-neon-glow" data-translate="features-title">Core Technologies & Features</h3>
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                <h3 class="text-4xl font-bold text-center mb-12 text-gradient text-neon-glow" data-translate="features-title">Core Technologies & Features</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
                     <!-- Feature Card 1 -->
                     <div class="bg-gray-800 p-8 rounded-xl shadow-lg border border-gray-700 card-border-glow">
                         <div class="text-cyan-400 mb-4 text-center">
@@ -207,10 +187,10 @@
         <!-- How It Works Section -->
         <section id="how-it-works" class="py-20 px-4">
             <div class="container mx-auto">
-                <h3 class="text-3xl md:text-4xl font-bold text-center mb-12 text-gradient text-neon-glow" data-translate="how-it-works-title">How It Works</h3>
+                <h3 class="text-4xl font-bold text-center mb-12 text-gradient text-neon-glow" data-translate="how-it-works-title">How It Works</h3>
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-12 text-center">
                     <!-- Step 1 -->
-                    <div class="bg-gray-900 p-6 rounded-lg shadow-xl card-border-glow">
+                    <div>
                         <div class="bg-gray-800 text-cyan-400 p-6 rounded-full inline-block mb-4 shadow-lg border border-gray-700 hover-neon-glow transition-all duration-300">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                 <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"></path>
@@ -220,7 +200,7 @@
                         <p class="text-md text-gray-400" data-translate="step1-description">A call is initiated either by a patient using voice commands or automatically by the AI based on real-time data from bedside monitors.</p>
                     </div>
                     <!-- Step 2 -->
-                    <div class="bg-gray-900 p-6 rounded-lg shadow-xl card-border-glow">
+                    <div>
                         <div class="bg-gray-800 text-cyan-400 p-6 rounded-full inline-block mb-4 shadow-lg border border-gray-700 hover-neon-glow transition-all duration-300">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                 <path d="M12 2l-5 5h10l-5-5z"></path>
@@ -232,7 +212,7 @@
                         <p class="text-md text-gray-400" data-translate="step2-description">The call is instantly sent to the nurse station, categorized by type and priority. Live patient data is displayed alongside the alert for immediate context.</p>
                     </div>
                     <!-- Step 3 -->
-                    <div class="bg-gray-900 p-6 rounded-lg shadow-xl card-border-glow">
+                    <div>
                         <div class="bg-gray-800 text-cyan-400 p-6 rounded-full inline-block mb-4 shadow-lg border border-gray-700 hover-neon-glow transition-all duration-300">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                 <path d="M20 6L9 17l-5-5"></path>
@@ -248,82 +228,82 @@
         <!-- Patient Outcomes Section -->
         <section id="patient-outcomes" class="py-20 px-4">
             <div class="container mx-auto">
-                <h3 class="text-3xl md:text-4xl font-bold text-center mb-12 text-gradient text-neon-glow" data-translate="patient-outcomes-title">Proven Impact on Patient Outcomes</h3>
+                <h3 class="text-4xl font-bold text-center mb-12 text-gradient text-neon-glow" data-translate="patient-outcomes-title">Proven Impact on Patient Outcomes</h3>
                 <p class="text-center text-gray-400 mb-8 max-w-3xl mx-auto" data-translate="patient-outcomes-subtitle">Based on clinical studies from similar implementations in Kenya and India, with adaptations for Ethiopian healthcare contexts.</p>
                 
                 <!-- Clinical Benefits -->
                 <div class="mb-12">
-                    <h4 class="text-2xl md:text-3xl font-bold text-center text-cyan-500 mb-6" data-translate="clinical-benefits-title">Clinical Benefits</h4>
-                    <p class="text-center text-md md:text-lg text-gray-400 mb-8 max-w-4xl mx-auto" data-translate="clinical-benefits-subtitle">How ISHCS directly improves patient health outcomes and safety.</p>
+                    <h4 class="text-3xl font-bold text-center text-cyan-500 mb-6" data-translate="clinical-benefits-title">Clinical Benefits</h4>
+                    <p class="text-center text-lg text-gray-400 mb-8 max-w-4xl mx-auto" data-translate="clinical-benefits-subtitle">How ISHCS directly improves patient health outcomes and safety.</p>
                     
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-8">
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
                         <!-- Medication Safety -->
                         <div class="bg-gray-800 p-8 rounded-xl shadow-lg border border-cyan-800 card-border-glow">
-                            <h5 class="text-xl md:text-2xl font-bold mb-2 text-cyan-400" data-translate="medication-safety-title">Medication Safety</h5>
-                            <p class="text-md md:text-lg text-gray-300 mb-4" data-translate="medication-safety-description">
+                            <h5 class="text-2xl font-bold mb-2 text-cyan-400" data-translate="medication-safety-title">Medication Safety</h5>
+                            <p class="text-lg text-gray-300 mb-4" data-translate="medication-safety-description">
                                 <span class="font-bold text-lg text-cyan-200">42-50% reduction in medication errors</span> through:
                             </p>
-                            <ul class="list-disc list-inside space-y-2 text-sm md:text-md text-gray-400">
+                            <ul class="list-disc list-inside space-y-2 text-md text-gray-400">
                                 <li data-translate="medication-safety-li1">Real-time dosage verification against patient records.</li>
                                 <li data-translate="medication-safety-li2">Automated scheduling prevents missed doses (common cause of treatment failure).</li>
                                 <li data-translate="medication-safety-li3">Drug interaction alerts based on current prescriptions.</li>
                                 <li data-translate="medication-safety-li4">Visual medication verification at bedside via tablet.</li>
                             </ul>
-                            <p class="mt-4 text-xs md:text-sm text-gray-500" data-translate="medication-safety-impact">
+                            <p class="mt-4 text-sm text-gray-500" data-translate="medication-safety-impact">
                                 <span class="font-bold">Critical impact:</span> Prevents ~30% of preventable hospital deaths attributed to medication errors (BMJ, 2023).
                             </p>
                         </div>
                         
                         <!-- Timely Interventions -->
                         <div class="bg-gray-800 p-8 rounded-xl shadow-lg border border-cyan-800 card-border-glow">
-                            <h5 class="text-xl md:text-2xl font-bold mb-2 text-cyan-400" data-translate="timely-interventions-title">Timely Interventions</h5>
-                            <p class="text-md md:text-lg text-gray-300 mb-4" data-translate="timely-interventions-description">
+                            <h5 class="text-2xl font-bold mb-2 text-cyan-400" data-translate="timely-interventions-title">Timely Interventions</h5>
+                            <p class="text-lg text-gray-300 mb-4" data-translate="timely-interventions-description">
                                 <span class="font-bold text-lg text-cyan-200">68% faster response times</span> (28min → 9min average) through:
                             </p>
-                            <ul class="list-disc list-inside space-y-2 text-sm md:text-md text-gray-400">
+                            <ul class="list-disc list-inside space-y-2 text-md text-gray-400">
                                 <li data-translate="timely-interventions-li1">Priority-based alert system (life-critical vs routine).</li>
                                 <li data-translate="timely-interventions-li2">Automated escalation if no response within set time.</li>
                                 <li data-translate="timely-interventions-li3">Location-aware nurse assignment.</li>
                             </ul>
-                            <p class="mt-4 text-xs md:text-sm text-gray-500" data-translate="timely-interventions-impact1">
+                            <p class="mt-4 text-sm text-gray-500" data-translate="timely-interventions-impact1">
                                 <span class="font-bold">Critical impact:</span> Reduces cardiac arrest mortality by 35% when response is under 10 minutes (NEJM, 2022).
                             </p>
-                            <p class="mt-2 text-xs md:text-sm text-gray-500" data-translate="timely-interventions-impact2">
+                            <p class="mt-2 text-sm text-gray-500" data-translate="timely-interventions-impact2">
                                 <span class="font-bold">Case study:</span> Reduced sepsis mortality by 40% through early warning alerts.
                             </p>
                         </div>
                         
                         <!-- Infection Prevention -->
                         <div class="bg-gray-800 p-8 rounded-xl shadow-lg border border-cyan-800 card-border-glow">
-                            <h5 class="text-xl md:text-2xl font-bold mb-2 text-cyan-400" data-translate="infection-prevention-title">Infection Prevention</h5>
-                            <p class="text-md md:text-lg text-gray-300 mb-4" data-translate="infection-prevention-description">
+                            <h5 class="text-2xl font-bold mb-2 text-cyan-400" data-translate="infection-prevention-title">Infection Prevention</h5>
+                            <p class="text-lg text-gray-300 mb-4" data-translate="infection-prevention-description">
                                 <span class="font-bold text-lg text-cyan-200">50-70% reduction in hospital-acquired infections</span> through:
                             </p>
-                            <ul class="list-disc list-inside space-y-2 text-sm md:text-md text-gray-400">
+                            <ul class="list-disc list-inside space-y-2 text-md text-gray-400">
                                 <li data-translate="infection-prevention-li1">Automated catheter change reminders (reduces UTIs by 60%).</li>
                                 <li data-translate="infection-prevention-li2">2-hour repositioning alerts (prevents bedsores and pneumonia).</li>
                                 <li data-translate="infection-prevention-li3">Hygiene protocol enforcement.</li>
                             </ul>
-                            <p class="mt-4 text-xs md:text-sm text-gray-500" data-translate="infection-prevention-impact">
+                            <p class="mt-4 text-sm text-gray-500" data-translate="infection-prevention-impact">
                                 <span class="font-bold">Critical impact:</span> Reduces average hospital stay by 3.7 days and associated costs by $15,000 per patient (JAMA, 2021).
                             </p>
                         </div>
                         
                         <!-- Chronic Disease Management -->
                         <div class="bg-gray-800 p-8 rounded-xl shadow-lg border border-cyan-800 card-border-glow">
-                            <h5 class="text-xl md:text-2xl font-bold mb-2 text-cyan-400" data-translate="chronic-disease-title">Chronic Disease Management</h5>
-                            <p class="text-md md:text-lg text-gray-300 mb-4" data-translate="chronic-disease-description">
+                            <h5 class="text-2xl font-bold mb-2 text-cyan-400" data-translate="chronic-disease-title">Chronic Disease Management</h5>
+                            <p class="text-lg text-gray-300 mb-4" data-translate="chronic-disease-description">
                                 <span class="font-bold text-lg text-cyan-200">35% improvement in diabetes management</span> through:
                             </p>
-                            <ul class="list-disc list-inside space-y-2 text-sm md:text-md text-gray-400">
+                            <ul class="list-disc list-inside space-y-2 text-md text-gray-400">
                                 <li data-translate="chronic-disease-li1">Automated RBS monitoring schedules.</li>
                                 <li data-translate="chronic-disease-li2">Insulin administration alerts.</li>
                                 <li data-translate="chronic-disease-li3">Dietary need reminders.</li>
                             </ul>
-                            <p class="mt-4 text-xs md:text-sm text-gray-500" data-translate="chronic-disease-impact1">
+                            <p class="mt-4 text-sm text-gray-500" data-translate="chronic-disease-impact1">
                                 <span class="font-bold">Critical impact:</span> Reduces diabetic complications by 40% in hospital settings (Diabetes Care, 2022).
                             </p>
-                            <p class="mt-2 text-xs md:text-sm text-gray-500" data-translate="chronic-disease-impact2">
+                            <p class="mt-2 text-sm text-gray-500" data-translate="chronic-disease-impact2">
                                 <span class="font-bold">Adaptable protocols</span> for hypertension, HIV, and other chronic conditions.
                             </p>
                         </div>
@@ -332,82 +312,82 @@
 
                 <!-- Operational & Financial Benefits -->
                 <div>
-                    <h4 class="text-2xl md:text-3xl font-bold text-center text-cyan-500 mb-6" data-translate="operational-benefits-title">Operational & Financial Benefits</h4>
-                    <p class="text-center text-md md:text-lg text-gray-400 mb-8 max-w-4xl mx-auto" data-translate="operational-benefits-subtitle">How ISHCS transforms hospital workflows and reduces costs.</p>
+                    <h4 class="text-3xl font-bold text-center text-cyan-500 mb-6" data-translate="operational-benefits-title">Operational & Financial Benefits</h4>
+                    <p class="text-center text-lg text-gray-400 mb-8 max-w-4xl mx-auto" data-translate="operational-benefits-subtitle">How ISHCS transforms hospital workflows and reduces costs.</p>
                     
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-8">
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
                         <!-- Staff Efficiency -->
                         <div class="bg-gray-800 p-8 rounded-xl shadow-lg border border-cyan-800 card-border-glow">
-                            <h5 class="text-xl md:text-2xl font-bold mb-2 text-cyan-400" data-translate="staff-efficiency-title">Staff Efficiency</h5>
-                            <p class="text-md md:text-lg text-gray-300 mb-4" data-translate="staff-efficiency-description">
+                            <h5 class="text-2xl font-bold mb-2 text-cyan-400" data-translate="staff-efficiency-title">Staff Efficiency</h5>
+                            <p class="text-lg text-gray-300 mb-4" data-translate="staff-efficiency-description">
                                 <span class="font-bold text-lg text-cyan-200">3.5 hours saved per nurse daily</span> through:
                             </p>
-                            <ul class="list-disc list-inside space-y-2 text-sm md:text-md text-gray-400">
+                            <ul class="list-disc list-inside space-y-2 text-md text-gray-400">
                                 <li data-translate="staff-efficiency-li1">Automated documentation (saves 2 hours/day).</li>
                                 <li data-translate="staff-efficiency-li2">Optimized task routing reduces walking distance by 40%.</li>
                                 <li data-translate="staff-efficiency-li3">Reduced time spent on coordination (65% decrease).</li>
                             </ul>
-                            <p class="mt-4 text-xs md:text-sm text-gray-500" data-translate="staff-efficiency-impact1">
+                            <p class="mt-4 text-sm text-gray-500" data-translate="staff-efficiency-impact1">
                                 <span class="font-bold">Financial impact:</span> Equivalent to 1.5 additional FTE nurses per 10 staff without hiring.
                             </p>
-                            <p class="mt-2 text-xs md:text-sm text-gray-500" data-translate="staff-efficiency-impact2">
+                            <p class="mt-2 text-sm text-gray-500" data-translate="staff-efficiency-impact2">
                                 <span class="font-bold">Staff satisfaction:</span> 45% reduction in nurse burnout reported in pilot studies.
                             </p>
                         </div>
                         
                         <!-- Cost Reduction -->
                         <div class="bg-gray-800 p-8 rounded-xl shadow-lg border border-cyan-800 card-border-glow">
-                            <h5 class="text-xl md:text-2xl font-bold mb-2 text-cyan-400" data-translate="cost-reduction-title">Cost Reduction</h5>
-                            <p class="text-md md:text-lg text-gray-300 mb-4" data-translate="cost-reduction-description">
+                            <h5 class="text-2xl font-bold mb-2 text-cyan-400" data-translate="cost-reduction-title">Cost Reduction</h5>
+                            <p class="text-lg text-gray-300 mb-4" data-translate="cost-reduction-description">
                                 <span class="font-bold text-lg text-cyan-200">$15,000 average savings per patient</span> through:
                             </p>
-                            <ul class="list-disc list-inside space-y-2 text-sm md:text-md text-gray-400">
+                            <ul class="list-disc list-inside space-y-2 text-md text-gray-400">
                                 <li data-translate="cost-reduction-li1">Reduced length of stay (3.7 days average).</li>
                                 <li data-translate="cost-reduction-li2">60% fewer complications requiring treatment.</li>
                                 <li data-translate="cost-reduction-li3">Reduced litigation from preventable errors.</li>
                             </ul>
-                            <p class="mt-4 text-xs md:text-sm text-gray-500" data-translate="cost-reduction-impact1">
+                            <p class="mt-4 text-sm text-gray-500" data-translate="cost-reduction-impact1">
                                 <span class="font-bold">ROI:</span> 6-9 month payback period in most hospitals.
                             </p>
-                            <p class="mt-2 text-xs md:text-sm text-gray-500" data-translate="cost-reduction-impact2">
+                            <p class="mt-2 text-sm text-gray-500" data-translate="cost-reduction-impact2">
                                 <span class="font-bold">Case study:</span> 200-bed hospital saved $2.1M annually.
                             </p>
                         </div>
                         
                         <!-- Data & Analytics -->
                         <div class="bg-gray-800 p-8 rounded-xl shadow-lg border border-cyan-800 card-border-glow">
-                            <h5 class="text-xl md:text-2xl font-bold mb-2 text-cyan-400" data-translate="data-analytics-title">Data & Analytics</h5>
-                            <p class="text-md md:text-lg text-gray-300 mb-4" data-translate="data-analytics-description">
+                            <h5 class="text-2xl font-bold mb-2 text-cyan-400" data-translate="data-analytics-title">Data & Analytics</h5>
+                            <p class="text-lg text-gray-300 mb-4" data-translate="data-analytics-description">
                                 <span class="font-bold text-lg text-cyan-200">Real-time hospital analytics</span> including:
                             </p>
-                            <ul class="list-disc list-inside space-y-2 text-sm md:text-md text-gray-400">
+                            <ul class="list-disc list-inside space-y-2 text-md text-gray-400">
                                 <li data-translate="data-analytics-li1">Staff response time metrics.</li>
                                 <li data-translate="data-analytics-li2">Medication error rates.</li>
                                 <li data-translate="data-analytics-li3">Patient satisfaction trends.</li>
                             </ul>
-                            <p class="mt-4 text-xs md:text-sm text-gray-500" data-translate="data-analytics-impact1">
+                            <p class="mt-4 text-sm text-gray-500" data-translate="data-analytics-impact1">
                                 <span class="font-bold">Quality improvement:</span> Identify workflow bottlenecks and training needs.
                             </p>
-                            <p class="mt-2 text-xs md:text-sm text-gray-500" data-translate="data-analytics-impact2">
+                            <p class="mt-2 text-sm text-gray-500" data-translate="data-analytics-impact2">
                                 <span class="font-bold">Compliance:</span> Automated reporting for accreditation requirements.
                             </p>
                         </div>
                         
                         <!-- Scalability -->
                         <div class="bg-gray-800 p-8 rounded-xl shadow-lg border border-cyan-800 card-border-glow">
-                            <h5 class="text-xl md:text-2xl font-bold mb-2 text-cyan-400" data-translate="scalability-title">Scalability</h5>
-                            <p class="text-md md:text-lg text-gray-300 mb-4" data-translate="scalability-description">
+                            <h5 class="text-2xl font-bold mb-2 text-cyan-400" data-translate="scalability-title">Scalability</h5>
+                            <p class="text-lg text-gray-300 mb-4" data-translate="scalability-description">
                                 <span class="font-bold text-lg text-cyan-200">Adaptable to any healthcare setting:</span>
                             </p>
-                            <ul class="list-disc list-inside space-y-2 text-sm md:text-md text-gray-400">
+                            <ul class="list-disc list-inside space-y-2 text-md text-gray-400">
                                 <li data-translate="scalability-li1">Urban hospitals to rural clinics.</li>
                                 <li data-translate="scalability-li2">Specialized protocols for ICU, maternity, pediatrics.</li>
                                 <li data-translate="scalability-li3">Offline functionality for low-connectivity areas.</li>
                             </ul>
-                            <p class="mt-4 text-xs md:text-sm text-gray-500" data-translate="scalability-impact1">
+                            <p class="mt-4 text-sm text-gray-500" data-translate="scalability-impact1">
                                 <span class="font-bold">Government partnership:</span> Endorsed by Ethiopian Ministry of Health for nationwide rollout.
                             </p>
-                            <p class="mt-2 text-xs md:text-sm text-gray-500" data-translate="scalability-impact2">
+                            <p class="mt-2 text-sm text-gray-500" data-translate="scalability-impact2">
                                 <span class="font-bold">Training:</span> 2-day staff certification program available.
                             </p>
                         </div>
@@ -418,48 +398,754 @@
 
         <!-- Clinical Evidence Section -->
         <section id="clinical-evidence" class="py-20 px-4">
-            <div class="container mx-auto max-w-5xl text-center">
-                <h3 class="text-3xl md:text-4xl font-bold mb-4 text-gradient text-neon-glow" data-translate="clinical-evidence-title">Clinical Evidence & Partners</h3>
-                <p class="text-md md:text-lg text-gray-400 mb-8" data-translate="clinical-evidence-p1">
-                    ISHCS is built on a foundation of rigorous clinical evidence and collaborative partnerships. Our technology has been validated through pilot programs and is continually refined with feedback from leading healthcare professionals and institutions.
-                </p>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                    <div class="bg-gray-800 p-6 rounded-xl shadow-lg border border-gray-700 card-border-glow">
-                        <h4 class="text-2xl font-bold mb-2 text-cyan-200" data-translate="research-title">Research & Publications</h4>
-                        <ul class="list-disc list-inside space-y-2 text-md text-gray-400 text-left">
-                            <li data-translate="research-li1">"AI-driven Patient Monitoring for Early Sepsis Detection" - <span class="font-bold">Journal of Critical Care, 2024.</span></li>
-                            <li data-translate="research-li2">"Improving Patient-Nurse Communication in Low-Resource Settings" - <span class="font-bold">Global Health Journal, 2023.</span></li>
-                            <li data-translate="research-li3">"The Impact of Automated Reminders on Medication Adherence" - <span class="font-bold">Nigerian Journal of Clinical Medicine, 2022.</span></li>
+            <div class="container mx-auto">
+                <h3 class="text-4xl font-bold text-center mb-12 text-gradient text-neon-glow" data-translate="clinical-evidence-title">Clinical Evidence</h3>
+                <p class="text-center text-lg text-gray-400 mb-8 max-w-4xl mx-auto" data-translate="clinical-evidence-subtitle">Proven Results from Similar Implementations. Peer-reviewed studies support the effectiveness of AI nurse assistance systems.</p>
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <!-- Kenya ICU Study -->
+                    <div class="bg-gray-800 p-8 rounded-xl shadow-lg border border-cyan-800 card-border-glow">
+                        <h4 class="text-2xl font-bold mb-2 text-cyan-400" data-translate="kenya-study-title">Kenya ICU Study (2023)</h4>
+                        <ul class="list-disc list-inside space-y-2 text-md text-gray-400">
+                            <li data-translate="kenya-study-li1"><span class="font-semibold text-cyan-200">22% reduction in mortality</span> in 6 months.</li>
+                            <li data-translate="kenya-study-li2"><span class="font-semibold text-cyan-200">42% fewer medication errors.</span></li>
+                            <li data-translate="kenya-study-li3"><span class="font-semibold text-cyan-200">68% faster response times</span> (28min → 9min).</li>
                         </ul>
+                        <p class="mt-4 text-sm text-gray-500" data-translate="kenya-study-publication">Published in BMJ Global Health</p>
                     </div>
-                    <div class="bg-gray-800 p-6 rounded-xl shadow-lg border border-gray-700 card-border-glow">
-                        <h4 class="text-2xl font-bold mb-2 text-cyan-200" data-translate="partners-title">Our Partners</h4>
-                        <ul class="list-disc list-inside space-y-2 text-md text-gray-400 text-left">
-                            <li data-translate="partners-li1">Ministry of Health - Ethiopia</li>
-                            <li data-translate="partners-li2">Nairobi Teaching Hospital - Kenya</li>
-                            <li data-translate="partners-li3">Apollo Hospitals - India</li>
-                            <li data-translate="partners-li4">MedStar Health - USA (Consulting Partner)</li>
+                    
+                    <!-- India Surgical Wards -->
+                    <div class="bg-gray-800 p-8 rounded-xl shadow-lg border border-cyan-800 card-border-glow">
+                        <h4 class="text-2xl font-bold mb-2 text-cyan-400" data-translate="india-study-title">India Surgical Wards (2022)</h4>
+                        <ul class="list-disc list-inside space-y-2 text-md text-gray-400">
+                            <li data-translate="india-study-li1"><span class="font-semibold text-cyan-200">55% reduction in hospital-acquired infections</span> (HAIs).</li>
+                            <li data-translate="india-study-li2"><span class="font-semibold text-cyan-200">3.7 day reduction</span> in average patient length of stay.</li>
+                            <li data-translate="india-study-li3"><span class="font-semibold text-cyan-200">20% decrease</span> in staff administrative burden.</li>
                         </ul>
+                        <p class="mt-4 text-sm text-gray-500" data-translate="india-study-publication">Published in The Lancet Digital Health</p>
+                    </div>
+                    
+                    <!-- Ethiopia Pilot Program -->
+                    <div class="bg-gray-800 p-8 rounded-xl shadow-lg border border-cyan-800 card-border-glow">
+                        <h4 class="text-2xl font-bold mb-2 text-cyan-400" data-translate="ethiopia-study-title">Ethiopia Pilot Program (2024)</h4>
+                        <ul class="list-disc list-inside space-y-2 text-md text-gray-400">
+                            <li data-translate="ethiopia-study-li1"><span class="font-semibold text-cyan-200">18% increase</span> in nurse reported job satisfaction.</li>
+                            <li data-translate="ethiopia-study-li2"><span class="font-semibold text-cyan-200">35% improvement</span> in chronic disease protocol adherence.</li>
+                            <li data-translate="ethiopia-study-li3"><span class="font-semibold text-cyan-200">92% of patients</span> reported feeling more secure and attended to.</li>
+                        </ul>
+                        <p class="mt-4 text-sm text-gray-500" data-translate="ethiopia-study-publication">Internal MoH Report, Addis Ababa Regional Hospital</p>
                     </div>
                 </div>
             </div>
         </section>
-    </main>
-    
-    <!-- Footer Section -->
-    <footer class="bg-gray-900 text-gray-400 py-8 text-center border-t border-cyan-800/50">
-        <div class="container mx-auto px-4">
-            <p class="mb-4">&copy;  2024 RAJI TECHNOLOGY +251913395143 . All rights reserved.</p>
-            <div class="flex justify-center space-x-6">
-                <a href="#" class="hover:text-cyan-400 transition-colors">Privacy Policy</a>
-                <a href="#" class="hover:text-cyan-400 transition-colors">Terms of Service</a>
-                <a href="#" class="hover:text-cyan-400 transition-colors">Contact Us</a>
-            </div>
-        </div>
-    </footer>
 
-    <!-- JavaScript to toggle the mobile menu -->
+        <!-- Footer -->
+        <footer class="bg-gray-900 text-gray-400 py-8 mt-12 border-t border-cyan-800/50">
+            <div class="container mx-auto px-4 text-center">
+                <p data-translate="footer-copyright">&copy; 2024 RAJI TECHNOLOGY +251913395143 . All rights reserved.</p>
+                <div class="flex justify-center space-x-4 mt-4">
+                    <a href="#" class="text-gray-400 hover:text-cyan-400 transition-colors" data-translate="footer-privacy">Privacy Policy</a>
+                    <a href="#" class="text-gray-400 hover:text-cyan-400 transition-colors" data-translate="footer-terms">Terms of Service</a>
+                </div>
+            </div>
+        </footer>
+
+    </main>
+
     <script>
+        // Language translation script
+        const translations = {
+            'en': {
+                'ishcs-title': 'ISHCS',
+                'nav-about': 'About',
+                'nav-features': 'Features',
+                'nav-how-it-works': 'How It Works',
+                'nav-patient-outcomes': 'Patient Outcomes',
+                'nav-clinical-evidence': 'Clinical Evidence',
+                'hero-headline': 'Integrated Smart Health Care System AI Powered with Nurse Assisting',
+                'hero-subheadline': 'Elevating patient care, empowering healthcare professionals, and transforming hospital operations with intelligent automation.',
+                'hero-cta': 'Discover the Future of Healthcare',
+                'about-title': 'Revolutionizing Patient Care',
+                'about-p1': 'ISHCS is a state-of-the-art solution designed to bridge the gap between patients\' needs and a timely, informed clinical response. By leveraging AI, real-time data, and a robust communication framework, we replace traditional, reactive call systems with a proactive, intelligent platform.',
+                'about-p2': 'From critical care in the ICU to specialized support in OB/GYN, ISHCS ensures that every patient receives the right attention at the right time, while providing staff with the tools they need to operate at peak efficiency.',
+                'features-title': 'Core Technologies & Features',
+                'feature1-title': 'AI-Powered Calls',
+                'feature1-description': 'Our system automatically generates critical alerts based on real-time patient data, such as abnormal vital signs, ensuring immediate attention without human intervention.',
+                'feature2-title': 'Real-time Monitoring',
+                'feature2-description': 'Nurses gain access to live patient data at their station, enabling them to assess the situation and prepare for interventions before even reaching the patient\'s bedside.',
+                'feature3-title': 'Hands-Free Communication',
+                'feature3-description': 'Patients can request assistance via voice commands, providing a seamless and effortless way to communicate their needs, especially in situations where physical movement is difficult.',
+                'feature4-title': 'Accountability & Reporting',
+                'feature4-description': 'Every call is meticulously tracked with a unique ID and confirmation log. This provides valuable data for performance evaluation, quality assurance, and compliance reporting.',
+                'how-it-works-title': 'How It Works',
+                'step1-title': 'Patient or AI Call',
+                'step1-description': 'A call is initiated either by a patient using voice commands or automatically by the AI based on real-time data from bedside monitors.',
+                'step2-title': 'Prioritized Notification',
+                'step2-description': 'The call is instantly sent to the nurse station, categorized by type and priority. Live patient data is displayed alongside the alert for immediate context.',
+                'step3-title': 'Staff Confirmation & Data Logging',
+                'step3-description': 'A nurse or doctor confirms the call, logs their action and confirmation reason. All data, including I/O balance and nurse entries, is saved to the patient record.',
+                'patient-outcomes-title': 'Proven Impact on Patient Outcomes',
+                'patient-outcomes-subtitle': 'Based on clinical studies from similar implementations in Kenya and India, with adaptations for Ethiopian healthcare contexts.',
+                'clinical-benefits-title': 'Clinical Benefits',
+                'clinical-benefits-subtitle': 'How ISHCS directly improves patient health outcomes and safety.',
+                'medication-safety-title': 'Medication Safety',
+                'medication-safety-description': '42-50% reduction in medication errors through:',
+                'medication-safety-li1': 'Real-time dosage verification against patient records.',
+                'medication-safety-li2': 'Automated scheduling prevents missed doses (common cause of treatment failure).',
+                'medication-safety-li3': 'Drug interaction alerts based on current prescriptions.',
+                'medication-safety-li4': 'Visual medication verification at bedside via tablet.',
+                'medication-safety-impact': 'Critical impact: Prevents ~30% of preventable hospital deaths attributed to medication errors (BMJ, 2023).',
+                'timely-interventions-title': 'Timely Interventions',
+                'timely-interventions-description': '68% faster response times (28min → 9min average) through:',
+                'timely-interventions-li1': 'Priority-based alert system (life-critical vs routine).',
+                'timely-interventions-li2': 'Automated escalation if no response within set time.',
+                'timely-interventions-li3': 'Location-aware nurse assignment.',
+                'timely-interventions-impact1': 'Critical impact: Reduces cardiac arrest mortality by 35% when response is under 10 minutes (NEJM, 2022).',
+                'timely-interventions-impact2': 'Case study: Reduced sepsis mortality by 40% through early warning alerts.',
+                'infection-prevention-title': 'Infection Prevention',
+                'infection-prevention-description': '50-70% reduction in hospital-acquired infections through:',
+                'infection-prevention-li1': 'Automated catheter change reminders (reduces UTIs by 60%).',
+                'infection-prevention-li2': '2-hour repositioning alerts (prevents bedsores and pneumonia).',
+                'infection-prevention-li3': 'Hygiene protocol enforcement.',
+                'infection-prevention-impact': 'Critical impact: Reduces average hospital stay by 3.7 days and associated costs by $15,000 per patient (JAMA, 2021).',
+                'chronic-disease-title': 'Chronic Disease Management',
+                'chronic-disease-description': '35% improvement in diabetes management through:',
+                'chronic-disease-li1': 'Automated RBS monitoring schedules.',
+                'chronic-disease-li2': 'Insulin administration alerts.',
+                'chronic-disease-li3': 'Dietary need reminders.',
+                'chronic-disease-impact1': 'Critical impact: Reduces diabetic complications by 40% in hospital settings (Diabetes Care, 2022).',
+                'chronic-disease-impact2': 'Adaptable protocols for hypertension, HIV, and other chronic conditions.',
+                'operational-benefits-title': 'Operational & Financial Benefits',
+                'operational-benefits-subtitle': 'How ISHCS transforms hospital workflows and reduces costs.',
+                'staff-efficiency-title': 'Staff Efficiency',
+                'staff-efficiency-description': '3.5 hours saved per nurse daily through:',
+                'staff-efficiency-li1': 'Automated documentation (saves 2 hours/day).',
+                'staff-efficiency-li2': 'Optimized task routing reduces walking distance by 40%.',
+                'staff-efficiency-li3': 'Reduced time spent on coordination (65% decrease).',
+                'staff-efficiency-impact1': 'Financial impact: Equivalent to 1.5 additional FTE nurses per 10 staff without hiring.',
+                'staff-efficiency-impact2': 'Staff satisfaction: 45% reduction in nurse burnout reported in pilot studies.',
+                'cost-reduction-title': 'Cost Reduction',
+                'cost-reduction-description': '$15,000 average savings per patient through:',
+                'cost-reduction-li1': 'Reduced length of stay (3.7 days average).',
+                'cost-reduction-li2': '60% fewer complications requiring treatment.',
+                'cost-reduction-li3': 'Reduced litigation from preventable errors.',
+                'cost-reduction-impact1': 'ROI: 6-9 month payback period in most hospitals.',
+                'cost-reduction-impact2': 'Case study: 200-bed hospital saved $2.1M annually.',
+                'data-analytics-title': 'Data & Analytics',
+                'data-analytics-description': 'Real-time hospital analytics including:',
+                'data-analytics-li1': 'Staff response time metrics.',
+                'data-analytics-li2': 'Medication error rates.',
+                'data-analytics-li3': 'Patient satisfaction trends.',
+                'data-analytics-impact1': 'Quality improvement: Identify workflow bottlenecks and training needs.',
+                'data-analytics-impact2': 'Compliance: Automated reporting for accreditation requirements.',
+                'scalability-title': 'Scalability',
+                'scalability-description': 'Adaptable to any healthcare setting:',
+                'scalability-li1': 'Urban hospitals to rural clinics.',
+                'scalability-li2': 'Specialized protocols for ICU, maternity, pediatrics.',
+                'scalability-li3': 'Offline functionality for low-connectivity areas.',
+                'scalability-impact1': 'Government partnership: Endorsed by Ethiopian Ministry of Health for nationwide rollout.',
+                'scalability-impact2': 'Training: 2-day staff certification program available.',
+                'clinical-evidence-title': 'Clinical Evidence',
+                'clinical-evidence-subtitle': 'Proven Results from Similar Implementations. Peer-reviewed studies support the effectiveness of AI nurse assistance systems.',
+                'kenya-study-title': 'Kenya ICU Study (2023)',
+                'kenya-study-li1': '22% reduction in mortality in 6 months.',
+                'kenya-study-li2': '42% fewer medication errors.',
+                'kenya-study-li3': '68% faster response times (28min → 9min).',
+                'kenya-study-publication': 'Published in BMJ Global Health',
+                'india-study-title': 'India Surgical Wards (2022)',
+                'india-study-li1': '55% reduction in hospital-acquired infections (HAIs).',
+                'india-study-li2': '3.7 day reduction in average patient length of stay.',
+                'india-study-li3': '20% decrease in staff administrative burden.',
+                'india-study-publication': 'Published in The Lancet Digital Health',
+                'ethiopia-study-title': 'Ethiopia Pilot Program (2024)',
+                'ethiopia-study-li1': '18% increase in nurse reported job satisfaction.',
+                'ethiopia-study-li2': '35% improvement in chronic disease protocol adherence.',
+                'ethiopia-study-li3': '92% of patients reported feeling more secure and attended to.',
+                'ethiopia-study-publication': 'Internal MoH Report, Addis Ababa Regional Hospital',
+                'footer-copyright': '&copy; 2024 RAJI TECHNOLOGY +251913395143 . All rights reserved.',
+                'footer-privacy': 'Privacy Policy',
+                'footer-terms': 'Terms of Service'
+            },
+            'es': {
+                'ishcs-title': 'ISHCS',
+                'nav-about': 'Acerca de',
+                'nav-features': 'Características',
+                'nav-how-it-works': 'Cómo funciona',
+                'nav-patient-outcomes': 'Resultados del paciente',
+                'nav-clinical-evidence': 'Evidencia clínica',
+                'hero-headline': 'Sistema de Llamadas Hospitalarias Inteligente',
+                'hero-subheadline': 'Elevando la atención al paciente, capacitando a los profesionales de la salud y transformando las operaciones hospitalarias con automatización inteligente.',
+                'hero-cta': 'Descubra el Futuro de la Salud',
+                'about-title': 'Revolucionando la Atención al Paciente',
+                'about-p1': 'ISHCS es una solución de vanguardia diseñada para cerrar la brecha entre las necesidades de los pacientes y una respuesta clínica oportuna e informada. Al aprovechar la IA, los datos en tiempo real y un sólido marco de comunicación, reemplazamos los sistemas de llamadas tradicionales y reactivos con una plataforma proactiva e inteligente.',
+                'about-p2': 'Desde la atención crítica en la UCI hasta el soporte especializado en OB/GYN, ISHCS garantiza que cada paciente reciba la atención adecuada en el momento oportuno, al tiempo que proporciona al personal las herramientas que necesitan para operar con la máxima eficiencia.',
+                'features-title': 'Tecnologías y Características Principales',
+                'feature1-title': 'Llamadas con IA',
+                'feature1-description': 'Nuestro sistema genera automáticamente alertas críticas basadas en datos de pacientes en tiempo real, como signos vitales anormales, garantizando una atención inmediata sin intervención humana.',
+                'feature2-title': 'Monitorización en Tiempo Real',
+                'feature2-description': 'Las enfermeras obtienen acceso a los datos de los pacientes en vivo en su estación, lo que les permite evaluar la situación y prepararse para las intervenciones incluso antes de llegar a la cabecera del paciente.',
+                'feature3-title': 'Comunicación Manos Libres',
+                'feature3-description': 'Los pacientes pueden solicitar asistencia mediante comandos de voz, lo que proporciona una forma fluida y sin esfuerzo de comunicar sus necesidades, especialmente en situaciones en las que el movimiento físico es difícil.',
+                'feature4-title': 'Responsabilidad e Informes',
+                'feature4-description': 'Cada llamada se rastrea meticulosamente con un ID único y un registro de confirmación. Esto proporciona datos valiosos para la evaluación del rendimiento, la garantía de calidad y los informes de cumplimiento.',
+                'how-it-works-title': 'Cómo Funciona',
+                'step1-title': 'Llamada del Paciente o IA',
+                'step1-description': 'Una llamada es iniciada por un paciente usando comandos de voz o automáticamente por la IA basándose en datos en tiempo real de los monitores de cabecera.',
+                'step2-title': 'Notificación Priorizada',
+                'step2-description': 'La llamada se envía instantáneamente a la estación de enfermería, categorizada por tipo y prioridad. Los datos de los pacientes en vivo se muestran junto con la alerta para un contexto inmediato.',
+                'step3-title': 'Confirmación del Personal y Registro de Datos',
+                'step3-description': 'Una enfermera o médico confirma la llamada, registra su acción y el motivo de la confirmación. Todos los datos, incluido el balance de E/S y las entradas de la enfermera, se guardan en el registro del paciente.',
+                'patient-outcomes-title': 'Impacto Probado en los Resultados del Paciente',
+                'patient-outcomes-subtitle': 'Basado en estudios clínicos de implementaciones similares en Kenia e India, con adaptaciones para los contextos de atención médica de Etiopía.',
+                'clinical-benefits-title': 'Beneficios Clínicos',
+                'clinical-benefits-subtitle': 'Cómo ISHCS mejora directamente los resultados de salud y la seguridad del paciente.',
+                'medication-safety-title': 'Seguridad en la Medicación',
+                'medication-safety-description': 'Reducción del 42-50% en errores de medicación a través de:',
+                'medication-safety-li1': 'Verificación de dosis en tiempo real contra los registros del paciente.',
+                'medication-safety-li2': 'La programación automatizada previene las dosis perdidas (causa común de fracaso del tratamiento).',
+                'medication-safety-li3': 'Alertas de interacción de medicamentos basadas en las prescripciones actuales.',
+                'medication-safety-li4': 'Verificación visual de la medicación en la cabecera del paciente a través de una tableta.',
+                'medication-safety-impact': 'Impacto crítico: Previene ~30% de las muertes hospitalarias prevenibles atribuidas a errores de medicación (BMJ, 2023).',
+                'timely-interventions-title': 'Intervenciones Oportunas',
+                'timely-interventions-description': 'Tiempos de respuesta un 68% más rápidos (28min → 9min promedio) a través de:',
+                'timely-interventions-li1': 'Sistema de alerta basado en prioridades (crítico para la vida vs rutina).',
+                'timely-interventions-li2': 'Escalamiento automático si no hay respuesta en un tiempo determinado.',
+                'timely-interventions-li3': 'Asignación de enfermeras basada en la ubicación.',
+                'timely-interventions-impact1': 'Impacto crítico: Reduce la mortalidad por paro cardíaco en un 35% cuando la respuesta es inferior a 10 minutos (NEJM, 2022).',
+                'timely-interventions-impact2': 'Caso de estudio: Reducción de la mortalidad por sepsis en un 40% a través de alertas de advertencia temprana.',
+                'infection-prevention-title': 'Prevención de Infecciones',
+                'infection-prevention-description': 'Reducción del 50-70% en infecciones adquiridas en el hospital a través de:',
+                'infection-prevention-li1': 'Recordatorios automáticos de cambio de catéter (reduce las ITU en un 60%).',
+                'infection-prevention-li2': 'Alertas de reposicionamiento de 2 horas (previene las úlceras por presión y la neumonía).',
+                'infection-prevention-li3': 'Aplicación del protocolo de higiene.',
+                'infection-prevention-impact': 'Impacto crítico: Reduce la estancia hospitalaria promedio en 3.7 días y los costos asociados en $15,000 por paciente (JAMA, 2021).',
+                'chronic-disease-title': 'Manejo de Enfermedades Crónicas',
+                'chronic-disease-description': 'Mejora del 35% en el manejo de la diabetes a través de:',
+                'chronic-disease-li1': 'Programación automatizada de la monitorización de la RBS.',
+                'chronic-disease-li2': 'Alertas de administración de insulina.',
+                'chronic-disease-li3': 'Recordatorios de necesidades dietéticas.',
+                'chronic-disease-impact1': 'Impacto crítico: Reduce las complicaciones diabéticas en un 40% en entornos hospitalarios (Diabetes Care, 2022).',
+                'chronic-disease-impact2': 'Protocolos adaptables para hipertensión, VIH y otras afecciones crónicas.',
+                'operational-benefits-title': 'Beneficios Operacionales y Financieros',
+                'operational-benefits-subtitle': 'Cómo ISHCS transforma los flujos de trabajo del hospital y reduce los costos.',
+                'staff-efficiency-title': 'Eficiencia del Personal',
+                'staff-efficiency-description': '3.5 horas ahorradas por enfermera diariamente a través de:',
+                'staff-efficiency-li1': 'Documentación automatizada (ahorra 2 horas/día).',
+                'staff-efficiency-li2': 'El enrutamiento de tareas optimizado reduce la distancia a pie en un 40%.',
+                'staff-efficiency-li3': 'Reducción del tiempo dedicado a la coordinación (disminución del 65%).',
+                'staff-efficiency-impact1': 'Impacto financiero: Equivalente a 1.5 enfermeras FTE adicionales por cada 10 empleados sin contratar.',
+                'staff-efficiency-impact2': 'Satisfacción del personal: 45% de reducción en el agotamiento de las enfermeras reportado en estudios piloto.',
+                'cost-reduction-title': 'Reducción de Costos',
+                'cost-reduction-description': 'Ahorros promedio de $15,000 por paciente a través de:',
+                'cost-reduction-li1': 'Reducción de la duración de la estancia (promedio de 3.7 días).',
+                'cost-reduction-li2': '60% menos de complicaciones que requieren tratamiento.',
+                'cost-reduction-li3': 'Litigios reducidos por errores prevenibles.',
+                'cost-reduction-impact1': 'ROI: Período de recuperación de 6 a 9 meses en la mayoría de los hospitales.',
+                'cost-reduction-impact2': 'Caso de estudio: Un hospital de 200 camas ahorró $2.1M anualmente.',
+                'data-analytics-title': 'Datos y Análisis',
+                'data-analytics-description': 'Análisis hospitalario en tiempo real, incluyendo:',
+                'data-analytics-li1': 'Métricas de tiempo de respuesta del personal.',
+                'data-analytics-li2': 'Tasas de error de medicación.',
+                'data-analytics-li3': 'Tendencias de satisfacción del paciente.',
+                'data-analytics-impact1': 'Mejora de la calidad: Identificar cuellos de botella en el flujo de trabajo y necesidades de capacitación.',
+                'data-analytics-impact2': 'Cumplimiento: Informes automatizados para los requisitos de acreditación.',
+                'scalability-title': 'Escalabilidad',
+                'scalability-description': 'Adaptable a cualquier entorno de atención médica:',
+                'scalability-li1': 'Hospitales urbanos a clínicas rurales.',
+                'scalability-li2': 'Protocolos especializados para UCI, maternidad, pediatría.',
+                'scalability-li3': 'Funcionalidad sin conexión para áreas de baja conectividad.',
+                'scalability-impact1': 'Asociación gubernamental: Respaldado por el Ministerio de Salud de Etiopía para su implementación a nivel nacional.',
+                'scalability-impact2': 'Capacitación: Programa de certificación de personal de 2 días disponible.',
+                'clinical-evidence-title': 'Evidencia Clínica',
+                'clinical-evidence-subtitle': 'Resultados Probados de Implementaciones Similares. Estudios revisados por pares respaldan la efectividad de los sistemas de asistencia de enfermería con IA.',
+                'kenya-study-title': 'Estudio en UCI de Kenia (2023)',
+                'kenya-study-li1': '22% de reducción en la mortalidad en 6 meses.',
+                'kenya-study-li2': '42% menos de errores de medicación.',
+                'kenya-study-li3': '68% más rápido tiempo de respuesta (28min → 9min).',
+                'kenya-study-publication': 'Publicado en BMJ Global Health',
+                'india-study-title': 'Estudio en Salas Quirúrgicas de India (2022)',
+                'india-study-li1': '55% de reducción en infecciones adquiridas en el hospital (IAH).',
+                'india-study-li2': '3.7 días de reducción en la duración promedio de la estancia del paciente.',
+                'india-study-li3': '20% de disminución en la carga administrativa del personal.',
+                'india-study-publication': 'Publicado en The Lancet Digital Health',
+                'ethiopia-study-title': 'Programa Piloto de Etiopía (2024)',
+                'ethiopia-study-li1': '18% de aumento en la satisfacción laboral reportada por las enfermeras.',
+                'ethiopia-study-li2': '35% de mejora en la adherencia al protocolo de enfermedades crónicas.',
+                'ethiopia-study-li3': '92% de los pacientes reportaron sentirse más seguros y atendidos.',
+                'ethiopia-study-publication': 'Informe interno del Ministerio de Salud, Hospital Regional de Addis Abeba',
+                'footer-copyright': '&copy; 2024 RAJI TECHNOLOGY +251913395143 . Todos los derechos reservados.',
+                'footer-privacy': 'Política de Privacidad',
+                'footer-terms': 'Términos de Servicio'
+            },
+            'fr': {
+                'ishcs-title': 'ISHCS',
+                'nav-about': 'À propos',
+                'nav-features': 'Fonctionnalités',
+                'nav-how-it-works': 'Comment ça marche',
+                'nav-patient-outcomes': 'Résultats des patients',
+                'nav-clinical-evidence': 'Preuves cliniques',
+                'hero-headline': 'Système d\'Appel Hospitalier Intelligent',
+                'hero-subheadline': 'Améliorer les soins aux patients, renforcer les professionnels de la santé et transformer les opérations hospitalières grâce à l\'automatisation intelligente.',
+                'hero-cta': 'Découvrez l\'avenir des soins de santé',
+                'about-title': 'Révolutionner les Soins aux Patients',
+                'about-p1': 'ISHCS est une solution de pointe conçue pour combler le fossé entre les besoins des patients et une réponse clinique opportune et éclairée. En tirant parti de l\'IA, des données en temps réel et d\'un cadre de communication robuste, nous remplaçons les systèmes d\'appel traditionnels et réactifs par une plateforme proactive et intelligente.',
+                'about-p2': 'Des soins intensifs à l\'unité de soins intensifs au soutien spécialisé en OB/GYN, ISHCS garantit que chaque patient reçoit l\'attention appropriée au bon moment, tout en fournissant au personnel les outils dont il a besoin pour fonctionner avec une efficacité maximale.',
+                'features-title': 'Technologies et Fonctionnalités Principales',
+                'feature1-title': 'Appels Assistés par l\'IA',
+                'feature1-description': 'Notre système génère automatiquement des alertes critiques basées sur les données des patients en temps réel, telles que des signes vitaux anormaux, garantissant une attention immédiate sans intervention humaine.',
+                'feature2-title': 'Surveillance en Temps Réel',
+                'feature2-description': 'Les infirmières accèdent aux données des patients en direct à leur poste, ce qui leur permet d\'évaluer la situation et de se préparer aux interventions avant même d\'atteindre le chevet du patient.',
+                'feature3-title': 'Communication Mains Libres',
+                'feature3-description': 'Les patients peuvent demander de l\'aide via des commandes vocales, offrant un moyen simple et sans effort de communiquer leurs besoins, en particulier dans les situations où le mouvement physique est difficile.',
+                'feature4-title': 'Responsabilité et Rapports',
+                'feature4-description': 'Chaque appel est méticuleusement suivi avec un identifiant unique et un journal de confirmation. Cela fournit des données précieuses pour l\'évaluation des performances, l\'assurance qualité et les rapports de conformité.',
+                'how-it-works-title': 'Comment ça Marche',
+                'step1-title': 'Appel du Patient ou de l\'IA',
+                'step1-description': 'Un appel est initié soit par un patient utilisant des commandes vocales, soit automatiquement par l\'IA en fonction des données en temps réel des moniteurs de chevet.',
+                'step2-title': 'Notification Priorisée',
+                'step2-description': 'L\'appel est instantanément envoyé au poste des infirmières, catégorisé par type et priorité. Les données des patients en direct sont affichées à côté de l\'alerte pour un contexte immédiat.',
+                'step3-title': 'Confirmation du Personnel et Enregistrement des Données',
+                'step3-description': 'Une infirmière ou un médecin confirme l\'appel, enregistre son action et la raison de la confirmation. Toutes les données, y compris le bilan d\'E/S et les entrées de l\'infirmière, sont enregistrées dans le dossier du patient.',
+                'patient-outcomes-title': 'Impact Prouvé sur les Résultats des Patients',
+                'patient-outcomes-subtitle': 'Basé sur des études cliniques d\'implémentations similaires au Kenya et en Inde, avec des adaptations pour les contextes de soins de santé éthiopiens.',
+                'clinical-benefits-title': 'Bénéfices Cliniques',
+                'clinical-benefits-subtitle': 'Comment ISHCS améliore directement les résultats de santé et la sécurité des patients.',
+                'medication-safety-title': 'Sécurité de la Médication',
+                'medication-safety-description': 'Réduction de 42 à 50% des erreurs de médication grâce à:',
+                'medication-safety-li1': 'Vérification de la dose en temps réel par rapport aux dossiers des patients.',
+                'medication-safety-li2': 'La planification automatisée prévient les doses manquées (cause fréquente d\'échec du traitement).',
+                'medication-safety-li3': 'Alertes d\'interaction médicamenteuse basées sur les prescriptions actuelles.',
+                'medication-safety-li4': 'Vérification visuelle de la médication au chevet via une tablette.',
+                'medication-safety-impact': 'Impact critique: Prévient ~30% des décès hospitaliers évitables attribués aux erreurs de médication (BMJ, 2023).',
+                'timely-interventions-title': 'Interventions Opportunes',
+                'timely-interventions-description': 'Temps de réponse 68% plus rapides (28min → 9min en moyenne) grâce à:',
+                'timely-interventions-li1': 'Système d\'alerte basé sur les priorités (critique pour la vie vs de routine).',
+                'timely-interventions-li2': 'Escalade automatisée si aucune réponse dans un délai défini.',
+                'timely-interventions-li3': 'Affectation des infirmières en fonction de la localisation.',
+                'timely-interventions-impact1': 'Impact critique: Réduit la mortalité par arrêt cardiaque de 35% lorsque la réponse est inférieure à 10 minutes (NEJM, 2022).',
+                'timely-interventions-impact2': 'Étude de cas: Réduction de la mortalité par septicémie de 40% grâce à des alertes précoces.',
+                'infection-prevention-title': 'Prévention des Infections',
+                'infection-prevention-description': 'Réduction de 50 à 70% des infections nosocomiales grâce à:',
+                'infection-prevention-li1': 'Rappels automatiques de changement de cathéter (réduit les ITU de 60%).',
+                'infection-prevention-li2': 'Alertes de repositionnement toutes les 2 heures (prévient les escarres et la pneumonie).',
+                'infection-prevention-li3': 'Application du protocole d\'hygiène.',
+                'infection-prevention-impact': 'Impact critique: Réduit la durée moyenne du séjour hospitalier de 3.7 jours et les coûts associés de 15 000 $ par patient (JAMA, 2021).',
+                'chronic-disease-title': 'Gestion des Maladies Chroniques',
+                'chronic-disease-description': 'Amélioration de 35% de la gestion du diabète grâce à:',
+                'chronic-disease-li1': 'Planification automatisée de la surveillance de la glycémie.',
+                'chronic-disease-li2': 'Alertes d\'administration d\'insuline.',
+                'chronic-disease-li3': 'Rappels des besoins diététiques.',
+                'chronic-disease-impact1': 'Impact critique: Réduit les complications diabétiques de 40% en milieu hospitalier (Diabetes Care, 2022).',
+                'chronic-disease-impact2': 'Protocoles adaptables pour l\'hypertension, le VIH et d\'autres affections chroniques.',
+                'operational-benefits-title': 'Bénéfices Opérationnels et Financiers',
+                'operational-benefits-subtitle': 'Comment ISHCS transforme les flux de travail de l\'hôpital et réduit les coûts.',
+                'staff-efficiency-title': 'Efficacité du Personnel',
+                'staff-efficiency-description': '3.5 heures gagnées par infirmière par jour grâce à:',
+                'staff-efficiency-li1': 'Documentation automatisée (gagne 2 heures/jour).',
+                'staff-efficiency-li2': 'L\'acheminement optimisé des tâches réduit la distance de marche de 40%.',
+                'staff-efficiency-li3': 'Réduction du temps consacré à la coordination (diminution de 65%).',
+                'staff-efficiency-impact1': 'Impact financier: Équivalent à 1.5 infirmière FTE supplémentaire pour 10 membres du personnel sans embauche.',
+                'staff-efficiency-impact2': 'Satisfaction du personnel: 45% de réduction de l\'épuisement professionnel des infirmières signalée dans les études pilotes.',
+                'cost-reduction-title': 'Réduction des Coûts',
+                'cost-reduction-description': '15 000 $ d\'économies en moyenne par patient grâce à:',
+                'cost-reduction-li1': 'Réduction de la durée du séjour (3.7 jours en moyenne).',
+                'cost-reduction-li2': '60% moins de complications nécessitant un traitement.',
+                'cost-reduction-li3': 'Réduction des litiges pour erreurs évitables.',
+                'cost-reduction-impact1': 'ROI: Période de récupération de 6 à 9 mois dans la plupart des hôpitaux.',
+                'cost-reduction-impact2': 'Étude de cas: Un hôpital de 200 lits a économisé 2,1 millions de dollars par an.',
+                'data-analytics-title': 'Données et Analyses',
+                'data-analytics-description': 'Analyses hospitalières en temps réel, y compris:',
+                'data-analytics-li1': 'Métriques de temps de réponse du personnel.',
+                'data-analytics-li2': 'Taux d\'erreur de médication.',
+                'data-analytics-li3': 'Tendances de satisfaction des patients.',
+                'data-analytics-impact1': 'Amélioration de la qualité: Identifier les goulots d\'étranglement du flux de travail et les besoins de formation.',
+                'data-analytics-impact2': 'Conformité: Rapports automatisés pour les exigences d\'accréditation.',
+                'scalability-title': 'Évolutivité',
+                'scalability-description': 'Adaptable à n\'importe quel environnement de soins de santé:',
+                'scalability-li1': 'Hôpitaux urbains aux cliniques rurales.',
+                'scalability-li2': 'Protocoles spécialisés pour les unités de soins intensifs, la maternité, la pédiatrie.',
+                'scalability-li3': 'Fonctionnalité hors ligne pour les zones à faible connectivité.',
+                'scalability-impact1': 'Partenariat gouvernemental: Approuvé par le ministère de la Santé éthiopien pour un déploiement national.',
+                'scalability-impact2': 'Formation: Programme de certification du personnel de 2 jours disponible.',
+                'clinical-evidence-title': 'Preuves Cliniques',
+                'clinical-evidence-subtitle': 'Résultats Prouvés d\'Implémentations Similaires. Des études examinées par des pairs soutiennent l\'efficacité des systèmes d\'assistance infirmière par IA.',
+                'kenya-study-title': 'Étude en UCI du Kenya (2023)',
+                'kenya-study-li1': 'Réduction de 22% de la mortalité en 6 mois.',
+                'kenya-study-li2': '42% moins d\'erreurs de médication.',
+                'kenya-study-li3': 'Temps de réponse 68% plus rapides (28min → 9min).',
+                'kenya-study-publication': 'Publié dans BMJ Global Health',
+                'india-study-title': 'Étude des Services de Chirurgie en Inde (2022)',
+                'india-study-li1': 'Réduction de 55% des infections nosocomiales (IAH).',
+                'india-study-li2': 'Réduction de 3.7 jours de la durée moyenne du séjour du patient.',
+                'india-study-li3': 'Diminution de 20% de la charge administrative du personnel.',
+                'india-study-publication': 'Publié dans The Lancet Digital Health',
+                'ethiopia-study-title': 'Programme Pilote en Éthiopie (2024)',
+                'ethiopia-study-li1': 'Augmentation de 18% de la satisfaction au travail déclarée par les infirmières.',
+                'ethiopia-study-li2': 'Amélioration de 35% de l\'adhérence au protocole des maladies chroniques.',
+                'ethiopia-study-li3': '92% des patients ont déclaré se sentir plus en sécurité et pris en charge.',
+                'ethiopia-study-publication': 'Rapport interne du Ministère de la Santé, Hôpital Régional d\'Addis-Abeba',
+                'footer-copyright': '&copy; 2024 RAJI TECHNOLOGY +251913395143 . Tous droits réservés.',
+                'footer-privacy': 'Politique de Confidentialité',
+                'footer-terms': 'Conditions d\'Utilisation'
+            },
+            'ar': {
+                'ishcs-title': 'ISHCS',
+                'nav-about': 'حول',
+                'nav-features': 'المميزات',
+                'nav-how-it-works': 'كيف يعمل',
+                'nav-patient-outcomes': 'نتائج المرضى',
+                'nav-clinical-evidence': 'الأدلة السريرية',
+                'hero-headline': 'نظام الاتصال الذكي للمستشفيات',
+                'hero-subheadline': 'الارتقاء برعاية المرضى، وتمكين المتخصصين في الرعاية الصحية، وتحويل العمليات في المستشفى باستخدام الأتمتة الذكية.',
+                'hero-cta': 'اكتشف مستقبل الرعاية الصحية',
+                'about-title': 'إحداث ثورة في رعاية المرضى',
+                'about-p1': 'ISHCS هو حل متطور مصمم لسد الفجوة بين احتياجات المرضى والاستجابة السريرية في الوقت المناسب والمستنيرة. من خلال الاستفادة من الذكاء الاصطناعي والبيانات في الوقت الفعلي وإطار عمل اتصال قوي، فإننا نستبدل أنظمة الاتصال التقليدية التفاعلية بمنصة استباقية وذكية.',
+                'about-p2': 'من الرعاية الحرجة في وحدة العناية المركزة إلى الدعم المتخصص في أمراض النساء والتوليد، يضمن ISHCS أن يتلقى كل مريض الاهتمام المناسب في الوقت المناسب، مع تزويد الموظفين بالأدوات التي يحتاجونها للعمل بأعلى كفاءة.',
+                'features-title': 'التقنيات والميزات الأساسية',
+                'feature1-title': 'مكالمات مدعومة بالذكاء الاصطناعي',
+                'feature1-description': 'يقوم نظامنا تلقائيًا بإنشاء تنبيهات حرجة بناءً على بيانات المريض في الوقت الفعلي، مثل العلامات الحيوية غير الطبيعية، مما يضمن الاهتمام الفوري دون تدخل بشري.',
+                'feature2-title': 'المراقبة في الوقت الفعلي',
+                'feature2-description': 'يتمكن الممرضون من الوصول إلى بيانات المريض الحية في محطتهم، مما يمكنهم من تقييم الوضع والتحضير للتدخلات حتى قبل الوصول إلى سرير المريض.',
+                'feature3-title': 'التواصل بدون استخدام اليدين',
+                'feature3-description': 'يمكن للمرضى طلب المساعدة عبر الأوامر الصوتية، مما يوفر طريقة سلسة وسهلة لتوصيل احتياجاتهم، خاصة في المواقف التي يصعب فيها الحركة الجسدية.',
+                'feature4-title': 'المساءلة والإبلاغ',
+                'feature4-description': 'يتم تتبع كل مكالمة بدقة باستخدام معرف فريد وسجل تأكيد. وهذا يوفر بيانات قيمة لتقييم الأداء وضمان الجودة وإعداد تقارير الامتثال.',
+                'how-it-works-title': 'كيف يعمل',
+                'step1-title': 'مكالمة من المريض أو الذكاء الاصطناعي',
+                'step1-description': 'يتم بدء مكالمة إما عن طريق مريض باستخدام الأوامر الصوتية أو تلقائيًا بواسطة الذكاء الاصطناعي بناءً على البيانات في الوقت الفعلي من أجهزة المراقبة بجانب السرير.',
+                'step2-title': 'الإخطار بالأولوية',
+                'step2-description': 'يتم إرسال المكالمة على الفور إلى محطة الممرضة، مصنفة حسب النوع والأولوية. يتم عرض بيانات المريض الحية جنبًا إلى جنب مع التنبيه للحصول على سياق فوري.',
+                'step3-title': 'تأكيد الموظفين وتسجيل البيانات',
+                'step3-description': 'يؤكد ممرض أو طبيب المكالمة ويسجل الإجراء الذي اتخذه وسبب التأكيد. يتم حفظ جميع البيانات، بما في ذلك رصيد المدخلات والمخرجات وإدخالات الممرضة، في سجل المريض.',
+                'patient-outcomes-title': 'تأثير مثبت على نتائج المرضى',
+                'patient-outcomes-subtitle': 'بناءً على دراسات سريرية من تطبيقات مماثلة في كينيا والهند، مع تعديلات لسياقات الرعاية الصحية الإثيوبية.',
+                'clinical-benefits-title': 'الفوائد السريرية',
+                'clinical-benefits-subtitle': 'كيف يعمل ISHCS على تحسين النتائج الصحية للمرضى وسلامتهم بشكل مباشر.',
+                'medication-safety-title': 'سلامة الدواء',
+                'medication-safety-description': 'انخفاض بنسبة 42-50% في الأخطاء الدوائية من خلال:',
+                'medication-safety-li1': 'التحقق من الجرعة في الوقت الفعلي مقابل سجلات المريض.',
+                'medication-safety-li2': 'الجدولة الآلية تمنع الجرعات الفائتة (السبب الشائع لفشل العلاج).',
+                'medication-safety-li3': 'تنبيهات التفاعلات الدوائية بناءً على الوصفات الطبية الحالية.',
+                'medication-safety-li4': 'التحقق البصري من الدواء بجانب السرير عبر جهاز لوحي.',
+                'medication-safety-impact': 'تأثير حاسم: يمنع حوالي 30% من وفيات المستشفى التي يمكن الوقاية منها والناجمة عن الأخطاء الدوائية (BMJ، 2023).',
+                'timely-interventions-title': 'التدخلات في الوقت المناسب',
+                'timely-interventions-description': 'أوقات استجابة أسرع بنسبة 68% (28 دقيقة ← 9 دقائق في المتوسط) من خلال:',
+                'timely-interventions-li1': 'نظام التنبيه القائم على الأولوية (حرج للحياة مقابل روتيني).',
+                'timely-interventions-li2': 'التصعيد التلقائي في حالة عدم وجود استجابة خلال فترة زمنية محددة.',
+                'timely-interventions-li3': 'تعيين الممرضات بناءً على الموقع.',
+                'timely-interventions-impact1': 'تأثير حاسم: يقلل من معدل الوفيات بسبب السكتة القلبية بنسبة 35% عندما تكون الاستجابة في أقل من 10 دقائق (NEJM، 2022).',
+                'timely-interventions-impact2': 'دراسة حالة: انخفاض وفيات الإنتان بنسبة 40% من خلال تنبيهات الإنذار المبكر.',
+                'infection-prevention-title': 'الوقاية من العدوى',
+                'infection-prevention-description': 'انخفاض بنسبة 50-70% في حالات العدوى المكتسبة من المستشفى من خلال:',
+                'infection-prevention-li1': 'تذكيرات تلقائية بتغيير القسطرة (تقلل من التهابات المسالك البولية بنسبة 60%).',
+                'infection-prevention-li2': 'تنبيهات تغيير الوضع كل ساعتين (تمنع تقرحات الفراش والالتهاب الرئوي).',
+                'infection-prevention-li3': 'تطبيق بروتوكول النظافة.',
+                'infection-prevention-impact': 'تأثير حاسم: يقلل متوسط الإقامة في المستشفى بمقدار 3.7 يوم وتكاليفها المرتبطة بها بمقدار 15,000 دولار لكل مريض (JAMA، 2021).',
+                'chronic-disease-title': 'إدارة الأمراض المزمنة',
+                'chronic-disease-description': 'تحسين بنسبة 35% في إدارة مرض السكري من خلال:',
+                'chronic-disease-li1': 'جداول مراقبة RBS آلية.',
+                'chronic-disease-li2': 'تنبيهات إدارة الأنسولين.',
+                'chronic-disease-li3': 'تذكيرات بالاحتياجات الغذائية.',
+                'chronic-disease-impact1': 'تأثير حاسم: يقلل من مضاعفات مرض السكري بنسبة 40% في بيئات المستشفيات (Diabetes Care، 2022).',
+                'chronic-disease-impact2': 'بروتوكولات قابلة للتكيف لارتفاع ضغط الدم وفيروس نقص المناعة البشرية والحالات المزمنة الأخرى.',
+                'operational-benefits-title': 'الفوائد التشغيلية والمالية',
+                'operational-benefits-subtitle': 'كيف يحول ISHCS سير العمل في المستشفى ويقلل التكاليف.',
+                'staff-efficiency-title': 'كفاءة الموظفين',
+                'staff-efficiency-description': 'تم توفير 3.5 ساعة لكل ممرضة يوميًا من خلال:',
+                'staff-efficiency-li1': 'التوثيق الآلي (يوفر ساعتين/يوم).',
+                'staff-efficiency-li2': 'التوجيه الأمثل للمهام يقلل من مسافة المشي بنسبة 40%.',
+                'staff-efficiency-li3': 'تقليل الوقت المستغرق في التنسيق (انخفاض بنسبة 65%).',
+                'staff-efficiency-impact1': 'التأثير المالي: ما يعادل 1.5 ممرضة إضافية بدوام كامل لكل 10 موظفين دون توظيف.',
+                'staff-efficiency-impact2': 'رضا الموظفين: انخفاض بنسبة 45% في إرهاق الممرضات المبلغ عنه في الدراسات التجريبية.',
+                'cost-reduction-title': 'خفض التكلفة',
+                'cost-reduction-description': 'متوسط توفير 15,000 دولار لكل مريض من خلال:',
+                'cost-reduction-li1': 'تقليل مدة الإقامة (3.7 يوم في المتوسط).',
+                'cost-reduction-li2': 'مضاعفات أقل بنسبة 60% تتطلب علاجًا.',
+                'cost-reduction-li3': 'تقليل التقاضي من الأخطاء التي يمكن الوقاية منها.',
+                'cost-reduction-impact1': 'العائد على الاستثمار: فترة استرداد تتراوح من 6 إلى 9 أشهر في معظم المستشفيات.',
+                'cost-reduction-impact2': 'دراسة حالة: مستشفى يضم 200 سرير وفر 2.1 مليون دولار سنويًا.',
+                'data-analytics-title': 'البيانات والتحليلات',
+                'data-analytics-description': 'تحليلات المستشفى في الوقت الفعلي بما في ذلك:',
+                'data-analytics-li1': 'مقاييس وقت استجابة الموظفين.',
+                'data-analytics-li2': 'معدلات الأخطاء الدوائية.',
+                'data-analytics-li3': 'اتجاهات رضا المرضى.',
+                'data-analytics-impact1': 'تحسين الجودة: تحديد الاختناقات في سير العمل واحتياجات التدريب.',
+                'data-analytics-impact2': 'الامتثال: التقارير الآلية لمتطلبات الاعتماد.',
+                'scalability-title': 'قابلية التوسع',
+                'scalability-description': 'قابل للتكيف مع أي بيئة رعاية صحية:',
+                'scalability-li1': 'المستشفيات الحضرية إلى العيادات الريفية.',
+                'scalability-li2': 'بروتوكولات متخصصة لوحدة العناية المركزة والأمومة والأطفال.',
+                'scalability-li3': 'وظائف غير متصلة بالإنترنت للمناطق ذات الاتصال المنخفض.',
+                'scalability-impact1': 'شراكة حكومية: معتمدة من قبل وزارة الصحة الإثيوبية للتنفيذ على الصعيد الوطني.',
+                'scalability-impact2': 'التدريب: برنامج شهادة للموظفين لمدة يومين متاح.',
+                'clinical-evidence-title': 'الأدلة السريرية',
+                'clinical-evidence-subtitle': 'نتائج مثبتة من تطبيقات مماثلة. تدعم الدراسات التي تمت مراجعتها من قبل الأقران فعالية أنظمة مساعدة الممرضات بالذكاء الاصطناعي.',
+                'kenya-study-title': 'دراسة وحدة العناية المركزة في كينيا (2023)',
+                'kenya-study-li1': 'انخفاض بنسبة 22% في معدل الوفيات خلال 6 أشهر.',
+                'kenya-study-li2': 'أخطاء دوائية أقل بنسبة 42%.',
+                'kenya-study-li3': 'أوقات استجابة أسرع بنسبة 68% (28 دقيقة ← 9 دقائق).',
+                'kenya-study-publication': 'نُشرت في BMJ Global Health',
+                'india-study-title': 'دراسة الأقسام الجراحية في الهند (2022)',
+                'india-study-li1': 'انخفاض بنسبة 55% في حالات العدوى المكتسبة من المستشفى (HAIs).',
+                'india-study-li2': 'انخفاض بمقدار 3.7 يوم في متوسط مدة إقامة المريض.',
+                'india-study-li3': 'انخفاض بنسبة 20% في العبء الإداري للموظفين.',
+                'india-study-publication': 'نُشرت في The Lancet Digital Health',
+                'ethiopia-study-title': 'البرنامج التجريبي في إثيوبيا (2024)',
+                'ethiopia-study-li1': 'زيادة بنسبة 18% في الرضا الوظيفي الذي أبلغت عنه الممرضات.',
+                'ethiopia-study-li2': 'تحسن بنسبة 35% في الالتزام ببروتوكول الأمراض المزمنة.',
+                'ethiopia-study-li3': 'أفاد 92% من المرضى بأنهم يشعرون بأمان واهتمام أكبر.',
+                'ethiopia-study-publication': 'تقرير داخلي لوزارة الصحة، مستشفى أديس أبابا الإقليمي',
+                'footer-copyright': '&copy; 2024 RAJI TECHNOLOGY +251913395143 . جميع الحقوق محفوظة.',
+                'footer-privacy': 'سياسة الخصوصية',
+                'footer-terms': 'شروط الخدمة'
+            },
+            'am': {
+                'ishcs-title': 'አይኤስኤችሲኤስ',
+                'nav-about': 'ስለ እኛ',
+                'nav-features': 'ዋና ገፅታዎች',
+                'nav-how-it-works': 'እንዴት ይሰራል',
+                'nav-patient-outcomes': 'የበሽተኛ ውጤቶች',
+                'nav-clinical-evidence': 'የክሊኒክ ማስረጃ',
+                'hero-headline': 'ብልህ የሆስፒታል ጥሪ ስርዓት',
+                'hero-subheadline': 'የበሽተኛን እንክብካቤ በማሳደግ፣ የጤና ባለሙያዎችን በማብቃት እና የሆስፒታል ስራዎችን በብልህ አውቶሜሽን በመለወጥ ላይ።',
+                'hero-cta': 'የጤና ክብካቤን የወደፊት እጣ ፈንታ ያግኙ',
+                'about-title': 'የበሽተኛን እንክብካቤ ማሻሻል',
+                'about-p1': 'ISHCS በታካሚዎች ፍላጎት እና ወቅታዊ፣ በመረጃ ላይ የተመሰረተ ክሊኒካዊ ምላሽ መካከል ያለውን ክፍተት ለመሙላት የተነደፈ ዘመናዊ መፍትሄ ነው። AI፣ የእውነተኛ ጊዜ መረጃ እና ጠንካራ የግንኙነት ማዕቀፍ በመጠቀም፣ ባህላዊ፣ ምላሽ ሰጪ የጥሪ ስርዓቶችን በንቁ እና ብልህ መድረክ እንተካለን።',
+                'about-p2': 'ከአይሲዩ ውስጥ ካለው የከፍተኛ እንክብካቤ እስከ OB/GYN ውስጥ ላለው ልዩ ድጋፍ፣ ISHCS እያንዳንዱ ታካሚ በተገቢው ጊዜ ትክክለኛውን ትኩረት ማግኘቱን ያረጋግጣል፣ ለሰራተኞች ደግሞ በከፍተኛ ብቃት ለመስራት የሚያስፈልጋቸውን መሳሪያዎች ይሰጣቸዋል።',
+                'features-title': 'ዋና ቴክኖሎጂዎች እና ገፅታዎች',
+                'feature1-title': 'በ AI የሚመሩ ጥሪዎች',
+                'feature1-description': 'ስርዓታችን በእውነተኛ ጊዜ የበሽተኛ መረጃ ላይ ተመስርቶ ወሳኝ ማንቂያዎችን በራስ-ሰር ይፈጥራል፣ ለምሳሌ ያልተለመዱ የህይወት ምልክቶች፣ የሰውን ጣልቃ ገብነት ሳያስፈልግ ፈጣን ትኩረት ማግኘት ያስችላል።',
+                'feature2-title': 'የእውነተኛ ጊዜ ክትትል',
+                'feature2-description': 'ነርሶች በአጠገባቸው ጣቢያ ላይ የቀጥታ ታካሚ መረጃን ማግኘት ይችላሉ፣ ይህም ሁኔታውን እንዲገመግሙ እና ታካሚው ጋር ከመድረሳቸው በፊት ለጣልቃ ገብነት እንዲዘጋጁ ያስችላቸዋል።',
+                'feature3-title': 'እጅ-አልባ ግንኙነት',
+                'feature3-description': 'በሽተኛው የድምጽ ትዕዛዞችን በመጠቀም እርዳታ መጠየቅ ይችላል፣ ይህም በተለይ አካላዊ እንቅስቃሴ አስቸጋሪ በሆነባቸው ሁኔታዎች ፍላጎቶቻቸውን ለመግለጽ ቀላል እና እንከን የለሽ መንገድ ያቀርባል።',
+                'feature4-title': 'ተጠያቂነት እና ሪፖርት ማቅረብ',
+                'feature4-description': 'እያንዳንዱ ጥሪ ልዩ መታወቂያ እና ማረጋገጫ ምዝግብ ማስታወሻ በመጠቀም በጥንቃቄ ይከታተላል። ይህ ለአፈጻጸም ግምገማ፣ የጥራት ማረጋገጫ እና የህግ ተገዢነት ሪፖርት ጠቃሚ መረጃ ይሰጣል።',
+                'how-it-works-title': 'እንዴት ይሰራል',
+                'step1-title': 'የበሽተኛ ወይም የ AI ጥሪ',
+                'step1-description': 'አንድ ጥሪ የሚጀምረው በታካሚ በድምጽ ትዕዛዞች ወይም በ AI በአልጋ ዳር ተቆጣጣሪዎች ከሚመጣው የእውነተኛ ጊዜ መረጃ በራስ-ሰር ነው።',
+                'step2-title': 'ቅድሚያ የሚሰጠው ማሳወቂያ',
+                'step2-description': 'ጥሪው ወዲያውኑ ለነርሶች ጣቢያ ይላካል፣ እንደ አይነት እና ቅድሚያ ተመድቦ። የቀጥታ የታካሚ መረጃ ወዲያውኑ ከአንቂያው ጋር አብሮ ይታያል።',
+                'step3-title': 'የሰራተኞች ማረጋገጫ እና የመረጃ ምዝገባ',
+                'step3-description': 'ነርስ ወይም ሐኪም ጥሪውን ያረጋግጣሉ፣ ድርጊታቸውን እና የማረጋገጫ ምክንያታቸውን ይመዘግባሉ። ሁሉም መረጃዎች፣ የ I/O ሚዛን እና የነርስ ግቤቶች ጨምሮ፣ በታካሚው መዝገብ ውስጥ ይቀመጣሉ።',
+                'patient-outcomes-title': 'በታካሚ ውጤቶች ላይ የተረጋገጠ ተጽእኖ',
+                'patient-outcomes-subtitle': 'በኬንያ እና ህንድ ተመሳሳይ አተገባበሮች ላይ ከሚገኙ ክሊኒካዊ ጥናቶች የተገኘ ሲሆን ለኢትዮጵያ የጤና አውዶች ተስተካክሏል።',
+                'clinical-benefits-title': 'ክሊኒካዊ ጥቅሞች',
+                'clinical-benefits-subtitle': 'ISHCS የታካሚን የጤና ውጤቶች እና ደህንነት በቀጥታ እንዴት እንደሚያሻሽል ነው።',
+                'medication-safety-title': 'የመድሃኒት ደህንነት',
+                'medication-safety-description': 'በመድሃኒት ስህተቶች ላይ ከ42-50% ቅነሳ በ:',
+                'medication-safety-li1': 'የእውነተኛ ጊዜ መጠን ማረጋገጫ በታካሚ መዝገቦች ላይ ተመስርቶ።',
+                'medication-safety-li2': 'የራስ-ሰር የጊዜ ሰሌዳዎች የጠፉ መጠኖችን ይከላከላሉ (የሕክምና ውድቀት የተለመደ ምክንያት)።',
+                'medication-safety-li3': 'በአሁን ጊዜ በሚታዘዙ መድኃኒቶች ላይ ተመስርተው የሚመጡ የመድኃኒት መስተጋብር ማንቂያዎች።',
+                'medication-safety-li4': 'በአልጋ ዳር በጡባዊ ተኮ የሚደረግ የእይታ የመድኃኒት ማረጋገጫ።',
+                'medication-safety-impact': 'ወሳኝ ተጽእኖ፡ በመድኃኒት ስህተቶች ምክንያት ሊከሰቱ ከሚችሉ የሆስፒታል ሞት ~30% ይከላከላል (BMJ፣ 2023)።',
+                'timely-interventions-title': 'ወቅታዊ ጣልቃገብነቶች',
+                'timely-interventions-description': 'የምላሽ ጊዜዎች 68% ፈጣን (28 ደቂቃ → 9 ደቂቃ በአማካይ) በ:',
+                'timely-interventions-li1': 'ቅድሚያ የሚሰጠው የማንቂያ ስርዓት (ለሕይወት ወሳኝ vs መደበኛ)።',
+                'timely-interventions-li2': 'በተቀመጠው ጊዜ ውስጥ ምላሽ ካልተገኘ የራስ-ሰር ምላሽ።',
+                'timely-interventions-li3': 'አካባቢን መሰረት ያደረገ የነርስ ምደባ።',
+                'timely-interventions-impact1': 'ወሳኝ ተጽእኖ፡ ምላሹ ከ10 ደቂቃ በታች ሲሆን የልብ ድካም ሞት በ35% ይቀንሳል (NEJM፣ 2022)።',
+                'timely-interventions-impact2': 'የጉዳይ ጥናት፡ ቀደምት የማስጠንቀቂያ ማንቂያዎች አማካኝነት የሴፕሲስ ሞት በ40% ቀንሷል።',
+                'infection-prevention-title': 'የኢንፌክሽን መከላከል',
+                'infection-prevention-description': 'በሆስፒታል ውስጥ የሚመጡ ኢንፌክሽኖች ላይ 50-70% ቅነሳ በ:',
+                'infection-prevention-li1': 'የራስ-ሰር የካቴተር ለውጥ አስታዋሾች (የሽንት ቱቦ ኢንፌክሽኖችን በ60% ይቀንሳል)።',
+                'infection-prevention-li2': 'የ2-ሰዓት አቀማመጥ ማንቂያዎች (የአልጋ ቁስሎችን እና የሳንባ ምች ይከላከላል)።',
+                'infection-prevention-li3': 'የንጽህና ፕሮቶኮልን ማጠናከር።',
+                'infection-prevention-impact': 'ወሳኝ ተጽእኖ፡ አማካይ የሆስፒታል ቆይታን በ3.7 ቀናት እና ተያያዥ ወጪዎችን በአንድ ታካሚ $15,000 ይቀንሳል (JAMA፣ 2021)።',
+                'chronic-disease-title': 'የሥር የሰደደ በሽታዎች አስተዳደር',
+                'chronic-disease-description': 'በስኳር በሽታ አስተዳደር ውስጥ 35% ማሻሻያ በ:',
+                'chronic-disease-li1': 'የራስ-ሰር የ RBS ክትትል የጊዜ ሰሌዳዎች።',
+                'chronic-disease-li2': 'የኢንሱሊን አስተዳደር ማንቂያዎች።',
+                'chronic-disease-li3': 'የአመጋገብ ፍላጎት አስታዋሾች።',
+                'chronic-disease-impact1': 'ወሳኝ ተጽእኖ፡ በሆስፒታል ውስጥ የስኳር በሽታ ውስብስቦችን በ40% ይቀንሳል (Diabetes Care፣ 2022)።',
+                'chronic-disease-impact2': 'ለደም ግፊት፣ ለኤችአይቪ እና ለሌሎች ሥር የሰደዱ በሽታዎች የሚስማሙ ፕሮቶኮሎች።',
+                'operational-benefits-title': 'የአሰራር እና የገንዘብ ጥቅሞች',
+                'operational-benefits-subtitle': 'ISHCS የሆስፒታል ስራዎችን እና ወጪዎችን እንዴት እንደሚቀንስ።',
+                'staff-efficiency-title': 'የሰራተኛ ብቃት',
+                'staff-efficiency-description': 'በቀን በአንድ ነርስ 3.5 ሰዓታት ተቆጥቧል በ:',
+                'staff-efficiency-li1': 'የራስ-ሰር ሰነድ (በቀን 2 ሰዓታት ይቆጥባል)።',
+                'staff-efficiency-li2': 'የተመቻቸ የሥራ ማዞር የእግር ጉዞ ርቀትን በ40% ይቀንሳል።',
+                'staff-efficiency-li3': 'በቅንጅት ላይ የሚጠፋው ጊዜ ቀንሷል (65% ቅነሳ)።',
+                'staff-efficiency-impact1': 'የገንዘብ ተጽእኖ፡ ከ10 ሰራተኞች ጋር ሳይቀጠር 1.5 ተጨማሪ የሙሉ ጊዜ ነርስ ያህል ነው።',
+                'staff-efficiency-impact2': 'የሰራተኛ እርካታ፡ በሙከራ ጥናቶች ውስጥ የነርስ መ burnout በ45% ቀንሷል።',
+                'cost-reduction-title': 'የወጪ ቅነሳ',
+                'cost-reduction-description': 'በአንድ ታካሚ በአማካይ $15,000 ይቆጥባል በ:',
+                'cost-reduction-li1': 'የቆይታ ጊዜ ቅነሳ (3.7 ቀናት በአማካይ)።',
+                'cost-reduction-li2': '60% ያነሱ ህክምና የሚያስፈልጋቸው ችግሮች።',
+                'cost-reduction-li3': 'በመከላከል በሚቻል ስህተቶች የሚመጡ ክሶችን መቀነስ።',
+                'cost-reduction-impact1': 'የተጨማሪ ኢንቨስትመንት ማግኛ ጊዜ (ROI)፡ በብዙ ሆስፒታሎች ውስጥ ከ6-9 ወራት።',
+                'cost-reduction-impact2': 'የጉዳይ ጥናት፡ 200 አልጋ ያለው ሆስፒታል በየዓመቱ 2.1 ሚሊዮን ዶላር አጠራቀመ።',
+                'data-analytics-title': 'ዳታ እና ትንታኔ',
+                'data-analytics-description': 'የእውነተኛ ጊዜ የሆስፒታል ትንታኔዎች፣ ጨምሮ:',
+                'data-analytics-li1': 'የሰራተኞች የምላሽ ጊዜ መለኪያዎች።',
+                'data-analytics-li2': 'የመድሃኒት ስህተት መጠኖች።',
+                'data-analytics-li3': 'የታካሚ እርካታ አዝማሚያዎች።',
+                'data-analytics-impact1': 'የጥራት ማሻሻያ፡ የስራ ፍሰት ችግሮችን እና የሥልጠና ፍላጎቶችን መለየት።',
+                'data-analytics-impact2': 'ተገዢነት፡ ለተፈቀደላቸው መስፈርቶች የራስ-ሰር ሪፖርት ማቅረብ።',
+                'scalability-title': 'ሊሰፋ የሚችል',
+                'scalability-description': 'ለማንኛውም የጤና እንክብካቤ ሁኔታ የሚስማማ:',
+                'scalability-li1': 'ከከተማ ሆስፒታሎች እስከ ገጠር ክሊኒኮች።',
+                'scalability-li2': 'ለአይሲዩ፣ ለወሊድ፣ ለህፃናት ሕክምና ልዩ ፕሮቶኮሎች።',
+                'scalability-li3': 'ዝቅተኛ የግንኙነት ላላቸው አካባቢዎች ከመስመር ውጪ ተግባር።',
+                'scalability-impact1': 'የመንግስት አጋርነት፡ በኢትዮጵያ ጤና ጥበቃ ሚኒስቴር ለሀገር አቀፍ ትግበራ ጸድቋል።',
+                'scalability-impact2': 'ስልጠና፡ የ2-ቀን የሰራተኛ የምስክር ወረቀት ፕሮግራም ይገኛል።',
+                'clinical-evidence-title': 'የክሊኒክ ማስረጃ',
+                'clinical-evidence-subtitle': 'ከተመሳሳይ አተገባበሮች የተረጋገጡ ውጤቶች። በእኩዮች የተገመገሙ ጥናቶች የ AI ነርስ ረዳት ስርዓቶችን ውጤታማነት ይደግፋሉ።',
+                'kenya-study-title': 'የኬንያ አይሲዩ ጥናት (2023)',
+                'kenya-study-li1': 'በ6 ወራት ውስጥ በሞት ላይ 22% ቅነሳ።',
+                'kenya-study-li2': '42% ያነሱ የመድሃኒት ስህተቶች።',
+                'kenya-study-li3': 'የምላሽ ጊዜዎች 68% ፈጣን (28 ደቂቃ → 9 ደቂቃ)።',
+                'kenya-study-publication': 'በ BMJ Global Health የታተመ',
+                'india-study-title': 'የህንድ የቀዶ ጥገና ክፍሎች ጥናት (2022)',
+                'india-study-li1': 'በሆስፒታል ውስጥ የሚመጡ ኢንፌክሽኖች ላይ 55% ቅነሳ (HAIs)።',
+                'india-study-li2': 'በታካሚው አማካይ የቆይታ ጊዜ ላይ የ3.7 ቀን ቅነሳ።',
+                'india-study-li3': 'በሰራተኞች የአስተዳደር ሸክም ላይ 20% ቅነሳ።',
+                'india-study-publication': 'በ The Lancet Digital Health የታተመ',
+                'ethiopia-study-title': 'የኢትዮጵያ የሙከራ ፕሮግራም (2024)',
+                'ethiopia-study-li1': 'በነርሶች ሪፖርት የተደረገው የሥራ እርካታ 18% ጭማሪ።',
+                'ethiopia-study-li2': 'በሥር የሰደደ በሽታ ፕሮቶኮል መከተል ላይ 35% ማሻሻያ።',
+                'ethiopia-study-li3': '92% የሚሆኑት ታካሚዎች የበለጠ ደህና እና እንክብካቤ እንደተደረገላቸው ተሰምቷቸዋል።',
+                'ethiopia-study-publication': 'የጤና ጥበቃ ሚኒስቴር የውስጥ ሪፖርት፣ የአዲስ አበባ ክልላዊ ሆስፒታል',
+                'footer-copyright': '&copy; 2024 RAJI TECHNOLOGY +251913395143 . ሁሉም መብቶች የተጠበቁ ናቸው።',
+                'footer-privacy': 'የግላዊነት ፖሊሲ',
+                'footer-terms': 'የአገልግሎት ውሎች'
+            },
+            'om': {
+                'ishcs-title': 'ISHCS',
+                'nav-about': 'Waa\'ee',
+                'nav-features': 'Wantoota',
+                'nav-how-it-works': 'Akkaataa Hojii',
+                'nav-patient-outcomes': 'Bu\'aa Dhukkubsataa',
+                'nav-clinical-evidence': 'Ragaa Yaalaa',
+                'hero-headline': 'Sirna Yaamichaa Hospitaala Beekan Kan Smart Ta\'e',
+                'hero-subheadline': 'Kunuunsa dhukkubsataa ol kaasuu, ogeessota fayyaa humneessuu, fi hojiiwwan hospitaalaa otomaashinii beekanitti jijjiiruu.',
+                'hero-cta': 'Fuula Dura Fayyaa Barbaadi',
+                'about-title': 'Kunuunsa Dhukkubsataa Jijjiirama Fiduu',
+                'about-p1': 'ISHCS furmaata haala qabaa kan ta\'e kan gidduu fedhii dhukkubsattootaa fi deebii yaalaa sirrii fi beekamaa jiru gidduu jiru cufudhaaf kan dizaayinii godhameedha. AI, odeeffannoo yeroo hunda jiru, fi hojii qunnamtii jabaa fayyadamuun, sirna yaamichaa dulloomaa fi deebii kennuu irratti xiyyeeffatu sirna proaktivii fi beekaan ta\'een bakka buufna.',
+                'about-p2': 'Kunuunsa jabaa ICU keessaa kaasee hanga deeggarsa addaa OB/GYN keessatti argamuutti, ISHCS dhukkubsataan hundi yeroo sirrii fi xiyyeeffannoo sirrii argachuu isaa mirkaneessa, ogeessotaaf ammoo meeshaalee isaan hojii sadarkaa ol aanaatti hojjechuuf isaan barbaachisan ni kenna.',
+                'features-title': 'Teknooloojii fi Wantoota Gurguddoo',
+                'feature1-title': 'Yaamicha AI-Fayyadaa',
+                'feature1-description': 'Sirni keenya odeeffannoo dhukkubsataa yeroo hunda jiru irratti hirkatee akeekkachiisa jabaa ofumaan uuma, fkn. mallattoo jireenyaa kan hin turre, kan xiyyeeffannoo hatattamaa malee gargaarsa namaa malee mirkaneessa.',
+                'feature2-title': 'To\'annaa Yeroo Hunda',
+                'feature2-description': 'Nursi odeeffannoo dhukkubsataa haaraa gara steshan isaaniitti ni argatu, kan haalicha madaaluuf fi osoo gara dhukkubsataa hin ga\'iin dura hojiiwwaniif qopha\'uu danda\'an.',
+                'feature3-title': 'Qunnamtii Harka-Dura',
+                'feature3-description': 'Dhukkubsattoonni ajaja sagaleetiin gargaarsa gaafachuu ni danda\'u, kan keessumaa yeroo sochiin qaamaa rakkisaa ta\'u fedhii isaanii qunnamtii salphaa fi hin rakkisneen ibsuu danda\'an.',
+                'feature4-title': 'Itti Gaafatamummaa fi Gabaasa',
+                'feature4-description': 'Yaamichi hundi ID addaa fi galmee mirkaneessaa fayyadamuun haala gaariin ni to\'atama. Kunis hojii madaaluuf, qulqullina mirkaneessuuf, fi gabaasa seeraa kennuuf odeeffannoo baay\'ee barbaachisaa ni kenna.',
+                'how-it-works-title': 'Akkaataa Hojii',
+                'step1-title': 'Yaamicha Dhukkubsataa ykn AI',
+                'step1-description': 'Yaamichi dhukkubsataa ajaja sagaleetiin ykn AI\'n odeeffannoo yeroo hunda jiru kan monitoora dhukkubsataa irraa argamuun ofumaan ni jalqabama.',
+                'step2-title': 'Beeksisa Duraa',
+                'step2-description': 'Yaamichi yeroo tokkotti gara steshan nursii ni ergama, kan bakka bu\'iinsa fi duraa durtiidhaan qoodama. Odeeffannoon dhukkubsataa haaraa yeroo tokkotti akeekkachiisa sanaan waliin ni mul\'ifama.',
+                'step3-title': 'Mirkaneessaa Ogeessaa fi Galmee Odeeffannoo',
+                'step3-description': 'Nursii ykn ogeessi fayyaa yaamicha mirkaneessa, hojii isaanii fi sababa mirkaneessaa galmeessu. Odeeffannoon hundi, dabalataanis I/O balance fi galmee nursii, galmee dhukkubsataa keessatti ni qusata.',
+                'patient-outcomes-title': 'Bu\'aa Dhukkubsataa irratti Dagaaggina Mirkanaa\'aa',
+                'patient-outcomes-subtitle': 'Kan qorannoowwan yaalaa kan Keeniyaa fi India keessatti hojjetaman irraa kan fudhatame, kan haalawwan fayyaa Itoophiyaatiif toludha.',
+                'clinical-benefits-title': 'Bu\'aa Yaalaa',
+                'clinical-benefits-subtitle': 'Akkaataa ISHCS bu\'aa fayyaa dhukkubsataa fi nageenya isaanii olkaasutti.',
+                'medication-safety-title': 'Nageenya Qorichaa',
+                'medication-safety-description': 'Qorichaa irratti dogoggora 42-50% xiqqeessuu kan:',
+                'medication-safety-li1': 'Doosajii sirnaa mirkaneessuu kan galmee dhukkubsataa irratti hirkatu.',
+                'medication-safety-li2': 'Saganteeffamni otomaatikee doosajii dhabamuu ni dhorka (sababa guddaa kan hojiin yaalaa hin milkoofneef).',
+                'medication-safety-li3': 'Akeekkachiisni walqabatiinsa qorichaa kan ajaja qorichaa amma jiru irratti hirkatu.',
+                'medication-safety-li4': 'Mirkaneessaa qorichaa kan ijaan mul\'atu kan taableetiin godhamu.',
+                'medication-safety-impact': 'Dagaaggina jabaa: Sababa dogoggora qorichaatiin du\'a hospitaalaa kan dhorkamuu danda\'u ~30% ni dhorka (BMJ, 2023).',
+                'timely-interventions-title': 'Hojiiwwan Yeroon Godhamu',
+                'timely-interventions-description': 'Yeroo deebii 68% caalaa saffisu (28min → 9min avg) kan:',
+                'timely-interventions-li1': 'Sirna akeekkachiisaa kan duraa durtiidhaan hojjetu (jireenyaaf jabaa vs hordofaa).',
+                'timely-interventions-li2': 'Yeroo deebiin hin arganne otomaatikeen hojiin ni jabaata.',
+                'timely-interventions-li3': 'Ramaddii nursii kan bakka irratti hirkatu.',
+                'timely-interventions-impact1': 'Dagaaggina jabaa: Yeroo deebiin 10 daqiiqaa gadi ta\'u du\'a onnee 35% ni xiqqeessa (NEJM, 2022).',
+                'timely-interventions-impact2': 'Qorannoo: Akeekkachiisa yeroo duraatiin du\'a sepsis 40% xiqqeessa.',
+                'infection-prevention-title': 'Duraa Dhorkaa Infekshinii',
+                'infection-prevention-description': 'Infekshiniiwwan hospitaala keessatti argaman 50-70% ni xiqqeessa kan:',
+                'infection-prevention-li1': 'Akeekkachiisni jijjiirraa kaateetaraa otomaatikee (UTI 60% ni xiqqeessa).',
+                'infection-prevention-li2': 'Akeekkachiisni bakka jijjiirraa 2 sa\'aatii (hiddii fi niimonii ni dhorka).',
+                'infection-prevention-li3': 'Hojiiwwan qulqullinaa mirkaneessuu.',
+                'infection-prevention-impact': 'Dagaaggina jabaa: Hojii hospitaalaa giddu galaa 3.7 guyyaa fi kan waliin dhufu gatii $15,000 per dhukkubsataa ni xiqqeessa (JAMA, 2021).',
+                'chronic-disease-title': 'Bulchiinsa Dhukkuba Yeroo Dheeraa',
+                'chronic-disease-description': 'Bulchiinsa sukkaaraa keessatti 35% dagaaggina kan:',
+                'chronic-disease-li1': 'Saganteeffamni to\'annoo RBS otomaatikee.',
+                'chronic-disease-li2': 'Akeekkachiisa dhiyeessii insuliinii.',
+                'chronic-disease-li3': 'Akeekkachiisa fedhii nyaataa.',
+                'chronic-disease-impact1': 'Dagaaggina jabaa: Rakkoo sukkaaraa hospitaala keessatti 40% ni xiqqeessa (Diabetes Care, 2022).',
+                'chronic-disease-impact2': 'Protookoliin jijjiirraa fudhatu kan dhiibbaa dhiigaa olka\'aa, HIV, fi dhukkuba yeroo dheeraa biroof.',
+                'operational-benefits-title': 'Bu\'aa Hojii fi Dinagdee',
+                'operational-benefits-subtitle': 'Akkaataa ISHCS hojii hospitaalaa fi gatii dhiyeessutti.',
+                'staff-efficiency-title': 'Ogeessotaa Hojii',
+                'staff-efficiency-description': 'Guyyaatti nursii tokkoof sa\'aatii 3.5 qusata kan:',
+                'staff-efficiency-li1': 'Galmeessaa otomaatikee (2 sa\'aatii/guyyaa ni qusata).',
+                'staff-efficiency-li2': 'Hojii to\'annoo sirrii godhamuun fageenya deemu 40% ni xiqqeessa.',
+                'staff-efficiency-li3': 'Yeroo waliin hojjechuuf gurguramu ni xiqqeessa (65% ni xiqqeessa).',
+                'staff-efficiency-impact1': 'Dagaaggina dinagdee: Osoo hin qacaramne, ogeessota 10f 1.5 nursii dabalataa ni hojjeta.',
+                'staff-efficiency-impact2': 'Eerkatummaa ogeessotaa: Qorannoowwan jalqabaa keessatti nursii 45% gadi lakkiseera.',
+                'cost-reduction-title': 'Gatii Xiqqeessuu',
+                'cost-reduction-description': 'Dhukkubsataa tokkoof gara $15,000 avg ni qusata kan:',
+                'cost-reduction-li1': 'Yeroo turuu xiqqeessuu (avg 3.7 guyyaa).',
+                'cost-reduction-li2': 'Rakkoowwan 60% gadi kan yaalaa barbaachisu.',
+                'cost-reduction-li3': 'Dhimma seeraa kan dogoggora dhorkamuu danda\'u irraa dhufu ni xiqqeessa.',
+                'cost-reduction-impact1': 'ROI: Hospitaalota baay\'ee keessatti 6-9 ji\'a keessatti galii deebii argata.',
+                'cost-reduction-impact2': 'Qorannoo: Hospitaalli 200 bakka ciisicha qabu waggaatti $2.1M qusate.',
+                'data-analytics-title': 'Data fi Analitikii',
+                'data-analytics-description': 'Analitikii hospitaala yeroo hunda jiru kan dabalate:',
+                'data-analytics-li1': 'To\'annaa yeroo deebii ogeessotaa.',
+                'data-analytics-li2': 'Tariffaa dogoggora qorichaa.',
+                'data-analytics-li3': 'Jijjiirama qulqullinaa dhukkubsataa.',
+                'data-analytics-impact1': 'Qulqullina fooyyessuu: Hojiiwwan rakkisan fi fedhii leenjii adda baasuu.',
+                'data-analytics-impact2': 'Seeraa kabajuu: Gabaasa seeraa qabuu danda\'u otomaatikee.',
+                'scalability-title': 'Dagaagsuu',
+                'scalability-description': 'Hawaasa fayyaa hundaaf ni tola:',
+                'scalability-li1': 'Hospitaalota magaalaa hanga kiliinikii baadiyyaatti.',
+                'scalability-li2': 'Protookolota addaa kan ICU, hojii dhalootaa, fi daa\'imaaf.',
+                'scalability-li3': 'Hojii bakkii kan bakkeewwan qunnamtii gadi aanaa qabaniif.',
+                'scalability-impact1': 'Paartinershiin mootummaa: Ministeerri Fayyaa Itoophiyaa guutuu biyyaatti hojjechuuf mirkaneesseera.',
+                'scalability-impact2': 'Leenjii: Qophiin leenjii ogeessotaa 2 guyyaa jiru.',
+                'clinical-evidence-title': 'Ragaa Yaalaa',
+                'clinical-evidence-subtitle': 'Bu\'aawwan Mirkanaa\'aa Kan Hojiiwwan Walfakkaatan Irraa. Qorannoon waliin hojjetame bu\'aa sirna gargaarsa nursii AI ni deeggara.',
+                'kenya-study-title': 'Qorannoo ICU Keeniyaa (2023)',
+                'kenya-study-li1': 'Ji\'a 6 keessatti du\'a irratti 22% xiqqeessa.',
+                'kenya-study-li2': '42% yaa gadi dogoggora qorichaa.',
+                'kenya-study-li3': 'Yeroo deebii 68% caalaa saffisu (28min → 9min).',
+                'kenya-study-publication': 'BMJ Global Health keessatti maxxanfame',
+                'india-study-title': 'Qorannoo Waardiyaa Misoomaa India (2022)',
+                'india-study-li1': 'Infekshiniiwwan hospitaala keessatti argaman irratti 55% xiqqeessa (HAIs).',
+                'india-study-li2': 'Yeroo ciisicha dhukkubsataa irratti 3.7 guyyaa xiqqeessa.',
+                'india-study-li3': 'Hojii bulchiinsaa ogeessotaa irratti 20% xiqqeessa.',
+                'india-study-publication': 'The Lancet Digital Health keessatti maxxanfame',
+                'ethiopia-study-title': 'Qophii Jalqabaa Itoophiyaa (2024)',
+                'ethiopia-study-li1': 'Itti gaafatamummaa hojii nursii 18% ni dabala.',
+                'ethiopia-study-li2': 'Protokoolii dhukkuba yeroo dheeraa irratti 35% dagaaggina.',
+                'ethiopia-study-li3': 'Dhukkubsattoota 92% caalaa dhabamuu fi kunuunsa argachuu isaanii ni mirkaneessa.',
+                'ethiopia-study-publication': 'Gabaasa Ministeera Fayyaa keessaa, Hospitaala Naannoo Finfinnee',
+                'footer-copyright': '&copy; 2024 RAJI TECHNOLOGY +251913395143 . Mirgi hundi seeraan eegamaa.',
+                'footer-privacy': 'Imaammata Ispooraa',
+                'footer-terms': 'Hojiiwwan Fayyadama'
+            }
+        };
+
+        function updateContent(lang) {
+            // Find all elements with a data-translate attribute
+            document.querySelectorAll('[data-translate]').forEach(element => {
+                const key = element.getAttribute('data-translate');
+                const translation = translations[lang][key];
+                if (translation) {
+                    // Update innerHTML for potential HTML entities like &copy;
+                    element.innerHTML = translation;
+                }
+            });
+            // Update the language attribute of the HTML tag
+            document.documentElement.lang = lang;
+        }
+
+        // Get the language selector element
+        const languageSelector = document.getElementById('language-selector');
+        // Add an event listener to the selector
+        languageSelector.addEventListener('change', (event) => {
+            const selectedLang = event.target.value;
+            updateContent(selectedLang);
+        });
+
+        // Hamburger menu functionality for mobile
         const mobileMenuButton = document.getElementById('mobile-menu-button');
         const mobileNav = document.getElementById('mobile-nav');
 
@@ -467,12 +1153,17 @@
             mobileNav.classList.toggle('open');
         });
 
-        // Close the mobile menu when a navigation link is clicked
-        const navLinks = mobileNav.querySelectorAll('a');
-        navLinks.forEach(link => {
+        // Close mobile menu when a link is clicked
+        mobileNav.querySelectorAll('a').forEach(link => {
             link.addEventListener('click', () => {
                 mobileNav.classList.remove('open');
             });
+        });
+
+        // Initial content load based on default language
+        window.addEventListener('DOMContentLoaded', () => {
+            const initialLang = languageSelector.value;
+            updateContent(initialLang);
         });
     </script>
 </body>
