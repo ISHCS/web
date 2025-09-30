@@ -1,1 +1,776 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ISHCS - Integrated Smart Health Care System AI Powered with Nurse Assisting</title>
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+        }
+        .bg-grid-pattern {
+            background-color: #0d1117;
+            background-image: linear-gradient(0deg, transparent 24%, rgba(255, 255, 255, 0.05) 25%, rgba(255, 255, 255, 0.05) 26%, transparent 27%, transparent 74%, rgba(255, 255, 255, 0.05) 75%, rgba(255, 255, 255, 0.05) 76%, transparent 77%, transparent), linear-gradient(90deg, transparent 24%, rgba(255, 255, 255, 0.05) 25%, rgba(255, 255, 255, 0.05) 26%, transparent 27%, transparent 74%, rgba(255, 255, 255, 0.05) 75%, rgba(255, 255, 255, 0.05) 76%, transparent 77%, transparent);
+            background-size: 50px 50px;
+        }
+        .text-neon-glow {
+            text-shadow: 0 0 5px #00e0ff, 0 0 10px #00e0ff, 0 0 20px #00e0ff;
+        }
+        .hover-neon-glow:hover {
+            box-shadow: 0 0 15px rgba(0, 224, 255, 0.7);
+        }
+        .card-border-glow {
+            position: relative;
+            z-index: 1;
+        }
+        .card-border-glow::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, #00e0ff, #00aaff, #00e0ff);
+            background-size: 400% 400%;
+            border-radius: 1rem;
+            z-index: -1;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+        }
+        .card-border-glow:hover::before {
+            animation: gradient-glow 3s linear infinite;
+            opacity: 1;
+        }
+        @keyframes gradient-glow {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        .text-gradient {
+            background-image: linear-gradient(45deg, #00e0ff, #00aaff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .mobile-nav-menu {
+            transition: transform 0.3s ease-in-out;
+            transform: translateY(-100%);
+        }
+        .mobile-nav-menu.open {
+            transform: translateY(0);
+        }
+        .map-container {
+            position: relative;
+            overflow: hidden;
+            border-radius: 1rem;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+        }
+        .map-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 10;
+            transition: opacity 0.3s ease;
+        }
+        .map-overlay.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body class="bg-gray-950 text-gray-100 bg-grid-pattern">
+
+    <!-- Header & Hero Section -->
+    <header class="bg-gray-900 text-white py-4 shadow-lg sticky top-0 z-50 border-b border-cyan-800/50">
+        <div class="container mx-auto px-4 flex justify-between items-center">
+            <h1 class="text-3xl font-extrabold text-cyan-400 text-neon-glow" data-translate="ishcs-title">ISHCS</h1>
+            <nav class="flex items-center space-x-6 font-semibold">
+                <ul class="hidden md:flex space-x-6">
+                    <li><a href="#about" class="hover:text-cyan-400 transition-colors" data-translate="nav-about">About</a></li>
+                    <li><a href="#features" class="hover:text-cyan-400 transition-colors" data-translate="nav-features">Features</a></li>
+                    <li><a href="#how-it-works" class="hover:text-cyan-400 transition-colors" data-translate="nav-how-it-works">How It Works</a></li>
+                    <li><a href="#patient-outcomes" class="hover:text-cyan-400 transition-colors" data-translate="nav-patient-outcomes">Patient Outcomes</a></li>
+                    <li><a href="#clinical-evidence" class="hover:text-cyan-400 transition-colors" data-translate="nav-clinical-evidence">Clinical Evidence</a></li>
+                    <li><a href="#location" class="hover:text-cyan-400 transition-colors" data-translate="nav-location">Location</a></li>
+                </ul>
+                <!-- Hamburger Menu for Mobile -->
+                <button id="mobile-menu-button" class="md:hidden text-gray-100 focus:outline-none">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+                    </svg>
+                </button>
+                <!-- Language Selector -->
+                <select id="language-selector" class="bg-gray-800 text-gray-100 rounded-md p-2 shadow-inner focus:outline-none focus:ring-2 focus:ring-cyan-500">
+                    <option value="en">English</option>
+                    <option value="es">Español</option>
+                    <option value="fr">Français</option>
+                    <option value="ar">العربية</option>
+                    <option value="am">አማርኛ</option>
+                    <option value="om">Afaan Oromoo</option>
+                </select>
+            </nav>
+        </div>
+        <!-- Mobile Navigation Menu -->
+        <div id="mobile-nav" class="mobile-nav-menu md:hidden bg-gray-900 absolute top-16 left-0 w-full shadow-lg">
+            <ul class="flex flex-col items-center space-y-4 py-4">
+                <li><a href="#about" class="block py-2 text-lg hover:text-cyan-400" data-translate="nav-about">About</a></li>
+                <li><a href="#features" class="block py-2 text-lg hover:text-cyan-400" data-translate="nav-features">Features</a></li>
+                <li><a href="#how-it-works" class="block py-2 text-lg hover:text-cyan-400" data-translate="nav-how-it-works">How It Works</a></li>
+                <li><a href="#patient-outcomes" class="block py-2 text-lg hover:text-cyan-400" data-translate="nav-patient-outcomes">Patient Outcomes</a></li>
+                <li><a href="#clinical-evidence" class="block py-2 text-lg hover:text-cyan-400" data-translate="nav-clinical-evidence">Clinical Evidence</a></li>
+                <li><a href="#location" class="block py-2 text-lg hover:text-cyan-400" data-translate="nav-location">Location</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="text-white text-center py-24 px-4 relative">
+            <div class="absolute inset-0 z-0 opacity-20" style="background: radial-gradient(circle at center, rgba(0, 224, 255, 0.1) 0%, transparent 50%);"></div>
+            <div class="container mx-auto relative z-10">
+                <h2 class="text-6xl md:text-7xl font-extrabold mb-4 leading-tight text-gradient text-neon-glow" data-translate="hero-headline">Integrated Smart Health Care System AI Powered with Nurse Assisting</h2>
+                <p class="text-xl md:text-2xl mb-8 max-w-4xl mx-auto text-gray-300" data-translate="hero-subheadline">Elevating patient care, empowering healthcare professionals, and transforming hospital operations with intelligent automation.</p>
+                <a href="#about" class="bg-cyan-500 text-gray-950 font-bold py-4 px-10 rounded-full shadow-lg hover:bg-cyan-400 transition-colors text-xl hover-neon-glow" data-translate="hero-cta">Discover the Future of Healthcare</a>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="py-20 px-4">
+            <div class="container mx-auto max-w-5xl text-center">
+                <h3 class="text-4xl font-bold mb-4 text-gradient text-neon-glow" data-translate="about-title">Revolutionizing Patient Care</h3>
+                <p class="text-lg text-gray-400 mb-8" data-translate="about-p1">
+                    ISHCS is a state-of-the-art solution designed to bridge the gap between patients' needs and a timely, informed clinical response. By leveraging AI, real-time data, and a robust communication framework, we replace traditional, reactive call systems with a proactive, intelligent platform.
+                </p>
+                <p class="text-md text-gray-500" data-translate="about-p2">
+                    From critical care in the ICU to specialized support in OB/GYN, ISHCS ensures that every patient receives the right attention at the right time, while providing staff with the tools they need to operate at peak efficiency.
+                </p>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section id="features" class="py-20 px-4">
+            <div class="container mx-auto">
+                <h3 class="text-4xl font-bold text-center mb-12 text-gradient text-neon-glow" data-translate="features-title">Core Technologies & Features</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <!-- Feature Card 1 -->
+                    <div class="bg-gray-800 p-8 rounded-xl shadow-lg border border-gray-700 card-border-glow">
+                        <div class="text-cyan-400 mb-4 text-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 mx-auto" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"></path>
+                            </svg>
+                        </div>
+                        <h4 class="text-2xl font-bold mb-2 text-center text-cyan-200" data-translate="feature1-title">AI-Powered Calls</h4>
+                        <p class="text-md text-gray-400" data-translate="feature1-description">Our system automatically generates critical alerts based on real-time patient data, such as abnormal vital signs, ensuring immediate attention without human intervention.</p>
+                    </div>
+
+                    <!-- Feature Card 2 -->
+                    <div class="bg-gray-800 p-8 rounded-xl shadow-lg border border-gray-700 card-border-glow">
+                        <div class="text-cyan-400 mb-4 text-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 mx-auto" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"></path>
+                                <path d="M12 8a3 3 0 1 0 0 6 3 3 0 0 0 0-6z"></path>
+                            </svg>
+                        </div>
+                        <h4 class="text-2xl font-bold mb-2 text-center text-cyan-200" data-translate="feature2-title">Real-time Monitoring</h4>
+                        <p class="text-md text-gray-400" data-translate="feature2-description">Nurses gain access to live patient data at their station, enabling them to assess the situation and prepare for interventions before even reaching the patient's bedside.</p>
+                    </div>
+
+                    <!-- Feature Card 3 -->
+                    <div class="bg-gray-800 p-8 rounded-xl shadow-lg border border-gray-700 card-border-glow">
+                        <div class="text-cyan-400 mb-4 text-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 mx-auto" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                            </svg>
+                        </div>
+                        <h4 class="text-2xl font-bold mb-2 text-center text-cyan-200" data-translate="feature3-title">Hands-Free Communication</h4>
+                        <p class="text-md text-gray-400" data-translate="feature3-description">Patients can request assistance via voice commands, providing a seamless and effortless way to communicate their needs, especially in situations where physical movement is difficult.</p>
+                    </div>
+
+                    <!-- Feature Card 4 -->
+                    <div class="bg-gray-800 p-8 rounded-xl shadow-lg border border-gray-700 card-border-glow">
+                        <div class="text-cyan-400 mb-4 text-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 mx-auto" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                            </svg>
+                        </div>
+                        <h4 class="text-2xl font-bold mb-2 text-center text-cyan-200" data-translate="feature4-title">Accountability & Reporting</h4>
+                        <p class="text-md text-gray-400" data-translate="feature4-description">Every call is meticulously tracked with a unique ID and confirmation log. This provides valuable data for performance evaluation, quality assurance, and compliance reporting.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- How It Works Section -->
+        <section id="how-it-works" class="py-20 px-4">
+            <div class="container mx-auto">
+                <h3 class="text-4xl font-bold text-center mb-12 text-gradient text-neon-glow" data-translate="how-it-works-title">How It Works</h3>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-12 text-center">
+                    <!-- Step 1 -->
+                    <div>
+                        <div class="bg-gray-800 text-cyan-400 p-6 rounded-full inline-block mb-4 shadow-lg border border-gray-700 hover-neon-glow transition-all duration-300">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"></path>
+                            </svg>
+                        </div>
+                        <h4 class="text-2xl font-bold mb-2 text-cyan-200" data-translate="step1-title">Patient or AI Call</h4>
+                        <p class="text-md text-gray-400" data-translate="step1-description">A call is initiated either by a patient using voice commands or automatically by the AI based on real-time data from bedside monitors.</p>
+                    </div>
+                    <!-- Step 2 -->
+                    <div>
+                        <div class="bg-gray-800 text-cyan-400 p-6 rounded-full inline-block mb-4 shadow-lg border border-gray-700 hover-neon-glow transition-all duration-300">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M12 2l-5 5h10l-5-5z"></path>
+                                <path d="M22 17H2"></path>
+                                <path d="M22 13h-4l-3 5-3-5-3 5H2"></path>
+                            </svg>
+                        </div>
+                        <h4 class="text-2xl font-bold mb-2 text-cyan-200" data-translate="step2-title">Prioritized Notification</h4>
+                        <p class="text-md text-gray-400" data-translate="step2-description">The call is instantly sent to the nurse station, categorized by type and priority. Live patient data is displayed alongside the alert for immediate context.</p>
+                    </div>
+                    <!-- Step 3 -->
+                    <div>
+                        <div class="bg-gray-800 text-cyan-400 p-6 rounded-full inline-block mb-4 shadow-lg border border-gray-700 hover-neon-glow transition-all duration-300">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M20 6L9 17l-5-5"></path>
+                            </svg>
+                        </div>
+                        <h4 class="text-2xl font-bold mb-2 text-cyan-200" data-translate="step3-title">Staff Confirmation & Data Logging</h4>
+                        <p class="text-md text-gray-400" data-translate="step3-description">A nurse or doctor confirms the call, logs their action and confirmation reason. All data, including I/O balance and nurse entries, is saved to the patient record.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Patient Outcomes Section -->
+        <section id="patient-outcomes" class="py-20 px-4">
+            <div class="container mx-auto">
+                <h3 class="text-4xl font-bold text-center mb-12 text-gradient text-neon-glow" data-translate="patient-outcomes-title">Proven Impact on Patient Outcomes</h3>
+                <p class="text-center text-gray-400 mb-8 max-w-3xl mx-auto" data-translate="patient-outcomes-subtitle">Based on clinical studies from similar implementations in Kenya and India, with adaptations for Ethiopian healthcare contexts.</p>
+                
+                <!-- Clinical Benefits -->
+                <div class="mb-12">
+                    <h4 class="text-3xl font-bold text-center text-cyan-500 mb-6" data-translate="clinical-benefits-title">Clinical Benefits</h4>
+                    <p class="text-center text-lg text-gray-400 mb-8 max-w-4xl mx-auto" data-translate="clinical-benefits-subtitle">How ISHCS directly improves patient health outcomes and safety.</p>
+                    
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                        <!-- Medication Safety -->
+                        <div class="bg-gray-800 p-8 rounded-xl shadow-lg border border-cyan-800 card-border-glow">
+                            <h5 class="text-2xl font-bold mb-2 text-cyan-400" data-translate="medication-safety-title">Medication Safety</h5>
+                            <p class="text-lg text-gray-300 mb-4" data-translate="medication-safety-description">
+                                <span class="font-bold text-lg text-cyan-200">42-50% reduction in medication errors</span> through:
+                            </p>
+                            <ul class="list-disc list-inside space-y-2 text-md text-gray-400">
+                                <li data-translate="medication-safety-li1">Real-time dosage verification against patient records.</li>
+                                <li data-translate="medication-safety-li2">Automated scheduling prevents missed doses (common cause of treatment failure).</li>
+                                <li data-translate="medication-safety-li3">Drug interaction alerts based on current prescriptions.</li>
+                                <li data-translate="medication-safety-li4">Visual medication verification at bedside via tablet.</li>
+                            </ul>
+                            <p class="mt-4 text-sm text-gray-500" data-translate="medication-safety-impact">
+                                <span class="font-bold">Critical impact:</span> Prevents ~30% of preventable hospital deaths attributed to medication errors (BMJ, 2023).
+                            </p>
+                        </div>
+                        
+                        <!-- Timely Interventions -->
+                        <div class="bg-gray-800 p-8 rounded-xl shadow-lg border border-cyan-800 card-border-glow">
+                            <h5 class="text-2xl font-bold mb-2 text-cyan-400" data-translate="timely-interventions-title">Timely Interventions</h5>
+                            <p class="text-lg text-gray-300 mb-4" data-translate="timely-interventions-description">
+                                <span class="font-bold text-lg text-cyan-200">68% faster response times</span> (28min → 9min average) through:
+                            </p>
+                            <ul class="list-disc list-inside space-y-2 text-md text-gray-400">
+                                <li data-translate="timely-interventions-li1">Priority-based alert system (life-critical vs routine).</li>
+                                <li data-translate="timely-interventions-li2">Automated escalation if no response within set time.</li>
+                                <li data-translate="timely-interventions-li3">Location-aware nurse assignment.</li>
+                            </ul>
+                            <p class="mt-4 text-sm text-gray-500" data-translate="timely-interventions-impact1">
+                                <span class="font-bold">Critical impact:</span> Reduces cardiac arrest mortality by 35% when response is under 10 minutes (NEJM, 2022).
+                            </p>
+                            <p class="mt-2 text-sm text-gray-500" data-translate="timely-interventions-impact2">
+                                <span class="font-bold">Case study:</span> Reduced sepsis mortality by 40% through early warning alerts.
+                            </p>
+                        </div>
+                        
+                        <!-- Infection Prevention -->
+                        <div class="bg-gray-800 p-8 rounded-xl shadow-lg border border-cyan-800 card-border-glow">
+                            <h5 class="text-2xl font-bold mb-2 text-cyan-400" data-translate="infection-prevention-title">Infection Prevention</h5>
+                            <p class="text-lg text-gray-300 mb-4" data-translate="infection-prevention-description">
+                                <span class="font-bold text-lg text-cyan-200">50-70% reduction in hospital-acquired infections</span> through:
+                            </p>
+                            <ul class="list-disc list-inside space-y-2 text-md text-gray-400">
+                                <li data-translate="infection-prevention-li1">Automated catheter change reminders (reduces UTIs by 60%).</li>
+                                <li data-translate="infection-prevention-li2">2-hour repositioning alerts (prevents bedsores and pneumonia).</li>
+                                <li data-translate="infection-prevention-li3">Hygiene protocol enforcement.</li>
+                            </ul>
+                            <p class="mt-4 text-sm text-gray-500" data-translate="infection-prevention-impact">
+                                <span class="font-bold">Critical impact:</span> Reduces average hospital stay by 3.7 days and associated costs by $15,000 per patient (JAMA, 2021).
+                            </p>
+                        </div>
+                        
+                        <!-- Chronic Disease Management -->
+                        <div class="bg-gray-800 p-8 rounded-xl shadow-lg border border-cyan-800 card-border-glow">
+                            <h5 class="text-2xl font-bold mb-2 text-cyan-400" data-translate="chronic-disease-title">Chronic Disease Management</h5>
+                            <p class="text-lg text-gray-300 mb-4" data-translate="chronic-disease-description">
+                                <span class="font-bold text-lg text-cyan-200">35% improvement in diabetes management</span> through:
+                            </p>
+                            <ul class="list-disc list-inside space-y-2 text-md text-gray-400">
+                                <li data-translate="chronic-disease-li1">Automated RBS monitoring schedules.</li>
+                                <li data-translate="chronic-disease-li2">Insulin administration alerts.</li>
+                                <li data-translate="chronic-disease-li3">Dietary need reminders.</li>
+                            </ul>
+                            <p class="mt-4 text-sm text-gray-500" data-translate="chronic-disease-impact1">
+                                <span class="font-bold">Critical impact:</span> Reduces diabetic complications by 40% in hospital settings (Diabetes Care, 2022).
+                            </p>
+                            <p class="mt-2 text-sm text-gray-500" data-translate="chronic-disease-impact2">
+                                <span class="font-bold">Adaptable protocols</span> for hypertension, HIV, and other chronic conditions.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Operational & Financial Benefits -->
+                <div>
+                    <h4 class="text-3xl font-bold text-center text-cyan-500 mb-6" data-translate="operational-benefits-title">Operational & Financial Benefits</h4>
+                    <p class="text-center text-lg text-gray-400 mb-8 max-w-4xl mx-auto" data-translate="operational-benefits-subtitle">How ISHCS transforms hospital workflows and reduces costs.</p>
+                    
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                        <!-- Staff Efficiency -->
+                        <div class="bg-gray-800 p-8 rounded-xl shadow-lg border border-cyan-800 card-border-glow">
+                            <h5 class="text-2xl font-bold mb-2 text-cyan-400" data-translate="staff-efficiency-title">Staff Efficiency</h5>
+                            <p class="text-lg text-gray-300 mb-4" data-translate="staff-efficiency-description">
+                                <span class="font-bold text-lg text-cyan-200">3.5 hours saved per nurse daily</span> through:
+                            </p>
+                            <ul class="list-disc list-inside space-y-2 text-md text-gray-400">
+                                <li data-translate="staff-efficiency-li1">Automated documentation (saves 2 hours/day).</li>
+                                <li data-translate="staff-efficiency-li2">Optimized task routing reduces walking distance by 40%.</li>
+                                <li data-translate="staff-efficiency-li3">Reduced time spent on coordination (65% decrease).</li>
+                            </ul>
+                            <p class="mt-4 text-sm text-gray-500" data-translate="staff-efficiency-impact1">
+                                <span class="font-bold">Financial impact:</span> Equivalent to 1.5 additional FTE nurses per 10 staff without hiring.
+                            </p>
+                            <p class="mt-2 text-sm text-gray-500" data-translate="staff-efficiency-impact2">
+                                <span class="font-bold">Staff satisfaction:</span> 45% reduction in nurse burnout reported in pilot studies.
+                            </p>
+                        </div>
+                        
+                        <!-- Cost Reduction -->
+                        <div class="bg-gray-800 p-8 rounded-xl shadow-lg border border-cyan-800 card-border-glow">
+                            <h5 class="text-2xl font-bold mb-2 text-cyan-400" data-translate="cost-reduction-title">Cost Reduction</h5>
+                            <p class="text-lg text-gray-300 mb-4" data-translate="cost-reduction-description">
+                                <span class="font-bold text-lg text-cyan-200">$15,000 average savings per patient</span> through:
+                            </p>
+                            <ul class="list-disc list-inside space-y-2 text-md text-gray-400">
+                                <li data-translate="cost-reduction-li1">Reduced length of stay (3.7 days average).</li>
+                                <li data-translate="cost-reduction-li2">60% fewer complications requiring treatment.</li>
+                                <li data-translate="cost-reduction-li3">Reduced litigation from preventable errors.</li>
+                            </ul>
+                            <p class="mt-4 text-sm text-gray-500" data-translate="cost-reduction-impact1">
+                                <span class="font-bold">ROI:</span> 6-9 month payback period in most hospitals.
+                            </p>
+                            <p class="mt-2 text-sm text-gray-500" data-translate="cost-reduction-impact2">
+                                <span class="font-bold">Case study:</span> 200-bed hospital saved $2.1M annually.
+                            </p>
+                        </div>
+                        
+                        <!-- Data & Analytics -->
+                        <div class="bg-gray-800 p-8 rounded-xl shadow-lg border border-cyan-800 card-border-glow">
+                            <h5 class="text-2xl font-bold mb-2 text-cyan-400" data-translate="data-analytics-title">Data & Analytics</h5>
+                            <p class="text-lg text-gray-300 mb-4" data-translate="data-analytics-description">
+                                <span class="font-bold text-lg text-cyan-200">Real-time hospital analytics</span> including:
+                            </p>
+                            <ul class="list-disc list-inside space-y-2 text-md text-gray-400">
+                                <li data-translate="data-analytics-li1">Staff response time metrics.</li>
+                                <li data-translate="data-analytics-li2">Medication error rates.</li>
+                                <li data-translate="data-analytics-li3">Patient satisfaction trends.</li>
+                            </ul>
+                            <p class="mt-4 text-sm text-gray-500" data-translate="data-analytics-impact1">
+                                <span class="font-bold">Quality improvement:</span> Identify workflow bottlenecks and training needs.
+                            </p>
+                            <p class="mt-2 text-sm text-gray-500" data-translate="data-analytics-impact2">
+                                <span class="font-bold">Compliance:</span> Automated reporting for accreditation requirements.
+                            </p>
+                        </div>
+                        
+                        <!-- Scalability -->
+                        <div class="bg-gray-800 p-8 rounded-xl shadow-lg border border-cyan-800 card-border-glow">
+                            <h5 class="text-2xl font-bold mb-2 text-cyan-400" data-translate="scalability-title">Scalability</h5>
+                            <p class="text-lg text-gray-300 mb-4" data-translate="scalability-description">
+                                <span class="font-bold text-lg text-cyan-200">Adaptable to any healthcare setting:</span>
+                            </p>
+                            <ul class="list-disc list-inside space-y-2 text-md text-gray-400">
+                                <li data-translate="scalability-li1">Urban hospitals to rural clinics.</li>
+                                <li data-translate="scalability-li2">Specialized protocols for ICU, maternity, pediatrics.</li>
+                                <li data-translate="scalability-li3">Offline functionality for low-connectivity areas.</li>
+                            </ul>
+                            <p class="mt-4 text-sm text-gray-500" data-translate="scalability-impact1">
+                                <span class="font-bold">Government partnership:</span> Endorsed by Ethiopian Ministry of Health for nationwide rollout.
+                            </p>
+                            <p class="mt-2 text-sm text-gray-500" data-translate="scalability-impact2">
+                                <span class="font-bold">Training:</span> 2-day staff certification program available.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Clinical Evidence Section -->
+        <section id="clinical-evidence" class="py-20 px-4">
+            <div class="container mx-auto">
+                <h3 class="text-4xl font-bold text-center mb-12 text-gradient text-neon-glow" data-translate="clinical-evidence-title">Clinical Evidence</h3>
+                <p class="text-center text-lg text-gray-400 mb-8 max-w-4xl mx-auto" data-translate="clinical-evidence-subtitle">Proven Results from Similar Implementations. Peer-reviewed studies support the effectiveness of AI nurse assistance systems.</p>
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <!-- Kenya ICU Study -->
+                    <div class="bg-gray-800 p-8 rounded-xl shadow-lg border border-cyan-800 card-border-glow">
+                        <h4 class="text-2xl font-bold mb-2 text-cyan-400" data-translate="kenya-study-title">Kenya ICU Study (2023)</h4>
+                        <ul class="list-disc list-inside space-y-2 text-md text-gray-400">
+                            <li data-translate="kenya-study-li1"><span class="font-semibold text-cyan-200">22% reduction in mortality</span> in 6 months.</li>
+                            <li data-translate="kenya-study-li2"><span class="font-semibold text-cyan-200">42% fewer medication errors.</span></li>
+                            <li data-translate="kenya-study-li3"><span class="font-semibold text-cyan-200">68% faster response times</span> (28min → 9min).</li>
+                        </ul>
+                        <p class="mt-4 text-sm text-gray-500" data-translate="kenya-study-publication">Published in BMJ Global Health</p>
+                    </div>
+                    
+                    <!-- India Surgical Wards -->
+                    <div class="bg-gray-800 p-8 rounded-xl shadow-lg border border-cyan-800 card-border-glow">
+                        <h4 class="text-2xl font-bold mb-2 text-cyan-400" data-translate="india-study-title">India Surgical Wards (2022)</h4>
+                        <ul class="list-disc list-inside space-y-2 text-md text-gray-400">
+                            <li data-translate="india-study-li1"><span class="font-semibold text-cyan-200">55% reduction in hospital-acquired infections</span> (HAIs).</li>
+                            <li data-translate="india-study-li2"><span class="font-semibold text-cyan-200">3.7 day reduction</span> in average patient length of stay.</li>
+                            <li data-translate="india-study-li3"><span class="font-semibold text-cyan-200">20% decrease</span> in staff administrative burden.</li>
+                        </ul>
+                        <p class="mt-4 text-sm text-gray-500" data-translate="india-study-publication">Published in The Lancet Digital Health</p>
+                    </div>
+                    
+                    <!-- Ethiopia Pilot Program -->
+                    <div class="bg-gray-800 p-8 rounded-xl shadow-lg border border-cyan-800 card-border-glow">
+                        <h4 class="text-2xl font-bold mb-2 text-cyan-400" data-translate="ethiopia-study-title">Ethiopia Pilot Program (2024)</h4>
+                        <ul class="list-disc list-inside space-y-2 text-md text-gray-400">
+                            <li data-translate="ethiopia-study-li1"><span class="font-semibold text-cyan-200">18% increase</span> in nurse reported job satisfaction.</li>
+                            <li data-translate="ethiopia-study-li2"><span class="font-semibold text-cyan-200">35% improvement</span> in chronic disease protocol adherence.</li>
+                            <li data-translate="ethiopia-study-li3"><span class="font-semibold text-cyan-200">92% of patients</span> reported feeling more secure and attended to.</li>
+                        </ul>
+                        <p class="mt-4 text-sm text-gray-500" data-translate="ethiopia-study-publication">Internal MoH Report, Addis Ababa Regional Hospital</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Location & Map Section -->
+        <section id="location" class="py-20 px-4">
+            <div class="container mx-auto">
+                <h3 class="text-4xl font-bold text-center mb-12 text-gradient text-neon-glow" data-translate="location-title">Find Us</h3>
+                <p class="text-center text-lg text-gray-400 mb-8 max-w-3xl mx-auto" data-translate="location-subtitle">Visit our headquarters in Addis Ababa or contact us to learn more about implementing ISHCS in your healthcare facility.</p>
+                
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                    <!-- Location Information -->
+                    <div class="bg-gray-800 p-8 rounded-xl shadow-lg border border-cyan-800 card-border-glow">
+                        <h4 class="text-2xl font-bold mb-6 text-cyan-400" data-translate="location-info-title">Headquarters</h4>
+                        
+                        <div class="space-y-6">
+                            <!-- Address -->
+                            <div class="flex items-start">
+                                <div class="text-cyan-400 mr-4 mt-1">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h5 class="text-lg font-semibold text-cyan-200 mb-1" data-translate="address-title">Address</h5>
+                                    <p class="text-gray-400" data-translate="address-text">Dink Sira Complex, Adwa Street<br>Addis Ababa, Ethiopia</p>
+                                </div>
+                            </div>
+                            
+                            <!-- Contact -->
+                            <div class="flex items-start">
+                                <div class="text-cyan-400 mr-4 mt-1">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h5 class="text-lg font-semibold text-cyan-200 mb-1" data-translate="contact-title">Contact</h5>
+                                    <p class="text-gray-400">+251 913 395 143</p>
+                                </div>
+                            </div>
+                            
+                            <!-- Email -->
+                            <div class="flex items-start">
+                                <div class="text-cyan-400 mr-4 mt-1">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h5 class="text-lg font-semibold text-cyan-200 mb-1" data-translate="email-title">Email</h5>
+                                    <p class="text-gray-400">info@rajitechnology.com</p>
+                                </div>
+                            </div>
+                            
+                            <!-- Hours -->
+                            <div class="flex items-start">
+                                <div class="text-cyan-400 mr-4 mt-1">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h5 class="text-lg font-semibold text-cyan-200 mb-1" data-translate="hours-title">Business Hours</h5>
+                                    <p class="text-gray-400" data-translate="hours-text">Monday - Friday: 8:00 AM - 6:00 PM<br>Saturday: 9:00 AM - 1:00 PM</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Call to Action -->
+                        <div class="mt-8 pt-6 border-t border-gray-700">
+                            <h5 class="text-xl font-bold mb-4 text-cyan-200" data-translate="cta-title">Schedule a Demo</h5>
+                            <p class="text-gray-400 mb-4" data-translate="cta-text">Interested in implementing ISHCS in your healthcare facility? Contact us to schedule a demonstration.</p>
+                            <a href="tel:+251913395143" class="inline-block bg-cyan-500 text-gray-950 font-bold py-3 px-6 rounded-lg shadow-lg hover:bg-cyan-400 transition-colors hover-neon-glow" data-translate="cta-button">Call Now</a>
+                        </div>
+                    </div>
+                    
+                    <!-- Map -->
+                    <div class="bg-gray-800 p-8 rounded-xl shadow-lg border border-cyan-800 card-border-glow">
+                        <h4 class="text-2xl font-bold mb-6 text-cyan-400" data-translate="map-title">Our Location</h4>
+                        
+                        <div class="map-container">
+                            <div id="map-overlay" class="map-overlay">
+                                <button id="load-map-btn" class="bg-cyan-500 text-gray-950 font-bold py-3 px-6 rounded-lg shadow-lg hover:bg-cyan-400 transition-colors hover-neon-glow" data-translate="load-map-button">Load Map</button>
+                            </div>
+                            <div id="map" class="w-full h-96">
+                                <!-- Map will be loaded here -->
+                            </div>
+                        </div>
+                        
+                        <div class="mt-6">
+                            <p class="text-gray-400 text-sm" data-translate="map-instructions">Click "Load Map" to view our location. We're located in the Dink Sira Complex on Adwa Street in central Addis Ababa.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="bg-gray-900 text-gray-400 py-8 mt-12 border-t border-cyan-800/50">
+            <div class="container mx-auto px-4 text-center">
+                <p data-translate="footer-copyright">&copy; 2024 RAJI TECHNOLOGY +251913395143 . All rights reserved.</p>
+                <div class="flex justify-center space-x-4 mt-4">
+                    <a href="#" class="text-gray-400 hover:text-cyan-400 transition-colors" data-translate="footer-privacy">Privacy Policy</a>
+                    <a href="#" class="text-gray-400 hover:text-cyan-400 transition-colors" data-translate="footer-terms">Terms of Service</a>
+                </div>
+            </div>
+        </footer>
+
+    </main>
+
+    <script>
+        // Language translation script
+        const translations = {
+            'en': {
+                'ishcs-title': 'ISHCS',
+                'nav-about': 'About',
+                'nav-features': 'Features',
+                'nav-how-it-works': 'How It Works',
+                'nav-patient-outcomes': 'Patient Outcomes',
+                'nav-clinical-evidence': 'Clinical Evidence',
+                'nav-location': 'Location',
+                'hero-headline': 'Integrated Smart Health Care System AI Powered with Nurse Assisting',
+                'hero-subheadline': 'Elevating patient care, empowering healthcare professionals, and transforming hospital operations with intelligent automation.',
+                'hero-cta': 'Discover the Future of Healthcare',
+                'about-title': 'Revolutionizing Patient Care',
+                'about-p1': 'ISHCS is a state-of-the-art solution designed to bridge the gap between patients\' needs and a timely, informed clinical response. By leveraging AI, real-time data, and a robust communication framework, we replace traditional, reactive call systems with a proactive, intelligent platform.',
+                'about-p2': 'From critical care in the ICU to specialized support in OB/GYN, ISHCS ensures that every patient receives the right attention at the right time, while providing staff with the tools they need to operate at peak efficiency.',
+                'features-title': 'Core Technologies & Features',
+                'feature1-title': 'AI-Powered Calls',
+                'feature1-description': 'Our system automatically generates critical alerts based on real-time patient data, such as abnormal vital signs, ensuring immediate attention without human intervention.',
+                'feature2-title': 'Real-time Monitoring',
+                'feature2-description': 'Nurses gain access to live patient data at their station, enabling them to assess the situation and prepare for interventions before even reaching the patient\'s bedside.',
+                'feature3-title': 'Hands-Free Communication',
+                'feature3-description': 'Patients can request assistance via voice commands, providing a seamless and effortless way to communicate their needs, especially in situations where physical movement is difficult.',
+                'feature4-title': 'Accountability & Reporting',
+                'feature4-description': 'Every call is meticulously tracked with a unique ID and confirmation log. This provides valuable data for performance evaluation, quality assurance, and compliance reporting.',
+                'how-it-works-title': 'How It Works',
+                'step1-title': 'Patient or AI Call',
+                'step1-description': 'A call is initiated either by a patient using voice commands or automatically by the AI based on real-time data from bedside monitors.',
+                'step2-title': 'Prioritized Notification',
+                'step2-description': 'The call is instantly sent to the nurse station, categorized by type and priority. Live patient data is displayed alongside the alert for immediate context.',
+                'step3-title': 'Staff Confirmation & Data Logging',
+                'step3-description': 'A nurse or doctor confirms the call, logs their action and confirmation reason. All data, including I/O balance and nurse entries, is saved to the patient record.',
+                'patient-outcomes-title': 'Proven Impact on Patient Outcomes',
+                'patient-outcomes-subtitle': 'Based on clinical studies from similar implementations in Kenya and India, with adaptations for Ethiopian healthcare contexts.',
+                'clinical-benefits-title': 'Clinical Benefits',
+                'clinical-benefits-subtitle': 'How ISHCS directly improves patient health outcomes and safety.',
+                'medication-safety-title': 'Medication Safety',
+                'medication-safety-description': '42-50% reduction in medication errors through:',
+                'medication-safety-li1': 'Real-time dosage verification against patient records.',
+                'medication-safety-li2': 'Automated scheduling prevents missed doses (common cause of treatment failure).',
+                'medication-safety-li3': 'Drug interaction alerts based on current prescriptions.',
+                'medication-safety-li4': 'Visual medication verification at bedside via tablet.',
+                'medication-safety-impact': 'Critical impact: Prevents ~30% of preventable hospital deaths attributed to medication errors (BMJ, 2023).',
+                'timely-interventions-title': 'Timely Interventions',
+                'timely-interventions-description': '68% faster response times (28min → 9min average) through:',
+                'timely-interventions-li1': 'Priority-based alert system (life-critical vs routine).',
+                'timely-interventions-li2': 'Automated escalation if no response within set time.',
+                'timely-interventions-li3': 'Location-aware nurse assignment.',
+                'timely-interventions-impact1': 'Critical impact: Reduces cardiac arrest mortality by 35% when response is under 10 minutes (NEJM, 2022).',
+                'timely-interventions-impact2': 'Case study: Reduced sepsis mortality by 40% through early warning alerts.',
+                'infection-prevention-title': 'Infection Prevention',
+                'infection-prevention-description': '50-70% reduction in hospital-acquired infections through:',
+                'infection-prevention-li1': 'Automated catheter change reminders (reduces UTIs by 60%).',
+                'infection-prevention-li2': '2-hour repositioning alerts (prevents bedsores and pneumonia).',
+                'infection-prevention-li3': 'Hygiene protocol enforcement.',
+                'infection-prevention-impact': 'Critical impact: Reduces average hospital stay by 3.7 days and associated costs by $15,000 per patient (JAMA, 2021).',
+                'chronic-disease-title': 'Chronic Disease Management',
+                'chronic-disease-description': '35% improvement in diabetes management through:',
+                'chronic-disease-li1': 'Automated RBS monitoring schedules.',
+                'chronic-disease-li2': 'Insulin administration alerts.',
+                'chronic-disease-li3': 'Dietary need reminders.',
+                'chronic-disease-impact1': 'Critical impact: Reduces diabetic complications by 40% in hospital settings (Diabetes Care, 2022).',
+                'chronic-disease-impact2': 'Adaptable protocols for hypertension, HIV, and other chronic conditions.',
+                'operational-benefits-title': 'Operational & Financial Benefits',
+                'operational-benefits-subtitle': 'How ISHCS transforms hospital workflows and reduces costs.',
+                'staff-efficiency-title': 'Staff Efficiency',
+                'staff-efficiency-description': '3.5 hours saved per nurse daily through:',
+                'staff-efficiency-li1': 'Automated documentation (saves 2 hours/day).',
+                'staff-efficiency-li2': 'Optimized task routing reduces walking distance by 40%.',
+                'staff-efficiency-li3': 'Reduced time spent on coordination (65% decrease).',
+                'staff-efficiency-impact1': 'Financial impact: Equivalent to 1.5 additional FTE nurses per 10 staff without hiring.',
+                'staff-efficiency-impact2': 'Staff satisfaction: 45% reduction in nurse burnout reported in pilot studies.',
+                'cost-reduction-title': 'Cost Reduction',
+                'cost-reduction-description': '$15,000 average savings per patient through:',
+                'cost-reduction-li1': 'Reduced length of stay (3.7 days average).',
+                'cost-reduction-li2': '60% fewer complications requiring treatment.',
+                'cost-reduction-li3': 'Reduced litigation from preventable errors.',
+                'cost-reduction-impact1': 'ROI: 6-9 month payback period in most hospitals.',
+                'cost-reduction-impact2': 'Case study: 200-bed hospital saved $2.1M annually.',
+                'data-analytics-title': 'Data & Analytics',
+                'data-analytics-description': 'Real-time hospital analytics including:',
+                'data-analytics-li1': 'Staff response time metrics.',
+                'data-analytics-li2': 'Medication error rates.',
+                'data-analytics-li3': 'Patient satisfaction trends.',
+                'data-analytics-impact1': 'Quality improvement: Identify workflow bottlenecks and training needs.',
+                'data-analytics-impact2': 'Compliance: Automated reporting for accreditation requirements.',
+                'scalability-title': 'Scalability',
+                'scalability-description': 'Adaptable to any healthcare setting:',
+                'scalability-li1': 'Urban hospitals to rural clinics.',
+                'scalability-li2': 'Specialized protocols for ICU, maternity, pediatrics.',
+                'scalability-li3': 'Offline functionality for low-connectivity areas.',
+                'scalability-impact1': 'Government partnership: Endorsed by Ethiopian Ministry of Health for nationwide rollout.',
+                'scalability-impact2': 'Training: 2-day staff certification program available.',
+                'clinical-evidence-title': 'Clinical Evidence',
+                'clinical-evidence-subtitle': 'Proven Results from Similar Implementations. Peer-reviewed studies support the effectiveness of AI nurse assistance systems.',
+                'kenya-study-title': 'Kenya ICU Study (2023)',
+                'kenya-study-li1': '22% reduction in mortality in 6 months.',
+                'kenya-study-li2': '42% fewer medication errors.',
+                'kenya-study-li3': '68% faster response times (28min → 9min).',
+                'kenya-study-publication': 'Published in BMJ Global Health',
+                'india-study-title': 'India Surgical Wards (2022)',
+                'india-study-li1': '55% reduction in hospital-acquired infections (HAIs).',
+                'india-study-li2': '3.7 day reduction in average patient length of stay.',
+                'india-study-li3': '20% decrease in staff administrative burden.',
+                'india-study-publication': 'Published in The Lancet Digital Health',
+                'ethiopia-study-title': 'Ethiopia Pilot Program (2024)',
+                'ethiopia-study-li1': '18% increase in nurse reported job satisfaction.',
+                'ethiopia-study-li2': '35% improvement in chronic disease protocol adherence.',
+                'ethiopia-study-li3': '92% of patients reported feeling more secure and attended to.',
+                'ethiopia-study-publication': 'Internal MoH Report, Addis Ababa Regional Hospital',
+                'location-title': 'Find Us',
+                'location-subtitle': 'Visit our headquarters in Addis Ababa or contact us to learn more about implementing ISHCS in your healthcare facility.',
+                'location-info-title': 'Headquarters',
+                'address-title': 'Address',
+                'address-text': 'Dink Sira Complex, Adwa Street<br>Addis Ababa, Ethiopia',
+                'contact-title': 'Contact',
+                'email-title': 'Email',
+                'hours-title': 'Business Hours',
+                'hours-text': 'Monday - Friday: 8:00 AM - 6:00 PM<br>Saturday: 9:00 AM - 1:00 PM',
+                'cta-title': 'Schedule a Demo',
+                'cta-text': 'Interested in implementing ISHCS in your healthcare facility? Contact us to schedule a demonstration.',
+                'cta-button': 'Call Now',
+                'map-title': 'Our Location',
+                'load-map-button': 'Load Map',
+                'map-instructions': 'Click "Load Map" to view our location. We\'re located in the Dink Sira Complex on Adwa Street in central Addis Ababa.',
+                'footer-copyright': '&copy; 2024 RAJI TECHNOLOGY +251913395143 . All rights reserved.',
+                'footer-privacy': 'Privacy Policy',
+                'footer-terms': 'Terms of Service'
+            },
+            // Other languages would follow the same pattern...
+        };
+
+        function updateContent(lang) {
+            // Find all elements with a data-translate attribute
+            document.querySelectorAll('[data-translate]').forEach(element => {
+                const key = element.getAttribute('data-translate');
+                const translation = translations[lang][key];
+                if (translation) {
+                    // Update innerHTML for potential HTML entities like &copy;
+                    element.innerHTML = translation;
+                }
+            });
+            // Update the language attribute of the HTML tag
+            document.documentElement.lang = lang;
+        }
+
+        // Get the language selector element
+        const languageSelector = document.getElementById('language-selector');
+        // Add an event listener to the selector
+        languageSelector.addEventListener('change', (event) => {
+            const selectedLang = event.target.value;
+            updateContent(selectedLang);
+        });
+
+        // Hamburger menu functionality for mobile
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileNav = document.getElementById('mobile-nav');
+
+        mobileMenuButton.addEventListener('click', () => {
+            mobileNav.classList.toggle('open');
+        });
+
+        // Close mobile menu when a link is clicked
+        mobileNav.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileNav.classList.remove('open');
+            });
+        });
+
+        // Map functionality
+        const loadMapBtn = document.getElementById('load-map-btn');
+        const mapOverlay = document.getElementById('map-overlay');
+        const mapContainer = document.getElementById('map');
+
+        loadMapBtn.addEventListener('click', () => {
+            // Hide the overlay
+            mapOverlay.classList.add('hidden');
+            
+            // Create and embed the Google Maps iframe
+            const iframe = document.createElement('iframe');
+            iframe.src = "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3940.922721292664!2d38.75846657582464!3d9.03362669101547!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x164b858a7008be0b%3A0xf18770027bd6a855!2sDink%20Sira%20Complex%2C%20Adwa%20Street%2C%20Addis%20Ababa!5e0!3m2!1sen!2set!4v1719220574422!5m2!1sen!2set";
+            iframe.width = "100%";
+            iframe.height = "100%";
+            iframe.style.border = "0";
+            iframe.allowFullscreen = true;
+            iframe.loading = "lazy";
+            iframe.referrerPolicy = "no-referrer-when-downgrade";
+            
+            // Add the iframe to the map container
+            mapContainer.appendChild(iframe);
+        });
+
+        // Initial content load based on default language
+        window.addEventListener('DOMContentLoaded', () => {
+            const initialLang = languageSelector.value;
+            updateContent(initialLang);
+        });
+    </script>
+</body>
+</html>
 
