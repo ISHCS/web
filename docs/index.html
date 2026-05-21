@@ -47,6 +47,21 @@
         }
     </style>
 </head>
+    <body class="bg-gray-950 text-gray-100 bg-grid-pattern antialiased custom-scrollbar">
+
+    <!-- ADD THIS HERE, RIGHT AFTER THE OPENING BODY TAG -->
+    <audio id="bg-audio" loop>
+        <source src="your-audio-file.mp3" type="audio/mpeg">
+    </audio>
+
+    <div class="fixed bottom-6 left-6 z-[60]">
+        <button id="audio-toggle" class="bg-cyan-950 border border-cyan-800 text-cyan-300 p-3 rounded-full hover:bg-cyan-800 transition-all shadow-lg shadow-cyan-500/20">
+            <svg id="play-icon" class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20"><path d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z"/></svg>
+        </button>
+    </div>
+    <!-- END OF ADDED CODE -->
+
+    <!-- Your existing Top Urgent Notice Bar follows here... -->
 <body class="bg-gray-950 text-gray-100 bg-grid-pattern antialiased custom-scrollbar">
 
     <!-- Top Urgent Notice Bar -->
