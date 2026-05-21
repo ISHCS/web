@@ -1,556 +1,1537 @@
-```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ISHCS - Integrated Smart Health Care System AI Powered with Nurse Assisting</title>
+    <title>ISHCS - National AI-Powered Clinical Protocol Engine</title>
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
         body {
             font-family: 'Inter', sans-serif;
             scroll-behavior: smooth;
         }
         .bg-grid-pattern {
-            background-color: #0d1117;
-            background-image: linear-gradient(0deg, transparent 24%, rgba(255, 255, 255, 0.05) 25%, rgba(255, 255, 255, 0.05) 26%, transparent 27%, transparent 74%, rgba(255, 255, 255, 0.05) 75%, rgba(255, 255, 255, 0.05) 76%, transparent 77%, transparent), linear-gradient(90deg, transparent 24%, rgba(255, 255, 255, 0.05) 25%, rgba(255, 255, 255, 0.05) 26%, transparent 27%, transparent 74%, rgba(255, 255, 255, 0.05) 75%, rgba(255, 255, 255, 0.05) 76%, transparent 77%, transparent);
-            background-size: 50px 50px;
+            background-color: #030712;
+            background-image: linear-gradient(0deg, transparent 24%, rgba(6, 182, 212, 0.04) 25%, rgba(6, 182, 212, 0.04) 26%, transparent 27%, transparent 74%, rgba(6, 182, 212, 0.04) 75%, rgba(6, 182, 212, 0.04) 76%, transparent 77%, transparent), 
+                              linear-gradient(90deg, transparent 24%, rgba(6, 182, 212, 0.04) 25%, rgba(6, 182, 212, 0.04) 26%, transparent 27%, transparent 74%, rgba(6, 182, 212, 0.04) 75%, rgba(6, 182, 212, 0.04) 76%, transparent 77%, transparent);
+            background-size: 40px 40px;
         }
         .text-neon-glow {
-            text-shadow: 0 0 5px #00e0ff, 0 0 10px #00e0ff, 0 0 20px #00e0ff;
+            text-shadow: 0 0 10px rgba(6, 182, 212, 0.6), 0 0 20px rgba(6, 182, 212, 0.3);
         }
         .hover-neon-glow:hover {
-            box-shadow: 0 0 15px rgba(0, 224, 255, 0.7);
-        }
-        .card-border-glow {
-            position: relative;
-            z-index: 1;
-        }
-        .card-border-glow::before {
-            content: '';
-            position: absolute;
-            top: -2px;
-            left: -2px;
-            right: -2px;
-            bottom: -2px;
-            background: linear-gradient(45deg, #00e0ff, #00aaff, #00e0ff);
-            background-size: 400% 400%;
-            border-radius: 1rem;
-            z-index: -1;
-            opacity: 0;
-            transition: opacity 0.5s ease-in-out;
-        }
-        .card-border-glow:hover::before {
-            animation: gradient-glow 3s linear infinite;
-            opacity: 1;
-        }
-        @keyframes gradient-glow {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
+            box-shadow: 0 0 20px rgba(6, 182, 212, 0.4);
+            border-color: rgba(6, 182, 212, 0.8);
         }
         .text-gradient {
-            background-image: linear-gradient(45deg, #00e0ff, #00aaff);
+            background-image: linear-gradient(135deg, #22d3ee, #06b6d4, #0891b2);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
-        .mobile-nav-menu {
-            transition: transform 0.3s ease-in-out;
-            transform: translateY(-100%);
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
         }
-        .mobile-nav-menu.open {
-            transform: translateY(0);
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #0b0f19;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #1e293b;
+            border-radius: 3px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: #06b6d4;
         }
     </style>
 </head>
-<body class="bg-gray-950 text-gray-100 bg-grid-pattern">
+<body class="bg-gray-950 text-gray-100 bg-grid-pattern antialiased custom-scrollbar">
 
-    <header class="bg-gray-900 text-white py-4 shadow-lg sticky top-0 z-50 border-b border-cyan-800/50">
-        <div class="container mx-auto px-4 flex justify-between items-center">
-            <h1 class="text-3xl font-extrabold text-cyan-400 text-neon-glow" data-translate="ishcs-title">ISHCS</h1>
-            <nav class="flex items-center space-x-6 font-semibold">
-                <ul class="hidden lg:flex space-x-6">
-                    <li><a href="#about" class="hover:text-cyan-400 transition-colors" data-translate="nav-about">About</a></li>
-                    <li><a href="#architecture" class="hover:text-cyan-400 transition-colors" data-translate="nav-architecture">Architecture</a></li>
-                    <li><a href="#features" class="hover:text-cyan-400 transition-colors" data-translate="nav-features">Features</a></li>
-                    <li><a href="#protocols" class="hover:text-cyan-400 transition-colors" data-translate="nav-protocols">Clinical Protocols</a></li>
-                    <li><a href="#how-it-works" class="hover:text-cyan-400 transition-colors" data-translate="nav-how-it-works">How It Works</a></li>
-                    <li><a href="#patient-outcomes" class="hover:text-cyan-400 transition-colors" data-translate="nav-patient-outcomes">Impact Data</a></li>
-                    <li><a href="#national-scope" class="hover:text-cyan-400 transition-colors" data-translate="nav-national-scope">National Scope</a></li>
-                    <li><a href="#recognition" class="hover:text-cyan-400 transition-colors" data-translate="nav-recognition">Endorsements</a></li>
-                </ul>
-                <button id="mobile-menu-button" class="lg:hidden text-gray-100 focus:outline-none">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+    <!-- Top Urgent Notice Bar -->
+    <div class="bg-gradient-to-r from-red-950/80 via-red-900/60 to-red-950/80 border-b border-red-800/40 text-red-200 py-2.5 px-4 text-xs md:text-sm text-center font-medium relative z-50">
+        <span class="inline-flex items-center gap-2">
+            <span class="w-2.5 h-2.5 rounded-full bg-red-500 animate-pulse"></span>
+            <strong data-translate="notice-bold">THE COST OF INACTION:</strong> 
+            <span data-translate="notice-text">52,400 preventable patient deaths annually in Ethiopian hospitals. ISHCS targets a 95% reduction in critical clinical errors.</span>
+        </span>
+    </div>
+
+    <!-- Navigation Header -->
+    <header class="bg-gray-950/90 backdrop-blur-md sticky top-0 z-40 border-b border-cyan-950/80">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-lg bg-gradient-to-tr from-cyan-600 to-cyan-400 flex items-center justify-center font-extrabold text-gray-950 text-xl shadow-lg shadow-cyan-500/20">
+                    I
+                </div>
+                <div>
+                    <h1 class="text-2xl font-black text-cyan-400 tracking-wider text-neon-glow">ISHCS</h1>
+                    <span class="text-[10px] text-gray-500 block -mt-1 font-bold uppercase tracking-widest" data-translate="sub-brand">National Health Initiative</span>
+                </div>
+            </div>
+
+            <!-- Main Desktop Navigation -->
+            <nav class="hidden lg:flex items-center space-x-6 font-semibold text-sm">
+                <a href="#about" class="text-gray-300 hover:text-cyan-400 transition-colors" data-translate="nav-about">Strategic Vision</a>
+                <a href="#architecture" class="text-gray-300 hover:text-cyan-400 transition-colors" data-translate="nav-architecture">Architecture</a>
+                <a href="#protocols" class="text-gray-300 hover:text-cyan-400 transition-colors" data-translate="nav-protocols">Clinical Engine</a>
+                <a href="#roadmap" class="text-gray-300 hover:text-cyan-400 transition-colors" data-translate="nav-roadmap">National Rollout</a>
+                <a href="#calculator" class="text-gray-300 hover:text-cyan-400 transition-colors" data-translate="nav-calculator">ROI Model</a>
+                <a href="#jobs" class="text-gray-300 hover:text-cyan-400 transition-colors" data-translate="nav-jobs">Job Creation</a>
+                <a href="#endorsements" class="text-gray-300 hover:text-cyan-400 transition-colors" data-translate="nav-endorsements">Validation</a>
+            </nav>
+
+            <!-- Language and Mobile Buttons -->
+            <div class="flex items-center gap-3">
+                <select id="lang-selector" class="bg-gray-900 border border-cyan-900/60 text-cyan-300 text-xs rounded-lg px-2.5 py-1.5 focus:outline-none focus:ring-2 focus:ring-cyan-500 font-bold cursor-pointer">
+                    <option value="en">English (EN)</option>
+                    <option value="am">አማርኛ (AM)</option>
+                    <option value="om">Afaan Oromoo (OM)</option>
+                </select>
+
+                <button id="mobile-menu-toggle" class="lg:hidden text-gray-300 hover:text-cyan-400 focus:outline-none">
+                    <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path id="menu-icon-path" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
                     </svg>
                 </button>
-                <select id="language-selector" class="bg-gray-800 text-gray-100 rounded-md p-2 shadow-inner focus:outline-none focus:ring-2 focus:ring-cyan-500">
-                    <option value="en">English</option>
-                    <option value="am">አማርኛ</option>
-                    <option value="ar">العربية</option>
-                    <option value="om">Afaan Oromoo</option>
-                    <option value="es">Español</option>
-                    <option value="fr">Français</option>
-                </select>
-            </nav>
+            </div>
         </div>
-        <div id="mobile-nav" class="mobile-nav-menu lg:hidden bg-gray-900 absolute top-16 left-0 w-full shadow-lg z-40 hidden">
-            <ul class="flex flex-col items-center space-y-4 py-4">
-                <li><a href="#about" class="block py-2 text-lg hover:text-cyan-400" data-translate="nav-about">About</a></li>
-                <li><a href="#architecture" class="block py-2 text-lg hover:text-cyan-400" data-translate="nav-architecture">Architecture</a></li>
-                <li><a href="#features" class="block py-2 text-lg hover:text-cyan-400" data-translate="nav-features">Features</a></li>
-                <li><a href="#protocols" class="block py-2 text-lg hover:text-cyan-400" data-translate="nav-protocols">Clinical Protocols</a></li>
-                <li><a href="#how-it-works" class="block py-2 text-lg hover:text-cyan-400" data-translate="nav-how-it-works">How It Works</a></li>
-                <li><a href="#patient-outcomes" class="block py-2 text-lg hover:text-cyan-400" data-translate="nav-patient-outcomes">Impact Data</a></li>
-                <li><a href="#national-scope" class="block py-2 text-lg hover:text-cyan-400" data-translate="nav-national-scope">National Scope</a></li>
-                <li><a href="#recognition" class="block py-2 text-lg hover:text-cyan-400" data-translate="nav-recognition">Endorsements</a></li>
-            </ul>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden lg:hidden bg-gray-950 border-b border-cyan-950 py-4 px-6 space-y-3">
+            <a href="#about" class="block text-gray-300 hover:text-cyan-400 text-sm font-semibold" data-translate="nav-about">Strategic Vision</a>
+            <a href="#architecture" class="block text-gray-300 hover:text-cyan-400 text-sm font-semibold" data-translate="nav-architecture">Architecture</a>
+            <a href="#protocols" class="block text-gray-300 hover:text-cyan-400 text-sm font-semibold" data-translate="nav-protocols">Clinical Engine</a>
+            <a href="#roadmap" class="block text-gray-300 hover:text-cyan-400 text-sm font-semibold" data-translate="nav-roadmap">National Rollout</a>
+            <a href="#calculator" class="block text-gray-300 hover:text-cyan-400 text-sm font-semibold" data-translate="nav-calculator">ROI Model</a>
+            <a href="#jobs" class="block text-gray-300 hover:text-cyan-400 text-sm font-semibold" data-translate="nav-jobs">Job Creation</a>
+            <a href="#endorsements" class="block text-gray-300 hover:text-cyan-400 text-sm font-semibold" data-translate="nav-endorsements">Validation</a>
         </div>
     </header>
 
-    <main>
-        <section class="text-white text-center py-24 px-4 relative">
-            <div class="absolute inset-0 z-0 opacity-20" style="background: radial-gradient(circle at center, rgba(0, 224, 255, 0.1) 0%, transparent 50%);"></div>
-            <div class="container mx-auto relative z-10">
-                <h2 class="text-5xl md:text-7xl font-800 mb-4 leading-tight text-gradient text-neon-glow" data-translate="hero-headline">Integrated Smart Health Care System AI Powered with Nurse Assisting</h2>
-                <p class="text-xl md:text-2xl mb-8 max-w-4xl mx-auto text-gray-300" data-translate="hero-subheadline">National Mission: Eliminating preventable errors, empowering nursing workflows, and delivering direct device-to-bedside clinical intelligence across public healthcare systems.</p>
-                <div class="flex flex-wrap justify-center gap-4">
-                    <a href="#about" class="bg-cyan-500 text-gray-950 font-bold py-4 px-10 rounded-full shadow-lg hover:bg-cyan-400 transition-colors text-xl hover-neon-glow" data-translate="hero-cta">Explore the System</a>
-                    <a href="#national-scope" class="bg-transparent border-2 border-cyan-500 text-cyan-400 font-bold py-4 px-10 rounded-full shadow-lg hover:bg-cyan-500/10 transition-colors text-xl" data-translate="hero-cta-secondary">National Roadmap</a>
+    <!-- Hero / Intro Section -->
+    <section class="relative py-20 lg:py-32 px-4 overflow-hidden border-b border-gray-900">
+        <div class="absolute inset-0 z-0 opacity-30 bg-[radial-gradient(circle_at_center,rgba(6,182,212,0.15)_0%,transparent_65%)]"></div>
+        <div class="container mx-auto max-w-6xl relative z-10 text-center">
+            
+            <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-950/80 border border-cyan-800/50 text-cyan-400 text-xs font-bold uppercase tracking-widest mb-6" data-translate="hero-badge">
+                <span class="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-ping"></span> Sovereign Technical Innovation
+            </span>
+
+            <h1 class="text-4xl md:text-6xl lg:text-7xl font-black text-white leading-tight mb-6">
+                <span data-translate="hero-head-1">The Intelligent Clinical Protocol Engine</span> <br>
+                <span class="text-gradient text-neon-glow" data-translate="hero-head-2">Built to Eliminate Patient Care Errors</span>
+            </h1>
+
+            <p class="text-lg md:text-xl text-gray-400 max-w-4xl mx-auto mb-10 leading-relaxed" data-translate="hero-sub">
+                ISHCS is a specialized, high-availability Windows OS patient bedside and nursing station system. It reads medical devices directly over IP to coordinate automated, ward-specific check-lists and safety protocols—enforcing accountability across all clinical settings.
+            </p>
+
+            <div class="flex flex-col sm:flex-row justify-center items-center gap-4">
+                <a href="#protocols" class="w-full sm:w-auto bg-cyan-500 hover:bg-cyan-400 text-gray-950 font-extrabold py-4 px-10 rounded-xl shadow-lg shadow-cyan-500/20 transition-all text-center hover-neon-glow text-base" data-translate="hero-btn-primary">Explore 10 Ward Protocols</a>
+                <a href="#calculator" class="w-full sm:w-auto bg-gray-900 hover:bg-gray-850 text-cyan-400 border border-cyan-900/60 font-bold py-4 px-10 rounded-xl transition-all text-center text-base" data-translate="hero-btn-secondary">Test the ROI Model</a>
+            </div>
+
+            <!-- Highlight Metrics -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8 mt-20 max-w-5xl mx-auto">
+                <div class="bg-gray-900/60 p-6 rounded-2xl border border-cyan-950/60 text-center">
+                    <div class="text-3xl md:text-4xl font-extrabold text-cyan-400 mb-1">70+</div>
+                    <div class="text-xs text-gray-500 uppercase tracking-wider font-bold" data-translate="metric-1">Public Hospitals</div>
+                </div>
+                <div class="bg-gray-900/60 p-6 rounded-2xl border border-cyan-950/60 text-center">
+                    <div class="text-3xl md:text-4xl font-extrabold text-cyan-400 mb-1">3,500+</div>
+                    <div class="text-xs text-gray-500 uppercase tracking-wider font-bold" data-translate="metric-2">Beds Monitored</div>
+                </div>
+                <div class="bg-gray-900/60 p-6 rounded-2xl border border-cyan-950/60 text-center">
+                    <div class="text-3xl md:text-4xl font-extrabold text-cyan-400 mb-1">&lt;100ms</div>
+                    <div class="text-xs text-gray-500 uppercase tracking-wider font-bold" data-translate="metric-3">Telemetry Latency</div>
+                </div>
+                <div class="bg-gray-900/60 p-6 rounded-2xl border border-cyan-950/60 text-center">
+                    <div class="text-3xl md:text-4xl font-extrabold text-cyan-400 mb-1">879</div>
+                    <div class="text-xs text-gray-500 uppercase tracking-wider font-bold" data-translate="metric-4">Jobs Created</div>
                 </div>
             </div>
-        </section>
 
-        <section id="about" class="py-20 px-4 border-b border-gray-800">
-            <div class="container mx-auto max-w-5xl text-center">
-                <h3 class="text-4xl font-bold mb-4 text-gradient text-neon-glow" data-translate="about-title">Revolutionizing Patient Care Nationally</h3>
-                <p class="text-lg text-gray-300 mb-6" data-translate="about-p1">
-                    ISHCS is not a basic nurse call button. It is a robust, AI-powered clinical protocol engine designed to eliminate manual care scheduling dependencies and replace traditional reactive hospital environments with highly coordinated, automated workflows.
-                </p>
-                <p class="text-md text-gray-400" data-translate="about-p2">
-                    Operating directly as an intelligent, high-availability platform, ISHCS actively monitors all critical hospital wards—guaranteeing rapid clinical action precisely where human oversight faces system strain, resource shortfalls, or delayed technical execution.
-                </p>
-            </div>
-        </section>
+        </div>
+    </section>
 
-        <section id="architecture" class="py-20 px-4 bg-gray-900/50 border-b border-gray-800">
-            <div class="container mx-auto">
-                <h3 class="text-4xl font-bold text-center mb-4 text-gradient text-neon-glow" data-translate="architecture-title">Engineered for High-Reliability Environments</h3>
-                <p class="text-center text-gray-400 mb-12 max-w-3xl mx-auto" data-translate="architecture-subtitle">Why ISHCS is built natively as a robust Windows application rather than a browser or mobile cloud app.</p>
+    <!-- Strategic Vision & Challenge Statement -->
+    <section id="about" class="py-20 px-4 border-b border-gray-900">
+        <div class="container mx-auto max-w-6xl">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
                 
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
-                    <div class="bg-gray-800/80 p-8 rounded-xl border border-cyan-500/30">
-                        <h4 class="text-2xl font-bold mb-4 text-cyan-400" data-translate="arch-hardware-title">Hardware Profile: Dedicated Medical Point-of-Care</h4>
-                        <p class="text-gray-300 mb-4" data-translate="arch-hardware-desc">Each bed is equipped with a dedicated Microsoft Surface Tablet running a high-reliability Windows desktop application environment. This architecture bypasses standard commercial consumer issues entirely.</p>
-                        <ul class="space-y-2 text-sm text-gray-400 list-disc list-inside">
-                            <li data-translate="arch-hw-1">Microsoft Surface Tablet platform running full enterprise Windows 11 Pro</li>
-                            <li data-translate="arch-hw-2">Rigid, medical-grade bedside hardware mounting solutions</li>
-                            <li data-translate="arch-hw-3">Continuous operation with 8+ hours battery failure mitigation backup</li>
-                            <li data-translate="arch-hw-4">Direct hardwired or dedicated local wireless infrastructure capabilities</li>
-                        </ul>
-                    </div>
-                    <div class="bg-gray-800/80 p-8 rounded-xl border border-gray-700">
-                        <h4 class="text-2xl font-bold mb-4 text-cyan-400" data-translate="arch-comparison-title">Architectural Paradigm: Windows vs. Alternative Systems</h4>
-                        <div class="overflow-x-auto text-sm">
-                            <table class="w-full text-left text-gray-400">
-                                <thead>
-                                    <tr class="border-b border-gray-700 text-gray-200">
-                                        <th class="pb-2">Requirement</th>
-                                        <th class="pb-2 text-cyan-400">Windows Application Solution</th>
-                                        <th class="pb-2 text-red-400">Android / Web limitations</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr class="border-b border-gray-800">
-                                        <td class="py-2 font-semibold text-gray-300">Device Communication</td>
-                                        <td class="py-2">Direct via TCP/IP protocols</td>
-                                        <td class="py-2">Requires complex cloud middleware</td>
-                                    </tr>
-                                    <tr class="border-b border-gray-800">
-                                        <td class="py-2 font-semibold text-gray-300">Data Transfer Lag</td>
-                                        <td class="py-2 text-cyan-300">&lt;100ms real-time direct delivery</td>
-                                        <td class="py-2">2–10s typical transmission delays</td>
-                                    </tr>
-                                    <tr class="border-b border-gray-800">
-                                        <td class="py-2 font-semibold text-gray-300">Data Processing</td>
-                                        <td class="py-2">Raw telemetry from vital monitors</td>
-                                        <td class="py-2">Compressed or approximated feeds</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="py-2 font-semibold text-gray-300">Network Disruption</td>
-                                        <td class="py-2">Full local database offline execution</td>
-                                        <td class="py-2">System stall during internet failure</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="features" class="py-20 px-4 border-b border-gray-800">
-            <div class="container mx-auto">
-                <h3 class="text-4xl font-bold text-center mb-12 text-gradient text-neon-glow" data-translate="features-title">Core System Engineering</h3>
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                    <div class="bg-gray-800 p-8 rounded-xl shadow-lg border border-gray-700 card-border-glow">
-                        <div class="text-cyan-400 mb-4 text-center">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 mx-auto" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M22 12h-4l-3 9L9 3l-3 9H2"></path>
-                            </svg>
-                        </div>
-                        <h4 class="text-2xl font-bold mb-2 text-center text-cyan-200" data-translate="feature1-title">Real-Time IP Device Data</h4>
-                        <p class="text-md text-gray-400" data-translate="feature1-description">Directly streams telemetry inputs from bedside vital signs monitors over IP addresses, removing manual charting and latency.</p>
-                    </div>
-
-                    <div class="bg-gray-800 p-8 rounded-xl shadow-lg border border-gray-700 card-border-glow">
-                        <div class="text-cyan-400 mb-4 text-center">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 mx-auto" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <circle cx="12" cy="12" r="10"></circle>
-                                <polyline points="12 6 12 12 16 14"></polyline>
-                            </svg>
-                        </div>
-                        <h4 class="text-2xl font-bold mb-2 text-center text-cyan-200" data-translate="feature2-title">Proactive Care Triggering</h4>
-                        <p class="text-md text-gray-400" data-translate="feature2-description">Instantly registers clinical anomalies and maps automated schedules to generate immediate care alarms before patients deteriorate.</p>
-                    </div>
-
-                    <div class="bg-gray-800 p-8 rounded-xl shadow-lg border border-gray-700 card-border-glow">
-                        <div class="text-cyan-400 mb-4 text-center">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 mx-auto" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"></path>
-                                <path d="M19 10v2a7 7 0 0 1-14 0v-2"></path>
-                                <line x1="12" y1="19" x2="12" y2="23"></line>
-                                <line x1="8" y1="23" x2="16" y2="23"></line>
-                            </svg>
-                        </div>
-                        <h4 class="text-2xl font-bold mb-2 text-center text-cyan-200" data-translate="feature3-title">Hands-Free Interface</h4>
-                        <p class="text-md text-gray-400" data-translate="feature3-description">Enables direct voice-activated patient communication requests, minimizing physical touch requirements for compromised patients.</p>
-                    </div>
-
-                    <div class="bg-gray-800 p-8 rounded-xl shadow-lg border border-gray-700 card-border-glow">
-                        <div class="text-cyan-400 mb-4 text-center">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 mx-auto" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
-                                <line x1="16" y1="2" x2="16" y2="6"></line>
-                                <line x1="8" y1="2" x2="8" y2="6"></line>
-                                <line x1="3" y1="10" x2="21" y2="10"></line>
-                            </svg>
-                        </div>
-                        <h4 class="text-2xl font-bold mb-2 text-center text-cyan-200" data-translate="feature4-title">Traceability Framework</h4>
-                        <p class="text-md text-gray-400" data-translate="feature4-description">Generates permanent timestamps, QR tracking logs, and SMS supervisor escalations if emergency notifications exceed a 20-minute response lapse.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="protocols" class="py-20 px-4 bg-gray-900/30 border-b border-gray-800">
-            <div class="container mx-auto">
-                <h3 class="text-4xl font-bold text-center mb-4 text-gradient text-neon-glow" data-translate="protocols-title">Ward-Specific Clinical Protocols</h3>
-                <p class="text-center text-gray-400 mb-12 max-w-3xl mx-auto" data-translate="protocols-subtitle">The platform moves beyond basic alert signals, presenting custom, structured operational checklists relative to specific ward environments.</p>
-                
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    <div class="bg-gray-800/60 p-6 rounded-xl border border-gray-700">
-                        <span class="text-xs font-bold uppercase tracking-wider text-cyan-400 bg-cyan-950 px-2 py-1 rounded">Medical Ward</span>
-                        <h4 class="text-xl font-bold mt-2 mb-3 text-gray-200">Vital Evaluation Protocols</h4>
-                        <p class="text-sm text-cyan-200/90 italic mb-2">"VITAL SIGNS CALL - Check and record BP, HR, O2, Temperature, Respiratory Rate."</p>
-                        <p class="text-sm text-gray-400">Maintains rigid, cyclical execution frameworks to capture variations across unstable multi-pathology cases.</p>
-                    </div>
-                    <div class="bg-gray-800/60 p-6 rounded-xl border border-gray-700">
-                        <span class="text-xs font-bold uppercase tracking-wider text-cyan-400 bg-cyan-950 px-2 py-1 rounded">ICU (Intensive Care)</span>
-                        <h4 class="text-xl font-bold mt-2 mb-3 text-gray-200">Critical Life Support Protocols</h4>
-                        <p class="text-sm text-cyan-200/90 italic mb-2">"CRITICAL CARE CALL - Check ventilator parameters. Verify endotracheal tube placement security."</p>
-                        <p class="text-sm text-gray-400">Direct integration with life support systems minimizes cognitive strain and optimizes response under extreme duress.</p>
-                    </div>
-                    <div class="bg-gray-800/60 p-6 rounded-xl border border-gray-700">
-                        <span class="text-xs font-bold uppercase tracking-wider text-cyan-400 bg-cyan-950 px-2 py-1 rounded">NICU (Neonatal ICU)</span>
-                        <h4 class="text-xl font-bold mt-2 mb-3 text-gray-200">Thermoregulation & Feeding</h4>
-                        <p class="text-sm text-cyan-200/90 italic mb-2">"NEONATAL CARE - Confirm incubator internal environment matches (36.5-37.5°C). Administer precise fluid intake schedule."</p>
-                        <p class="text-sm text-gray-400">Protects fragile neonatal patients by asserting tight environmental and nourishment alert barriers.</p>
-                    </div>
-                    <div class="bg-gray-800/60 p-6 rounded-xl border border-gray-700">
-                        <span class="text-xs font-bold uppercase tracking-wider text-cyan-400 bg-cyan-950 px-2 py-1 rounded">Pediatric Ward</span>
-                        <h4 class="text-xl font-bold mt-2 mb-3 text-gray-200">Volumetric Dosage Controls</h4>
-                        <p class="text-sm text-cyan-200/90 italic mb-2">"MEDICATION CALL - Give Paracetamol 120mg Oral. Weight: 8kg. Calculated: 15mg/kg x 8kg = 120mg. Verified safe."</p>
-                        <p class="text-sm text-gray-400">Automates secondary verification of pediatric medicine tracking variables to remove calculation deviations.</p>
-                    </div>
-                    <div class="bg-gray-800/60 p-6 rounded-xl border border-gray-700">
-                        <span class="text-xs font-bold uppercase tracking-wider text-cyan-400 bg-cyan-950 px-2 py-1 rounded">Isolation Ward</span>
-                        <h4 class="text-xl font-bold mt-2 mb-3 text-gray-200">Pathogen Safety Enforcement</h4>
-                        <p class="text-sm text-cyan-200/90 italic mb-2">"MEDICATION CALL - Full personal protection required: N95 respirator, gown, gloves, shield. Enter anteroom zone first."</p>
-                        <p class="text-sm text-gray-400">Enforces dynamic containment checklists prior to contact to protect operating healthcare personnel.</p>
-                    </div>
-                    <div class="bg-gray-800/60 p-6 rounded-xl border border-gray-700">
-                        <span class="text-xs font-bold uppercase tracking-wider text-gray-400 bg-gray-900 px-2 py-1 rounded">Additional Wards</span>
-                        <h4 class="text-xl font-bold mt-2 mb-3 text-gray-200">Universal System Inclusion</h4>
-                        <p class="text-sm text-gray-400 mb-2">Tailored checklists are natively deployed across all remaining specialties:</p>
-                        <ul class="text-xs text-gray-400 space-y-1 list-disc list-inside">
-                            <li>Surgical Ward (Post-op management logs)</li>
-                            <li>OB/GYN Ward (Maternal & intrapartum checks)</li>
-                            <li>Emergency Room (Rapid triage escalation)</li>
-                            <li>Orthopedics Ward (Immobilization neurovascular assessments)</li>
-                            <li>Psychiatry Ward (Safety and surveillance checklists)</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="how-it-works" class="py-20 px-4 border-b border-gray-800">
-            <div class="container mx-auto">
-                <h3 class="text-4xl font-bold text-center mb-12 text-gradient text-neon-glow" data-translate="how-it-works-title">How It Operates</h3>
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-12 text-center">
-                    <div>
-                        <div class="bg-gray-800 text-cyan-400 p-6 rounded-full inline-block mb-4 shadow-lg border border-gray-700 hover-neon-glow transition-all duration-300">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path>
-                            </svg>
-                        </div>
-                        <h4 class="text-2xl font-bold mb-2 text-cyan-200" data-translate="step1-title">1. Automated System Trigger</h4>
-                        <p class="text-md text-gray-400" data-translate="step1-description">The local AI protocol engine detects anomalies through real-time device telemetry or registers scheduled intervals to launch a specific care prompt.</p>
-                    </div>
-                    <div>
-                        <div class="bg-gray-800 text-cyan-400 p-6 rounded-full inline-block mb-4 shadow-lg border border-gray-700 hover-neon-glow transition-all duration-300">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
-                                <line x1="8" y1="21" x2="16" y2="21"></line>
-                                <line x1="12" y1="17" x2="12" y2="21"></line>
-                            </svg>
-                        </div>
-                        <h4 class="text-2xl font-bold mb-2 text-cyan-200" data-translate="step2-title">2. Contextual Routing</h4>
-                        <p class="text-md text-gray-400" data-translate="step2-description">The alert transfers immediately to the nurse station panel, displaying the exact step-by-step guidance protocol linked to the patient's case.</p>
-                    </div>
-                    <div>
-                        <div class="bg-gray-800 text-cyan-400 p-6 rounded-full inline-block mb-4 shadow-lg border border-gray-700 hover-neon-glow transition-all duration-300">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
-                                <polyline points="22 4 12 14.01 9 11.01"></polyline>
-                            </svg>
-                        </div>
-                        <h4 class="text-2xl font-bold mb-2 text-cyan-200" data-translate="step3-title">3. Verified Logging</h4>
-                        <p class="text-md text-gray-400" data-translate="step3-description">Personnel verify task execution directly at the bedside via QR verification, creating an immutable audit trail for clinical quality review.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="patient-outcomes" class="py-20 px-4 bg-gray-900/50 border-b border-gray-800">
-            <div class="container mx-auto">
-                <h3 class="text-4xl font-bold text-center mb-4 text-gradient text-neon-glow" data-translate="patient-outcomes-title">Quantified Health System Metrics</h3>
-                <p class="text-center text-gray-400 mb-12 max-w-3xl mx-auto" data-translate="patient-outcomes-subtitle">Addressing systemic deficits using verified operational benchmarks tailored to domestic hospital infrastructure realities.</p>
-
-                <div class="bg-gray-900 p-8 rounded-xl border border-red-900/40 max-w-4xl mx-auto mb-16">
-                    <h4 class="text-2xl font-bold text-red-400 text-center mb-6" data-translate="cost-inaction-title">The Current Cost of Systemic Care Gaps</h4>
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 text-center">
-                        <div class="p-4 border-r border-gray-800 last:border-none">
-                            <span class="block text-4xl font-extrabold text-red-500 mb-2">~90 Billion ETB</span>
-                            <span class="block text-sm font-semibold uppercase text-gray-400 tracking-wider">Annual National Financial Loss</span>
-                            <p class="text-xs text-gray-500 mt-2">Compounded by ~20.5B ETB in direct medical waste and ~69.5B ETB in macro productivity losses due to prolonged, preventable hospital length of stays.</p>
-                        </div>
-                        <div class="p-4">
-                            <span class="block text-4xl font-extrabold text-red-500 mb-2">52,400 Deaths</span>
-                            <span class="block text-sm font-semibold uppercase text-gray-400 tracking-wider">Annual Preventable Mortality</span>
-                            <p class="text-xs text-gray-500 mt-2">Driven by structural communication delays and manual errors. Studies reveal 1 out of every 2 medications faces error risks within paper-dependent workflows.</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
-                    <div class="space-y-8">
-                        <h4 class="text-3xl font-bold text-cyan-400 border-b border-gray-800 pb-2" data-translate="clinical-benefits-title">Clinical Safety & Quality Improvements</h4>
-                        
-                        <div class="bg-gray-800 p-6 rounded-xl border border-gray-700">
-                            <h5 class="text-xl font-bold text-gray-200 mb-2">Medication Error Elimination</h5>
-                            <p class="text-3xl font-extrabold text-cyan-400 mb-2">42% – 50% Reduction</p>
-                            <p class="text-sm text-gray-400">Accomplished through automated bedside dosage calculation screens, scheduling alarms, and instant interaction alert overlays mapped directly to patient history logs.</p>
-                        </div>
-
-                        <div class="bg-gray-800 p-6 rounded-xl border border-gray-700">
-                            <h5 class="text-xl font-bold text-gray-200 mb-2">Emergency Response Latency Optimization</h5>
-                            <p class="text-3xl font-extrabold text-cyan-400 mb-2">68% Accelerated Response</p>
-                            <p class="text-sm text-gray-400">Slashes average intervention wait times from 28 minutes down to 9 minutes. Rapid response windows protect patients against advanced shock and sudden cardiopulmonary failure events.</p>
-                        </div>
-
-                        <div class="bg-gray-800 p-6 rounded-xl border border-gray-700">
-                            <h5 class="text-xl font-bold text-gray-200 mb-2">Nosocomial Infection Mitigation</h5>
-                            <p class="text-3xl font-extrabold text-cyan-400 mb-2">50% – 70% Infection Drop</p>
-                            <p class="text-sm text-gray-400">Enforced by system-generated turning alerts to prevent pressure ulcers, paired with rigid catheter exchange schedule check-offs.</p>
-                        </div>
-                    </div>
-
-                    <div class="space-y-8">
-                        <h4 class="text-3xl font-bold text-cyan-400 border-b border-gray-800 pb-2" data-translate="operational-benefits-title">Operational Efficiency & Resource Optimization</h4>
-                        
-                        <div class="bg-gray-800 p-6 rounded-xl border border-gray-700">
-                            <h5 class="text-xl font-bold text-gray-200 mb-2">Nursing Shift Efficiency Gains</h5>
-                            <p class="text-3xl font-extrabold text-cyan-400 mb-2">3.5 Hours Saved Daily Per Nurse</p>
-                            <p class="text-sm text-gray-400">Minimizes administrative log bottlenecks via localized point-of-care inputs. Reduces internal floor transit fatigue by up to 40% through localized context routing.</p>
-                        </div>
-
-                        <div class="bg-gray-800 p-6 rounded-xl border border-gray-700">
-                            <h5 class="text-xl font-bold text-gray-200 mb-2">Macroeconomic System Recovery</h5>
-                            <p class="text-3xl font-extrabold text-cyan-400 mb-2">27 Billion ETB Saved Annually</p>
-                            <p class="text-sm text-gray-400">Achieved across the wider healthcare economy by targeting a conservative 30% reduction in preventable care errors and short-circuiting extended hospital stay overheads.</p>
-                        </div>
-
-                        <div class="bg-gray-800 p-6 rounded-xl border border-gray-700">
-                            <h5 class="text-xl font-bold text-gray-200 mb-2">Platform Investment Amortization</h5>
-                            <p class="text-3xl font-extrabold text-cyan-400 mb-2">&lt; 1 Year Payback Timeline</p>
-                            <p class="text-sm text-gray-400">The deep operational cost relief generated by optimizing length of stay metrics offsets initial specialized asset setup costs within months of commissioning.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="national-scope" class="py-20 px-4 border-b border-gray-800">
-            <div class="container mx-auto">
-                <h3 class="text-4xl font-bold text-center mb-4 text-gradient text-neon-glow" data-translate="scope-title">National Scalability Roadmap</h3>
-                <p class="text-center text-gray-400 mb-12 max-w-3xl mx-auto" data-translate="scope-subtitle">A standardized 5-year, phased infrastructure roll-out blueprint adaptable to all public regional healthcare clusters.</p>
-
-                <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-16">
-                    <div class="bg-gray-900/60 p-6 rounded-xl border border-cyan-900/50">
-                        <h4 class="text-xl font-bold text-cyan-400 mb-2">Oromia Regional Framework</h4>
-                        <p class="text-xs text-gray-400 mb-4">Initial baseline target cluster</p>
-                        <ul class="space-y-2 text-sm text-gray-300">
-                            <li><strong>77</strong> Public Hospitals Deployed</li>
-                            <li><strong>3,850</strong> Specialized Bed Installations</li>
-                            <li><strong>240M ETB</strong> Total Financed Footprint</li>
-                            <li><strong>15</strong> Administrative Zones Managed</li>
-                        </ul>
-                    </div>
-                    <div class="bg-gray-900/60 p-6 rounded-xl border border-gray-800">
-                        <h4 class="text-xl font-bold text-gray-300 mb-2">Addis Ababa Metropolitan Extension</h4>
-                        <p class="text-xs text-gray-400 mb-4">High-density urban integration</p>
-                        <ul class="space-y-2 text-sm text-gray-400">
-                            <li>Comprehensive public hospital integration</li>
-                            <li>Direct legacy EHR / HMIS core network data syncing</li>
-                            <li>Centralized clinical analytics control console deployment</li>
-                            <li>Dedicated emergency service priority routing links</li>
-                        </ul>
-                    </div>
-                    <div class="bg-gray-900/60 p-6 rounded-xl border border-gray-800">
-                        <h4 class="text-xl font-bold text-gray-300 mb-2">Wider Regional Standardization</h4>
-                        <p class="text-xs text-gray-400 mb-4">National health safety equalizer</p>
-                        <ul class="space-y-2 text-sm text-gray-400">
-                            <li>Modular configurations for regional clinic groups</li>
-                            <li>Robust offline architectures built for remote areas</li>
-                            <li>Multi-dialect voice recognition model additions</li>
-                            <li>Unified cross-regional safety reporting metrics</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="bg-gray-900/80 p-8 rounded-xl border border-gray-700">
-                    <h4 class="text-3xl font-bold text-center text-gradient mb-4" data-translate="jobs-title">National Economic Empowerment & Job Creation</h4>
-                    <p class="text-center text-gray-400 mb-8 max-w-2xl mx-auto">Scaling this infrastructure project generates <strong>879 new specialized domestic jobs</strong>, fostering native technical capabilities.</p>
+                <!-- Challenge (Inaction Cost) Column -->
+                <div class="lg:col-span-5 space-y-6">
+                    <span class="text-xs font-bold tracking-widest text-red-400 uppercase block" data-translate="vision-pre">Systemic Deficit Challenge</span>
+                    <h2 class="text-3xl md:text-4xl font-extrabold text-white leading-tight" data-translate="vision-title">The Human & Economic Toll of Care Inaction</h2>
+                    <p class="text-gray-400 text-sm md:text-base leading-relaxed" data-translate="vision-p1">
+                        Every year, manual record systems, fragmented notification loops, and medication administration mistakes lead to thousands of preventable complications. Extended hospital lengths of stay place a crippling administrative burden on the public healthcare network.
+                    </p>
                     
-                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 text-sm">
-                        <div class="bg-gray-950 p-4 rounded-lg border border-gray-800">
-                            <span class="text-cyan-400 font-bold block text-lg mb-1">120 Positions</span>
-                            <span class="font-semibold block text-gray-200 mb-2">Manufacturing & System Assembly</span>
-                            <p class="text-gray-400 text-xs">Handles point-of-care hardware staging, ruggedized enclosure assembly, and local server array configuration.</p>
+                    <div class="bg-red-950/40 p-5 rounded-xl border border-red-900/30 space-y-4">
+                        <div class="flex items-start gap-3">
+                            <span class="text-red-500 text-xl font-black mt-0.5">!</span>
+                            <p class="text-xs text-gray-400 leading-relaxed" data-translate="vision-alert-1">
+                                <strong class="text-red-300">Medication Safety Vulnerability:</strong> Standard manual calculations mean 1 out of every 2 medications faces dosage or protocol error risks inside public wards.
+                            </p>
                         </div>
-                        <div class="bg-gray-950 p-4 rounded-lg border border-gray-800">
-                            <span class="text-cyan-400 font-bold block text-lg mb-1">150 Positions</span>
-                            <span class="font-semibold block text-gray-200 mb-2">Deployment & Field Installation</span>
-                            <p class="text-gray-400 text-xs">Manages bedside hardwired connectivity setups, device mounts, and power distribution tests across remote facilities.</p>
-                        </div>
-                        <div class="bg-gray-950 p-4 rounded-lg border border-gray-800">
-                            <span class="text-cyan-400 font-bold block text-lg mb-1">45 Positions</span>
-                            <span class="font-semibold block text-gray-200 mb-2">Software Engineering & AI Ops</span>
-                            <p class="text-gray-400 text-xs">Drives native desktop application updates, local NLP dialect processing improvements, and offline database optimizations.</p>
-                        </div>
-                        <div class="bg-gray-950 p-4 rounded-lg border border-gray-800">
-                            <span class="text-cyan-400 font-bold block text-lg mb-1">120 Positions</span>
-                            <span class="font-semibold block text-gray-200 mb-2">24/7 Technical Support Network</span>
-                            <p class="text-gray-400 text-xs">Mothers centralized helpdesk systems to diagnose local area network disruptions and device failures instantly.</p>
+                        <div class="flex items-start gap-3">
+                            <span class="text-red-500 text-xl font-black mt-0.5">!</span>
+                            <p class="text-xs text-gray-400 leading-relaxed" data-translate="vision-alert-2">
+                                <strong class="text-red-300">90 Billion ETB Loss:</strong> Annual financial strain includes direct diagnostic waste (~20.5B ETB) and macro-economic labor loss (~69.5B ETB) from extended clinical recovery.
+                            </p>
                         </div>
                     </div>
                 </div>
-            </div>
-        </section>
 
-        <section id="recognition" class="py-20 px-4 bg-gray-900/30">
-            <div class="container mx-auto max-w-5xl">
-                <h3 class="text-4xl font-bold text-center mb-4 text-gradient text-neon-glow" data-translate="recognition-title">National Recognition & Validation</h3>
-                <p class="text-center text-gray-400 mb-12" data-translate="recognition-subtitle">ISHCS has been formally presented and validated across the highest layers of national leadership, tech ministries, and international health agencies.</p>
+                <!-- Solution Column -->
+                <div class="lg:col-span-7 space-y-8 bg-gray-900/40 p-8 rounded-2xl border border-cyan-950/50">
+                    <span class="text-xs font-bold tracking-widest text-cyan-400 uppercase block" data-translate="solution-pre">THE SYSTEMIC ANSWER: ISHCS</span>
+                    <h3 class="text-2xl md:text-3xl font-extrabold text-white" data-translate="solution-title">How AI-Powered Protocols Protect Lives</h3>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-sm">
+                        <div class="space-y-2">
+                            <h4 class="font-bold text-cyan-300 flex items-center gap-2">
+                                <span class="w-1.5 h-1.5 rounded-full bg-cyan-400"></span> <span data-translate="sol-f-1">Automated Care Scheduling</span>
+                            </h4>
+                            <p class="text-gray-400 text-xs" data-translate="sol-fd-1">Generates custom clinical schedules immediately at admission, eliminating human recall dependency.</p>
+                        </div>
+                        <div class="space-y-2">
+                            <h4 class="font-bold text-cyan-300 flex items-center gap-2">
+                                <span class="w-1.5 h-1.5 rounded-full bg-cyan-400"></span> <span data-translate="sol-f-2">Direct Vital Telemetry</span>
+                            </h4>
+                            <p class="text-gray-400 text-xs" data-translate="sol-fd-2">Streams patient vital monitors directly over local IP networks, bypassing manual entry and transcription delay.</p>
+                        </div>
+                        <div class="space-y-2">
+                            <h4 class="font-bold text-cyan-300 flex items-center gap-2">
+                                <span class="w-1.5 h-1.5 rounded-full bg-cyan-400"></span> <span data-translate="sol-f-3">Dosing Math Validation</span>
+                            </h4>
+                            <p class="text-gray-400 text-xs" data-translate="sol-fd-3">Computes pediatric weight-based limits instantly at point-of-care, safeguarding medication safety metrics.</p>
+                        </div>
+                        <div class="space-y-2">
+                            <h4 class="font-bold text-cyan-300 flex items-center gap-2">
+                                <span class="w-1.5 h-1.5 rounded-full bg-cyan-400"></span> <span data-translate="sol-f-4">Fail-Safe Supervisor Alert</span>
+                            </h4>
+                            <p class="text-gray-400 text-xs" data-translate="sol-fd-4">If an emergency alert remains unanswered for over 20 minutes, the engine escalates via SMS directly to supervisor pagers.</p>
+                        </div>
+                    </div>
+
+                    <div class="pt-4 border-t border-cyan-950/50 flex flex-wrap gap-4 items-center">
+                        <div class="flex -space-x-3">
+                            <div class="w-9 h-9 rounded-full bg-cyan-800 border-2 border-gray-950 flex items-center justify-center text-[10px] font-bold">MInT</div>
+                            <div class="w-9 h-9 rounded-full bg-teal-800 border-2 border-gray-950 flex items-center justify-center text-[10px] font-bold">MoH</div>
+                            <div class="w-9 h-9 rounded-full bg-blue-800 border-2 border-gray-950 flex items-center justify-center text-[10px] font-bold">OHB</div>
+                        </div>
+                        <p class="text-xs text-gray-400" data-translate="sol-footer">Directly aligned with MInT Digital Health Priorities, MoH Directives, and the Oromia Health Bureau implementation blueprint.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Technical Architecture Platform -->
+    <section id="architecture" class="py-20 px-4 bg-gray-900/30 border-b border-gray-900">
+        <div class="container mx-auto max-w-6xl">
+            
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-xs font-bold tracking-widest text-cyan-400 uppercase block mb-3" data-translate="arch-badge">High-Availability Architecture</span>
+                <h2 class="text-3xl md:text-4xl font-extrabold text-white" data-translate="arch-title">Industrial Health-Grade Engineering</h2>
+                <p class="text-gray-400 text-sm mt-3" data-translate="arch-sub">Why ISHCS runs as a native Windows OS application rather than an Android or web application.</p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
                 
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-sm">
-                    <div class="bg-gray-800/50 p-5 rounded-lg border border-gray-700 flex items-start space-x-3">
-                        <div class="text-cyan-400 mt-1">
-                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M6.267 3.455a.75.75 0 00-.708.522L3.54 10.51a1.75 1.75 0 001.68 2.24h2.464l-.946 3.784a.75.75 0 001.316.59l6.364-8.485a.75.75 0 00-.59-1.19H11.37l.946-3.784a.75.75 0 00-.59-.91l-5.463-.645z"/></svg>
-                        </div>
-                        <div>
-                            <h5 class="font-bold text-gray-200">Executive Government Presentation</h5>
-                            <p class="text-gray-400">Formally demonstrated directly to the Prime Minister during the landmark technology innovation exhibition launch at the national Science Museum in Addis Ababa.</p>
-                        </div>
+                <!-- Left Details Box -->
+                <div class="lg:col-span-4 bg-gray-950/80 p-8 rounded-2xl border border-cyan-950/60 flex flex-col justify-between">
+                    <div>
+                        <h3 class="text-xl font-bold text-white mb-4" data-translate="arch-box-title">Offline-First Clinical Continuity</h3>
+                        <p class="text-sm text-gray-400 leading-relaxed mb-6" data-translate="arch-box-p">
+                            Hospital environments cannot tolerate cellular network dropped sessions or server timeouts. ISHCS is architected as a native Windows system running database engines directly on point-of-care hardware. Even during complete hospital intranet breakdown, patient bedside monitors continue processing checklists locally.
+                        </p>
                     </div>
-                    <div class="bg-gray-800/50 p-5 rounded-lg border border-gray-700 flex items-start space-x-3">
-                        <div class="text-cyan-400 mt-1">
-                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M6.267 3.455a.75.75 0 00-.708.522L3.54 10.51a1.75 1.75 0 001.68 2.24h2.464l-.946 3.784a.75.75 0 001.316.59l6.364-8.485a.75.75 0 00-.59-1.19H11.37l.946-3.784a.75.75 0 00-.59-.91l-5.463-.645z"/></svg>
+                    <div class="space-y-4">
+                        <div class="flex items-center gap-3 p-3 rounded-lg bg-gray-900/50">
+                            <span class="w-2.5 h-2.5 rounded-full bg-cyan-400"></span>
+                            <div>
+                                <h4 class="text-xs font-bold text-gray-200" data-translate="arch-point-1">Direct IP Communications</h4>
+                                <p class="text-[10px] text-gray-500" data-translate="arch-subpoint-1">Streams HL7 on Port 2575 from hardware.</p>
+                            </div>
                         </div>
-                        <div>
-                            <h5 class="font-bold text-gray-200">Ministry of Innovation and Technology</h5>
-                            <p class="text-gray-400">Received formal structural verification and official prioritization endorsement as a vital strategic national sovereign software platform asset.</p>
-                        </div>
-                    </div>
-                    <div class="bg-gray-800/50 p-5 rounded-lg border border-gray-700 flex items-start space-x-3">
-                        <div class="text-cyan-400 mt-1">
-                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M6.267 3.455a.75.75 0 00-.708.522L3.54 10.51a1.75 1.75 0 001.68 2.24h2.464l-.946 3.784a.75.75 0 001.316.59l6.364-8.485a.75.75 0 00-.59-1.19H11.37l.946-3.784a.75.75 0 00-.59-.91l-5.463-.645z"/></svg>
-                        </div>
-                        <div>
-                            <h5 class="font-bold text-gray-200">Ministry of Health Evaluation</h5>
-                            <p class="text-gray-400">Validated across senior clinical panels, securing high recognition for its robust safety protocols aimed at cutting healthcare errors.</p>
-                        </div>
-                    </div>
-                    <div class="bg-gray-800/50 p-5 rounded-lg border border-gray-700 flex items-start space-x-3">
-                        <div class="text-cyan-400 mt-1">
-                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M6.267 3.455a.75.75 0 00-.708.522L3.54 10.51a1.75 1.75 0 001.68 2.24h2.464l-.946 3.784a.75.75 0 001.316.59l6.364-8.485a.75.75 0 00-.59-1.19H11.37l.946-3.784a.75.75 0 00-.59-.91l-5.463-.645z"/></svg>
-                        </div>
-                        <div>
-                            <h5 class="font-bold text-gray-200">Global Health Summit Validation</h5>
-                            <p class="text-gray-400">Presented and vetted via working functional prototype simulations before international leadership at the Global Health Innovation Summit.</p>
+                        <div class="flex items-center gap-3 p-3 rounded-lg bg-gray-900/50">
+                            <span class="w-2.5 h-2.5 rounded-full bg-cyan-400"></span>
+                            <div>
+                                <h4 class="text-xs font-bold text-gray-200" data-translate="arch-point-2">Zero Translation Loss</h4>
+                                <p class="text-[10px] text-gray-500" data-translate="arch-subpoint-2">Processes uncompressed sensor signals.</p>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </section>
-    </main>
 
-    <footer class="bg-gray-950 text-gray-500 py-12 text-center text-sm border-t border-gray-900">
-        <div class="container mx-auto px-4">
-            <p class="mb-2 text-cyan-500/80 font-bold">Raji Technology startup Company Founder Innovator Amer Abudllah Mohammed </p>
-            <p class="mb-4 text-gray-400">Developing Indigenous High-Availability Healthcare Infrastructure Software Solution Architectures</p>
-            <div class="flex flex-wrap justify-center gap-6 text-xs text-gray-500 mb-6">
-                <span>Intellectual Property Copyright No: 5/0277</span>
-                <span>Contact Deployment Desk: +251 913 395 143</span>
-                <span>Operations Network Mail: amerabdulah634@gmail.com</span>
+                <!-- Center Flowchart Visualization -->
+                <div class="lg:col-span-8 bg-gray-900/60 p-8 rounded-2xl border border-cyan-950/50 flex flex-col justify-center">
+                    <h3 class="text-lg font-bold text-cyan-300 mb-6 flex items-center gap-2" data-translate="flow-title">
+                        <span class="inline-block w-2.5 h-2.5 rounded-full bg-cyan-400"></span> Telemetry Flow: Under 100ms Target Response
+                    </h3>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-5 gap-4 items-center relative text-center">
+                        <!-- Step 1 -->
+                        <div class="bg-gray-950 p-4 rounded-xl border border-cyan-950">
+                            <span class="text-[10px] font-bold text-cyan-400 block mb-1">01</span>
+                            <h4 class="text-xs font-bold text-white uppercase" data-translate="flow-step-1">Medical Monitor</h4>
+                            <p class="text-[10px] text-gray-500 mt-1" data-translate="flow-step-1-sub">Static IP setup.</p>
+                        </div>
+                        <!-- Arrow -->
+                        <div class="hidden md:block text-cyan-800 text-lg font-bold">➔</div>
+                        <!-- Step 2 -->
+                        <div class="bg-gray-950 p-4 rounded-xl border border-cyan-950">
+                            <span class="text-[10px] font-bold text-cyan-400 block mb-1">02</span>
+                            <h4 class="text-xs font-bold text-white uppercase" data-translate="flow-step-2">Surface Device</h4>
+                            <p class="text-[10px] text-gray-500 mt-1" data-translate="flow-step-2-sub">Local database execution.</p>
+                        </div>
+                        <!-- Arrow -->
+                        <div class="hidden md:block text-cyan-800 text-lg font-bold">➔</div>
+                        <!-- Step 3 -->
+                        <div class="bg-gray-950 p-4 rounded-xl border border-cyan-400">
+                            <span class="text-[10px] font-bold text-cyan-400 block mb-1">03</span>
+                            <h4 class="text-xs font-bold text-cyan-300 uppercase" data-translate="flow-step-3">Nurse Console</h4>
+                            <p class="text-[10px] text-cyan-500 mt-1" data-translate="flow-step-3-sub">Step checklist displayed.</p>
+                        </div>
+                    </div>
+
+                    <div class="mt-8 pt-6 border-t border-cyan-950/40 grid grid-cols-1 md:grid-cols-2 gap-4 text-xs text-gray-400">
+                        <div>
+                            <strong class="text-cyan-300 block mb-1" data-translate="spec-title-1">Microsoft Surface Deployment Spec</strong>
+                            <p data-translate="spec-desc-1">3,500 enterprise bedside units with specialized shock-proof medical mounting fixtures, running localized Windows OS builds with internal active cooling safeguards.</p>
+                        </div>
+                        <div>
+                            <strong class="text-cyan-300 block mb-1" data-translate="spec-title-2">Clinical Console Setup</strong>
+                            <p data-translate="spec-desc-2">Integrates natively into existing hospital PCs, eliminating extra workstation expense. Displays comprehensive room arrays and live diagnostic telemetry feeds.</p>
+                        </div>
+                    </div>
+                </div>
+
             </div>
-            <p data-translate="footer-copyright">&copy; 2026 ISHCS Initiative. All Engineering Rights Reserved.</p>
+        </div>
+    </section>
+
+    <!-- Interactive Clinical Protocol Explorer Section -->
+    <section id="protocols" class="py-20 px-4 border-b border-gray-900">
+        <div class="container mx-auto max-w-6xl">
+            
+            <div class="text-center max-w-3xl mx-auto mb-12">
+                <span class="text-xs font-bold tracking-widest text-cyan-400 uppercase block mb-3" data-translate="protocol-badge">Interactive Module</span>
+                <h2 class="text-3xl md:text-4xl font-extrabold text-white" data-translate="protocol-title">Dynamic Clinical Protocol Explorer</h2>
+                <p class="text-gray-400 text-sm mt-3" data-translate="protocol-sub">Click any of the 10 hospital wards below to review the custom AI safety rules, scheduling check-offs, and critical system alarms.</p>
+            </div>
+
+            <!-- Explorer Window -->
+            <div class="bg-gray-900/60 rounded-3xl border border-cyan-950/60 overflow-hidden grid grid-cols-1 lg:grid-cols-12">
+                
+                <!-- Left Selection Bar -->
+                <div class="lg:col-span-4 bg-gray-950/80 p-6 border-r border-cyan-950/60 flex flex-col gap-2 h-[450px] overflow-y-auto custom-scrollbar">
+                    <span class="text-[10px] font-bold text-cyan-500 uppercase tracking-wider mb-2 px-2" data-translate="explorer-list-head">Hospital Specialties</span>
+                    
+                    <button onclick="selectWard('medical')" id="btn-ward-medical" class="w-full text-left p-3.5 rounded-xl transition-all flex items-center justify-between text-sm font-bold bg-cyan-950/50 border border-cyan-900/40 text-cyan-300">
+                        <span data-translate="w-med">Medical Ward</span> <span>➔</span>
+                    </button>
+                    <button onclick="selectWard('surgical')" id="btn-ward-surgical" class="w-full text-left p-3.5 rounded-xl transition-all flex items-center justify-between text-sm font-bold text-gray-400 hover:bg-gray-900">
+                        <span data-translate="w-surg">Surgical Ward</span> <span>➔</span>
+                    </button>
+                    <button onclick="selectWard('obg')" id="btn-ward-obg" class="w-full text-left p-3.5 rounded-xl transition-all flex items-center justify-between text-sm font-bold text-gray-400 hover:bg-gray-900">
+                        <span data-translate="w-obg">OB/GYN Ward</span> <span>➔</span>
+                    </button>
+                    <button onclick="selectWard('icu')" id="btn-ward-icu" class="w-full text-left p-3.5 rounded-xl transition-all flex items-center justify-between text-sm font-bold text-gray-400 hover:bg-gray-900">
+                        <span data-translate="w-icu">Intensive Care (ICU)</span> <span>➔</span>
+                    </button>
+                    <button onclick="selectWard('er')" id="btn-ward-er" class="w-full text-left p-3.5 rounded-xl transition-all flex items-center justify-between text-sm font-bold text-gray-400 hover:bg-gray-900">
+                        <span data-translate="w-er">Emergency Room</span> <span>➔</span>
+                    </button>
+                    <button onclick="selectWard('pediatric')" id="btn-ward-pediatric" class="w-full text-left p-3.5 rounded-xl transition-all flex items-center justify-between text-sm font-bold text-gray-400 hover:bg-gray-900">
+                        <span data-translate="w-ped">Pediatric Ward</span> <span>➔</span>
+                    </button>
+                    <button onclick="selectWard('nicu')" id="btn-ward-nicu" class="w-full text-left p-3.5 rounded-xl transition-all flex items-center justify-between text-sm font-bold text-gray-400 hover:bg-gray-900">
+                        <span data-translate="w-nicu">Neonatal ICU (NICU)</span> <span>➔</span>
+                    </button>
+                    <button onclick="selectWard('orthopedics')" id="btn-ward-orthopedics" class="w-full text-left p-3.5 rounded-xl transition-all flex items-center justify-between text-sm font-bold text-gray-400 hover:bg-gray-900">
+                        <span data-translate="w-ortho">Orthopedics Ward</span> <span>➔</span>
+                    </button>
+                    <button onclick="selectWard('psychiatry')" id="btn-ward-psychiatry" class="w-full text-left p-3.5 rounded-xl transition-all flex items-center justify-between text-sm font-bold text-gray-400 hover:bg-gray-900">
+                        <span data-translate="w-psych">Psychiatry Ward</span> <span>➔</span>
+                    </button>
+                    <button onclick="selectWard('isolation')" id="btn-ward-isolation" class="w-full text-left p-3.5 rounded-xl transition-all flex items-center justify-between text-sm font-bold text-gray-400 hover:bg-gray-900">
+                        <span data-translate="w-iso">Isolation Ward</span> <span>➔</span>
+                    </button>
+                </div>
+
+                <!-- Right Display Pane -->
+                <div class="lg:col-span-8 p-8 flex flex-col justify-between min-h-[450px]">
+                    <div>
+                        <!-- Ward Badge -->
+                        <div class="flex items-center gap-3 mb-4">
+                            <span id="display-ward-badge" class="px-2.5 py-1 rounded bg-cyan-950/80 border border-cyan-800 text-cyan-400 text-xs font-bold uppercase tracking-wider">Medical Ward</span>
+                            <span class="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></span>
+                            <span class="text-xs text-gray-500 font-bold uppercase tracking-widest" data-translate="status-active">Active Protocol Matrix</span>
+                        </div>
+
+                        <!-- Directive Head -->
+                        <h3 id="display-ward-title" class="text-2xl font-extrabold text-white mb-4">Adult Inpatient Assessment</h3>
+                        
+                        <!-- AI Prompt Highlight Box -->
+                        <div class="bg-gray-950 p-5 rounded-2xl border border-cyan-950 mb-6 font-mono text-xs md:text-sm text-cyan-300 relative">
+                            <span class="absolute top-2.5 right-4 text-[9px] font-bold text-cyan-700 uppercase tracking-widest">AI Output</span>
+                            <span id="display-ward-prompt">"VITAL SIGNS CALL - Adult Inpatient. Patient: Tirunesh Bekele. Bed: 12. Due now. INSTRUCTION: Check and record BP, HR, O2, Temperature, Respiratory Rate."</span>
+                        </div>
+
+                        <!-- Active Checklists Grid -->
+                        <div id="display-ward-checklists" class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+                            <!-- Injected by JS -->
+                        </div>
+                    </div>
+
+                    <!-- Footnote / Target Metric -->
+                    <div class="mt-8 pt-6 border-t border-cyan-950/40 flex flex-wrap justify-between items-center gap-4 text-xs">
+                        <span class="text-gray-500"><strong data-translate="target-outcome">Target Metric Outcome:</strong> <span id="display-ward-target" class="text-cyan-400 font-bold">0% Missed Vital Assessments</span></span>
+                        <span id="display-ward-freq" class="text-gray-400 font-mono bg-gray-950 px-2.5 py-1 rounded border border-cyan-950/40">Evaluation Loop: Hourly</span>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- National Scale & Implementation Accordion Section -->
+    <section id="roadmap" class="py-20 px-4 bg-gray-900/30 border-b border-gray-900">
+        <div class="container mx-auto max-w-6xl">
+            
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-xs font-bold tracking-widest text-cyan-400 uppercase block mb-3" data-translate="rm-badge">Phased Implementation Blueprint</span>
+                <h2 class="text-3xl md:text-4xl font-extrabold text-white" data-translate="rm-title">5-Year National Standardization Roadmap</h2>
+                <p class="text-gray-400 text-sm mt-3" data-translate="rm-sub">Standardizing safety configurations across 70+ public hospitals (3,500 monitored beds), utilizing the Oromia deployment path as the national template.</p>
+            </div>
+
+            <!-- Accordion Frame -->
+            <div class="space-y-4 max-w-4xl mx-auto">
+                
+                <!-- Phase 1 -->
+                <div class="bg-gray-900/60 rounded-2xl border border-cyan-950/60 overflow-hidden">
+                    <button onclick="togglePhase(1)" class="w-full p-6 text-left flex justify-between items-center hover:bg-gray-900/90 transition-all">
+                        <div>
+                            <span class="text-[10px] font-bold text-cyan-400 block mb-1">YEAR 01 — PHASE 1</span>
+                            <h3 class="text-lg font-bold text-white" data-translate="ph-1-title">Jimma, East Shewa & Adama Special Zones</h3>
+                        </div>
+                        <span id="phase-arrow-1" class="text-cyan-400 font-bold text-xl transition-transform transform rotate-180">▲</span>
+                    </button>
+                    <div id="phase-content-1" class="p-6 bg-gray-950/60 border-t border-cyan-950/40 text-sm text-gray-400 space-y-4">
+                        <p data-translate="ph-1-desc">Establishes the central cloud core environment. Rolls out point-of-care equipment across 20 high-priority institutions containing 1,000 beds.</p>
+                        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-xs bg-gray-950 p-4 rounded-xl border border-cyan-950">
+                            <div><strong>Hospitals Deployed:</strong> <span class="text-cyan-400 font-bold">20</span></div>
+                            <div><strong>Surface Tablets:</strong> <span class="text-cyan-400 font-bold">1,000</span></div>
+                            <div><strong>Required Investment:</strong> <span class="text-cyan-400 font-bold">50,000,000 ETB</span></div>
+                            <div><strong>Zone Target Scope:</strong> <span class="text-cyan-400 font-bold">Jimma, E. Shewa, Adama</span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Phase 2 -->
+                <div class="bg-gray-900/60 rounded-2xl border border-cyan-950/60 overflow-hidden">
+                    <button onclick="togglePhase(2)" class="w-full p-6 text-left flex justify-between items-center hover:bg-gray-900/90 transition-all">
+                        <div>
+                            <span class="text-[10px] font-bold text-cyan-400 block mb-1">YEAR 02 — PHASE 2</span>
+                            <h3 class="text-lg font-bold text-white text-gray-300" data-translate="ph-2-title">West Shewa, North Shewa & East Wellega</h3>
+                        </div>
+                        <span id="phase-arrow-2" class="text-cyan-800 font-bold text-xl transition-transform transform">▼</span>
+                    </button>
+                    <div id="phase-content-2" class="hidden p-6 bg-gray-950/60 border-t border-cyan-950/40 text-sm text-gray-400 space-y-4">
+                        <p data-translate="ph-2-desc">Expands the protocol network deep into secondary hospital groups. Standardizes ward checklist panels across 18 regional institutions containing 900 monitored beds.</p>
+                        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-xs bg-gray-950 p-4 rounded-xl border border-cyan-950">
+                            <div><strong>Hospitals Deployed:</strong> <span class="text-cyan-400 font-bold">18</span></div>
+                            <div><strong>Surface Tablets:</strong> <span class="text-cyan-400 font-bold">900</span></div>
+                            <div><strong>Required Investment:</strong> <span class="text-cyan-400 font-bold">45,000,000 ETB</span></div>
+                            <div><strong>Zone Target Scope:</strong> <span class="text-cyan-400 font-bold">W. Shewa, N. Shewa, E. Wellega</span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Phase 3 -->
+                <div class="bg-gray-900/60 rounded-2xl border border-cyan-950/60 overflow-hidden">
+                    <button onclick="togglePhase(3)" class="w-full p-6 text-left flex justify-between items-center hover:bg-gray-900/90 transition-all">
+                        <div>
+                            <span class="text-[10px] font-bold text-cyan-400 block mb-1">YEAR 03 — PHASE 3</span>
+                            <h3 class="text-lg font-bold text-white text-gray-300" data-translate="ph-3-title">Western Oromia Cluster (West Wellega, Horo Gudru, Kellem)</h3>
+                        </div>
+                        <span id="phase-arrow-3" class="text-cyan-800 font-bold text-xl transition-transform transform">▼</span>
+                    </button>
+                    <div id="phase-content-3" class="hidden p-6 bg-gray-950/60 border-t border-cyan-950/40 text-sm text-gray-400 space-y-4">
+                        <p data-translate="ph-3-desc">Extends systems into the Western Oromia hospital networks, activating the dynamic IP telemetry architecture across 13 health facilities.</p>
+                        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-xs bg-gray-950 p-4 rounded-xl border border-cyan-950">
+                            <div><strong>Hospitals Deployed:</strong> <span class="text-cyan-400 font-bold">13</span></div>
+                            <div><strong>Surface Tablets:</strong> <span class="text-cyan-400 font-bold">650</span></div>
+                            <div><strong>Required Investment:</strong> <span class="text-cyan-400 font-bold">32,500,000 ETB</span></div>
+                            <div><strong>Zone Target Scope:</strong> <span class="text-cyan-400 font-bold">W. Wellega, Horo Gudru, Kellem</span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Phase 4 -->
+                <div class="bg-gray-900/60 rounded-2xl border border-cyan-950/60 overflow-hidden">
+                    <button onclick="togglePhase(4)" class="w-full p-6 text-left flex justify-between items-center hover:bg-gray-900/90 transition-all">
+                        <div>
+                            <span class="text-[10px] font-bold text-cyan-400 block mb-1">YEAR 04 — PHASE 4</span>
+                            <h3 class="text-lg font-bold text-white text-gray-300" data-translate="ph-4-title">Bale, Arsi & West Arsi Zones</h3>
+                        </div>
+                        <span id="phase-arrow-4" class="text-cyan-800 font-bold text-xl transition-transform transform">▼</span>
+                    </button>
+                    <div id="phase-content-4" class="hidden p-6 bg-gray-950/60 border-t border-cyan-950/40 text-sm text-gray-400 space-y-4">
+                        <p data-translate="ph-4-desc">Rolls out systems to high-volume institutions in the Southern regions, standardizing 15 hospitals with 750 bedside stations.</p>
+                        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-xs bg-gray-950 p-4 rounded-xl border border-cyan-950">
+                            <div><strong>Hospitals Deployed:</strong> <span class="text-cyan-400 font-bold">15</span></div>
+                            <div><strong>Surface Tablets:</strong> <span class="text-cyan-400 font-bold">750</span></div>
+                            <div><strong>Required Investment:</strong> <span class="text-cyan-400 font-bold">37,500,000 ETB</span></div>
+                            <div><strong>Zone Target Scope:</strong> <span class="text-cyan-400 font-bold">Bale, Arsi, West Arsi</span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Phase 5 -->
+                <div class="bg-gray-900/60 rounded-2xl border border-cyan-950/60 overflow-hidden">
+                    <button onclick="togglePhase(5)" class="w-full p-6 text-left flex justify-between items-center hover:bg-gray-900/90 transition-all">
+                        <div>
+                            <span class="text-[10px] font-bold text-cyan-400 block mb-1">YEAR 05 — PHASE 5</span>
+                            <h3 class="text-lg font-bold text-white text-gray-300" data-translate="ph-5-title">Borena, Guji & Ilu Aba Bora Zones</h3>
+                        </div>
+                        <span id="phase-arrow-5" class="text-cyan-800 font-bold text-xl transition-transform transform">▼</span>
+                    </button>
+                    <div id="phase-content-5" class="hidden p-6 bg-gray-950/60 border-t border-cyan-950/40 text-sm text-gray-400 space-y-4">
+                        <p data-translate="ph-5-desc">Completes the regional standardization blueprint by bringing 11 southern and western hospitals (550 beds) into active deployment.</p>
+                        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-xs bg-gray-950 p-4 rounded-xl border border-cyan-950">
+                            <div><strong>Hospitals Deployed:</strong> <span class="text-cyan-400 font-bold">11</span></div>
+                            <div><strong>Surface Tablets:</strong> <span class="text-cyan-400 font-bold">550</span></div>
+                            <div><strong>Required Investment:</strong> <span class="text-cyan-400 font-bold">27,500,000 ETB</span></div>
+                            <div><strong>Zone Target Scope:</strong> <span class="text-cyan-400 font-bold">Borena, Guji, Ilu Aba Bora</span></div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive ROI and System Savings Calculator -->
+    <section id="calculator" class="py-20 px-4 border-b border-gray-900">
+        <div class="container mx-auto max-w-6xl">
+            
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-xs font-bold tracking-widest text-cyan-400 uppercase block mb-3" data-translate="calc-badge">Economic Modeling Engine</span>
+                <h2 class="text-3xl md:text-4xl font-extrabold text-white" data-translate="calc-title">Interactive Health Savings & ROI Calculator</h2>
+                <p class="text-gray-400 text-sm mt-3" data-translate="calc-sub">Input your healthcare group or hospital's active bed count to model diagnostic waste reduction, productivity savings, and estimated payback periods.</p>
+            </div>
+
+            <!-- Calculator Frame -->
+            <div class="bg-gray-900/60 rounded-3xl border border-cyan-950/60 overflow-hidden grid grid-cols-1 lg:grid-cols-12 max-w-5xl mx-auto">
+                
+                <!-- Left Control Panel -->
+                <div class="lg:col-span-5 bg-gray-950/80 p-8 border-r border-cyan-950/60 flex flex-col justify-center">
+                    <span class="text-[10px] font-bold text-cyan-500 uppercase tracking-wider mb-6 block" data-translate="calc-inputs-head">Modeling Controls</span>
+                    
+                    <div class="space-y-6">
+                        <div>
+                            <label class="block text-xs font-bold text-gray-400 uppercase mb-2" data-translate="calc-label-beds">Active Monitored Beds</label>
+                            <input oninput="calculateROI()" id="calc-input-beds" type="number" value="150" class="w-full bg-gray-900 border border-cyan-900/60 text-cyan-300 text-lg font-bold rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-cyan-500">
+                            <span class="text-[10px] text-gray-500 block mt-1.5" data-translate="calc-label-beds-sub">Standard regional hospital averages 50-150 beds.</span>
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-bold text-gray-400 uppercase mb-2" data-translate="calc-label-efficiency">Target Error Reduction Rate</label>
+                            <select onchange="calculateROI()" id="calc-input-efficiency" class="w-full bg-gray-900 border border-cyan-900/60 text-cyan-300 text-xs font-bold rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-cyan-500">
+                                <option value="0.30" selected>30% (Conservative First Year Baseline)</option>
+                                <option value="0.50">50% (Standard Project Deployment Target)</option>
+                                <option value="0.75">75% (Advanced Optimization Target)</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Outcomes Pane -->
+                <div class="lg:col-span-7 p-8 flex flex-col justify-between">
+                    <div>
+                        <span class="text-[10px] font-bold text-cyan-500 uppercase tracking-wider mb-4 block" data-translate="calc-results-head">Estimated Annual Impact Metrics</span>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            
+                            <div class="bg-gray-950 p-5 rounded-2xl border border-cyan-950">
+                                <span class="block text-[10px] font-bold text-gray-500 uppercase tracking-widest mb-1" data-translate="calc-metric-waste">Diagnostic Waste Prevented</span>
+                                <span id="out-calc-waste" class="text-2xl font-black text-cyan-400">26,357,142 ETB</span>
+                                <p class="text-[10px] text-gray-500 mt-2" data-translate="calc-metric-waste-desc">Reduces duplicative laboratory panels and medication waste.</p>
+                            </div>
+
+                            <div class="bg-gray-950 p-5 rounded-2xl border border-cyan-950">
+                                <span class="block text-[10px] font-bold text-gray-500 uppercase tracking-widest mb-1" data-translate="calc-metric-prod">Productivity Recovery Value</span>
+                                <span id="out-calc-productivity" class="text-2xl font-black text-cyan-400">89,357,142 ETB</span>
+                                <p class="text-[10px] text-gray-500 mt-2" data-translate="calc-metric-prod-desc">Calculates value of reduced hospital length of stays.</p>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <!-- Financial Summary Footer -->
+                    <div class="mt-8 pt-6 border-t border-cyan-950/40 grid grid-cols-1 md:grid-cols-2 gap-4 items-center">
+                        <div>
+                            <span class="text-[10px] font-bold text-gray-500 uppercase block mb-1" data-translate="calc-footer-cap">Total Value Reclaimed</span>
+                            <span id="out-calc-total" class="text-3xl font-black text-white text-gradient text-neon-glow">115,714,285 ETB</span>
+                        </div>
+                        <div class="text-right">
+                            <span class="text-[10px] font-bold text-gray-500 uppercase block mb-1" data-translate="calc-footer-payback">Projected Payback Window</span>
+                            <span class="text-sm font-bold text-cyan-400 bg-cyan-950/60 px-3 py-1.5 rounded-lg border border-cyan-900/50 block md:inline-block mt-1" data-translate="calc-footer-payback-val">Less Than 1 Year</span>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Detailed System Benefits Grid -->
+    <section class="py-20 px-4 bg-gray-900/10 border-b border-gray-900">
+        <div class="container mx-auto max-w-6xl">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-3xl md:text-4xl font-extrabold text-white" data-translate="benefits-title">Standardized Operational Advancements</h2>
+                <p class="text-gray-400 text-sm mt-3" data-translate="benefits-sub">Moving beyond a basic buzzer. Discover how our active protocol engine coordinates and tracks daily hospital workflows.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Benefit 1 -->
+                <div class="bg-gray-900/40 p-6 rounded-2xl border border-cyan-950/50 space-y-3">
+                    <span class="text-cyan-400 font-extrabold text-lg">01</span>
+                    <h3 class="font-bold text-white text-base" data-translate="ben-t-1">Medication Error Prevention</h3>
+                    <p class="text-xs text-gray-400 leading-relaxed" data-translate="ben-d-1">Displays clear, weight-calculated dosing instructions directly at the bedside tablet to eliminate manual confirmation doubts.</p>
+                </div>
+                <!-- Benefit 2 -->
+                <div class="bg-gray-900/40 p-6 rounded-2xl border border-cyan-950/50 space-y-3">
+                    <span class="text-cyan-400 font-extrabold text-lg">02</span>
+                    <h3 class="font-bold text-white text-base" data-translate="ben-t-2">Intelligent Task Routing</h3>
+                    <p class="text-xs text-gray-400 leading-relaxed" data-translate="ben-d-2">Organizes task prioritization lists directly at the nursing station PC, reducing hospital floor transit fatigue by 40%.</p>
+                </div>
+                <!-- Benefit 3 -->
+                <div class="bg-gray-900/40 p-6 rounded-2xl border border-cyan-950/50 space-y-3">
+                    <span class="text-cyan-400 font-extrabold text-lg">03</span>
+                    <h3 class="font-bold text-white text-base" data-translate="ben-t-3">Direct Patient Voice Interface</h3>
+                    <p class="text-xs text-gray-400 leading-relaxed" data-translate="ben-d-3">Bypasses manual call button limitations with natural-language voice interfaces, helpful for patients with limited mobility.</p>
+                </div>
+                <!-- Benefit 4 -->
+                <div class="bg-gray-900/40 p-6 rounded-2xl border border-cyan-950/50 space-y-3">
+                    <span class="text-cyan-400 font-extrabold text-lg">04</span>
+                    <h3 class="font-bold text-white text-base" data-translate="ben-t-4">Reliable Intranet Operations</h3>
+                    <p class="text-xs text-gray-400 leading-relaxed" data-translate="ben-d-4">Saves and caches telemetry records locally during any networking disruptions, syncing automatically once systems restore.</p>
+                </div>
+                <!-- Benefit 5 -->
+                <div class="bg-gray-900/40 p-6 rounded-2xl border border-cyan-950/50 space-y-3">
+                    <span class="text-cyan-400 font-extrabold text-lg">05</span>
+                    <h3 class="font-bold text-white text-base" data-translate="ben-t-5">Auditable QR Protocol Logging</h3>
+                    <p class="text-xs text-gray-400 leading-relaxed" data-translate="ben-d-5">Generates permanent timestamps and unique QR codes for every clinical task, verifying bedside care delivery.</p>
+                </div>
+                <!-- Benefit 6 -->
+                <div class="bg-gray-900/40 p-6 rounded-2xl border border-cyan-950/50 space-y-3">
+                    <span class="text-cyan-400 font-extrabold text-lg">06</span>
+                    <h3 class="font-bold text-white text-base" data-translate="ben-t-6">Structured Escalation Loops</h3>
+                    <p class="text-xs text-gray-400 leading-relaxed" data-translate="ben-d-6">Guarantees safety with automatic supervisor notifications via SMS if an urgent alert remains unaddressed for 20 minutes.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- National Job Creation Section -->
+    <section id="jobs" class="py-20 px-4 border-b border-gray-900">
+        <div class="container mx-auto max-w-6xl">
+            
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-xs font-bold tracking-widest text-cyan-400 uppercase block mb-3" data-translate="jobs-badge">Sovereign Human Capital Value</span>
+                <h2 class="text-3xl md:text-4xl font-extrabold text-white" data-translate="jobs-title">Fostering National Tech and Operational Jobs</h2>
+                <p class="text-gray-400 text-sm mt-3" data-translate="jobs-sub">Project deployment generates 879 positions nationwide, creating local technical training opportunities.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                
+                <div class="bg-gray-900/60 p-6 rounded-2xl border border-cyan-950/50 text-center space-y-3">
+                    <div class="text-3xl font-extrabold text-cyan-400">120</div>
+                    <h3 class="font-bold text-white text-sm" data-translate="job-t-1">Assembly & Staging</h3>
+                    <p class="text-xs text-gray-400" data-translate="job-d-1">Hardware staging, medical enclosure assembly, and server array configuration.</p>
+                </div>
+
+                <div class="bg-gray-900/60 p-6 rounded-2xl border border-cyan-950/50 text-center space-y-3">
+                    <div class="text-3xl font-extrabold text-cyan-400">150</div>
+                    <h3 class="font-bold text-white text-sm" data-translate="job-t-2">Installation Teams</h3>
+                    <p class="text-xs text-gray-400" data-translate="job-d-2"> Bedside physical mounts, structural routing, and system testing across clinics.</p>
+                </div>
+
+                <div class="bg-gray-900/60 p-6 rounded-2xl border border-cyan-950/50 text-center space-y-3">
+                    <div class="text-3xl font-extrabold text-cyan-400">45</div>
+                    <h3 class="font-bold text-white text-sm" data-translate="job-t-3">Software Developers</h3>
+                    <p class="text-xs text-gray-400" data-translate="job-d-3">Native Windows updates, dialect configuration, and offline system optimizations.</p>
+                </div>
+
+                <div class="bg-gray-900/60 p-6 rounded-2xl border border-cyan-950/50 text-center space-y-3">
+                    <div class="text-3xl font-extrabold text-cyan-400">120</div>
+                    <h3 class="font-bold text-white text-sm" data-translate="job-t-4">Support & Helpdesk</h3>
+                    <p class="text-xs text-gray-400" data-translate="job-d-4">Ongoing network diagnostics and rapid technical issue resolution.</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Strategic Validation and Endorsements -->
+    <section id="endorsements" class="py-20 px-4 bg-gray-900/30">
+        <div class="container mx-auto max-w-6xl">
+            
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-xs font-bold tracking-widest text-cyan-400 uppercase block mb-3" data-translate="end-badge">Strategic Clearances</span>
+                <h2 class="text-3xl md:text-4xl font-extrabold text-white" data-translate="end-title">Administrative Approvals & National Validation</h2>
+                <p class="text-gray-400 text-sm mt-3" data-translate="end-sub">ISHCS protocols have been verified across sovereign technology ministries and national health leadership.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 text-sm">
+                <!-- Card 1 -->
+                <div class="bg-gray-950/80 p-6 rounded-2xl border border-cyan-950 flex flex-col justify-between">
+                    <p class="text-gray-400 leading-relaxed italic" data-translate="end-q1">
+                        "The development of cost-effective, indigenous, and innovative health ICT solutions is crucial to our public infrastructure."
+                    </p>
+                    <div class="mt-6 pt-4 border-t border-cyan-950/40">
+                        <strong class="block text-white" data-translate="end-n1">Ministry of Innovation and Technology</strong>
+                        <span class="text-[10px] text-cyan-500 uppercase tracking-widest font-bold" data-translate="end-s1">Formal Platform Endorsement</span>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="bg-gray-950/80 p-6 rounded-2xl border border-cyan-950 flex flex-col justify-between">
+                    <p class="text-gray-400 leading-relaxed italic" data-translate="end-q2">
+                        "Enforcing clinical accountability and checking-off bedside tasks using unique QR codes solves critical nurse coordination challenges."
+                    </p>
+                    <div class="mt-6 pt-4 border-t border-cyan-950/40">
+                        <strong class="block text-white" data-translate="end-n2">Ministry of Health Panel Review</strong>
+                        <span class="text-[10px] text-cyan-500 uppercase tracking-widest font-bold" data-translate="end-s2">Clinical Safety Validation</span>
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="bg-gray-950/80 p-6 rounded-2xl border border-cyan-950 flex flex-col justify-between">
+                    <p class="text-gray-400 leading-relaxed italic" data-translate="end-q3">
+                        "Implementing these automated protocols reduces hospital stays and frees up capacity, optimizing our public facilities."
+                    </p>
+                    <div class="mt-6 pt-4 border-t border-cyan-950/40">
+                        <strong class="block text-white" data-translate="end-n3">Regional Health Bureau</strong>
+                        <span class="text-[10px] text-cyan-500 uppercase tracking-widest font-bold" data-translate="end-s3">Implementation Feasibility Approval</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-950 text-gray-500 py-16 text-xs border-t border-cyan-950/60">
+        <div class="container mx-auto px-4 max-w-6xl">
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-10 mb-12">
+                
+                <div class="md:col-span-5 space-y-4">
+                    <h2 class="text-lg font-extrabold text-white">Raji Technology PLC</h2>
+                    <p class="text-gray-400 text-xs leading-relaxed" data-translate="footer-desc">
+                        Creating indigenous, high-availability software platforms designed to optimize public medical safety, reduce diagnostic waste, and empower nursing workflows.
+                    </p>
+                </div>
+
+                <div class="md:col-span-4 space-y-2">
+                    <h3 class="font-bold text-gray-400 text-xs uppercase tracking-wider">Contact & Desk Logistics</h3>
+                    <p class="text-gray-400">Addis Ababa, Ethiopia</p>
+                    <p class="text-gray-400">Desk Support: +251 913 395 143</p>
+                    <p class="text-gray-400">Desk Operations: amerabdulah634@gmail.com</p>
+                </div>
+
+                <div class="md:col-span-3 space-y-2 text-left">
+                    <h3 class="font-bold text-gray-400 text-xs uppercase tracking-wider">Intellectual Property</h3>
+                    <p class="text-gray-400">Copyright Certificate: No. 5/0277</p>
+                    <p class="text-gray-400">Project Master Code Target: June 30, 2026</p>
+                </div>
+
+            </div>
+
+            <div class="pt-8 border-t border-cyan-950/30 text-center flex flex-col md:flex-row justify-between items-center gap-4">
+                <p data-translate="footer-copyright">&copy; 2026 Raji Technology. All Engineering Rights Reserved.</p>
+                <div class="flex gap-4">
+                    <a href="#about" class="hover:text-cyan-400">Strategic Vision</a>
+                    <a href="#architecture" class="hover:text-cyan-400">System Architecture</a>
+                    <a href="#protocols" class="hover:text-cyan-400">Clinical Checklists</a>
+                </div>
+            </div>
         </div>
     </footer>
 
+    <!-- Translation and Interface Logic Scripts -->
     <script>
-        // Toggle mobile navigation visibility panel
-        const menuBtn = document.getElementById('mobile-menu-button');
-        const mobileNav = document.getElementById('mobile-nav');
+        // Multi-Language Translation Matrices
+        const translations = {
+            en: {
+                "notice-bold": "THE COST OF INACTION:",
+                "notice-text": "52,400 preventable patient deaths annually in Ethiopian hospitals. ISHCS targets a 95% reduction in critical clinical errors.",
+                "sub-brand": "National Health Initiative",
+                "nav-about": "Strategic Vision",
+                "nav-architecture": "Architecture",
+                "nav-protocols": "Clinical Engine",
+                "nav-roadmap": "National Rollout",
+                "nav-calculator": "ROI Model",
+                "nav-jobs": "Job Creation",
+                "nav-endorsements": "Validation",
+                "hero-badge": "Sovereign Technical Innovation",
+                "hero-head-1": "The Intelligent Clinical Protocol Engine",
+                "hero-head-2": "Built to Eliminate Patient Care Errors",
+                "hero-sub": "ISHCS is a specialized, high-availability Windows OS patient bedside and nursing station system. It reads medical devices directly over IP to coordinate automated, ward-specific check-lists and safety protocols—enforcing accountability across all clinical settings.",
+                "hero-btn-primary": "Explore 10 Ward Protocols",
+                "hero-btn-secondary": "Test the ROI Model",
+                "metric-1": "Public Hospitals",
+                "metric-2": "Beds Monitored",
+                "metric-3": "Telemetry Latency",
+                "metric-4": "Jobs Created",
+                "vision-pre": "Systemic Deficit Challenge",
+                "vision-title": "The Human & Economic Toll of Care Inaction",
+                "vision-p1": "Every year, manual record systems, fragmented notification loops, and medication administration mistakes lead to thousands of preventable complications. Extended hospital lengths of stay place a crippling administrative burden on the public healthcare network.",
+                "vision-alert-1": "Medication Safety Vulnerability: Standard manual calculations mean 1 out of every 2 medications faces dosage or protocol error risks inside public wards.",
+                "vision-alert-2": "90 Billion ETB Loss: Annual financial strain includes direct diagnostic waste (~20.5B ETB) and macro-economic labor loss (~69.5B ETB) from extended clinical recovery.",
+                "solution-pre": "THE SYSTEMIC ANSWER: ISHCS",
+                "solution-title": "How AI-Powered Protocols Protect Lives",
+                "sol-f-1": "Automated Care Scheduling",
+                "sol-fd-1": "Generates custom clinical schedules immediately at admission, eliminating human recall dependency.",
+                "sol-f-2": "Direct Vital Telemetry",
+                "sol-fd-2": "Streams patient vital monitors directly over local IP networks, bypassing manual entry and transcription delay.",
+                "sol-f-3": "Dosing Math Validation",
+                "sol-fd-3": "Computes pediatric weight-based limits instantly at point-of-care, safeguarding medication safety metrics.",
+                "sol-f-4": "Fail-Safe Supervisor Alert",
+                "sol-fd-4": "If an emergency alert remains unanswered for over 20 minutes, the engine escalates via SMS directly to supervisor pagers.",
+                "sol-footer": "Directly aligned with MInT Digital Health Priorities, MoH Directives, and the Oromia Health Bureau implementation blueprint.",
+                "arch-badge": "High-Availability Architecture",
+                "arch-title": "Industrial Health-Grade Engineering",
+                "arch-sub": "Why ISHCS runs as a native Windows OS application rather than an Android or web application.",
+                "arch-box-title": "Offline-First Clinical Continuity",
+                "arch-box-p": "Hospital environments cannot tolerate cellular network dropped sessions or server timeouts. ISHCS is architected as a native Windows system running database engines directly on point-of-care hardware. Even during complete hospital intranet breakdown, patient bedside monitors continue processing checklists locally.",
+                "arch-point-1": "Direct IP Communications",
+                "arch-subpoint-1": "Streams HL7 on Port 2575 from hardware.",
+                "arch-point-2": "Zero Translation Loss",
+                "arch-subpoint-2": "Processes uncompressed sensor signals.",
+                "flow-title": "Telemetry Flow: Under 100ms Target Response",
+                "flow-step-1": "Medical Monitor",
+                "flow-step-1-sub": "Static IP setup.",
+                "flow-step-2": "Surface Device",
+                "flow-step-2-sub": "Local database execution.",
+                "flow-step-3": "Nurse Console",
+                "flow-step-3-sub": "Step checklist displayed.",
+                "spec-title-1": "Microsoft Surface Deployment Spec",
+                "spec-desc-1": "3,500 enterprise bedside units with specialized shock-proof medical mounting fixtures, running localized Windows OS builds with internal active cooling safeguards.",
+                "spec-title-2": "Clinical Console Setup",
+                "spec-desc-2": "Integrates natively into existing hospital PCs, eliminating extra workstation expense. Displays comprehensive room arrays and live diagnostic telemetry feeds.",
+                "protocol-badge": "Interactive Module",
+                "protocol-title": "Dynamic Clinical Protocol Explorer",
+                "protocol-sub": "Click any of the 10 hospital wards below to review the custom AI safety rules, scheduling check-offs, and critical system alarms.",
+                "explorer-list-head": "Hospital Specialties",
+                "w-med": "Medical Ward",
+                "w-surg": "Surgical Ward",
+                "w-obg": "OB/GYN Ward",
+                "w-icu": "Intensive Care (ICU)",
+                "w-er": "Emergency Room",
+                "w-ped": "Pediatric Ward",
+                "w-nicu": "Neonatal ICU (NICU)",
+                "w-ortho": "Orthopedics Ward",
+                "w-psych": "Psychiatry Ward",
+                "w-iso": "Isolation Ward",
+                "status-active": "Active Protocol Matrix",
+                "target-outcome": "Target Metric Outcome:",
+                "rm-badge": "Phased Implementation Blueprint",
+                "rm-title": "5-Year National Standardization Roadmap",
+                "rm-sub": "Standardizing safety configurations across 70+ public hospitals (3,500 monitored beds), utilizing the Oromia deployment path as the national template.",
+                "ph-1-title": "Jimma, East Shewa & Adama Special Zones",
+                "ph-1-desc": "Establishes the central cloud core environment. Rolls out point-of-care equipment across 20 high-priority institutions containing 1,000 beds.",
+                "ph-2-title": "West Shewa, North Shewa & East Wellega",
+                "ph-2-desc": "Expands the protocol network deep into secondary hospital groups. Standardizes ward checklist panels across 18 regional institutions containing 900 monitored beds.",
+                "ph-3-title": "Western Oromia Cluster (West Wellega, Horo Gudru, Kellem)",
+                "ph-3-desc": "Extends systems into the Western Oromia hospital networks, activating the dynamic IP telemetry architecture across 13 health facilities.",
+                "ph-4-title": "Bale, Arsi & West Arsi Zones",
+                "ph-4-desc": "Rolls out systems to high-volume institutions in the Southern regions, standardizing 15 hospitals with 750 bedside stations.",
+                "ph-5-title": "Borena, Guji & Ilu Aba Bora Zones",
+                "ph-5-desc": "Completes the regional standardization blueprint by bringing 11 southern and western hospitals (550 beds) into active deployment.",
+                "calc-badge": "Economic Modeling Engine",
+                "calc-title": "Interactive Health Savings & ROI Calculator",
+                "calc-sub": "Input your healthcare group or hospital's active bed count to model diagnostic waste reduction, productivity savings, and estimated payback periods.",
+                "calc-inputs-head": "Modeling Controls",
+                "calc-label-beds": "Active Monitored Beds",
+                "calc-label-beds-sub": "Standard regional hospital averages 50-150 beds.",
+                "calc-label-efficiency": "Target Error Reduction Rate",
+                "calc-results-head": "Estimated Annual Impact Metrics",
+                "calc-metric-waste": "Diagnostic Waste Prevented",
+                "calc-metric-waste-desc": "Reduces duplicative laboratory panels and medication waste.",
+                "calc-metric-prod": "Productivity Recovery Value",
+                "calc-metric-prod-desc": "Calculates value of reduced hospital length of stays.",
+                "calc-footer-cap": "Total Value Reclaimed",
+                "calc-footer-payback": "Projected Payback Window",
+                "calc-footer-payback-val": "Less Than 1 Year",
+                "benefits-title": "Standardized Operational Advancements",
+                "benefits-sub": "Moving beyond a basic buzzer. Discover how our active protocol engine coordinates and tracks daily hospital workflows.",
+                "ben-t-1": "Medication Error Prevention",
+                "ben-d-1": "Displays clear, weight-calculated dosing instructions directly at the bedside tablet to eliminate manual confirmation doubts.",
+                "ben-t-2": "Intelligent Task Routing",
+                "ben-d-2": "Organizes task prioritization lists directly at the nursing station PC, reducing hospital floor transit fatigue by 40%.",
+                "ben-t-3": "Direct Patient Voice Interface",
+                "ben-d-3": "Bypasses manual call button limitations with natural-language voice interfaces, helpful for patients with limited mobility.",
+                "ben-t-4": "Reliable Intranet Operations",
+                "ben-d-4": "Saves and caches telemetry records locally during any networking disruptions, syncing automatically once systems restore.",
+                "ben-t-5": "Auditable QR Protocol Logging",
+                "ben-d-5": "Generates permanent timestamps and unique QR codes for every clinical task, verifying bedside care delivery.",
+                "ben-t-6": "Structured Escalation Loops",
+                "ben-d-6": "Guarantees safety with automatic supervisor notifications via SMS if an urgent alert remains unaddressed for 20 minutes.",
+                "jobs-badge": "Sovereign Human Capital Value",
+                "jobs-title": "Fostering National Tech and Operational Jobs",
+                "jobs-sub": "Project deployment generates 879 positions nationwide, creating local technical training opportunities.",
+                "job-t-1": "Assembly & Staging",
+                "job-d-1": "Hardware staging, medical enclosure assembly, and server array configuration.",
+                "job-t-2": "Installation Teams",
+                "job-d-2": "Bedside physical mounts, structural routing, and system testing across clinics.",
+                "job-t-3": "Software Developers",
+                "job-d-3": "Native Windows updates, dialect configuration, and offline system optimizations.",
+                "job-t-4": "Support & Helpdesk",
+                "job-d-4": "Ongoing network diagnostics and rapid technical issue resolution.",
+                "end-badge": "Strategic Clearances",
+                "end-title": "Administrative Approvals & National Validation",
+                "end-sub": "ISHCS protocols have been verified across sovereign technology ministries and national health leadership.",
+                "end-q1": "\"The development of cost-effective, indigenous, and innovative health ICT solutions is crucial to our public infrastructure.\"",
+                "end-n1": "Ministry of Innovation and Technology",
+                "end-s1": "Formal Platform Endorsement",
+                "end-q2": "\"Enforcing clinical accountability and checking-off bedside tasks using unique QR codes solves critical nurse coordination challenges.\"",
+                "end-n2": "Ministry of Health Panel Review",
+                "end-s2": "Clinical Safety Validation",
+                "end-q3": "\"Implementing these automated protocols reduces hospital stays and frees up capacity, optimizing our public facilities.\"",
+                "end-n3": "Regional Health Bureau",
+                "end-s3": "Implementation Feasibility Approval",
+                "footer-desc": "Creating indigenous, high-availability software platforms designed to optimize public medical safety, reduce diagnostic waste, and empower nursing workflows.",
+                "footer-copyright": "© 2026 Raji Technology. All Engineering Rights Reserved."
+            },
+            am: {
+                "notice-bold": "የአለመንቀሳቀስ ዋጋ፡",
+                "notice-text": "በኢትዮጵያ ሆስፒታሎች ውስጥ በየዓመቱ 52,400 መከላከል የሚቻል የሰው ሕይወት ይጠፋል። ይህ ሲስተም የስህተት መጠኖችን 95% ይቀንሳል።",
+                "sub-brand": "ብሔራዊ የጤና ጥበቃ ተነሳሽነት",
+                "nav-about": "ስልታዊ ራዕይ",
+                "nav-architecture": "አርክቴክቸር",
+                "nav-protocols": "የሕክምና ሞተር",
+                "nav-roadmap": "ብሔራዊ ስርጭት",
+                "nav-calculator": "የአይኦአይ ሞዴል",
+                "nav-jobs": "የስራ ፈጠራ",
+                "nav-endorsements": "ማረጋገጫ",
+                "hero-badge": "የሀገር በቀል ቴክኖሎጂ ፈጠራ",
+                "hero-head-1": "ብልህ የሕክምና ፕሮቶኮል ሞተር",
+                "hero-head-2": "የታካሚ እንክብካቤ ስህተቶችን ለማስወገድ የተሰራ",
+                "hero-sub": "የታካሚ አልጋ አጠገብ እና የነርሶች ጣቢያ ሲስተም። ታካሚዎችን ለመጠበቅ የሕክምና መሣሪያዎችን በቀጥታ በአይፒ አድራሻ ያነባል።",
+                "hero-btn-primary": "10ቱን የክፍል ፕሮቶኮሎች ያስሱ",
+                "hero-btn-secondary": "የአይኦአይ ሞዴሉን ይሞክሩ",
+                "metric-1": "የመንግስት ሆስፒታሎች",
+                "metric-2": "የሚቆጣጠሩ አልጋዎች",
+                "metric-3": "የቴሌሜትሪ ፍጥነት",
+                "metric-4": "የተፈጠሩ ስራዎች",
+                "vision-pre": "የስርዓቱ ጉድለት ፈተና",
+                "vision-title": "የሕክምና መዘግየት የሚያስከትለው የሰው እና የኢኮኖሚ ጉዳት",
+                "vision-p1": "በየዓመቱ በወረቀት ላይ የተመሰረቱ አሰራሮች እና የነርሶች ግንኙነት መዘግየት በሺዎች ለሚቆጠሩ ታካሚዎች ህይወት መጥፋት ምክንያት ይሆናሉ።",
+                "vision-alert-1": "የመድኃኒት ደህንነት ክፍተት፡ በየሆስፒታሎቹ ከሚሰጡ መድኃኒቶች ውስጥ 1/2 ያህሉ የስህተት ስጋት ይገጥማቸዋል።",
+                "vision-alert-2": "90 ቢሊዮን ብር ኪሳራ፡ በየዓመቱ የሚባክኑ የህክምና ወጪዎች እና የስራ ጊዜ መጥፋት ሀገሪቱን ከፍተኛ ኪሳራ ላይ ይጥላሉ።",
+                "solution-pre": "የስርዓቱ መፍትሔ፡ ISHCS",
+                "solution-title": "የአይ አጋዥ ስርዓቶች ህይወትን እንዴት እንደሚታደጉ",
+                "sol-f-1": "አውቶማቲክ የእንክብካቤ መርሃግብር",
+                "sol-fd-1": "ታካሚው ሲገባ እንደየክፍሉ የህክምና መርሃግብሮችን ወዲያውኑ ያዘጋጃል።",
+                "sol-f-2": "የቀጥታ የህይወት ምልክቶች ንባብ",
+                "sol-fd-2": "ያለ ሰው ጣልቃ ገብነት የልብ ምት እና የኦክስጂን መጠን ንባቦችን በቀጥታ ከአልጋው አጠገብ ካለው መቆጣጠሪያ ይወስዳል።",
+                "sol-f-3": "የመድኃኒት መጠን ስሌት ማረጋገጫ",
+                "sol-fd-3": "ለህፃናት የሚሰጡ መድኃኒቶችን በክብደታቸው ልክ በትክክል ያሰላል።",
+                "sol-f-4": "የበላይ ተቆጣጣሪዎች ጥሪ ማሳወቂያ",
+                "sol-fd-4": "አስቸኳይ ጥሪዎች በ20 ደቂቃ ውስጥ ካልተመለሱ ለሀላፊው ነርስ በኤስኤምኤስ መልዕክት ይልካል።",
+                "sol-footer": "ከኢኖቬሽንና ቴክኖሎጂ ሚኒስቴር እና ከጤና ጥበቃ ሚኒስቴር ስትራቴጂዎች ጋር የተጣጣመ ነው።",
+                "arch-badge": "ከፍተኛ ተገኝነት ያለው አርክቴክቸር",
+                "arch-title": "የኢንዱስትሪ ደረጃ የህክምና ምህንድስና",
+                "arch-sub": "ሲስተሙ በዌብሳይት ወይም በአንድሮይድ ሳይሆን በዊንዶውስ ላይ ለምን እንደተሰራ ማብራሪያ።",
+                "arch-box-title": "ያለ በይነመረብ የሚሰራ የደህንነት ስርዓት",
+                "arch-box-p": "የሆስፒታል ደህንነት አስተማማኝ መሆን ስላለበት ይህ ሲስተም ያለ በይነመረብም ቢሆን በአልጋው አጠገብ ባሉ መሣሪያዎች ላይ ሙሉ በሙሉ ይሰራል።",
+                "arch-point-1": "ቀጥተኛ የአይፒ ግንኙነት",
+                "arch-subpoint-1": "መረጃዎችን በፖርት 2575 በቀጥታ ያስተላልፋል።",
+                "arch-point-2": "ምንም አይነት የመረጃ መጥፋት የለም",
+                "arch-subpoint-2": "ያልተጨመቁ ምልክቶችን በቀጥታ ይሰራል።",
+                "flow-title": "የመረጃ ፍሰት፡ ከ100 ሚሊ ሰከንድ በታች የተግባር ምላሽ",
+                "flow-step-1": "የህክምና መቆጣጠሪያ",
+                "flow-step-1-sub": "የማይለወጥ የአይፒ አድራሻ አቀማመጥ።",
+                "flow-step-2": "የሰርፌስ ታብሌት",
+                "flow-step-2-sub": "የመረጃዎች አያያዝ በአካባቢው መሣሪያ ላይ ብቻ።",
+                "flow-step-3": "የነርሶች ጣቢያ",
+                "flow-step-3-sub": "ሊተገበሩ የሚገባቸው ዝርዝሮች በስክሪኑ ላይ ይታያሉ።",
+                "spec-title-1": "የማይክሮሶፍት ሰርፌስ መግለጫ",
+                "spec-desc-1": "3,500 የሚሆኑ ታብሌቶች በዊንዶውስ 11 ፕሮ ላይ በመሆን በአልጋዎች አጠገብ በደህንነት ተገጥመዋል።",
+                "spec-title-2": "የነርሶች ጣቢያ አቀማመጥ",
+                "spec-desc-2": "በሆስፒታሉ ውስጥ ባሉ ነባር ኮምፒውተሮች ላይ የሚጫን ሲሆን አዳዲስ ወጪዎችን ያስወግዳል።",
+                "protocol-badge": "ይህንን ክፍል ይሞክሩት",
+                "protocol-title": "የክፍሎች ፕሮቶኮል ማሳያ",
+                "protocol-sub": "በሆስፒታሉ ውስጥ ያሉ 10 የተለያዩ ክፍሎች እንዴት በአይ ፕሮቶኮል እንደሚመሩ ለማየት ከታች ካሉት ክፍሎች አንዱን ይምረጡ።",
+                "explorer-list-head": "የሆስፒታል ክፍሎች",
+                "w-med": "አጠቃላይ የህክምና ክፍል",
+                "w-surg": "የቀዶ ጥገና ክፍል",
+                "w-obg": "የማህፀንና மகப்பேறு ክፍል",
+                "w-icu": "ፅኑ ህሙማን ክፍል (ICU)",
+                "w-er": "ድንገተኛ አደጋ ክፍል",
+                "w-ped": "የህጻናት ህክምና ክፍል",
+                "w-nicu": "የጨቅላ ህጻናት ክፍል (NICU)",
+                "w-ortho": "የአጥንት ህክምና ክፍል",
+                "w-psych": "የአእምሮ ጤና ክፍል",
+                "w-iso": "የለይቶ ማቆያ ክፍል",
+                "status-active": "ፕሮቶኮሉ እየሰራ ነው",
+                "target-outcome": "የውጤት ግብ፡",
+                "rm-badge": "የስርጭት እቅድ",
+                "rm-title": "የ5 ዓመት ብሔራዊ የስርጭት ፍኖተ ካርታ",
+                "rm-sub": "በ70 የመንግስት ሆስፒታሎች ውስጥ 3,500 አልጋዎችን ተደራሽ ለማድረግ የተነደፈ ፍኖተ ካርታ።",
+                "ph-1-title": "ጅማ፣ ምስራቅ ሸዋ እና አዳማ ልዩ ዞኖች",
+                "ph-1-desc": "የመጀመሪያው አመት ስርጭት ሲሆን 20 ሆስፒታሎችን እና 1,000 አልጋዎችን ተደራሽ ያደርጋል።",
+                "ph-2-title": "ምዕራብ ሸዋ፣ ሰሜን ሸዋ እና ምስራቅ ወለጋ",
+                "ph-2-desc": "በሁለተኛው አመት 18 ሆስፒታሎችን እና 900 አልጋዎችን ተደራሽ ያደርጋል።",
+                "ph-3-title": "ምዕራብ ወለጋ፣ ሆሮ ጉድሩ እና ቀለም ወለጋ",
+                "ph-3-desc": "በሶስተኛው አመት 13 ሆስፒታሎችን እና 650 አልጋዎችን ተደራሽ ያደርጋል።",
+                "ph-4-title": "ባሌ፣ አርሲ እና ምዕራብ አርሲ ዞኖች",
+                "ph-4-desc": "በአራተኛው አመት 15 ሆስፒታሎችን እና 750 አልጋዎችን ያጠቃልላል።",
+                "ph-5-title": "ቦረና፣ ጉጂ እና ኢሉ አባቦራ ዞኖች",
+                "ph-5-desc": "በአምስተኛው አመት 11 ሆስፒታሎችን እና 550 አልጋዎችን ያጠቃልላል።",
+                "calc-badge": "የቁጠባ ማስያ",
+                "calc-title": "በይነተገናኝ የህክምና ወጪ ቁጠባ ማስያ",
+                "calc-sub": "የሆስፒታሉን የአልጋ ብዛት በማስገባት በዓመት ምን ያህል ገንዘብ ማዳን እንደሚቻል እዚህ ያሰሉት።",
+                "calc-inputs-head": "የስሌት መቆጣጠሪያ",
+                "calc-label-beds": "በአጠቃላይ የአልጋዎች ብዛት",
+                "calc-label-beds-sub": "አንድ መካከለኛ ሆስፒታል ከ50 እስከ 150 አልጋዎች አሉት።",
+                "calc-label-efficiency": "የስህተት መቀነስ ግብ",
+                "calc-results-head": "የተገመቱ አመታዊ የቁጠባ ውጤቶች",
+                "calc-metric-waste": "የሚድን የህክምና ባክነት ወጪ",
+                "calc-metric-waste-desc": "የማይጠቅሙ ተጨማሪ ምርመራዎችን ወጪዎች ይቀንሳል።",
+                "calc-metric-prod": "የመልሶ ማገገሚያ ምርታማነት ዋጋ",
+                "calc-metric-prod-desc": "ታካሚዎች በሆስፒታል ውስጥ የሚቆዩበትን ቀናት በመቀነስ የሚገኝ ቁጠባ።",
+                "calc-footer-cap": "በአጠቃላይ የሚድን የሀገር ሀብት",
+                "calc-footer-payback": "የፕሮጀክቱ ወጪ የሚመለስበት ጊዜ",
+                "calc-footer-payback-val": "ከአንድ አመት በታች",
+                "benefits-title": "የስርዓቱ ዋና ዋና ጥቅሞች",
+                "benefits-sub": "ይህ ሲስተም ለሆስፒታሎች የሚሰጣቸውን ጠቃሚ ጠቀሜታዎች ይመልከቱ።",
+                "ben-t-1": "የመድኃኒት ስህተቶችን መከላከል",
+                "ben-d-1": "ትክክለኛውን የመድኃኒት መጠን በአልጋው አጠገብ ባለው ስክሪን ላይ ያሳያል።",
+                "ben-t-2": "የነርሶች ስራን ማቅለል",
+                "ben-d-2": "የነርሶችን የእግር ጉዞ በ40% በመቀነስ ስራቸውን ያቀልላቸዋል።",
+                "ben-t-3": "የድምፅ ጥሪ አጠቃቀም",
+                "ben-d-3": "መቀሳቀስ ለማይችሉ ታካሚዎች በድምፅ ትዕዛዝ መልዕክቶችን እንዲያስተላልፉ ይረዳል።",
+                "ben-t-4": "የአውታረ መረብ ነፃነት",
+                "ben-d-4": "ምንም አይነት የበይነመረብ ግንኙነት ባይኖርም ሲስተሙ መስራቱን ይቀጥላል።",
+                "ben-t-5": "በኪው አር ኮድ የተደገፈ አሰራር",
+                "ben-d-5": "እያንዳንዱ የተከናወነ ስራ በኪውአር ኮድ አማካኝነት በታሪክ መዝገብ ላይ ይቀመጣል።",
+                "ben-t-6": "ፈጣን ማሳወቂያዎች",
+                "ben-d-6": "ለታካሚው አስቸኳይ ምላሽ ካልተሰጠ ለሀላፊው ነርስ ወዲያውኑ መልዕክት ይልካል።",
+                "jobs-badge": "ብሔራዊ የስራ እድል ፈጠራ",
+                "jobs-title": "ለወጣቶች የሚፈጠሩ የስራ እድሎች",
+                "jobs-sub": "ይህ ፕሮጀክት በአገር አቀፍ ደረጃ 879 አዳዲስ የስራ እድሎችን ይፈጥራል።",
+                "job-t-1": "የሃርድዌር ማገጣጠም",
+                "job-d-1": "መሣሪያዎችን የማገጣጠም እና የማዋቀር ስራዎች።",
+                "job-t-2": "የመጫን እና የስርጭት ቡድን",
+                "job-d-2": "መሣሪያዎችን በየሆስፒታሉ የመግጠም ስራዎች።",
+                "job-t-3": "የሶፍትዌር ባለሙያዎች",
+                "job-d-3": "የስርዓቱን ሶፍትዌር የማልማት እና የማዘመን ስራዎች።",
+                "job-t-4": "የቴክኒክ ድጋፍ ቡድን",
+                "job-d-4": "የቀን ከሌሊት የቴክኒክ ድጋፍ የመስጠት ስራዎች።",
+                "end-badge": "የመንግስት ፍቃዶች",
+                "end-title": "የመንግስት መስሪያ ቤቶች ምስክርነት እና ፍቃድ",
+                "end-sub": "ይህ ፕሮጀክት ከተለያዩ የመንግስት ተቋማት ማረጋገጫዎችን አግኝቷል።",
+                "end-q1": "\"ሀገር በቀል የቴክኖሎጂ መፍትሔዎችን ማበልጸግ ለጤናው ዘርፍ ትልቅ አስተዋፅዖ አለው።\"",
+                "end-n1": "የኢኖቬሽንና ቴክኖሎጂ ሚኒስቴር",
+                "end-s1": "ይፋዊ የድጋፍ ደብዳቤ",
+                "end-q2": "\"በኪውአር ኮድ የተደገፈው የነርሶች ክትትል የህክምና ስህተቶችን ለመከላከል ወሳኝ ነው።\"",
+                "end-n2": "የጤና ጥበቃ ሚኒስቴር የባለሙያዎች ቡድን",
+                "end-s2": "የቴክኒክ ደህንነት ማረጋገጫ",
+                "end-q3": "\"እነዚህን ፕሮቶኮሎች መተግበር የታካሚዎችን የሆስፒታል ቆይታ ጊዜ በከፍተኛ ሁኔታ ይቀንሳል።\"",
+                "end-n3": "የክልል ጤና ቢሮ",
+                "end-s3": "የተግባራዊነት ፍቃድ ደብዳቤ",
+                "footer-desc": "በኢትዮጵያ ውስጥ የህክምና ስህተቶችን ለመከላከል እና የነርሶችን የስራ ጫና ለመቀነስ ሀገር በቀል የቴክኖሎጂ መፍትሔዎችን የሚያመርት ተቋም ነው።",
+                "footer-copyright": "© 2026 ራጂ ቴክኖሎጂ። መብቱ በህግ የተጠበቀ ነው።"
+            },
+            om: {
+                "notice-bold": "GATI HOJII DHABUMMAA:",
+                "notice-text": "Hospitaalota Itoophiyaa keessatti waggaatti du'a namoota 52,400 kan hanbisuun danda'amu mudata. ISHCS dogoggora xiqqeessuuf hojjata.",
+                "sub-brand": "Inisheetiivi Fayyaa Biyoolessaa",
+                "nav-about": "Mul'ata Istrateejikaa",
+                "nav-architecture": "Arkitektshara",
+                "nav-protocols": "Motora Pirootokoolii",
+                "nav-roadmap": "Babaldhina Biyoolessaa",
+                "nav-calculator": "Moodela ROI",
+                "nav-jobs": "Uumama Hojii",
+                "nav-endorsements": "Mirkaneessa",
+                "hero-badge": "Teknoolojii Biyya Keessaa",
+                "hero-head-1": "Motora Pirootokoolii Fayyaa Bilchina Qabu",
+                "hero-head-2": "Dogoggora Kunuunsa Hiri'isuuf Kan Sassaabame",
+                "hero-sub": "Siriiba raajii fi buufata narsii kan ammayyaa'e. Mallattoo lubbuu agarsiistota gara bilbila narsitti battalatti dabarsa.",
+                "hero-btn-primary": "Pirootokoolota Kutaa 10 Qoradhu",
+                "hero-btn-secondary": "Moodela ROI Yaali",
+                "metric-1": "Hospitaalota Mootummaa",
+                "metric-2": "Siriiba Hordofamu",
+                "metric-3": "Saffisa Telemeetrii",
+                "metric-4": "Hojii Uumame",
+                "vision-pre": "Rakkoo Siriiba Siriiba",
+                "vision-title": "Gati Fayyaa fi Dinagdee Hojii Hiri'isuu",
+                "vision-p1": "Waggaa waggaatti siriiba waraqaa fi hordoffii narsii dhabuun du'a lubbuu namoota kumaatamaaf sababa ta'a.",
+                "vision-alert-1": "Dogoggora Qorichaa: Qorichawwan hospitaala keessatti kennaman keessaa 1/2 carraa dogoggoraa qabu.",
+                "vision-alert-2": "Baasii Biliyoona 90: Baasiin qisaasama qorichaa fi yeroo hojii dhabamuu dinagdee biyyaa miidha.",
+                "solution-pre": "DEEBII SIRIIBAA: ISHCS",
+                "solution-title": "Akkaataa Pirootokooliin AI Lubbuu Baraaru",
+                "sol-f-1": "Sagantaa Kunuunsa Ofumaa",
+                "sol-fd-1": "Yeroo dhukkubsataan seenu pirootokoolii kunuunsaa battalatti qopheessa.",
+                "sol-f-2": "Dubbisa Mallattoo Lubbuu",
+                "sol-fd-2": "Gati qorannoo dhiibbaa dhiigaa fi oksijiinii kallattiin siriiba irraa fudhata.",
+                "sol-f-3": "Mirkaneessa Hamma Qorichaa",
+                "sol-fd-3": "Qorichawwan daa'immaniif kennaman ulfaatina isaaniitiin shallaga.",
+                "sol-f-4": "Gabaasa Hordoffii Hojjetaa",
+                "sol-fd-4": "Yoo waamichi daqiiqaa 20 keessatti deebii dhabe narsii hordoftuuf SMS erga.",
+                "sol-footer": "Kallattiin Ministeera Izaanifi Teknoolojii fi Ministeera Fayyaa wajjiin kan waltajjeedha.",
+                "arch-badge": "Arkitektshara Amansiisaa",
+                "arch-title": "Injiniringii Fayyaa Sadarkaa Indaastrii",
+                "arch-sub": "Maaliif Windows irratti akka hojjatame ibsa gabaabaa.",
+                "arch-box-title": "Hojii Intarneeta Malee Hojjatu",
+                "arch-box-p": "Hospitaalli yeroo hunda eegumsa qabaachuu waan qabuuf, sirni kun intarneeta malees siriiba irratti guutummaatti hojjata.",
+                "arch-point-1": "Gahumsa IP Kallattii",
+                "arch-subpoint-1": "Mootora HL7 Port 2575 irratti dabarsa.",
+                "arch-point-2": "Gati Dhabamuu Hin Qabu",
+                "arch-subpoint-2": "Mallattoolee hunda kallattiin dubbisa.",
+                "flow-title": "Deemsa Telemeetrii: Gadi Daqiiqaa 100ms",
+                "flow-step-1": "Monitorii Fayyaa",
+                "flow-step-1-sub": "Teessoo IP Dhaabbataa.",
+                "flow-step-2": "Taableetii Surface",
+                "flow-step-2-sub": "Hojii kuusaa morkii biyya keessaa.",
+                "flow-step-3": "Buufata Narsii",
+                "flow-step-3-sub": "Pirootokooliin hojii skiriinii irratti mul'ata.",
+                "spec-title-1": "Specification Microsoft Surface",
+                "spec-desc-1": "Taableetota 3,500 Windows 11 Pro irratti siriiba biratti qophaa'an.",
+                "spec-title-2": "Qophii Buufata Narsii",
+                "spec-desc-2": "Kompuyitara hospitaalaa duran jiran irratti fe'amuun baasii dabalataa hanbisa.",
+                "protocol-badge": "Kutaa Kana Yaali",
+                "protocol-title": "Pirootokoolii Kutaalee Hospitaalaa",
+                "protocol-sub": "Kutaaleen hospitaala 10 akkamitti akka hojjatan ilaaluuf kutaalee gadii irraa tokko filadhu.",
+                "explorer-list-head": "Kutaalee Hospitaalaa",
+                "w-med": "Kutaa Yaala Waliigalaa",
+                "w-surg": "Kutaa Baqaqsanii Yaaluu",
+                "w-obg": "Kutaa Deessuu fi Gadameessaa",
+                "w-icu": "Kutaa Hordoffii Cimmaa (ICU)",
+                "w-er": "Kutaa Tajaajila Ariifachiisaa",
+                "w-ped": "Kutaa Yaala Daai'mmanii",
+                "w-nicu": "Kutaa Daai'mman Reefu Dhalatan (NICU)",
+                "w-ortho": "Kutaa Lafee fi Miilaa",
+                "w-psych": "Kutaa Sammuu fi Fayyaa",
+                "w-iso": "Kutaa Adda Baasanii Kaahan",
+                "status-active": "Pirootokooliin Hojjechaa Jira",
+                "target-outcome": "Galma Bu'aa:",
+                "rm-badge": "Sagantaa Babaldhinaa",
+                "rm-title": "Sagantaa Waggaa 5 Babaldhina Biyoolessaa",
+                "rm-sub": "Hospitaalota mootummaa 70+ keessatti siriiba 3,500 qaqqabsiisuuf saganteeffame.",
+                "ph-1-title": "Jimmaa, Shawa Bahaa fi Adaamaa",
+                "ph-1-desc": "Waggaa 1ffaa irratti hospitaalota 20 fi siriiba 1,000 uffisa.",
+                "ph-2-title": "Shawa Lixaa, Shawa Kaabaa fi Wallagga Bahaa",
+                "ph-2-desc": "Waggaa 2ffaa irratti hospitaalota 18 fi siriiba 900 uffisa.",
+                "ph-3-title": "Wallagga Lixaa, Horo Gudruu fi Qellem Wallaggaa",
+                "ph-3-desc": "Waggaa 3ffaa irratti hospitaalota 13 fi siriiba 650 uffisa.",
+                "ph-4-title": "Baalee, Arsii fi Arsii Lixaa",
+                "ph-4-desc": "Waggaa 4ffaa irratti hospitaalota 15 fi siriiba 750 uffisa.",
+                "ph-5-title": "Boorana, Gujii fi Iluu Abbaa Booraa",
+                "ph-5-desc": "Waggaa 5ffaa irratti hospitaalota 11 fi siriiba 550 uffisa.",
+                "calc-badge": "Shallagtuu Baasii",
+                "calc-title": "Shallagtuu Qusannaa Baasii Fayyaa",
+                "calc-sub": "Baasii qisaasama fayyaa fi qusannaa dandeessu asitti shallagi.",
+                "calc-inputs-head": "Hordoffii Shallagaa",
+                "calc-label-beds": "Hamma Siriiba Hospitaalaa",
+                "calc-label-beds-sub": "Hospitaalli giddu-galeessaa siriiba 50-150 qaba.",
+                "calc-label-efficiency": "Galma Hiri'isa Dogoggoraa",
+                "calc-results-head": "Gati Qusannaa Waggaa",
+                "calc-metric-waste": "Baasii Qisaasama Qorichaa Baraarame",
+                "calc-metric-waste-desc": "Baasii qorannoo dabalataa fi qorichaa hanbisa.",
+                "calc-metric-prod": "Gati Gabaa Hojii Deebi'ee",
+                "calc-metric-prod-desc": "Yeroo hospitaala keessa turuu dhukkubsataa gadi hiri'isa.",
+                "calc-footer-cap": "Waliigala Qusannaa Biyyaa",
+                "calc-footer-payback": "Yeroo Baasiin Deebi'u",
+                "calc-footer-payback-val": "Waggaa Tokko Gadi",
+                "benefits-title": "Faayidaalee Sirnichaa",
+                "benefits-sub": "Sirni kun tajaajila akkamii akka kennu asitti hordofaa.",
+                "ben-t-1": "Hiri'isa Dogoggora Qorichaa",
+                "ben-d-1": "Hamma qorichaa sirrii ta'e skiriinii siriiba irratti agarsiisa.",
+                "ben-t-2": "Hojii Narsii Saffisiisuu",
+                "ben-d-2": "Deemsa miila narsii 40% hiri'isuun tajaajila saffisiisa.",
+                "ben-t-3": "Tajaajila Sagaleen Hojjatu",
+                "ben-d-3": "Dhukkubsatoota hin sochooneef tajaajila sagaleen ergaa dabarsu kennu.",
+                "ben-t-4": "Hojii Intarneeta Malee",
+                "ben-d-4": "Intarneetni yoo citees sirni kun hojii isaa itti fufa.",
+                "ben-t-5": "Mirkaneessa QR Koodii",
+                "ben-d-5": "Hojiin hojjatame hundi galmee seenaa QR irratti ol-kaayama.",
+                "ben-t-6": "Erga Ariifachiisaa",
+                "ben-d-6": "Yoo deebiin dafanii hin kennamin hojjettoota ol-aanaaf SMS erga.",
+                "jobs-badge": "Uumama Hojii Biyoolessaa",
+                "jobs-title": "Hojii Dargaggootaaf Uumamu",
+                "jobs-sub": "Waliigala biyyoolessaatti dargaggoota 879'f carraa hojii uuma.",
+                "job-t-1": "Walitti Qabinsaa Fi Qophii",
+                "job-d-1": "Hardware walitti qabuu fi sirreessuu.",
+                "job-t-2": "Garee Fe'insaa Fi Babaldhinaa",
+                "job-d-2": "Hospitaalota keessatti meeshalee dhaabuu.",
+                "job-t-3": "Ogeessota Software",
+                "job-d-3": "Mootora software haaromsuu fi guddisuu.",
+                "job-t-4": "Garee Gargaarsa Teknoolojii",
+                "job-d-4": "Gargaarsa bilbilaa fi siriiba yeroo hunda kennu.",
+                "end-badge": "Eeyyama Mootummaa",
+                "end-title": "Mirkaneessa Ministeera Fi Biirolee",
+                "end-sub": "Sirni kun ministeerota garaagaraa irraa eeyyama argateera.",
+                "end-q1": "\"Meeshalee fayyaa biyya keessaa guddisuun fayyaa biyyaaf murteessadha.\"",
+                "end-n1": "Ministeera Izaanifi Teknoolojii",
+                "end-s1": "Xalayaa Deeggarsa Ofofmaa",
+                "end-q2": "\"Mirkaneessi QR koodii kun dogoggora narsii xiqqeessuuf baay'ee gargaara.\"",
+                "end-n2": "Koreen Ministeera Fayyaa",
+                "end-s2": "Mirkaneessa Nageenya Teknoolojii",
+                "end-q3": "\"Pirootokoolii kana fe'uun yeroo hospitaala keessa turuu gadi hiri'isa.\"",
+                "end-n3": "Biiroo Fayyaa Naannoo",
+                "end-s3": "Mirkaneessa Babaldhina Hojii",
+                "footer-desc": "Itoophiyaa keessatti dogoggora yaalaa hambisuu fi hojii narsii saffisiisuuf hojjanna.",
+                "footer-copyright": "© 2026 Raji Technology. Mirgi hunduu seeraan kan eegameedha."
+            }
+        };
 
-        menuBtn.addEventListener('click', () => {
-            mobileNav.classList.toggle('hidden');
-            mobileNav.classList.toggle('open');
+        // Active Language Parameter
+        let activeLang = 'en';
+
+        // Initialize Language Switch Event
+        document.getElementById('lang-selector').addEventListener('change', (e) => {
+            activeLang = e.target.value;
+            updateUILanguage();
         });
 
-        // Auto-collapse navigation panel on item execution selection
-        const navLinks = mobileNav.querySelectorAll('a');
-        navLinks.forEach(link => {
+        function updateUILanguage() {
+            const matrix = translations[activeLang];
+            document.querySelectorAll('[data-translate]').forEach(element => {
+                const key = element.getAttribute('data-translate');
+                if (matrix[key]) {
+                    element.innerHTML = matrix[key];
+                }
+            });
+            // Also refresh dynamic modules containing static titles
+            refreshWardDisplay();
+        }
+
+        // Accordion Management for Implementation Roadmap Phases
+        function togglePhase(phaseNum) {
+            for (let i = 1; i <= 5; i++) {
+                const content = document.getElementById(`phase-content-${i}`);
+                const arrow = document.getElementById(`phase-arrow-${i}`);
+                
+                if (i === phaseNum) {
+                    if (content.classList.contains('hidden')) {
+                        content.classList.remove('hidden');
+                        arrow.classList.add('rotate-180');
+                        arrow.classList.remove('text-cyan-800');
+                        arrow.classList.add('text-cyan-400');
+                    } else {
+                        content.classList.add('hidden');
+                        arrow.classList.remove('rotate-180');
+                        arrow.classList.add('text-cyan-800');
+                        arrow.classList.remove('text-cyan-400');
+                    }
+                } else {
+                    content.classList.add('hidden');
+                    arrow.classList.remove('rotate-180');
+                    arrow.classList.remove('text-cyan-400');
+                    arrow.classList.add('text-cyan-800');
+                }
+            }
+        }
+
+        // Ward Clinical Protocols Detailed Static Configuration Matrix
+        const clinicalWards = {
+            medical: {
+                title: { en: "Medical Ward Protocol", am: "አጠቃላይ የህክምና ክፍል ፕሮቶኮል", om: "Pirootokoolii Kutaa Yaala Waliigalaa" },
+                prompt: { 
+                    en: '"VITAL SIGNS CALL - Adult Inpatient. Patient: Tirunesh Bekele. Bed: 12. Due now. INSTRUCTION: Check and record BP, HR, O2, Temperature, Respiratory Rate."', 
+                    am: '"የህይወት ምልክቶች ጥሪ - አጠቃላይ ህሙማን ክፍል:: ታካሚ: ጥሩነሽ በቀለ:: አልጋ: 12:: ተግባር: የልብ ምት፣ ኦክስጂን፣ ሙቀት፣ የትንፋሽ መጠን መለካት::"', 
+                    om: '"VITAL SIGNS CALL - Kutaa Yaala Waliigalaa. Dhukkubsataa: Tirunesh Bekele. Siriiba: 12. INSTRUCTION: Check and record BP, HR, O2, Temperature, Respiratory Rate."' 
+                },
+                checklist: [
+                    { en: "Check BP, Heart Rate, O2, Temp, Respiratory Rate hourly", am: "የደም ግፊት፣ የልብ ምት፣ ኦክስጂን፣ ሙቀት እና ትንፋሽ በየሰዓቱ መለካት", om: "Dhiibbaa dhiigaa, pulse, oksijiinii, ho'a fi argansuu sa'aatiin safari" },
+                    { en: "Verify liquid diet formulation schedule and feeding inputs", am: "የፈሳሽ ምግብ አመጋገብ መርሃግብር እና መጠንን ማረጋገጥ", om: "Mirkaneessa sagantaa nyaata dhangala'oo fi hamma nyaataa" },
+                    { en: "Execute patient repositioning every 2 hours to prevent bedsores", am: "የአልጋ ቁስለትን ለመከላከል ታካሚውን በየ2 ሰዓቱ ማገላበጥ", om: "Madaa siriiba hambisuuf dhukkubsataa sa'aatii 2n garagalchi" },
+                    { en: "Log precise daily cumulative Input/Output fluid balances", am: "ታካሚው የወሰደውን እና ያስወገደውን ፈሳሽ በትክክል መመዝገብ", om: "Fluid balance (I/O) sirriitti galmeessi" }
+                ],
+                freq: { en: "Evaluation Loop: Hourly", am: "የድግግሞሽ ጊዜ፡ በየሰዓቱ", om: "Evaluation Loop: Sa'aatiin" },
+                target: { en: "0% Missed Vital Evaluations", am: "0% ያመለጡ የህይወት ምልክት ምርመራዎች", om: "0% Missed Vital Evaluations" }
+            },
+            surgical: {
+                title: { en: "Surgical Ward (Post-Op) Protocol", am: "የቀዶ ጥገና (ከቀዶ ጥገና በኋላ) ክፍል ፕሮቶኮል", om: "Pirootokoolii Kutaa Baqaqsanii Yaaluu" },
+                prompt: { 
+                    en: '"POST-OP MONITORING - Surgical Ward. Patient: Kebede Alula. Bed: S-04. INSTRUCTION: Evaluate surgical site for drainage. Assess pain level on 0-10 scale."', 
+                    am: '"ከቀዶ ጥገና በኋላ ክትትል - የቀዶ ጥገና ክፍል:: ታካሚ: ከበደ አሉላ:: አልጋ: S-04:: ተግባር: የቁስል ፈሳሽ መኖሩን ማረጋገጥ:: የህመም መጠን መለካት::"', 
+                    om: '"POST-OP MONITORING - Surgical Ward. Dhukkubsataa: Kebede Alula. Siriiba: S-04. INSTRUCTION: Evaluate surgical site for drainage. Assess pain level on 0-10 scale."' 
+                },
+                checklist: [
+                    { en: "Conduct surgical site visual evaluation for active drainage", am: "የቀዶ ጥገና ቁስል አካባቢን ፈሳሽ መኖሩን በእይታ መገምገም", om: " ቁስል qoradhu yaala dhiigaa ykn dhangala'oo qabaachuu" },
+                    { en: "Verify post-operative intravenous antibiotic dosage checks", am: "ከቀዶ ጥገና በኋላ የሚሰጡ ፀረ-ባክቴሪያ መድኃኒቶች መጠንን ማረጋገጥ", om: "Mirkaneessa hamma keemikaala qorichaa dhibee dhabamsiisu" },
+                    { en: "Complete neurovascular distal pulse assessments", am: "ከቀዶ ጥገና አካባቢ በታች ያሉ የደም ዝውውር ምቶችን መለካት", om: "Hordoffii dhiiga yaala fi pulse naannoo baqaqsanii yaalame gadi" },
+                    { en: "Ensure guided patient mobilization exercises are logged", am: "የታካሚውን የእግር ጉዞ እና እንቅስቃሴ መርሃግብር መመዝገብ", om: "Sochii miila dhukkubsataa gargaarsaan deemu galmeessi" }
+                ],
+                freq: { en: "Evaluation Loop: Every 2 Hours", am: "የድግግሞሽ ጊዜ፡ በየ2 ሰዓቱ", om: "Evaluation Loop: Sa'aatii 2n" },
+                target: { en: "0% Missed Post-Op Infections", am: "0% ያመለጡ የቁስል ኢንፌክሽኖች", om: "0% Missed Post-Op Infections" }
+            },
+            obg: {
+                title: { en: "OB/GYN Labor & Delivery Protocol", am: "የማህፀንና ማዋለጃ ክፍል ፕሮቶኮል", om: "Pirootokoolii Kutaa Deessuu fi Gadameessaa" },
+                prompt: { 
+                    en: '"INTRAPARTUM SURVEILLANCE - OBG. Patient: Chaltu Tolosa. Bed: OB-01. INSTRUCTION: Chart fetal heart rate parameters. Enforce contraction timing checks."', 
+                    am: '"በወሊድ ወቅት ክትትል - ማዋለጃ ክፍል:: ታካሚ: ጫልቱ ቶሎሳ:: አልጋ: OB-01:: ተግባር: የፅንሱን የልብ ትርታ መመዝገብ:: የምጥ ጊዜን መከታተል::"', 
+                    om: '"INTRAPARTUM SURVEILLANCE - OBG. Dhukkubsataa: Chaltu Tolosa. Siriiba: OB-01. INSTRUCTION: Chart fetal heart rate parameters. Enforce contraction timing checks."' 
+                },
+                checklist: [
+                    { en: "Track fetal heart rate pattern continuously (target: 110-160 bpm)", am: "የፅንሱን የልብ ትርታ ያለማቋረጥ መከታተል (ግብ: ከ110-160 ምት በደቂቃ)", om: "Hordoffii pulse onnee daa'ima gadameessa keessaa (110-160 bpm)" },
+                    { en: "Time contraction frequency, length, and relative strength metrics", am: "የምጥ ድግግሞሽ፣ ርዝማኔ እና ጥንካሬ መጠንን መመዝገብ", om: "Yeroo fi jabina ciniinsu gadameessaa hordofi" },
+                    { en: "Ensure neonatal post-delivery resuscitation tools are verified", am: "ለአዲስ ለተወለደው ህጻን ድንገተኛ መተንፈሻ መሣሪያዎችን ማዘጋጀት", om: "Meeshalee hargansuu daa'ima reefu dhalateef qopheessi" },
+                    { en: "Log postpartum maternal hemorrhage evaluation variables", am: "ከወሊድ በኋላ የእናቲቱን የደም መፍሰስ ሁኔታ መገምገም", om: "Dhiiginsa haadhoo postpartum ta'e hordofi" }
+                ],
+                freq: { en: "Evaluation Loop: Every 15 Minutes", am: "የድግግሞሽ ጊዜ፡ በየ15 ደቂቃው", om: "Evaluation Loop: Daqiiqaa 15n" },
+                target: { en: "0% Delayed Obstetric Interventions", am: "0% የዘገዩ የወሊድ ድንገተኛ ምላሾች", om: "0% Delayed Obstetric Interventions" }
+            },
+            icu: {
+                title: { en: "Critical Care / ICU Protocol", am: "የፅኑ ህሙማን ክፍል (ICU) ፕሮቶኮል", om: "Pirootokoolii Kutaa Hordoffii Cimmaa (ICU)" },
+                prompt: { 
+                    en: '"CRITICAL VALUE ALERT - ICU Bed-03. Patient: Alemitu Desta. Alert: SpO2 dropping below 90%. INSTRUCTION: Adjust ventilator. Check endotracheal tube."', 
+                    am: '"አስቸኳይ የማስጠንቀቂያ ጥሪ - ICU አልጋ-03:: ታካሚ: አለሚቱ ደስታ:: ማስጠንቀቂያ: ኦክስጂን ከ90% በታች እየወረደ ነው:: ተግባር: የመተንፈሻ መሣሪያውን ማስተካከል::"', 
+                    om: '"CRITICAL VALUE ALERT - ICU Bed-03. Dhukkubsataa: Alemitu Desta. Alert: SpO2 dropping below 90%. INSTRUCTION: Adjust ventilator. Check endotracheal tube."' 
+                },
+                checklist: [
+                    { en: "Read real-time ventilator air mix configurations hourly", am: "የመተንፈሻ መሣሪያውን የአየር መጠን እና ግፊት በየሰዓቱ ማረጋገጥ", om: "Parametara maashinii hargansuu (ventilator) sa'aatiin qoradhu" },
+                    { en: "Run endotracheal tube security and positioning audits", am: "በጉሮሮ ውስጥ የገባውን የመተንፈሻ ቱቦ ትክክለኛ ቦታ መፈተሽ", om: "Qulqullina fi nagaa ujummoo hargansuu (endotracheal tube) mirkaneessi" },
+                    { en: "Check central line access points for localized tissue changes", am: "በደም ስር የገባውን መርፌ አካባቢ ኢንፌክሽን መኖሩን መፈተሽ", om: "Infection naannoo central line dhiigaa qoradhu" },
+                    { en: "Monitor high-risk drug drip rates via telemetry feeds", am: "አስቸኳይ መድኃኒቶች የሚንጠባጠቡበትን ፍጥነት በስክሪኑ መከታተል", om: "Saffisa dhangala'oo qorichaa (infusion pump) hordofi" }
+                ],
+                freq: { en: "Evaluation Loop: Real-Time / Continuous", am: "የድግግሞሽ ጊዜ፡ የቀጥታ / ቀጣይነት ያለው", om: "Evaluation Loop: Real-Time" },
+                target: { en: "Under 10-Second Critical Alarm Delivery", am: "ማስጠንቀቂያዎችን ከ10 ሰከንድ ባነሰ ጊዜ ውስጥ ማድረስ", om: "Under 10-Second Critical Alarm Delivery" }
+            },
+            er: {
+                title: { en: "Emergency Triage Protocol", am: "ድንገተኛ አደጋ ክፍል ፕሮቶኮል", om: "Pirootokoolii Kutaa Tajaajila Ariifachiisaa" },
+                prompt: { 
+                    en: '"TRIAGE EMERGENCY - ER Bed-02. Patient: Mohammed Ibrahim. Alert: Heart Rate 135. INSTRUCTION: Triage patient immediately. Establish IV access."', 
+                    am: '"ድንገተኛ የደረጃ ምደባ ጥሪ - ER አልጋ-02:: ታካሚ: መሀመድ ኢብራሂም:: የልብ ምት: 135:: ተግባር: ታካሚውን በአስቸኳይ መመደብ:: የደም ስር መርፌ መክፈት::"', 
+                    om: '"TRIAGE EMERGENCY - ER Bed-02. Dhukkubsataa: Mohammed Ibrahim. Alert: Heart Rate 135. INSTRUCTION: Triage patient immediately. Establish IV access."' 
+                },
+                checklist: [
+                    { en: "Assign patient priority scoring (Triage Level 1 to 5)", am: "ለታካሚው የአደጋ ደረጃ መስጠት (ደረጃ 1 እስከ 5)", om: "Dhukkubsataa sadarkaa dhibee isaatiin adda baasi (Triage Level 1-5)" },
+                    { en: "Coordinate laboratory panel processing requests directly", am: "የድንገተኛ ላብራቶሪ ምርመራዎችን በቀጥታ ማዘዝ", om: "Gabaasa qorannoo dhiigaa ariifachiisaa ergi" },
+                    { en: "Deliver rapid diagnostic imaging orders to radiology consoles", am: "የኤክስሬይ እና ሲቲስካን ትዕዛዞችን ለራዲዮሎጂ ክፍል ማስተላለፍ", om: "X-ray fi CT scan ajaji" },
+                    { en: "Review bed availability across inpatient medicine wards", am: "ለታካሚው የሚሆን አልጋ በክፍሎች ውስጥ መኖሩን መፈተሽ", om: "Siriiba duwwaa kutaalee biraa qoradhu" }
+                ],
+                freq: { en: "Evaluation Loop: Urgent Upon Admission", am: "የድግግሞሽ ጊዜ፡ ታካሚው እንደገባ ወዲያውኑ", om: "Evaluation Loop: Immediate" },
+                target: { en: "Under 2-Minute Emergency Processing", am: "ምደባን ከ2 ደቂቃ ባነሰ ጊዜ ውስጥ ማጠናቀቅ", om: "Under 2-Minute Emergency Processing" }
+            },
+            pediatric: {
+                title: { en: "Pediatric Patient Safety Protocol", am: "የህጻናት ህክምና ክፍል ፕሮቶኮል", om: "Pirootokoolii Kutaa Yaala Daai'mmanii" },
+                prompt: { 
+                    en: '"MEDICATION DOSING MATH - Pediatric. Patient: Yoas Yosef. Weight: 12kg. INSTRUCTION: Re-verify calculated drug volume prior to administration."', 
+                    am: '"የመድኃኒት መጠን ስሌት - የህጻናት ክፍል:: ታካሚ: ዮአስ ዮሴፍ:: ክብደት: 12 ኪሎ:: ተግባር: መድኃኒቱን ከመስጠትዎ በፊት ስሌቱን በድጋሚ ያረጋግጡ::"', 
+                    om: '"MEDICATION DOSING MATH - Pediatric. Dhukkubsataa: Yoas Yosef. Weight: 12kg. INSTRUCTION: Re-verify calculated drug volume prior to administration."' 
+                },
+                checklist: [
+                    { en: "Execute secondary pediatric weight-based dosage math", am: "በህጻኑ ክብደት ላይ የተመሰረተውን የመድኃኒት መጠን በድጋሚ ማረጋገጥ", om: "Shallaggii hamma qorichaa ulfaatina daa'imaatiin mirkaneessi" },
+                    { en: "Verify liquid fluid intake volumes strictly every shift", am: "የፈሳሽ መውሰጃ መጠንን በየፈረቃው በጥብቅ መፈተሽ", om: "Hamma dhangala'oo daa'imni fudhate shifts hunda qoradhu" },
+                    { en: "Chart developmental milestones and pediatric nutrition plans", am: "የህጻናትን የእድገት ደረጃ እና የአመጋገብ ሁኔታ መመዝገብ", om: "Guddina fi nyaata daa'immanii galmeessi" },
+                    { en: "Ensure family care contact updates are logged natively", am: "የቤተሰብ አድራሻ እና መረጃዎችን በሲስተሙ ውስጥ ማካተት", om: "Quunnamtii maatii dhukkubsataa galmeessi" }
+                ],
+                freq: { en: "Evaluation Loop: 4-Hour Cycles", am: "የድግግሞሽ ጊዜ፡ በየ4 ሰዓቱ", om: "Evaluation Loop: Sa'aatii 4n" },
+                target: { en: "0% Volumetric Calculation Errors", am: "0% የስሌት ስህተቶች", om: "0% Volumetric Calculation Errors" }
+            },
+            nicu: {
+                title: { en: "Neonatal Care (NICU) Protocol", am: "የጨቅላ ህጻናት ህክምና ክፍል (NICU) ፕሮቶኮል", om: "Pirootokoolii Kutaa Daai'mman Reefu Dhalatan (NICU)" },
+                prompt: { 
+                    en: '"NEONATAL WARNING - NICU Bed-01. Alert: Incubator temperature fluctuation. INSTRUCTION: Check incubator heating system. Target 36.5-37.5°C."', 
+                    am: '"የጨቅላ ህጻናት ማስጠንቀቂያ - NICU አልጋ-01:: ማሳሰቢያ: የኢንኩቤተር ሙቀት መለዋወጥ:: ተግባር: የሙቀት መጠኑ ከ36.5-37.5 ድግሪ መሆኑን ማረጋገጥ::"', 
+                    om: '"NEONATAL WARNING - NICU Bed-01. Alert: Incubator temperature fluctuation. INSTRUCTION: Check incubator heating system. Target 36.5-37.5°C."' 
+                },
+                checklist: [
+                    { en: "Confirm incubator environmental metrics hourly (target: 36.5-37.5°C)", am: "የኢንኩቤተሩን ሙቀት በየሰዓቱ መፈተሽ (ግብ: ከ36.5-37.5 ድግሪ)", om: "Ho'a incubator sa'aatiin qoradhu (target: 36.5-37.5°C)" },
+                    { en: "Calculate precise enteral/parenteral caloric formulas", am: "ለጨቅላ ህጻኑ የሚሰጠውን ምግብ ካሎሪ መጠን በትክክል ማሰላት", om: "Nyaata daa'ima NICU keessaa sirriitti shallagi" },
+                    { en: "Log neonatal oxygen saturation parameters and alarm triggers", am: "የኦክስጂን መጠን መለዋወጥን እና ማስጠንቀቂያዎችን መከታተል", om: "Oxygen saturation daa'imaa hordofi" },
+                    { en: "Record maternal-neonatal tactile care sessions daily", am: "የእናት እና የጨቅላ ህጻኑን የእንክብካቤ ጊዜያት መመዝገብ", om: "Kangaroo care haadhoo fi daa'imaa galmeessi" }
+                ],
+                freq: { en: "Evaluation Loop: 15-Minute Audits", am: "የድግግሞሽ ጊዜ፡ በየ15 ደቂቃው", om: "Evaluation Loop: Daqiiqaa 15n" },
+                target: { en: "0% Critical Hypothermia Drops", am: "0% የሰውነት ሙቀት በከፍተኛ ሁኔታ መቀነስ", om: "0% Critical Hypothermia Drops" }
+            },
+            orthopedics: {
+                title: { en: "Orthopedic Care Protocol", am: "የአጥንት ህክምና ክፍል ፕሮቶኮል", om: "Pirootokoolii Kutaa Lafee fi Miilaa" },
+                prompt: { 
+                    en: '"NEUROVASCULAR EVALUATION - Ortho Bed-10. Patient: Tariku Gemechu. INSTRUCTION: Verify limb warmth, color, and distal pulse response."', 
+                    am: '"የደም ዝውውር ክትትል - አጥንት ክፍል አልጋ-10:: ታካሚ: ታሪኩ ገመቹ:: ተግባር: የታመመው እጅ/እግር ሙቀት፣ ቀለም እና የደም ዝውውር መፈተሽ::"', 
+                    om: '"NEUROVASCULAR EVALUATION - Ortho Bed-10. Dhukkubsataa: Tariku Gemechu. INSTRUCTION: Verify limb warmth, color, and distal pulse response."' 
+                },
+                checklist: [
+                    { en: "Check limb temperature and capillary refill metrics every shift", am: "የታመመውን አካል ሙቀት እና የደም ዝውውር በየፈረቃው መፈተሽ", om: "Ho'a fi dhiiga naannoo lafee cabee shifts hunda qoradhu" },
+                    { en: "Enforce correct skeletal traction alignments and balance weight structures", am: "የአጥንት መጎተቻ መሣሪያዎችን አቀማመጥ እና ሚዛን ማረጋገጥ", om: "Meeshalee traction lafee sirriitti hordofi" },
+                    { en: "Assess pain parameters using standard clinical pain charts", am: "የህመም ስሜትን በደረጃ ሰንጠረዥ መሰረት መገምገም", om: "Hamma dhukkubbi 0-10 scale irratti safari" },
+                    { en: "Enforce post-surgical physical rehabilitation exercises", am: "ከቀዶ ጥገና በኋላ የሚደረጉ የአጥንት እንቅስቃሴዎችን መከታተል", om: "Sochii qaamaa (rehab) post-op hordofi" }
+                ],
+                freq: { en: "Evaluation Loop: 4-Hour Cycles", am: "የድግግሞሽ ጊዜ፡ በየ4 ሰዓቱ", om: "Evaluation Loop: Sa'aatii 4n" },
+                target: { en: "0% Delayed Vascular Occlusion Identifications", am: "0% የዘገዩ የደም ዝውውር መዘጋት ችግሮች", om: "0% Delayed Vascular Occlusion Identifications" }
+            },
+            psychiatry: {
+                title: { en: "Psychiatric Safety Protocol", am: "የአእምሮ ጤና ክፍል ፕሮቶኮል", om: "Pirootokoolii Kutaa Sammuu fi Fayyaa" },
+                prompt: { 
+                    en: '"SURVEILLANCE WATCH - Psychiatry. Patient: Aster Lemma. Bed: P-02. INSTRUCTION: Complete safety observation log. Note behavioral patterns."', 
+                    am: '"የደህንነት ክትትል - አእምሮ ጤና ክፍል:: ታካሚ: አስቴር ለማ:: አልጋ: P-02:: ተግባር: የደህንነት ክትትል መዝገብ መሙላት:: ባህሪያትን መመዝገብ::"', 
+                    om: '"SURVEILLANCE WATCH - Psychiatry. Dhukkubsataa: Aster Lemma. Siriiba: P-02. INSTRUCTION: Complete safety observation log. Note behavioral patterns."' 
+                },
+                checklist: [
+                    { en: "Complete safety and wellness evaluations every 15 minutes", am: "የደህንነት እና ጤንነት ሁኔታን በየ15 ደቂቃው መፈተሽ", om: "Nageenya dhukkubsataa daqiiqaa 15n hordofi" },
+                    { en: "Enforce standard medication adherence safety protocol check-offs", am: "ታካሚው መድኃኒቶቹን በአግባቡ መውሰዱን በጥብቅ ማረጋገጥ", om: "Mirkaneessa fudhachuu qorichaa" },
+                    { en: "Log mood parameters, agitation levels, and behavioral changes", am: "የታካሚውን ስሜት፣ መናደድ እና የባህሪ ለውጦችን መመዝገብ", om: "Mood fi amala dhukkubsataa galmeessi" },
+                    { en: "Log family contact sessions and support networks natively", am: "የቤተሰብ ግንኙነቶችን እና የድጋፍ ሁኔታዎችን መመዝገብ", om: "Quunnamtii maatii fi gargaarsa hawaasummaa galmeessi" }
+                ],
+                freq: { en: "Evaluation Loop: 15-Minute Watch", am: "የድግግሞሽ ጊዜ፡ በየ15 ደቂቃው ክትትል", om: "Evaluation Loop: Daqiiqaa 15n" },
+                target: { en: "0% Unmonitored Patient Safety Events", am: "0% ያልተጠበቁ የደህንነት አደጋዎች", om: "0% Unmonitored Patient Safety Events" }
+            },
+            isolation: {
+                title: { en: "Isolation / Infection Prevention Protocol", am: "የለይቶ ማቆያ / ኢንፌክሽን መከላከያ ፕሮቶኮል", om: "Pirootokoolii Kutaa Adda Baasanii Kaahan" },
+                prompt: { 
+                    en: '"INFECTION CONTROL - Isolation Bed-01. Patient: Dawit Girma. INSTRUCTION: Enforce full PPE before entry: N95 respirator, gown, gloves."', 
+                    am: '"የኢንፌክሽን መቆጣጠሪያ - ለይቶ ማቆያ አልጋ-01:: ታካሚ: ዳዊት ግርማ:: ተግባር: ከመግባትዎ በፊት ሙሉ አልባሳትን መልበስ: N95 ማስክ፣ ጋውን፣ ጓንት::"', 
+                    om: '"INFECTION CONTROL - Isolation Bed-01. Dhukkubsataa: Dawit Girma. INSTRUCTION: Enforce full PPE before entry: N95 respirator, gown, gloves."' 
+                },
+                checklist: [
+                    { en: "Verify personal protective equipment status before entry", am: "ከመግባትዎ በፊት የደህንነት አልባሳት መሟላታቸውን ማረጋገጥ", om: "Uffannaa PPE (N95, gown, gloves) seenuu dura mirkaneessi" },
+                    { en: "Check anteroom negative pressure air flow parameters", am: "የክፍሉን የአየር ግፊት መቆጣጠሪያ መሣሪያዎች መፈተሽ", om: "Dhiibbaa qilleensaa (negative pressure) anteroom qoradhu" },
+                    { en: "Ensure sample containers are dual-sealed and marked correctly", am: "የምርመራ ናሙናዎችን በደህንነት ማሸግ እና ምልክት ማድረግ", om: "Qodaa sammudaa (sample) sirriitti saamsi" },
+                    { en: "Ensure room sanitation logs are updated after procedures", am: "ከህክምና በኋላ የክፍሉን ፀረ-ባክቴሪያ ማጽዳት መዝገብ ማዘመን", om: "Qulqullina kutaa isolation galmeessi" }
+                ],
+                freq: { en: "Evaluation Loop: Daily Inspections", am: "የድግግሞሽ ጊዜ፡ እለታዊ ምርመራዎች", om: "Evaluation Loop: Daily" },
+                target: { en: "0% Nosocomial Cross-Infection Outbreaks", am: "0% የሆስፒታል ውስጥ ተላላፊ በሽታዎች ስርጭት", om: "0% Nosocomial Cross-Infection Outbreaks" }
+            }
+        };
+
+        // UI Target Renderer for Ward Protocols
+        function selectWard(wardKey) {
+            // Remove active classes from all buttons
+            document.querySelectorAll('[id^="btn-ward-"]').forEach(btn => {
+                btn.className = "w-full text-left p-3.5 rounded-xl transition-all flex items-center justify-between text-sm font-bold text-gray-400 hover:bg-gray-900";
+            });
+
+            // Set active class to selected button
+            const selectedBtn = document.getElementById(`btn-ward-${wardKey}`);
+            if (selectedBtn) {
+                selectedBtn.className = "w-full text-left p-3.5 rounded-xl transition-all flex items-center justify-between text-sm font-bold bg-cyan-950/50 border border-cyan-900/40 text-cyan-300";
+            }
+
+            const wardData = clinicalWards[wardKey];
+            if (!wardData) return;
+
+            // Update Titles & Prompts based on selected Language
+            const wardBadge = document.getElementById('display-ward-badge');
+            const wardTitle = document.getElementById('display-ward-title');
+            const wardPrompt = document.getElementById('display-ward-prompt');
+            const wardFreq = document.getElementById('display-ward-freq');
+            const wardTarget = document.getElementById('display-ward-target');
+            const checkContainer = document.getElementById('display-ward-checklists');
+
+            // Find dynamic translation keys
+            let badgeText = wardData.title[activeLang];
+            wardBadge.innerHTML = badgeText;
+            wardTitle.innerHTML = wardData.title[activeLang];
+            wardPrompt.innerHTML = wardData.prompt[activeLang];
+            wardFreq.innerHTML = wardData.freq[activeLang];
+            wardTarget.innerHTML = wardData.target[activeLang];
+
+            // Render Checklist Cards
+            checkContainer.innerHTML = '';
+            wardData.checklist.forEach((item, index) => {
+                const checkText = item[activeLang];
+                const card = document.createElement('div');
+                card.className = "bg-gray-950 p-4 rounded-xl border border-cyan-950/40 flex items-start gap-3";
+                card.innerHTML = `
+                    <span class="w-5 h-5 rounded-full bg-cyan-950 text-cyan-400 flex items-center justify-center font-bold text-[10px] mt-0.5">${index + 1}</span>
+                    <p class="text-gray-400 leading-relaxed">${checkText}</p>
+                `;
+                checkContainer.appendChild(card);
+            });
+        }
+
+        // Global cache helper to retain last selected ward during translation updates
+        let lastSelectedWardKey = 'medical';
+        const originalSelectWard = selectWard;
+        selectWard = function(wardKey) {
+            lastSelectedWardKey = wardKey;
+            originalSelectWard(wardKey);
+        };
+
+        function refreshWardDisplay() {
+            selectWard(lastSelectedWardKey);
+        }
+
+        // Initialize default selection on page load
+        window.addEventListener('DOMContentLoaded', () => {
+            selectWard('medical');
+            calculateROI();
+        });
+
+        // ROI Impact Calculator Scientific Logarithmic Formula Integration
+        function calculateROI() {
+            const bedsInput = document.getElementById('calc-input-beds').value;
+            const efficiencyInput = document.getElementById('calc-input-efficiency').value;
+
+            const beds = Math.max(0, parseInt(bedsInput) || 0);
+            const efficiencyMultiplier = parseFloat(efficiencyInput) || 0.30;
+
+            // Economic Constants derived from Feasibility Document
+            const annualNationalFinancialLoss = 90000000000; // 90 Billion ETB
+            const OromiaHospitalsBedsBaseline = 3500; // Baseline standard beds
+
+            // Extrapolate baseline loss per single hospital bed
+            const annualLossPerBed = annualNationalFinancialLoss / OromiaHospitalsBedsBaseline; // ~25,714,285 ETB per bed
+
+            // Waste allocations (22.7% Direct Waste, 77.3% Productivity/LoS waste)
+            const diagnosticWasteAllocationRatio = 0.2277;
+            const productivityAllocationRatio = 0.7723;
+
+            // Calculate Reclaimed Economic Assets
+            const baseCumulativeAnnualLoss = beds * annualLossPerBed;
+            const targetAnnualReclaimedValue = baseCumulativeAnnualLoss * efficiencyMultiplier;
+
+            const diagnosticWastePrevented = targetAnnualReclaimedValue * diagnosticWasteAllocationRatio;
+            const productivitySavings = targetAnnualReclaimedValue * productivityAllocationRatio;
+
+            // Update UI Outcomes
+            document.getElementById('out-calc-waste').innerHTML = formatCurrency(diagnosticWastePrevented) + " ETB";
+            document.getElementById('out-calc-productivity').innerHTML = formatCurrency(productivitySavings) + " ETB";
+            document.getElementById('out-calc-total').innerHTML = formatCurrency(targetAnnualReclaimedValue) + " ETB";
+        }
+
+        function formatCurrency(value) {
+            return Math.round(value).toString().replace(/\B(?=(\d{3})+(?!\n))/g, ",");
+        }
+
+        // Mobile Menu Toggling Logic
+        const menuToggleBtn = document.getElementById('mobile-menu-toggle');
+        const mobileMenuPanel = document.getElementById('mobile-menu');
+        const menuIconPath = document.getElementById('menu-icon-path');
+
+        menuToggleBtn.addEventListener('click', () => {
+            const isOpen = !mobileMenuPanel.classList.contains('hidden');
+            if (isOpen) {
+                mobileMenuPanel.classList.add('hidden');
+                menuIconPath.setAttribute('d', 'M4 6h16M4 12h16m-7 6h7');
+            } else {
+                mobileMenuPanel.classList.remove('hidden');
+                menuIconPath.setAttribute('d', 'M6 18L18 6M6 6l12 12');
+            }
+        });
+
+        // Auto-close menu drawer when selecting an navigation anchor
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
             link.addEventListener('click', () => {
-                mobileNav.classList.add('hidden');
-                mobileNav.classList.remove('open');
+                mobileMenuPanel.classList.add('hidden');
+                menuIconPath.setAttribute('d', 'M4 6h16M4 12h16m-7 6h7');
             });
         });
     </script>
 </body>
 </html>
-
-```
