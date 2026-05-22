@@ -1548,6 +1548,22 @@
                 menuIconPath.setAttribute('d', 'M4 6h16M4 12h16m-7 6h7');
             });
         });
+        const audio = document.getElementById('bg-audio');
+        const toggleBtn = document.getElementById('audio-toggle');
+        const playIcon = document.getElementById('play-icon');
+
+        toggleBtn.addEventListener('click', () => {
+            if (audio.paused) {
+                audio.play().then(() => {
+                    playIcon.innerHTML = '<path d="M5 4h3v12H5V4zm7 0h3v12h-3V4z"/>';
+                }).catch(err => console.error("Playback blocked by browser:", err));
+            } else {
+                audio.pause();
+                playIcon.innerHTML = '<path d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z"/>';
+            }
+        });
     </script>
+</body>
+</html>
 </body>
 </html>
